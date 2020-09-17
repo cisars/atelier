@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
 
 // datos del model user original
 // ** 2. https://www.siddharthshukla.in/blog/how-to-use-multiple-authentication-guards-in-laravel-6-app/
@@ -33,7 +33,7 @@ class Usuario extends Authenticatable
 
     public function empleado()
     {
-            return $this->belongsTo(Empleado::class, 'empleado', 'empleado');
+        return $this->belongsTo(Empleado::class, 'empleado', 'empleado');
     }
 
     public function calendarios()
@@ -41,3 +41,4 @@ class Usuario extends Authenticatable
         return $this->hasMany(CalendarioAtencion::class, 'usuario', 'usuario');
     }
 }
+

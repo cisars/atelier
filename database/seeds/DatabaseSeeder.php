@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Usuario;
-use App\CalendarioAtencion;
 
 class DatabaseSeeder extends Seeder
 {

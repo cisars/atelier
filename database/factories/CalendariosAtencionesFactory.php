@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\CalendarioAtencion;
+use App\Models\CalendarioAtencion;
 use Faker\Generator as Faker;
 
 $factory->define(CalendarioAtencion::class, function (Faker $faker) {
@@ -14,7 +14,7 @@ $factory->define(CalendarioAtencion::class, function (Faker $faker) {
         'prioridad' => \Illuminate\Support\Str::random(1),
         'estado' => \Illuminate\Support\Str::random(1),
         'cliente' => $faker->unique()->numerify(),
-        'usuario' => factory(App\Usuario::class)
+        'usuario' => factory(App\Models\Usuario::class)
 
     ];
 });

@@ -2,14 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
-use App\Usuario;
+//use App\Model;
+use App\Models\Usuario;
 use Faker\Generator as Faker;
 
 $factory->define(Usuario::class, function (Faker $faker) {
     return [
         'usuario' => $faker->userName,
-        'empleado' => factory(App\Empleado::class),
+        'empleado' => factory(App\Models\Empleado::class),
 
         'id' => 0,
         'name' => $faker->name,

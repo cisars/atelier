@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Models\Empleado;
 use Faker\Generator as Faker;
 
-$factory->define(\App\Empleado::class, function (Faker $faker) {
+$factory->define(Empleado::class, function (Faker $faker) {
     return [
         'nombres' => $faker->firstName,
         'apellidos' => $faker->lastName,
