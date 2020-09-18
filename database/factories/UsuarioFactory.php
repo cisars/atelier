@@ -9,9 +9,12 @@ use Faker\Generator as Faker;
 $factory->define(Usuario::class, function (Faker $faker) {
     return [
         'usuario' => $faker->unique()->userName,
-        'empleado' => factory(App\Models\Empleado::class),
+        //'empleado' => factory(App\Models\Empleado::class),
+        'cliente' => factory(App\Models\Cliente::class),
         'usuario_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10) 
+        'clave' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'remember_token' => Str::random(10)
     ];
 });
+//'user_id' => random_int(\DB::table('users')->min('id'), \DB::table('users')->max('id')), esto es para aqui
+//$factory->create(App\Models\Empleado::class)->empleado,

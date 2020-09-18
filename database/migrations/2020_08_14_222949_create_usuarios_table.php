@@ -17,7 +17,7 @@ class CreateUsuariosTable extends Migration
 
             $table->string('usuario', 255)->primary();
             $table->unsignedInteger('empleado')->nullable();
-            $table->string('cliente')->nullable();
+            $table->unsignedInteger('cliente')->nullable();
             $table->string('clave')->nullable();
             $table->timestamp('fecha_ingreso')->nullable();
             $table->char('estado')->default('A');
@@ -32,7 +32,9 @@ class CreateUsuariosTable extends Migration
             $table->foreign('empleado')
                 ->references('empleado')
                 ->on('empleados');
-
+            $table->foreign('cliente')
+                ->references('cliente')
+                ->on('clientes');
         });
     }
 

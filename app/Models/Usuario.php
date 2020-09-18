@@ -36,7 +36,10 @@ class Usuario extends Authenticatable
     {
         return $this->belongsTo(Empleado::class, 'empleado', 'empleado');
     }
-
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'cliente', 'cliente');
+    }
     public function calendarios()
     {
         return $this->hasMany(CalendarioAtencion::class, 'usuario', 'usuario');

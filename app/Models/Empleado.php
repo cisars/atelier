@@ -14,4 +14,12 @@ class Empleado extends Model
     {
         return $this->hasMany(Usuario::class, 'empleado', 'empleado');
     }
+    public function turno()
+    {
+        return $this->belongsTo(Turno::class, 'turno_empleado', 'turno_empleado');
+    }
+    public function cargo()
+    {
+        return $this->belongsTo(Cargo::class, 'cargo', 'cargo');
+    }
 }
