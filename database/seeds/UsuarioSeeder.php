@@ -23,7 +23,9 @@ class UsuarioSeeder extends Seeder
             'estado'        => 'A',
             'observacion'   => '',
             'perfil'        => '1',
-            'tipo'          => '1'
+            'tipo'          => '1',
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
         ]);
         DB::table('usuarios')->insert([
             'usuario'  => 'empleado',
@@ -35,7 +37,9 @@ class UsuarioSeeder extends Seeder
             'estado'        => 'A',
             'observacion'   => '',
             'perfil'        => '1',
-            'tipo'          => '1'
+            'tipo'          => '1',
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
         ]);
         DB::table('usuarios')->insert([
             'usuario'  => 'isaias',
@@ -47,7 +51,9 @@ class UsuarioSeeder extends Seeder
             'estado'        => 'A',
             'observacion'   => '',
             'perfil'        => '1',
-            'tipo'          => '1'
+            'tipo'          => '1',
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
         ]);
     }
 }

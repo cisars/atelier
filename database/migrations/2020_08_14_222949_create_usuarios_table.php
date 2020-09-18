@@ -24,6 +24,8 @@ class CreateUsuariosTable extends Migration
             $table->string('observacion')->nullable();
             $table->char('perfil')->nullable();
             $table->char('tipo')->default('A');
+            $table->timestamp('usuario_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
 
             // $table->primary(['usuario'  ]);

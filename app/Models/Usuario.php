@@ -25,11 +25,12 @@ class Usuario extends Authenticatable
     protected $fillable = [
         'usuario', 'clave'
     ];
-
-    public function getAuthPassword()
-    {
-        return $this->attributes['clave'];
-    }
+    protected $hidden = [
+        'clave', 'remember_token',
+    ];
+    protected $casts = [
+        'usuario_verified_at' => 'datetime',
+    ];
 
     public function empleado()
     {
@@ -39,6 +40,13 @@ class Usuario extends Authenticatable
     public function calendarios()
     {
         return $this->hasMany(CalendarioAtencion::class, 'usuario', 'usuario');
+    }
+
+    //-------------------
+    public function getAuthPassword()
+    {
+        //return $this->attributes['clave'];
+        return $this->clave;
     }
 }
 
