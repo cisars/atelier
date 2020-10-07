@@ -17,8 +17,6 @@ $factory->define(Empleado::class, function (Faker $faker) {
         'telefono' => '(+59521)'. $faker->numberBetween(333333,999999),
         'fecha_nacimiento' => $faker->dateTimeBetween('-50 years', '-20 years' ),
         'fecha_ingreso' => $faker->date('Y-m-d','now'),
-        'fecha_egreso' => $faker->date('Y-m-d','now'),
-        'motivo_egreso' => $faker->sentence,
         'salario' => $faker->numberBetween(500,10000)
     ];
 });

@@ -15,8 +15,8 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->increments('empleado');
-            $table->string('nombres',40);
-            $table->string('apellidos',40);
+            $table->string('nombres',40)->nullable();
+            $table->string('apellidos',40)->nullable();
             $table->float('ci',12,0)->nullable();
             $table->char('estado_civil')->nullable();
             $table->char('sexo')->nullable();
@@ -49,3 +49,5 @@ class CreateEmpleadosTable extends Migration
         Schema::dropIfExists('empleados');
     }
 }
+
+

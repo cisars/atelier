@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Usuario::class, function (Faker $faker) {
     return [
-        'usuario' => $faker->unique()->userName,
+        'usuario' => $faker->userName,
         //'empleado' => factory(App\Models\Empleado::class),
         'cliente' => factory(App\Models\Cliente::class),
         'usuario_verified_at' => now(),

@@ -12,8 +12,36 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         factory('App\Models\Cliente', 5)->create();
+
+        factory('App\Models\Cargo')->create();
+        factory('App\Models\Localidad')->create();
+        factory('App\Models\Sucursal')->create();
+
         $this->call(EmpleadoSeeder::class);
         $this->call(UsuarioSeeder::class);
-
     }
 }
+/**
+$newEmpleado = factory('App\Models\Empleado')->create();
+$newCliente = factory('App\Models\Cliente')->create();
+$newCalendario = factory('App\Models\CalerndarioAtencion')->create();
+$newUsuario = factory('App\Models\Usuario')->create();
+
+$Usuarios = App\Models\Usuario::all()
+$Clientes = App\Models\Cliente::all()
+$Empleados = App\Models\Empleado::all()
+
+
+
+
+
+
+App\Models\Usuario::where('empleado',5)->first();
+
+
+
+
+
+
+
+ */
