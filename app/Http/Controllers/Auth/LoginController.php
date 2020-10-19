@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 //use Auth;
 class LoginController extends Controller
 {
@@ -65,9 +68,11 @@ class LoginController extends Controller
             'password' => $request->clave,
         ];
         $this->guard()->attempt($crendentials);
-         // dd($crendentials);
+        // dd($crendentials);
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
+        Auth::guard()
+            ->attempt(['usuario' => $request->usuario, 'password' => $request->clave], true);
     }
 }

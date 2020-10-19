@@ -20,7 +20,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/localidad',  'LocalidadController@index')->name('localidades');
+Route::get('localidad/create',  'LocalidadController@create')->name('localidad.create');
+Route::get('localidad/edit',  'LocalidadController@edit')->name('localidad.edit');
+Route::get('localidad/destroy',  'LocalidadController@destroy')->name('localidad.destroy');
 
+
+// Rutas de los examples pages bootstrap.
+// Resources/views/vendor/adminlte/pages agregados a mano
+Route::get('/chartjs',  'BootstrapExampleController@chartjs')->name('chartjs');
+Route::get('/flot',     'BootstrapExampleController@flot')->name('flot');
+Route::get('/inline',   'BootstrapExampleController@inline')->name('inline');
+Route::get('/data',     'BootstrapExampleController@data')->name('data');
 /*
 Route::get('/login/admin',      'Auth\LoginController@showAdminLoginForm');
 Route::get('/register/admin',   'Auth\RegisterController@showAdminRegisterForm');

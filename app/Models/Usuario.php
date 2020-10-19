@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -18,6 +19,7 @@ use Illuminate\Notifications\Notifiable;
 class Usuario extends Authenticatable
 {
     use Notifiable;
+
     protected $table = 'usuarios';
     protected $primaryKey = 'usuario';
     public $incrementing = false;
@@ -36,10 +38,12 @@ class Usuario extends Authenticatable
     {
         return $this->belongsTo(Empleado::class, 'empleado', 'empleado');
     }
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'cliente', 'cliente');
     }
+
     public function calendarios()
     {
         return $this->hasMany(CalendarioAtencion::class, 'usuario', 'usuario');
@@ -50,6 +54,12 @@ class Usuario extends Authenticatable
     {
         //return $this->attributes['clave'];
         return $this->clave;
+    }
+
+    public function adminlte_image(){
+        //return  Auth::user()->image ;
+        return "https://ui-avatars.com/api/?name=".Auth::user()->usuario ;
+      //  return "https://i.pravatar.cc/40?u="..Auth::user()->usuario ;
     }
 }
 

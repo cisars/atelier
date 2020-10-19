@@ -9,6 +9,7 @@ class Localidad extends Model
     protected $table = 'localidades';
     protected $primaryKey = 'localidad';
     //protected $fillable = [];
+    // public $timestamps = false;
     protected $guarded = [];
     public function clientes()
     {
