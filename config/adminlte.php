@@ -473,9 +473,9 @@ return [
             'icon'    => 'fas fa-fw fa-table',
             'can'     => ['admin', 'example-bootstrap'],
             'submenu' => [
-                [ 'icon_color' => 'yellow', 'can' => 'example-bootstrap', 'url'=> 'data', 'text' => 'Data', ],
-                [ 'icon_color' => 'yellow', 'can' => 'example-bootstrap', 'url'=> 'inline', 'text' => 'Inline', ],
-                [ 'icon_color' => 'yellow', 'can' => 'example-bootstrap', 'url'=> 'flot', 'text' => 'Flot', ],
+                [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'data', 'text' => 'Data', ],
+                [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'inline', 'text' => 'Inline', ],
+                [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'flot', 'text' => 'Flot', ],
             ],
         ],
         [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> '#', 'text' => 'Grid', ],

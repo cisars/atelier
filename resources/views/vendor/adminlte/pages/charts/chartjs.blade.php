@@ -160,3 +160,5 @@
 
 @stop
 {{--        @endsection--}}
+@yield('js')
+<script src="{{ asset('js/scriptChart.js') }}" defer></script>

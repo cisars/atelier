@@ -916,3 +916,6 @@
         <!-- /.content -->
 @stop
 {{--        @endsection--}}
+
+@yield('js')
+<script src="{{ asset('js/scriptData.js') }}" defer></script>

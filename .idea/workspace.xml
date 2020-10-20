@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="Acceso de Usuarios con password personalizado, cambiado a clave. No se modificaron datos en VENDOR. Garantiza la portabilidad del proyecto sin sacrificar token y cambios en archivos de solo lectura">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CalendarioAtencionController.php" afterDir="false" />
+    <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="Fix menores (agregado yield(js) a los ejemplos de forma individual) en las vistas de AdminLTE y actualizacion de readme">
+      <change beforePath="$PROJECT_DIR$/.idea/atelier.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/atelier.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Usuario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UsuarioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UsuarioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_222949_create_usuarios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_222949_create_usuarios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsuarioSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsuarioSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/charts/chartjs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/charts/chartjs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/charts/flot.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/charts/flot.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/charts/inline.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/charts/inline.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/tables/data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/pages/tables/data.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +25,13 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
@@ -35,6 +39,12 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -149,6 +159,8 @@
       <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/almasaeed2010/adminlte" />
+      <path value="$PROJECT_DIR$/vendor/jeroennoten/laravel-adminlte" />
     </include_path>
   </component>
   <component name="ProjectId" id="1g6KrxrTcsbz202qitY4dXISrBu" />
@@ -165,21 +177,27 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="D:\Programas\PhpStorm 2020.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programas\laragon\www\atelier\resources\views\layouts" />
+      <recent name="D:\Programas\laragon\www\atelier\public\js" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\pages\tables" />
       <recent name="D:\Programas\laragon\www\atelier\app\Models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programas\laragon\www\atelier\resources\views" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\pages\charts" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\lang\es" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\auth" />
       <recent name="D:\Programas\laragon\www\atelier" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\auth\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -189,6 +207,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\cisar\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="" />
@@ -204,7 +225,15 @@
       <workItem from="1600274963650" duration="5236000" />
       <workItem from="1600370345631" duration="11755000" />
       <workItem from="1600442514035" duration="626000" />
-      <workItem from="1600444529829" duration="3865000" />
+      <workItem from="1600444529829" duration="28269000" />
+      <workItem from="1601303887319" duration="8534000" />
+      <workItem from="1602092154606" duration="974000" />
+      <workItem from="1602093432882" duration="50584000" />
+      <workItem from="1602719843141" duration="4272000" />
+      <workItem from="1602881639467" duration="1358000" />
+      <workItem from="1602883072998" duration="5181000" />
+      <workItem from="1603056146753" duration="508000" />
+      <workItem from="1603056713112" duration="21178000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de estructura para los modelos, enviados a la carpeta Models en la raiz (Usuario.php, Empleado.php, CalendarioAtencion.php">
       <created>1600374098496</created>
@@ -213,7 +242,35 @@
       <option name="project" value="LOCAL" />
       <updated>1600374098496</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Acceso de Usuarios con password personalizado, cambiado a clave. No se modificaron datos en VENDOR. Garantiza la portabilidad del proyecto sin sacrificar token y cambios en archivos de solo lectura">
+      <created>1600448907660</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1600448907660</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Agregadas model, fabric y migrations para&#10;+ Cliente.php&#10;+ Cargo.php&#10;+ Turno.php&#10;con todas sus relaciones foraneas">
+      <created>1600471367753</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600471367753</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Agregadas model, fabric y migrations para&#10;+ Localidad.php&#10;+ Sucursal.php&#10;con todas sus relaciones foraneas&#10;- Seeds personalizados de usuarios en factory">
+      <created>1602080956583</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1602080956583</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Se instalo por composer Boostrap y se arreglo todo el auth para adaptar a la base.&#10;Inicio del Crud de Localidad en proceso">
+      <created>1603141361064</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603141361064</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +280,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Correccion de estructura para los modelos, enviados a la carpeta Models en la raiz (Usuario.php, Empleado.php, CalendarioAtencion.php" />
     <MESSAGE value="Acceso de Usuarios con password personalizado, cambiado a clave. No se modificaron datos en VENDOR. Garantiza la portabilidad del proyecto sin sacrificar token y cambios en archivos de solo lectura" />
-    <option name="LAST_COMMIT_MESSAGE" value="Acceso de Usuarios con password personalizado, cambiado a clave. No se modificaron datos en VENDOR. Garantiza la portabilidad del proyecto sin sacrificar token y cambios en archivos de solo lectura" />
+    <MESSAGE value="Agregadas model, fabric y migrations para&#10;+ Cliente.php&#10;+ Cargo.php&#10;+ Turno.php&#10;con todas sus relaciones foraneas" />
+    <MESSAGE value="Agregadas model, fabric y migrations para&#10;+ Localidad.php&#10;+ Sucursal.php&#10;con todas sus relaciones foraneas&#10;- Seeds personalizados de usuarios en factory" />
+    <MESSAGE value="Se instalo por composer Boostrap y se arreglo todo el auth para adaptar a la base.&#10;Inicio del Crud de Localidad en proceso" />
+    <MESSAGE value="Fix menores (agregado yield(js) a los ejemplos de forma individual) en las vistas de AdminLTE y actualizacion de readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix menores (agregado yield(js) a los ejemplos de forma individual) en las vistas de AdminLTE y actualizacion de readme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="177" key="#Deployment" timestamp="1600373901178">
@@ -238,46 +299,69 @@
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="561" y="1190" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1599751173418" />
+    <state x="499" y="1239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602888417023">
+      <screen x="0" y="1080" width="1536" height="832" />
+    </state>
+    <state x="499" y="1239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602888417023" />
     <state x="624" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600372844715">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="624" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600372844715" />
     <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600203637455" />
-    <state x="95" y="1080" key="CommitChangelistDialog2" timestamp="1600448819743">
+    <state x="479" y="86" width="750" height="744" key="CommitChangelistDialog2" timestamp="1603215462204">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="479" y="86" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603215462204" />
+    <state x="576" y="1108" width="750" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1603145925965" />
+    <state x="0" y="1080" key="DiffContextDialog" timestamp="1600448991414">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
-    <state x="479" y="86" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600374095802" />
-    <state x="95" y="1080" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600448819743" />
-    <state x="549" y="1247" key="FileChooserDialogImpl" timestamp="1597553620159">
+    <state x="0" y="1080" key="DiffContextDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600448991414" />
+    <state x="549" y="1247" key="FileChooserDialogImpl" timestamp="1603128001282">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
-    <state x="549" y="1247" key="FileChooserDialogImpl/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1597553620159" />
+    <state x="549" y="1247" key="FileChooserDialogImpl/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1603128001282" />
     <state x="528" y="1215" key="NewPhpClassDialog" timestamp="1599745658289">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="528" y="1215" key="NewPhpClassDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1599745658289" />
+    <state x="604" y="1415" key="NewPhpFileDialog" timestamp="1602886401377">
+      <screen x="0" y="1080" width="1536" height="832" />
+    </state>
+    <state x="604" y="1415" key="NewPhpFileDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602886401377" />
     <state x="586" y="1194" key="RollbackChangesDialog" timestamp="1600439213334">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="586" y="1194" key="RollbackChangesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600439213334" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1600374129547">
+    <state x="346" y="71" key="SettingsEditor" timestamp="1603215441381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="346" y="71" key="SettingsEditor/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603215441381" />
+    <state x="277" y="1137" key="SettingsEditor/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602209359352" />
+    <state x="442" y="1282" key="Vcs.Push.Dialog.v2" timestamp="1600471395997">
+      <screen x="0" y="1080" width="1536" height="832" />
+    </state>
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600374129547" />
+    <state x="442" y="1282" key="Vcs.Push.Dialog.v2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600471395997" />
     <state x="733" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600444576668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="733" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600444576668" />
     <state x="586" y="1406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600442368124" />
-    <state x="474" y="1112" width="876" height="730" key="find.popup" timestamp="1600448225180">
+    <state x="399" y="1179" width="876" height="730" key="find.popup" timestamp="1603189286757">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
-    <state x="593" y="40" width="1095" height="913" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600376790295" />
-    <state x="474" y="1112" width="876" height="730" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600448225180" />
-    <state x="431" y="1233" width="672" height="678" key="search.everywhere.popup" timestamp="1600439431983">
+    <state x="474" y="32" width="876" height="724" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602165719671" />
+    <state x="593" y="40" width="1095" height="913" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1602257054816" />
+    <state x="399" y="1179" width="876" height="730" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1603189286757" />
+    <state x="425" y="727" key="run.anything.popup" timestamp="1602486246574">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="425" y="727" key="run.anything.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602486246574" />
+    <state x="431" y="1233" width="672" height="678" key="search.everywhere.popup" timestamp="1602627700422">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600375080394" />
-    <state x="431" y="1233" width="672" height="678" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600439431983" />
+    <state x="431" y="1233" width="672" height="678" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602627700422" />
   </component>
 </project>

@@ -228,3 +228,8 @@
 
 @stop
 {{--        @endsection--}}
+
+@yield('js')
+<script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}" defer></script>
+<script src="{{ asset('plugins/sparkline/sparkline.js') }}" defer></script>
+<script src="{{ asset('js/scriptInline.js') }}" defer></script>

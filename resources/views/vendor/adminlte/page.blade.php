@@ -67,19 +67,20 @@
 @section('adminlte_js')
     @stack('js')
     @yield('js')
-    @if(Route::current()->getName() == 'flot'):
-    <script src="<?php echo e(asset('plugins/chart.js/plot.js')); ?>"></script>
-    <script src="<?php echo e(asset('js/scriptFlot.js')); ?>"></script>
+    @if(Route::current()->getName() == 'flot')
+{{--        <script src="{{ asset('plugins/chart.js/plot.js') }}" defer></script>--}}
+{{--        <script src="{{ asset('js/scriptFlot.js') }}" defer></script>--}}
     @endif
-    @if(Route::current()->getName() == 'chartjs'):
-    <script src="<?php echo e(asset('js/scriptChart.js')); ?>"></script>
+    @if(Route::current()->getName() == 'chartjs')
+{{--        <script src="{{ asset('js/scriptChart.js') }}" defer></script>--}}
     @endif
-    @if(Route::current()->getName() == 'inline'):
-    <script src="<?php echo e(asset('plugins/jquery-knob/jquery.knob.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('plugins/sparkline/sparkline.js')); ?>"></script>
-    <script src="<?php echo e(asset('js/scriptInline.js')); ?>"></script>
+    @if(Route::current()->getName() == 'inline')
+{{--        <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}" defer></script>--}}
+{{--        <script src="{{ asset('plugins/sparkline/sparkline.js') }}" defer></script>--}}
+{{--        <script src="{{ asset('js/scriptInline.js') }}" defer></script>--}}
     @endif
-    @if(Route::current()->getName() == 'data'):
-    <script src="<?php echo e(asset('js/scriptData.js')); ?>"></script>
+
+    @if (Route::current()->getName() == 'data')
+{{--        <script src="{{ asset('js/scriptData.js') }}" defer></script>--}}
     @endif
 @stop
