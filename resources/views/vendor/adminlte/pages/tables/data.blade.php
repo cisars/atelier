@@ -917,5 +917,7 @@
 @stop
 {{--        @endsection--}}
 
-@yield('js')
-<script src="{{ asset('js/scriptData.js') }}" defer></script>
+@section('adminlte_js')
+    <script src="{{ asset('js/scriptData.js') }}" defer></script>
+@endsection
+

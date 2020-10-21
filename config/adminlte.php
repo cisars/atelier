@@ -415,7 +415,7 @@ return [
         ],
         [
             'text'       => 'Localidad',
-            'icon_color' => 'red',
+            'icon_color' => 'green',
             'url'        => 'localidad',
             'can'        => 'admin',
         ],
@@ -478,9 +478,7 @@ return [
                 [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'flot', 'text' => 'Flot', ],
             ],
         ],
-        [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> '#', 'text' => 'Grid', ],
-        [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> '#', 'text' => 'Inline', ],
-        [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> '#', 'text' => 'Flot', ],
+
 
 
     ],

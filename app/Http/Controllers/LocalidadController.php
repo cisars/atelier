@@ -6,7 +6,7 @@ use App\Http\Requests\Localidad\StoreLocalidadRequest;
 use App\Http\Requests\Localidad\UpdateLocalidadRequest;
 use App\Models\Localidad;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\View;
 
 class LocalidadController extends Controller
 {
@@ -14,21 +14,24 @@ class LocalidadController extends Controller
     public function index()
     {
         $localidades = Localidad::all();
-        return view('localidad.index', compact('localidades', $localidades));
+        return View::make('localidad.index')
+            ->with('localidades', $localidades);
     }
     public function create()
     {
         $localidades = Localidad::orderBy('descripcion', 'ASC')->get();
         return view('localidad.create')
             ->with('localidades', $localidades);
-
     }
+
     public function store(StoreLocalidadRequest $request)
     {
-        $distrito = new Localidad($request->all());
-        $distrito->save();
-        return redirect('/localidad');
-   //     return redirect('/localidad')->with('success', 'Distrito grabado correctamente');
+        $localidad = new Localidad([
+            'descripcion' => $request->get('descripcion')
+        ]);
+        $localidad->save();
+        return redirect('/localidad')
+            ->with('success', 'Localidad grabado correctamente');
     }
 
     public function show(Localidad $localidad)
@@ -38,19 +41,18 @@ class LocalidadController extends Controller
 
     public function edit(Localidad $localidad)
     {
-//        $regiones = Localidad::orderBy('descripcion', 'ASC')->get();
-//        return view('localidad.edit')->with('localidad',$localidad)->with('regiones',$regiones);
-        $localidades = Localidad::orderBy('descripcion', 'ASC')->get();
-        return view('localidad.edit')->with('localidad',$localidad)->with('localidades',$localidades);
+        return view('localidad.edit')
+            ->with('localidad',$localidad) ;
     }
 
     public function update(UpdateLocalidadRequest $request, Localidad $localidad)
     {
-
         $localidad->fill($request->all());
         $localidad->save();
-        return redirect( '/localidad');
-//        return redirect(route('localidad.index'))->with('success', 'Localidad actualizada correctamente');
+       // return redirect( '/localidad');
+       // return redirect( '/localidad')->with('success', 'Localidad actualizada correctamente');
+        return redirect(route('localidad.index'))
+            ->with('success', 'Localidad actualizada correctamente');
     }
 
     public function destroy(Request $request)

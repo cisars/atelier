@@ -1,9 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Atelier')
+@section('title', 'Editar Localidad')
 
-@section('content_header')
-    <h1 class="m-0 text-dark">{{ __('Editar Localidad') }}</h1>
+@section('css' )
+
+@stop
+
+@section('menu-header')
+    <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
+    <li class="breadcrumb-item active"> Editar </li>
 @stop
 
 @section('content')
@@ -68,8 +73,7 @@
     </div>
 @endsection
 
-{{-- esto no funciona @section('scripts')--}}
-{{--    <script> alert ('hola')</script>--}}
-{{--@endsection--}}
+@section('adminlte_js')
 
-@yield('js')
+@endsection
+

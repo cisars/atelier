@@ -24,7 +24,7 @@ class StoreLocalidadRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'       =>'required|max:60|unique:localidad,descripcion',
+            'descripcion'       =>'required|max:60|unique:localidades,descripcion',
         ];
     }
 

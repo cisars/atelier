@@ -1,9 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Atelier')
+@section('title', 'Listado de Localidades')
 
-@section('content_header')
-    <h1 class="m-0 text-dark">{{ __('Listado de Localidades') }}</h1>
+@section('css' )
+
+@stop
+
+@section('menu-header')
+    <li class="breadcrumb-item active">ABM Localidades </li>
 @stop
 
 @section('content')
@@ -17,16 +21,15 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="col-6 mb-4">
+                        <div class="form-group">
                             <a  href="{{route('localidad.create')}}" class="btn bg-cyan">Nueva localidad</a>
                         </div>
-
-                        <table class="table table-sm table-hover" id="table">
-                            <thead>
+                        <table class="table table-sm table-hover" id="lista">
+                            <thead class="">
                             <tr>
-                                <th >Codigo</th>
-                                <th>Descripcion</th>
-                                <th >Accion</th>
+                                <th class="w-10">Codigo</th>
+                                <th class="w-80">Descripcion</th>
+                                <th class="w-10">Accion</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -34,7 +37,7 @@
                                 <tr>
                                     <td>{{ $localidad->localidad }}</td>
                                     <td>{{ $localidad->descripcion }}</td>
-                                    <td style="display: block;  margin: auto;">
+                                    <td class=" ">
                                         <a
                                             href="{{ route('localidad.edit', $localidad->localidad) }}"
                                             class= "btn btn-info">
@@ -66,7 +69,6 @@
     </section>
     <!-- /.content -->
 
-
     <div class="modal fade" id="modal-danger">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -81,23 +83,25 @@
                     @method('DELETE')
                     <div class="modal-body">
                         <p>¿Esta seguro que desea eliminar el registro?</p>
-                        <input type="hidden" id="id" name="id" value="">
+                        <input
+                            type    ="hidden"
+                            id      ="id"
+                            name    ="id" value="">
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt" aria-hidden="true"></i> Eliminar</button>
+                        <button
+                            class   ="btn btn-danger"
+                            type    ="submit">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i> Eliminar
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-
 @endsection
 
-@yield('js')
-<script>
-    $('#table').DataTable({
+@section('adminlte_js')
 
-    });
-
-</script>
+@endsection

@@ -22,6 +22,19 @@
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
 
+    <style>
+        .page-item.active .page-link {
+            background-color: #17a2b8 !important;
+            border: 0px solid black;
+            color: #ffffff !important;
+        }
+
+        .page-link {
+            color: #343a40 !important;
+        }
+    </style>
+
+
     {{-- Base Stylesheets --}}
     @if(!config('adminlte.enabled_laravel_mix'))
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
@@ -92,12 +105,12 @@
 {{--        --}}
 {{--        <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">--}}
 {{--        <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>--}}
-        <script>
+{{--        <script>--}}
 
-            $(document).ready(function() {
-                $('#example').DataTable();
-            } );
-        </script>
+{{--            $(document).ready(function() {--}}
+{{--                $('#example').DataTable();--}}
+{{--            } );--}}
+{{--        </script>--}}
 
 
 
@@ -123,6 +136,47 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
+    <script>
+        $('#lista').DataTable({
+            "language": {
+                "url": "{{ asset('js/dataTableSpanish.json') }}"
+            },
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+
+        $('#data').DataTable({
+            "language": {
+                "url": "{{ asset('js/dataTableSpanish.json') }}"
+            },
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+
+        $('#ot').DataTable({
+            "language": {
+                "url": "{{ asset('js/dataTableSpanish.json') }}"
+            },
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+
+    </script>
 
 </body>
 

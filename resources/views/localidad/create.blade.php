@@ -2,8 +2,12 @@
 
 @section('title', 'Atelier')
 
-@section('content_header')
-    <h1 class="m-0 text-dark">{{ __('Editar Localidad') }}</h1>
+@section('css' )
+
+@stop
+
+@section('menu-header')
+    <li class="breadcrumb-item active">ABM Localidades </li>
 @stop
 
 @section('content')
@@ -16,7 +20,7 @@
                         <div class="col-md-6">
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Cargo</h3>
+                                    <h3 class="card-title">Crear Localidad</h3>
                                 </div>
                                 <form
                                     role    ="form"
@@ -40,8 +44,8 @@
                                     </div>
                                     <div class="card-footer">
                                         <button
-                                            type="submit"
-                                            class="btn btn-info">Grabar</button>
+                                            type    ="submit"
+                                            class   ="btn btn-info">Grabar</button>
                                         <a href="{{ route('localidad.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>
@@ -53,4 +57,6 @@
         </div>
     </div>
 @endsection
-@yield('js')
+@section('adminlte_js')
+
+@endsection
