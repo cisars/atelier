@@ -19,12 +19,26 @@ Route::get('/', function () {
 //Route::view('/', 'welcome');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/localidad',  'LocalidadController@index')->name('localidades');
-Route::get('localidad/create',  'LocalidadController@create')->name('localidad.create');
-Route::get('localidad/edit',  'LocalidadController@edit')->name('localidad.edit');
-Route::get('localidad/destroy',  'LocalidadController@destroy')->name('localidad.destroy');
 
+//Route::post('update', 'Auth\RegisterController@sqlupdate')->name('update');
+
+
+
+/* no entiendo porque funciona igual
+Route::get('/localidad',  'LocalidadController@index')->name('localidades');
+Route::get('/localidad/index',  'LocalidadController@index')->name('localidad.index');
+Route::get('/localidad/create',  'LocalidadController@create')->name('localidad.create');
+Route::get('/localidad/edit',  'LocalidadController@edit')->name('localidad.edit');
+Route::get('/localidad/update',  'LocalidadController@update');
+Route::get('/localidad/destroy',  'LocalidadController@destroy')->name('localidad.destroy');
+*/
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('localidad', 'LocalidadController');
+});
 
 // Rutas de los examples pages bootstrap.
 // Resources/views/vendor/adminlte/pages agregados a mano

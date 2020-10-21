@@ -1,48 +1,72 @@
-@extends('vendor.adminlte.page')
+@extends('adminlte::page')
 
 @section('title', 'Atelier')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">{{ __('Tablero de controles') }}</h1>
+    <h1 class="m-0 text-dark">{{ __('Listado de Localidades') }}</h1>
 @stop
 
 @section('content')
-    <div class="col-sm-12">
-    </div>
-    <div class="panel panel-default">
-        <div style="margin: 10px;" class="panel-heading">
-            <a  href="{{route('localidad.create')}}" class="btn btn-primary">Nuevo localidad</a>
-        </div>
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="tabla">
-                    <thead>
-                    <tr>
-                        <th>Codigo</th>
-                        <th>localidad</th>
-                        <th>Region</th>
-                        <th>Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($localidades as $key => $localidad)
-                        <tr>
-                            <td>{{ $localidad->localidad }}</td>
-                            <td> </td>
-                            <td></td>
-                            <td style="display: block;  margin: auto;">
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-data="{{$localidad->localidad}}">
-                                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                                </button>
-                                <a href="{{ route('localidad.edit', $localidad->localidad) }}" class= "btn btn-info"><i class="fas fa-pencil-alt"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-6">
+                <div class="card card-cyan">
+                    <div class="card-header">
+                        <h3 class="card-title">Localidades</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="col-6 mb-4">
+                            <a  href="{{route('localidad.create')}}" class="btn bg-cyan">Nueva localidad</a>
+                        </div>
+
+                        <table class="table table-sm table-hover" id="table">
+                            <thead>
+                            <tr>
+                                <th >Codigo</th>
+                                <th>Descripcion</th>
+                                <th >Accion</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($localidades as $key => $localidad)
+                                <tr>
+                                    <td>{{ $localidad->localidad }}</td>
+                                    <td>{{ $localidad->descripcion }}</td>
+                                    <td style="display: block;  margin: auto;">
+                                        <a
+                                            href="{{ route('localidad.edit', $localidad->localidad) }}"
+                                            class= "btn btn-info">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <button
+                                            type        ="button"
+                                            class       ="btn btn-danger"
+                                            data-toggle ="modal"
+                                            data-target ="#modal-danger"
+                                            data-data   ="{{$localidad->localidad}}">
+                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
+            <!-- /.col -->
         </div>
-    </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+
     <div class="modal fade" id="modal-danger">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -66,8 +90,14 @@
             </div>
         </div>
     </div>
-@endsection
 
-@section('scripts')
 
 @endsection
+
+@yield('js')
+<script>
+    $('#table').DataTable({
+
+    });
+
+</script>

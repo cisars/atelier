@@ -8,8 +8,8 @@ Recepcion y Gestion de Vehiculos, propositos academicos
 
     
     laravel new atelier --auth
-
-
+    
+    
 2. Integrar Bootstrap con AdminLTE
 
 
@@ -38,18 +38,23 @@ La guia mejor detallada en la URL https://github.com/jeroennoten/Laravel-AdminLT
 3. Copiar el repositorio completo
 
 
+
     git clone https://github.com/cisars/atelier
-
-
+    
+    
 4. Recrear la de base de datos. (Postgresql)
 
 
-    php artisan db:seed
 
+    php artisan db:seed
+    
+    
 Para reinstalar la base de datos con los usuarios predeterminados se puede correr el comando bat
 
-    fresh.bat
 
+    fresh.bat
+    
+    
 que ejecuta lo siguiente
 
 
@@ -57,7 +62,8 @@ que ejecuta lo siguiente
     php artisan config:clear
     php artisan migrate:fresh
     php artisan db:seed
-
+    
+    
 <h3>Usuarios de prueba</h3>
 
 Usuario/Clave<br>
