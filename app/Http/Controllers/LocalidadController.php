@@ -24,14 +24,26 @@ class LocalidadController extends Controller
             ->with('localidades', $localidades);
     }
 
+    public function factory()
+    {
+        factory('App\Models\Localidad')->create();
+
+        return redirect()
+            ->route('localidad.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'success');
+    }
+
     public function store(StoreLocalidadRequest $request)
     {
         $localidad = new Localidad([
             'descripcion' => $request->get('descripcion')
         ]);
         $localidad->save();
-        return redirect('/localidad')
-            ->with('success', 'Localidad grabado correctamente');
+        return redirect()
+            ->route('localidad.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'info');
     }
 
     public function show(Localidad $localidad)
@@ -49,22 +61,28 @@ class LocalidadController extends Controller
     {
         $localidad->fill($request->all());
         $localidad->save();
-       // return redirect( '/localidad');
-       // return redirect( '/localidad')->with('success', 'Localidad actualizada correctamente');
-        return redirect(route('localidad.index'))
-            ->with('success', 'Localidad actualizada correctamente');
+
+        return redirect()
+            ->route('localidad.index')
+            ->with('msg', 'Registro Actualizado Correctamente')
+            ->with('type', 'info');
     }
 
     public function destroy(Request $request)
     {
         // try {
-        $localidad = Localidad::findOrFail($request->id);
+        $localidad = Localidad::findOrFail($request->localidad);
         $localidad->delete();
-        return redirect()->route('localidad.index')->with('success', 'Localidad eliminado correctamente');
+
+        return redirect()
+            ->route('localidad.index')
+            ->with('msg', 'Registro Eliminado Correctamente')
+            ->with('type', 'danger');
         //   } catch (\Illuminate\Database\QueryException $e) {
         //       //dd($e);
         //       return redirect()->route('localidad.index')->with('error', $e->getMessage());
         //   }
 
     }
+
 }

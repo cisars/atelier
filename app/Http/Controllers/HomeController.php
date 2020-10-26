@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $usuarios = Usuario::all();
+        $empleados = Empleado::all();
+        return View::make('home')
+            ->with('usuarios', $usuarios)
+            ->with('empleados', $empleados);
     }
 }

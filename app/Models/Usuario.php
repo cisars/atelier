@@ -61,5 +61,14 @@ class Usuario extends Authenticatable
         return "https://ui-avatars.com/api/?name=".Auth::user()->usuario ;
       //  return "https://i.pravatar.cc/40?u="..Auth::user()->usuario ;
     }
+
+    public function isAdmin(){
+        if(Auth::user()->tipo == 1 )
+            return true;
+        else
+            return false;
+
+
+    }
 }
 

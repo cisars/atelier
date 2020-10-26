@@ -11,23 +11,35 @@
 @stop
 
 @section('content')
+
+@if( !empty(session('msg')))
+    @include('adminlte::partials.modals.alerts',['msg'=>session('msg'), 'type'=>session('type') ])
+@endif
+
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-6">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Localidades</h3>
+                        <h3 class="card-title">Localidades   </h3>
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('localidad.create')}}" class="btn bg-cyan">Nueva localidad</a>
+                            @if( Auth::user()->tipo == 1 )
+                            <a  href="{{route('localidad.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                            @endif
                         </div>
+
                         <table class="table table-sm table-hover" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Codigo</th>
+                                <th class="w-10">Codigo
+
+                                </th>
                                 <th class="w-80">Descripcion</th>
                                 <th class="w-10">Accion</th>
                             </tr>
@@ -47,61 +59,49 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger"
+                                            data-target ="#modal-danger{{$localidad->localidad}}"
                                             data-data   ="{{$localidad->localidad}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
-
+                                        <?php
+                                        $confirmation = [
+                                                'pk'   => 'localidad',
+                                                'value' => $localidad->localidad,
+                                                'ruta'  => 'localidad.destroy',
+                                            ]
+                                        ?>
+                                        @include('adminlte::partials.modals.confirmation',  $confirmation)
+{{--                                    <x-alertas :confirmation="$confirmation" ></x-alertas>--}}
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
 
-                    </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
             </div>
             <!-- /.col -->
         </div>
+        </div>
         <!-- /.row -->
     </section>
     <!-- /.content -->
 
-    <div class="modal fade" id="modal-danger">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Eliminar localidad</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('localidad.destroy', 'test')}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <div class="modal-body">
-                        <p>¿Esta seguro que desea eliminar el registro?</p>
-                        <input
-                            type    ="hidden"
-                            id      ="id"
-                            name    ="id" value="">
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button
-                            class   ="btn btn-danger"
-                            type    ="submit">
-                            <i class="fas fa-trash-alt" aria-hidden="true"></i> Eliminar
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
+
+
 
 @endsection
 
-@section('adminlte_js')
+@section('js')
+<script>
+    // $('#modal-success').modal();
+    // $("#modals-alerts").fadeTo(1500, 500).slideUp(500, function(){
+    //     $("#modals-alerts").slideUp(500);
+    // });
+</script>
+
 
 @endsection

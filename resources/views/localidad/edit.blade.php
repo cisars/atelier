@@ -73,7 +73,7 @@
     </div>
 @endsection
 
-@section('adminlte_js')
+@section('js')
 
 @endsection
 

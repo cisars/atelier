@@ -90,11 +90,16 @@
 
     </div>
 @stop
-
+{{--@section('modals' )--}}
+{{--    @include('adminlte::partials.modals.modals')--}}
+{{--@stop--}}
 @section('adminlte_js')
     @stack('js')
     @yield('js')
-{{--    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>--}}
+
+ <script src="{{ asset('js/scriptModals.js') }}" defer></script>
+
+{{--    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
 
     @if(Route::current()->getName() == 'flot')
 {{--        <script src="{{ asset('plugins/chart.js/plot.js') }}" defer></script>--}}

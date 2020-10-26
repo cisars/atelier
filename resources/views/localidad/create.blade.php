@@ -31,11 +31,11 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="descripcion">Descripcion</label>
-                                            <input class    ="form-control"
-                                                   type     ="text"
-                                                   name     ="descripcion"
-                                                   id       ="descripcion"
-                                                   value    ="{{ old('descripcion') }}"
+                                            <input class    = "form-control"
+                                                   type     = "text"
+                                                   name     = "descripcion"
+                                                   id       = "descripcion"
+                                                   value    = "{{ old('descripcion') }}"
                                                    placeholder="Introduzca descripcion para la localidad nueva">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
@@ -57,6 +57,6 @@
         </div>
     </div>
 @endsection
-@section('adminlte_js')
+@section('js')
 
 @endsection

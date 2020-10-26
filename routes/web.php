@@ -34,8 +34,10 @@ Route::get('/localidad/destroy',  'LocalidadController@destroy')->name('localida
 */
 
 Route::group(['middleware' => ['auth']], function (){
+
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
 
     Route::resource('localidad', 'LocalidadController');
 });
