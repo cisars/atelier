@@ -43,10 +43,12 @@ Route::group(['middleware' => ['auth']], function (){
     //Factorys
     Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
     Route::get('/clasificacion/factory', 'ClasificacionController@factory')->name('clasificacion.factory');
+    Route::get('/sucursal/factory', 'SucursalController@factory')->name('sucursal.factory');
 
     //Cruds simples
     Route::resource('localidad', 'LocalidadController');
     Route::resource('clasificacion', 'ClasificacionController');
+    Route::resource('sucursal', 'SucursalController');
 });
 
 // Rutas de los examples pages bootstrap.

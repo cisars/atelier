@@ -403,7 +403,7 @@ return [
         ],
         [
             'text'       => 'Sucursal',
-            'icon_color' => 'red',
+            'icon_color' => 'green',
             'url'        => 'sucursal',
             'can'        => 'admin',
         ],

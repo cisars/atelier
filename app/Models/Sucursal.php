@@ -15,7 +15,6 @@ class Sucursal extends Model
         return $this->belongsTo(Localidad::class, 'localidad', 'localidad');
     }
 
-
 //    public function sectores()
 //    {
 //        return $this->hasMany(Sector::class, 'localidad', 'localidad');

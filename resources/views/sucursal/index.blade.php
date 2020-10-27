@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado de {{('NOMBRE')}}')
+@section('title', 'Listado de Sucursal')
 
 @section('css' )
 
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM {{('NOMBRE')}}es </li>
+    <li class="breadcrumb-item active">ABM Sucursales </li>
 @stop
 
 @section('content')
@@ -19,39 +19,43 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">{{('NOMBRE')}}es   </h3>
+                        <h3 class="card-title">Sucursales   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('{{('nombre')}}.create')}}" class="btn bg-cyan">Nueva {{('NOMBRE')}}</a>
+                            <a  href="{{route('sucursal.create')}}" class="btn bg-cyan">Nueva Sucursal</a>
                             @if( Auth::user()->tipo == 1 )
-                            <a  href="{{route('{{('nombre')}}.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                            <a  href="{{route('sucursal.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
 
                         <table class="table table-sm table-hover" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Codigo
-
-                                </th>
-                                <th class="w-80">Descripcion</th>
+                                <th class="w-10">Codigo </th>
+                                <th class="">Descripcion</th>
+                                <th class="">Direccion</th>
+                                <th class="">Telefono</th>
+                                <th class="">Email</th>
                                 <th class="w-10">Accion</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(${{('nombre')}}es as $key => ${{('nombre')}})
+                            @foreach($sucursales as $key => $sucursal)
                                 <tr>
-                                    <td>{{ ${{('nombre')}}->{{('nombre')}} }}</td>
-                                    <td>{{ ${{('nombre')}}->descripcion }}</td>
+                                    <td>{{ $sucursal->sucursal }}</td>
+                                    <td>{{ $sucursal->descripcion }}</td>
+                                    <td>{{ $sucursal->direccion }}</td>
+                                    <td>{{ $sucursal->telefono }}</td>
+                                    <td>{{ $sucursal->email }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('{{('nombre')}}.edit', ${{('nombre')}}->{{('nombre')}}) }}"
+                                            href="{{ route('sucursal.edit', $sucursal->sucursal) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,15 +63,15 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{${{('nombre')}}->{{('nombre')}}}}"
-                                            data-data   ="{{${{('nombre')}}->{{('nombre')}}}}">
+                                            data-target ="#modal-danger{{$sucursal->sucursal}}"
+                                            data-data   ="{{$sucursal->sucursal}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => '{{('nombre')}}',
-                                                'value' => ${{('nombre')}}->{{('nombre')}},
-                                                'ruta'  => '{{('nombre')}}.destroy',
+                                                'pk'   => 'sucursal',
+                                                'value' => $sucursal->sucursal,
+                                                'ruta'  => 'sucursal.destroy',
                                             ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)
