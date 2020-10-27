@@ -420,6 +420,12 @@ return [
             'can'        => 'admin',
         ],
         [
+            'text'       => 'Clasificacion',
+            'icon_color' => 'green',
+            'url'        => 'clasificacion',
+            'can'        => 'admin',
+        ],
+        [
             'text'       => 'Cargo',
             'icon_color' => 'red',
             'url'        => 'cargo',

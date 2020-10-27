@@ -37,9 +37,16 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
 
+
+
+    //Factorys
+    Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
+    Route::get('/clasificacion/factory', 'ClasificacionController@factory')->name('clasificacion.factory');
+
+    //Cruds simples
     Route::resource('localidad', 'LocalidadController');
+    Route::resource('clasificacion', 'ClasificacionController');
 });
 
 // Rutas de los examples pages bootstrap.

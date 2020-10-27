@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Localidad;
+namespace App\Http\Requests\Clasificacion;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreLocalidadRequest extends FormRequest
+class UpdateClasificacionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,14 @@ class StoreLocalidadRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'       =>'required|max:60|unique:localidades,descripcion',
+            'descripcion'   =>['required',
+                'max:40',
+                Rule::unique('clasificaciones', 'descripcion')
+                    ->ignore($this->clasificacion, 'descripcion')
+                    ->where(function ($query) {
+                        return $query->where('clasificacion', $this->clasificacion);
+                    })
+            ],
         ];
     }
 
@@ -37,7 +45,7 @@ class StoreLocalidadRequest extends FormRequest
     {
         return [
             'descripcion.required'  => 'Debe introducir una descripcion',
-            'descripcion.max'       => 'La descripcion puede exceder 40 caracteres',
+            'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
         ];
     }
