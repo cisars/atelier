@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Sucursal;
+namespace App\Http\Requests\Taller;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateSucursalRequest extends FormRequest
+class UpdateTallerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,15 +27,14 @@ class UpdateSucursalRequest extends FormRequest
         return [
             'descripcion'   =>['required',
                 'max:40',
-                Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
+                Rule::unique('talleres', 'descripcion')
+                    ->ignore($this->taller, 'taller')
                     ->where(function ($query) {
-                        return $query->where('sucursal', $this->sucursal);
+                        return $query->where('taller', $this->taller);
                     })
             ],
-            'direccion'         =>'required|max:40',
+            'direccion'         =>'required|max:80',
             'telefono'          =>'required|max:12',
-            'email'             =>'required|max:80|unique:sucursales,email',
         ];
     }
 
@@ -50,11 +49,10 @@ class UpdateSucursalRequest extends FormRequest
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
+            'direccion.required'  => 'Debe introducir una direccion',
+            'direccion.max'       => 'La direccion no puede exceder 80 caracteres',
             'telefono.required'  => 'Debe introducir un telefono',
             'telefono.max'       => 'Telefono no puede exceder 12 caracteres',
-            'email.required'  => 'Debe introducir un email',
-            'email.max'       => 'Email no puede exceder 40 caracteres',
-            'email.unique'    => 'El email ya existe',
         ];
     }
 }

@@ -409,7 +409,7 @@ return [
         ],
         [
             'text'       => 'Taller',
-            'icon_color' => 'red',
+            'icon_color' => 'green',
             'url'        => 'taller',
             'can'        => 'admin',
         ],

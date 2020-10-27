@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Sucursal;
+namespace App\Http\Requests\Taller;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateSucursalRequest extends FormRequest
+class StoreTallerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,17 +24,10 @@ class UpdateSucursalRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>['required',
-                'max:40',
-                Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
-                    ->where(function ($query) {
-                        return $query->where('sucursal', $this->sucursal);
-                    })
-            ],
-            'direccion'         =>'required|max:40',
+            'descripcion'       =>'required|max:40|unique:talleres,descripcion,' . $this->taller . ',taller,localidad,' . $this->localidad,
+            'localidad'         =>'required',
+            'direccion'         =>'required|max:80',
             'telefono'          =>'required|max:12',
-            'email'             =>'required|max:80|unique:sucursales,email',
         ];
     }
 
@@ -50,11 +42,13 @@ class UpdateSucursalRequest extends FormRequest
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
-            'telefono.required'  => 'Debe introducir un telefono',
+            'direccion.required'  => 'Debe introducir una direccion',
+            'direccion.max'       => 'La direccion no puede exceder 80 caracteres',
+            'direccion.unique'    => 'El registro ya existe',
+            'telefono.required'  => 'Debe introducir una descripcion',
             'telefono.max'       => 'Telefono no puede exceder 12 caracteres',
-            'email.required'  => 'Debe introducir un email',
-            'email.max'       => 'Email no puede exceder 40 caracteres',
-            'email.unique'    => 'El email ya existe',
+            'telefono.unique'    => 'El registro ya existe',
+            'localidad.required' => 'Debe introducir una localidad para el taller',
         ];
     }
 }

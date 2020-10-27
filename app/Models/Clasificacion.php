@@ -15,10 +15,10 @@ class Clasificacion extends Model
 //    {
 //        return $this->hasMany(ProductosServicios::class, 'localidad', 'localidad');
 //    }
-
-    public function clasificaciones()
-    {
-        return $this->getKey();
-      //  return Clasificacion::all();
-    }
+//
+//    public function clasificaciones()
+//    {
+//        return $this->getKey();
+//      //  return Clasificacion::all();
+//    }
 }
