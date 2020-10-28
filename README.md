@@ -6,10 +6,10 @@ Recepcion y Gestion de Vehiculos, propositos academicos
 
 1. Iniciar el proyecto laravel 7
 
-    
+
     laravel new atelier --auth
-    
-    
+
+
 2. Integrar Bootstrap con AdminLTE
 
 
@@ -18,6 +18,7 @@ Recepcion y Gestion de Vehiculos, propositos academicos
     php artisan ui vue --auth
     php artisan adminlte:install
     php artisan adminlte:update
+
 
     php artisan ui bootstrap
     php artisan ui:controllers
@@ -31,30 +32,29 @@ Recepcion y Gestion de Vehiculos, propositos academicos
     npm install
     npm audit fix 
     npm run dev && npm run production
-    
+
+
 La guia mejor detallada en la URL https://github.com/jeroennoten/Laravel-AdminLTE/wiki/2.-Installation
     
     
 3. Copiar el repositorio completo
 
 
-
     git clone https://github.com/cisars/atelier
-    
-    
+
+
 4. Recrear la de base de datos. (Postgresql)
 
 
-
     php artisan db:seed
-    
-    
+
+
 Para reinstalar la base de datos con los usuarios predeterminados se puede correr el comando bat
 
 
     fresh.bat
-    
-    
+
+
 que ejecuta lo siguiente
 
 
@@ -62,8 +62,8 @@ que ejecuta lo siguiente
     php artisan config:clear
     php artisan migrate:fresh
     php artisan db:seed
-    
-    
+
+
 <h3>Usuarios de prueba</h3>
 
 Usuario/Clave<br>
