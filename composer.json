@@ -15,8 +15,9 @@
         "jeroennoten/laravel-adminlte": "^3.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.2",
         "ext-pdo": "*",
+        "fzaninotto/faker": "^1.9.1",
+        "laravel/ui": "^2.2",
         "ext-json": "*"
     },
     "require-dev": {
