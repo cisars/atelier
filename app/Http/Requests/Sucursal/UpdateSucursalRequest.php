@@ -30,7 +30,9 @@ class UpdateSucursalRequest extends FormRequest
                 Rule::unique('sucursales', 'descripcion')
                     ->ignore($this->sucursal, 'sucursal')
                     ->where(function ($query) {
-                        return $query->where('sucursal', $this->sucursal);
+                        return
+                            $query
+                                ->where('sucursal', $this->sucursal);
                     })
             ],
             'direccion'         =>'required|max:40',

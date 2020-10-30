@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$DATABASE_URL = parse_url('**pegar url**');
 return [
 
     /*
@@ -92,7 +92,24 @@ return [
         ],
 
     ],
+/*
+ *    'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => $DATABASE_URL,
+            'host' => $DATABASE_URL['host'],
+            'port' => $DATABASE_URL['port'],
+            'database' => ltrim($DATABASE_URL['path'], "/"),
+            'username' => $DATABASE_URL['user'],
+            'password' => $DATABASE_URL['pass'],
+            'unix_socket' => $DATABASE_URL['DB_SOCKET'],
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
+ * */
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table
