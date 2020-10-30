@@ -15,7 +15,8 @@
         "jeroennoten/laravel-adminlte": "^3.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
