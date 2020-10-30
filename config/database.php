@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL = parse_url('**pegar url**');
+$DATABASE_URL = parse_url('postgres://mhiagmftmjpahf:e2e64b642b5cbabb9caf8dd42b395e7cf5d5180b3e845d596c04ce5472e420d5@ec2-3-95-87-221.compute-1.amazonaws.com:5432/de2k9nj6inenu');
 return [
 
     /*
@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -62,8 +62,20 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'pgsql' => [
+            'driver' => 'pgsql',
+            'host' => $DATABASE_URL['host'],
+            'port' => $DATABASE_URL['port'],
+            'database' => ltrim($DATABASE_URL['path'], "/"),
+            'username' => $DATABASE_URL['user'],
+            'password' => $DATABASE_URL['pass'],
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+                       'bk_pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -93,22 +105,10 @@ return [
 
     ],
 /*
- *    'pgsql' => [
-            'driver' => 'pgsql',
-            'url' => $DATABASE_URL,
-            'host' => $DATABASE_URL['host'],
-            'port' => $DATABASE_URL['port'],
-            'database' => ltrim($DATABASE_URL['path'], "/"),
-            'username' => $DATABASE_URL['user'],
-            'password' => $DATABASE_URL['pass'],
-            'unix_socket' => $DATABASE_URL['DB_SOCKET'],
-            'charset' => 'utf8',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'schema' => 'public',
-            'sslmode' => 'prefer',
-        ],
-
+ *
+ *
+    'url' => $DATABASE_URL,
+    'unix_socket' => $DATABASE_URL['DB_SOCKET'],
  * */
     /*
     |--------------------------------------------------------------------------
