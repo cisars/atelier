@@ -27,7 +27,7 @@ class StoreSucursalRequest extends FormRequest
             'descripcion'       =>'required|max:40|unique:sucursales,descripcion',
             'direccion'         =>'required|max:40',
             'telefono'          =>'required|max:12',
-            'email'             =>'required|max:80|unique:sucursales,email',
+            'email'             =>'required|max:80|unique:sucursales,email|email',
         ];
     }
 

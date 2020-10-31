@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 
         factory('App\Models\Cargo')->create();
         factory('App\Models\Localidad')->create();
-        factory('App\Models\Sucursal')->create();
+     //   factory('App\Models\Sucursal')->create();
 
         $this->call(EmpleadoSeeder::class);
         $this->call(UsuarioSeeder::class);

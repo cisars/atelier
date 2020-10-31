@@ -25,9 +25,9 @@ class Sucursal extends Model
 //        return $this->hasMany(Entrada::class, 'localidad', 'localidad');
 //    }
 
-//    public function talleres()
-//    {
-//        return $this->hasMany(Taller::class, 'localidad', 'localidad');
-//    }
+    public function talleres()
+    {
+        return $this->hasMany(Taller::class, 'localidad', 'localidad');
+    }
 
 }

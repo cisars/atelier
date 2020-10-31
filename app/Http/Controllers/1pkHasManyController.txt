@@ -1,0 +1,71 @@
+
+    public function index()
+    {
+        $<<nombre>>es = <<NOMBRE>>::all();
+        return View::make('<<nombre>>.index')
+            ->with('<<nombre>>es', $<<nombre>>es);
+    }
+    public function create()
+    {
+        if($<<nombre>>es = <<NOMBRE>>::orderBy('descripcion', 'ASC')->get())
+        return view('<<nombre>>.create')
+            ->with('<<nombre>>es', $<<nombre>>es);
+        else
+            return view('<<nombre>>.create') ;
+    }
+
+    public function factory()
+    {
+        factory('App\Models\<<NOMBRE>>')->create();
+        return redirect()
+            ->route('<<nombre>>.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'success');
+    }
+
+    public function store(Store<<NOMBRE>>Request $request)
+    {
+
+        $<<nombre>> = new <<NOMBRE>>([
+            'descripcion' => $request->get('descripcion')
+        ]);
+        $<<nombre>>->save();
+        return redirect()
+            ->route('<<nombre>>.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'info');
+    }
+
+    public function show(<<NOMBRE>> $<<nombre>>)
+    {
+        //
+    }
+
+    public function edit(<<NOMBRE>> $<<nombre>>)
+    {
+        return view('<<nombre>>.edit')
+            ->with('<<nombre>>',$<<nombre>>) ;
+    }
+
+    public function update(Update<<NOMBRE>>Request $request, <<NOMBRE>> $<<nombre>>)
+    {
+
+        $<<nombre>>->fill($request->all());
+        $<<nombre>>->save();
+
+        return redirect()
+            ->route('<<nombre>>.index')
+            ->with('msg', 'Registro Actualizado Correctamente')
+            ->with('type', 'info');
+    }
+
+    public function destroy(Request $request)
+    {
+        $<<nombre>> = <<NOMBRE>>::findOrFail($request-><<nombre>>);
+        $<<nombre>>->delete();
+
+        return redirect()
+            ->route('<<nombre>>.index')
+            ->with('msg', 'Registro Eliminado Correctamente')
+            ->with('type', 'danger');
+    }

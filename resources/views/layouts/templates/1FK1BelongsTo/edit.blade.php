@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Sucursal')
+@section('title', 'Editar {{('NOMBRE')}}')
 
 @section('css' )
 
@@ -21,28 +21,28 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar Sucursal</h3>
+                                    <h3 class="card-title">Editar {{('NOMBRE')}}</h3>
                                 </div>
                                 <form
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('sucursal.update', $sucursal->sucursal) }}"
+                                    action  ="{{ route('{{('nombre')}}.update', ${{('nombre')}}->{{('nombre')}}) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="sucursal">Codigo de Sucursal</label>
+                                            <label for="{{('nombre')}}">Codigo de {{('NOMBRE')}}</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="sucursal"
-                                                id      ="sucursal" readonly
-                                                value   ="{{ old('sucursal', $sucursal->sucursal) }}"
+                                                name    ="{{('nombre')}}"
+                                                id      ="{{('nombre')}}" readonly
+                                                value   ="{{ old('{{('nombre')}}', ${{('nombre')}}->{{('nombre')}}) }}"
                                             >
-                                            @foreach ($errors->get('sucursal') as $error)
+                                            @foreach ($errors->get('{{('nombre')}}') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
@@ -54,24 +54,24 @@
                                                 type    ="text"
                                                 name    ="descripcion"
                                                 id      ="descripcion"
-                                                value   ="{{ old('descripcion', $sucursal->descripcion) }}"
-                                                placeholder="Introduzca nombre de la Sucursal">
+                                                value   ="{{ old('descripcion', ${{('nombre')}}->descripcion) }}"
+                                                placeholder="Introduzca nombre de la {{('NOMBRE')}}">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="localidad">Localidad</label>
+                                            <label for="{{('fk')}}">{{('FK')}}</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="localidad"
-                                                id      ="localidad">
-                                                @foreach($localidades as $key => $localidad)
-                                                    <option value="{{ $localidad->localidad }}"
-                                                            @if ($sucursal->localidad == old('localidad', $localidad->localidad))
+                                                name    ="{{('fk')}}"
+                                                id      ="{{('fk')}}">
+                                                @foreach(${{('fk')}}es as $key => ${{('fk')}})
+                                                    <option value="{{ ${{('fk')}}->{{('fk')}} }}"
+                                                            @if (${{('nombre')}}->{{('fk')}} == old('{{('fk')}}', ${{('fk')}}->{{('fk')}}))
                                                             selected="selected"
                                                         @endif
-                                                    >{{ $localidad->descripcion }}</option>
+                                                    >{{ ${{('fk')}}->descripcion }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -84,48 +84,19 @@
                                                 type    ="text"
                                                 name    ="direccion"
                                                 id      ="direccion"
-                                                value   ="{{ old('direccion', $sucursal->direccion) }}"
+                                                value   ="{{ old('direccion', ${{('nombre')}}->direccion) }}"
                                             >
                                             @foreach ($errors->get('direccion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
-                                        <div class="form-group">
-                                            <label for="telefono">Telefono</label>
-                                            <input
-                                                class   ="form-control"
-                                                maxlength="12"
-                                                type    ="text"
-                                                name    ="telefono"
-                                                id      ="telefono"
-                                                value   ="{{ old('telefono', $sucursal->telefono) }}"
-                                            >
-                                            @foreach ($errors->get('telefono') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input
-                                                class   ="form-control"
-                                                maxlength="80"
-                                                type    ="text"
-                                                name    ="email"
-                                                id      ="email"
-                                                value   ="{{ old('email', $sucursal->email) }}"
-                                            >
-                                            @foreach ($errors->get('email') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
-
 
                                     </div>
                                     <div class="card-footer">
                                         <button
                                             type="submit"
                                             class="btn btn-info">Grabar</button>
-                                        <a href="{{ route('sucursal.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('{{('nombre')}}.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>
                             </div>
