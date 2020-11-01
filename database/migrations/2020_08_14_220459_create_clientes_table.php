@@ -24,6 +24,9 @@ class CreateClientesTable extends Migration
             $table->date('fecha_nacimiento')->nullable();
             $table->char('personeria',1)->nullable();
 
+            $table->foreign('localidad')
+                ->references('localidad')
+                ->on('localidades');
 
             $table->timestamps();
         });

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Sucursal;
+namespace App\Http\Requests\<<NOMBRE>>;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreSucursalRequest extends FormRequest
+class Store<<NOMBRE>>Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,10 @@ class StoreSucursalRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'       =>'required|max:40|unique:sucursales,descripcion',
+            'descripcion'       =>'required|max:40|unique:<<nombre>>es,descripcion',
             'direccion'         =>'required|max:40',
             'telefono'          =>'required|max:12',
-            'email'             =>'required|max:80|unique:sucursales,email|email',
+            'email'             =>'required|max:80|unique:<<nombre>>es,email|email',
         ];
     }
 
@@ -64,12 +64,12 @@ class StoreSucursalRequest extends FormRequest
 
 <?php
 
-namespace App\Http\Requests\Sucursal;
+namespace App\Http\Requests\<<NOMBRE>>;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateSucursalRequest extends FormRequest
+class Update<<NOMBRE>>Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -88,14 +88,14 @@ class UpdateSucursalRequest extends FormRequest
      */
     public function campoUnicoSQL($campo)
     {
-        $tabla = 'sucursales';
-        $pk = 'sucursal';
+        $tabla = '<<nombre>>es';
+        $pk = '<<nombre>>';
 
         Rule::unique($tabla, $campo)
-            ->ignore($this->sucursal, $pk)
+            ->ignore($this-><<nombre>>, $pk)
             ->where(function ($query) {
                 return $query
-                    ->where($pk, $this->sucursal);
+                    ->where($pk, $this-><<nombre>>);
             });
     }
 

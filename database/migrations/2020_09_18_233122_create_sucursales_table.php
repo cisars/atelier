@@ -17,9 +17,14 @@ class CreateSucursalesTable extends Migration
             $table->tinyInteger('sucursal',true);
             $table->string('descripcion','40')->nullable();
             $table->string('direccion','40')->nullable();
-            $table->tinyInteger('localidad')->nullable();
+            $table->smallInteger('localidad')->nullable();
             $table->string('telefono','15')->nullable();
             $table->string('email','80')->nullable();
+
+            $table->foreign('localidad')
+                ->references('localidad')
+                ->on('localidades');
+
             $table->timestamps();
         });
     }

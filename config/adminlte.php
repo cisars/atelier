@@ -427,8 +427,14 @@ return [
         ],
         [
             'text'       => 'Cargo',
-            'icon_color' => 'red',
+            'icon_color' => 'green',
             'url'        => 'cargo',
+            'can'        => 'admin',
+        ],
+        [
+            'text'       => 'TurnosEmpleados',
+            'icon_color' => 'green',
+            'url'        => 'turno',
             'can'        => 'admin',
         ],
         [
@@ -450,15 +456,9 @@ return [
             'can'        => 'admin',
         ],
         [
-            'text'       => 'Turnos',
-            'icon_color' => 'red',
-            'url'        => '#',
-            'can'        => 'admin',
-        ],
-        [
             'text'       => 'Grupo de trabajo',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'icon_color' => 'green',
+            'url'        => 'grupo',
             'can'        => 'admin',
         ],
         [

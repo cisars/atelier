@@ -1,4 +1,19 @@
 
+/> php artisan make:request Localidad/StoreLocalidadRequest
+/> php artisan make:request Localidad/UpdateLocalidadRequest
+web.php
+    Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
+    Route::resource('localidad', 'LocalidadController');
+    adminlte menu
+---------------------------------------------------------------------
+
+use App\Http\Requests\<<NOMBRE>>\Store<<NOMBRE>>Request;
+use App\Http\Requests\<<NOMBRE>>\Update<<NOMBRE>>Request;
+use Illuminate\Support\Facades\View;
+
+
+
+
     public function index()
     {
         $<<nombre>>es = <<NOMBRE>>::all();

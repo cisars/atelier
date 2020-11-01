@@ -14,7 +14,7 @@ class CreateTurnosTable extends Migration
     public function up()
     {
         Schema::create('turnos', function (Blueprint $table) {
-            $table->tinyInteger('turno_empleado',true);
+            $table->smallInteger('turno_empleado',true);
             $table->string('descripcion')->nullable();;
             $table->time('hora_desde')->nullable();;
             $table->time('hora_hasta')->nullable();;

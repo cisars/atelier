@@ -24,15 +24,28 @@ class CreateEmpleadosTable extends Migration
             $table->smallInteger('localidad')->nullable();
             $table->string('movil',20)->nullable();
             $table->string('telefono',20)->nullable();
-            $table->tinyInteger('cargo')->nullable();
-            $table->tinyInteger('turno_empleado')->nullable();
-            $table->tinyInteger('grupo_trabajo')->nullable();
+            $table->unsignedTinyInteger('cargo')->nullable();
+            $table->smallInteger('turno_empleado')->nullable();
+            $table->unsignedTinyInteger('grupo_trabajo')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->timestamp('fecha_ingreso')->nullable();
             $table->char('estado')->nullable();
             $table->timestamp('fecha_egreso')->nullable();
             $table->string('motivo_egreso',200)->nullable();
             $table->float('salario',12,0)->nullable();
+
+            $table->foreign('localidad')
+                ->references('localidad')
+                ->on('localidades');
+            $table->foreign('cargo')
+                ->references('cargo')
+                ->on('cargos');
+            $table->foreign('turno_empleado')
+                ->references('turno_empleado')
+                ->on('turnos');
+            $table->foreign('grupo_trabajo')
+                ->references('grupo_trabajo')
+                ->on('grupos');
 
             $table->timestamps();
 

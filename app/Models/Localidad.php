@@ -19,4 +19,8 @@ class Localidad extends Model
     {
         return $this->hasMany(Empleado::class, 'localidad', 'localidad');
     }
+    public function sucursales()
+    {
+        return $this->hasMany(Sucursal::class, 'localidad', 'localidad');
+    }
 }

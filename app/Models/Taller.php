@@ -18,26 +18,26 @@ class Taller extends Model
 
 //    public function reservas()
 //    {
-//        return $this->hasMany(Sector::class, 'localidad', 'localidad');
+//        return $this->hasMany(Reserva::class, 'localidad', 'localidad');
 //    }
 
-//    public function OT()
+//    public function Ots()
 //    {
-//        return $this->hasMany(Entrada::class, 'localidad', 'localidad');
+//        return $this->hasMany(Ot::class, 'localidad', 'localidad');
 //    }
 
 //    public function entregas()
 //    {
-//        return $this->hasMany(Taller::class, 'localidad', 'localidad');
+//        return $this->hasMany(Entrega::class, 'localidad', 'localidad');
 //    }
 
 //    public function usuariostalleres()
 //    {
-//        return $this->hasMany(Taller::class, 'localidad', 'localidad');
+//        return $this->hasMany(UsuarioTaller::class, 'localidad', 'localidad');
 //    }
 
 //    public function recepciones()
 //    {
-//        return $this->hasMany(Taller::class, 'localidad', 'localidad');
+//        return $this->hasMany(Recepcion::class, 'localidad', 'localidad');
 //    }
 }
