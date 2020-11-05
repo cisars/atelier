@@ -142,16 +142,16 @@ class UsuarioController extends Controller
 //
 //
 //        dd('Password change successfully.');
-
-        dd($usuario);
-        $usuario['clave'] = Hash::make($request['clave']);
-        $usuario->fill($request->all());
-        $usuario->save();
+//
+//                    dd($usuario);
+//                    $usuario['clave'] = Hash::make($request['clave']);
+//                    $usuario->fill($request->all());
+//                    $usuario->save();
 
         return redirect()
             ->route('usuario.index')
-            ->with('msg', 'Registro Actualizado Correctamente')
-            ->with('type', 'info');
+            ->with('msg', 'Seccion en mantenimiento')
+            ->with('type', 'warning');
 
     }
 
