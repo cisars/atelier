@@ -16,8 +16,8 @@ $factory->define(Empleado::class, function (Faker $faker) {
         'nombres' => $faker->firstName,
         'apellidos' => $faker->lastName,
         'ci' => $faker->numberBetween(700000 , 8000000),
-        'estado_civil' => $faker->boolean,
-        'sexo' => $faker->boolean,
+        'estado_civil' => $faker->randomElement(['c', 'd', 'v', 's']),
+        'sexo' =>  $faker->randomElement(['f', 'm']),
         'direccion' => $faker->address,
         'localidad'  => \App\Models\Localidad::inRandomOrder()->first()->localidad,
         'movil' => '(+595981)'.$faker->numberBetween(333333,999999),
@@ -27,6 +27,7 @@ $factory->define(Empleado::class, function (Faker $faker) {
         'grupo_trabajo'  => \App\Models\Grupo::inRandomOrder()->first()->grupo_trabajo,
         'fecha_nacimiento' => $faker->dateTimeBetween('-50 years', '-20 years' ),
         'fecha_ingreso' => $faker->date('Y-m-d','now'),
+        'estado' => '1',
         'salario' => $faker->numberBetween(500,10000)
     ];
 });

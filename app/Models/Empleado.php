@@ -10,6 +10,43 @@ class Empleado extends Model
     protected $primaryKey = 'empleado';
     //protected $fillable = [];
     protected $guarded = [];
+
+    //Estado
+    const EMPLEADO_ACTIVO = '1';
+    const EMPLEADO_INACTIVO = '2';
+    //Sexo
+    const EMPLEADO_MASCULINO = 'm';
+    const EMPLEADO_FEMENINO = 'f';
+    //Estado Civil
+    const EMPLEADO_CASADO = 'c';
+    const EMPLEADO_DIVORCIADO = 'd';
+    const EMPLEADO_VIUDO = 'v';
+    const EMPLEADO_SOLTERO = 's';
+
+    public function getSexos()
+    {
+        return $sexos = [
+            'Masculino' => Empleado::EMPLEADO_MASCULINO,
+            'Femenino' => Empleado::EMPLEADO_FEMENINO,
+        ];
+    }
+    public function getEstados()
+    {
+        return $estados = [
+            'Activo' => Empleado::EMPLEADO_ACTIVO,
+            'Inactivo' => Empleado::EMPLEADO_INACTIVO,
+        ];
+    }
+    public function getEstadosCiviles()
+    {
+        return $estadosciviles = [
+            'Soltero' => Empleado::EMPLEADO_SOLTERO,
+            'Casado' => Empleado::EMPLEADO_CASADO,
+            'Divorciado' => Empleado::EMPLEADO_DIVORCIADO,
+            'Viudo' => Empleado::EMPLEADO_VIUDO,
+        ];
+    }
+
     public function usuarios()
     {
         return $this->hasMany(Usuario::class, 'empleado', 'empleado');

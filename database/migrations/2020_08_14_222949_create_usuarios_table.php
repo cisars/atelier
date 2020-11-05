@@ -20,10 +20,10 @@ class CreateUsuariosTable extends Migration
             $table->unsignedInteger('cliente')->nullable();
             $table->string('clave')->nullable();
             $table->timestamp('fecha_ingreso')->nullable();
-            $table->char('estado')->default('A');
+            $table->char('estado')->default(\App\Models\Usuario::USUARIO_ACTIVO);
             $table->string('observacion')->nullable();
             $table->char('perfil')->nullable();
-            $table->char('tipo')->default('A');
+            $table->char('tipo')->nullable();
             $table->timestamp('usuario_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

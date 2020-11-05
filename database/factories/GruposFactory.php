@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Grupo::class, function (Faker $faker) {
     return [
-        'descripcion' => '(GT) '.$faker->userName
+        'descripcion' => substr( '(GT) '.$faker->userName, 0,39)
     ];
 });

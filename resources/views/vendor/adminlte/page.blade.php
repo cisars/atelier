@@ -10,6 +10,24 @@
 
 @section('adminlte_css')
     @stack('css')
+{{--    codigo2--}}
+{{--    <link rel="stylesheet"--}}
+{{--          href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css"--}}
+{{--          integrity="sha512-PMjWzHVtwxdq7m7GIxBot5vdxUY+5aKP9wpKtvnNBZrVv1srI8tU6xvFMzG8crLNcMj/8Xl/WWmo/oAP/40p1g=="--}}
+{{--          crossorigin="anonymous" />--}}
+
+
+{{--    funciona-- codigo 1}}
+{{--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">--}}
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" integrity="sha256-b5ZKCi55IX+24Jqn638cP/q3Nb2nlx+MH/vMMqrId6k=" crossorigin="anonymous" />--}}
+
+    <style>
+        .required:after{
+            content:'*';
+            color:red;
+            padding-left:2px;
+        }
+    </style>
     @yield('css')
 @stop
 
@@ -99,7 +117,35 @@
 
  <script src="{{ asset('js/scriptModals.js') }}" defer></script>
 
-{{--    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
+
+
+
+
+
+
+{{--        funciona-- codigo1}}
+{{--  este no es necesario          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>--}}
+{{--            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>--}}
+{{--            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"--}}
+
+
+
+
+
+
+
+{{--codigo2--}}
+{{--            <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-2JBCbWoMJPH+Uj7Wq5OLub8E5edWHlTM4ar/YJkZh3plwB2INhhOC3eDoqHm1Za/ZOSksrLlURLoyXVdfQXqwg==" crossorigin="anonymous"></script>--}}
+
+
+
+
+
+
+
+
+
+    {{--    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
 
     @if(Route::current()->getName() == 'flot')
 {{--        <script src="{{ asset('plugins/chart.js/plot.js') }}" defer></script>--}}

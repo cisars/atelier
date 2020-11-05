@@ -439,13 +439,13 @@ return [
         ],
         [
             'text'       => 'Empleados',
-            'icon_color' => 'red',
+            'icon_color' => 'green',
             'url'        => 'empleado',
             'can'        => 'admin',
         ],
         [
             'text'       => 'Usuarios',
-            'icon_color' => 'red',
+            'icon_color' => 'green',
             'url'        => 'usuario',
             'can'        => 'admin',
         ],
@@ -590,6 +590,36 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                ],
+            ],
+        ],
+        'Tempusdominus' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'plugins/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'plugins/daterangepicker/daterangepicker.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'plugins/daterangepicker/daterangepicker.js',
                 ],
             ],
         ],

@@ -24,15 +24,58 @@ class Usuario extends Authenticatable
     protected $primaryKey = 'usuario';
     public $incrementing = false;
 
-    protected $fillable = [
-        'usuario', 'clave'
-    ];
+//    protected $fillable = [
+//        'usuario',
+//        'clave',
+//        'clave',
+//        'clave',
+//        'clave',
+//        'clave',
+//        'clave',
+//    ];
+    protected $guarded = [];
     protected $hidden = [
         'clave', 'remember_token',
     ];
     protected $casts = [
         'usuario_verified_at' => 'datetime',
     ];
+
+    //Estado
+    const USUARIO_ACTIVO = '1';
+    const USUARIO_INACTIVO = '2';
+    //Perfil
+    const USUARIO_PERFIL1        = '1';
+    const USUARIO_PERFIL2        = '2';
+    //Tipo
+    const USUARIO_ADMIN         = '1';
+    const USUARIO_FUNCIONARIO   = '2';
+    const USUARIO_CLIENTE       = '3';
+    const USUARIO_BOOTSTRAP       = 'B';
+
+    public function getPefiles()
+    {
+        return $perfiles = [
+            'Perfil1' => Usuario::USUARIO_PERFIL1,
+            'Perfil2'   => Usuario::USUARIO_PERFIL2,
+        ];
+    }
+    public function getTipos()
+    {
+        return $perfiles = [
+            'Administrador' => Usuario::USUARIO_ADMIN,
+            'Funcionario'   => Usuario::USUARIO_FUNCIONARIO,
+            'Cliente'       => Usuario::USUARIO_CLIENTE,
+            'Bootstrap'     => Usuario::USUARIO_BOOTSTRAP,
+        ];
+    }
+    public function getEstados()
+    {
+        return $estados = [
+            'Activo' => Usuario::USUARIO_ACTIVO,
+            'Inactivo' => Usuario::USUARIO_INACTIVO,
+        ];
+    }
 
     public function empleado()
     {
