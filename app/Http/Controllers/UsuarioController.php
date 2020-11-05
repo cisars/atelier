@@ -25,10 +25,12 @@ class UsuarioController extends Controller
             $usuario->cliente = Cliente::find($usuario->cliente);
 
             $usuario->estado === Usuario::USUARIO_ACTIVO        ? $usuario->estado = 'Activo' : $usuario->estado = 'Inactivo' ;
-            $usuario->tipo   === Usuario::USUARIO_ADMIN         ? $usuario->tipo   = 'Admin'  : false ;
-            $usuario->tipo   === Usuario::USUARIO_FUNCIONARIO   ? $usuario->tipo   = 'Funcionario'  : false ;
-            $usuario->tipo   === Usuario::USUARIO_CLIENTE       ? $usuario->tipo   = 'Cliente'  : false ;
-            $usuario->tipo   === Usuario::USUARIO_BOOTSTRAP     ? $usuario->tipo   = 'Bootstrap'  : false ;
+
+            $usuario->tipo   === Usuario::USUARIO_ADMIN         ? $usuario->tipo   = 'Administrador'    : false ;
+            $usuario->tipo   === Usuario::USUARIO_FUNCIONARIO   ? $usuario->tipo   = 'Funcionario'      : false ;
+            $usuario->tipo   === Usuario::USUARIO_CLIENTE       ? $usuario->tipo   = 'Cliente'          : false ;
+            $usuario->tipo   === Usuario::USUARIO_BOOTSTRAP     ? $usuario->tipo   = 'Bootstrap'        : false ;
+
             $usuario->perfil === Usuario::USUARIO_PERFIL1       ? $usuario->perfil = 'Pefil1' : false ;
             $usuario->perfil === Usuario::USUARIO_PERFIL2       ? $usuario->perfil = 'Pefil2' : false ;
         });

@@ -51,7 +51,7 @@ class Usuario extends Authenticatable
     const USUARIO_ADMIN         = '1';
     const USUARIO_FUNCIONARIO   = '2';
     const USUARIO_CLIENTE       = '3';
-    const USUARIO_BOOTSTRAP       = 'B';
+    const USUARIO_BOOTSTRAP     = 'B';
 
     public function getPefiles()
     {
@@ -62,7 +62,7 @@ class Usuario extends Authenticatable
     }
     public function getTipos()
     {
-        return $perfiles = [
+        return $tipos = [
             'Administrador' => Usuario::USUARIO_ADMIN,
             'Funcionario'   => Usuario::USUARIO_FUNCIONARIO,
             'Cliente'       => Usuario::USUARIO_CLIENTE,
