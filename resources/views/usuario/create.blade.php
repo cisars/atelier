@@ -136,7 +136,6 @@
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
-
                                         {{--CONST Perfil--}}
                                         <div class="form-group col">
                                             <label for="perfil" >Perfil</label>
@@ -144,8 +143,11 @@
                                                 class   ="form-control"
                                                 name    ="perfil"
                                                 id      ="perfil">
-                                                <option value="{{ $perfiles['Perfil1'] }}" selected > Perfil1   </option>
-                                                <option value="{{ $perfiles['Perfil2'] }}"> Perfil2               </option>
+                                                <option value="{{ $perfiles['Administrador'] }}" selected > Administrador   </option>
+                                                <option value="{{ $perfiles['Funcionario'] }}">     Funcionario             </option>
+                                                <option value="{{ $perfiles['Cliente'] }}">         Cliente                 </option>
+                                                <option value="{{ $perfiles['Bootstrap'] }}">       Bootstrap               </option>
+                                                <option value="{{ $perfiles['Recepcionista'] }}">   Recepcionista           </option>
                                             </select>
                                             @foreach ($errors->get('perfil') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
@@ -160,11 +162,10 @@
                                                 class   ="form-control"
                                                 name    ="tipo"
                                                 id      ="tipo">
-                                                @if( Auth::user()->tipo == 1 )
-                                                    <option value="{{ $tipos['Administrador'] }}" selected > Administrador      </option>
-                                                    <option value="{{ $tipos['Bootstrap'] }}">      Bootstrap           </option>
-                                                    <option value="{{ $tipos['Funcionario'] }}">    Funcionario         </option>
-                                                    <option value="{{ $tipos['Cliente'] }}">        Cliente             </option>
+                                                @if( Auth::user()->perfil == 'A' )
+                                                    <option value="{{ $tipos['Cliente'] }}" selected > Cliente      </option>
+                                                    <option value="{{ $tipos['Empleado'] }}">      Empleado           </option>
+
                                                 @else
                                                     <option value="{{ $tipos['Cliente'] }}" selected> Cliente           </option>
                                                 @endif

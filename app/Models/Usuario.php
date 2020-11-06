@@ -42,36 +42,38 @@ class Usuario extends Authenticatable
     ];
 
     //Estado
-    const USUARIO_ACTIVO = '1';
-    const USUARIO_INACTIVO = '2';
-    //Perfil
-    const USUARIO_PERFIL1        = '1';
-    const USUARIO_PERFIL2        = '2';
+    const USUARIO_ACTIVO = 'A';
+    const USUARIO_INACTIVO = 'I';
     //Tipo
-    const USUARIO_ADMIN         = '1';
-    const USUARIO_FUNCIONARIO   = '2';
-    const USUARIO_CLIENTE       = '3';
+    const USUARIO_T_CLIENTE        = 'C';
+    const USUARIO_T_EMPLEADO        = 'E';
+    //Perfil
+    const USUARIO_ADMIN         = 'A';
+    const USUARIO_FUNCIONARIO   = 'F';
+    const USUARIO_CLIENTE       = 'C';
     const USUARIO_BOOTSTRAP     = 'B';
+    const USUARIO_RECEPCIONISTA = 'R';
 
-    public function getPefiles()
+    public function getPerfiles()
     {
-        return $perfiles = [
-            'Perfil1' => Usuario::USUARIO_PERFIL1,
-            'Perfil2'   => Usuario::USUARIO_PERFIL2,
-        ];
-    }
-    public function getTipos()
-    {
-        return $tipos = [
+        return  [
             'Administrador' => Usuario::USUARIO_ADMIN,
             'Funcionario'   => Usuario::USUARIO_FUNCIONARIO,
             'Cliente'       => Usuario::USUARIO_CLIENTE,
             'Bootstrap'     => Usuario::USUARIO_BOOTSTRAP,
+            'Recepcionista' => Usuario::USUARIO_RECEPCIONISTA,
+        ];
+    }
+    public function getTipos()
+    {
+        return  [
+            'Cliente' => Usuario::USUARIO_T_CLIENTE,
+            'Empleado'   => Usuario::USUARIO_T_EMPLEADO,
         ];
     }
     public function getEstados()
     {
-        return $estados = [
+        return  [
             'Activo' => Usuario::USUARIO_ACTIVO,
             'Inactivo' => Usuario::USUARIO_INACTIVO,
         ];
@@ -116,7 +118,7 @@ class Usuario extends Authenticatable
     }
 
     public function isAdmin(){
-        if(Auth::user()->tipo == 1 )
+        if(Auth::user()->perfil == 'A' )
             return true;
         else
             return false;

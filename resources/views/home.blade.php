@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div class="form-group  ">Descripcion / Lista de usuarios</div>
 
-                    <table  class="table table-striped table-sm table-hover  " id="lista">
+                    <table  class="table table-striped table-sm table-hover table-responsive  " id="lista">
                         <thead>
                         <tr>
 
@@ -90,7 +90,7 @@
                 <h5 class="card-header">Empleados</h5>
                 <div class="card-body">
                     <div class="card-title">Descripcion / Lista de empleados</div>
-                    <table class="table table-striped table-sm table-hover  " id="data">
+                    <table class="table table-striped table-sm table-hover table-responsive  " id="data">
                         <thead>
                         <tr>
                             <th class="text-center">  empleado  		     		 </th>

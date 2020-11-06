@@ -26,13 +26,14 @@ class UsuarioController extends Controller
 
             $usuario->estado === Usuario::USUARIO_ACTIVO        ? $usuario->estado = 'Activo' : $usuario->estado = 'Inactivo' ;
 
-            $usuario->tipo   === Usuario::USUARIO_ADMIN         ? $usuario->tipo   = 'Administrador'    : false ;
-            $usuario->tipo   === Usuario::USUARIO_FUNCIONARIO   ? $usuario->tipo   = 'Funcionario'      : false ;
-            $usuario->tipo   === Usuario::USUARIO_CLIENTE       ? $usuario->tipo   = 'Cliente'          : false ;
-            $usuario->tipo   === Usuario::USUARIO_BOOTSTRAP     ? $usuario->tipo   = 'Bootstrap'        : false ;
+            $usuario->perfil   === Usuario::USUARIO_ADMIN         ? $usuario->perfil   = 'Administrador'    : false ;
+            $usuario->perfil   === Usuario::USUARIO_FUNCIONARIO   ? $usuario->perfil   = 'Funcionario'      : false ;
+            $usuario->perfil   === Usuario::USUARIO_CLIENTE       ? $usuario->perfil   = 'Cliente'          : false ;
+            $usuario->perfil   === Usuario::USUARIO_BOOTSTRAP     ? $usuario->perfil   = 'Bootstrap'        : false ;
+            $usuario->perfil   === Usuario::USUARIO_RECEPCIONISTA ? $usuario->perfil   = 'Recepcionista'    : false ;
 
-            $usuario->perfil === Usuario::USUARIO_PERFIL1       ? $usuario->perfil = 'Pefil1' : false ;
-            $usuario->perfil === Usuario::USUARIO_PERFIL2       ? $usuario->perfil = 'Pefil2' : false ;
+            $usuario->tipo === Usuario::USUARIO_T_CLIENTE       ? $usuario->tipo = 'Cliente' : false ;
+            $usuario->tipo === Usuario::USUARIO_T_EMPLEADO      ? $usuario->tipo = 'Empleado' : false ;
         });
 
 
@@ -47,7 +48,7 @@ class UsuarioController extends Controller
 
         $usuario    = new Usuario();
         $estados    = $usuario->getEstados();
-        $perfiles   = $usuario->getPefiles();
+        $perfiles   = $usuario->getPerfiles();
         $tipos      = $usuario->getTipos();
 
         return view('usuario.create')
@@ -58,10 +59,19 @@ class UsuarioController extends Controller
             ->with('perfiles', $perfiles)
             ->with('tipos', $tipos) ;
     }
-
-    public function factoryCliente()
+    public function factory()
     {
         factory('App\Models\Usuario')->create();
+        return redirect()
+            ->route('usuario.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'success');
+    }
+    public function factoryCliente()
+    {
+        factory('App\Models\Usuario')->create( [
+            'cliente' => factory('App\Models\Cliente')->create()->cliente
+        ] );
         return redirect()
             ->route('usuario.index')
             ->with('msg', 'Registro Creado Correctamente')
@@ -111,7 +121,7 @@ class UsuarioController extends Controller
 
         $estados = $usuario->getEstados();
         $tipos = $usuario->getTipos();
-        $perfiles = $usuario->getPefiles();
+        $perfiles = $usuario->getPerfiles();
 
         return view('usuario.edit')
             ->with('usuario', $usuario)

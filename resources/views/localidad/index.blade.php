@@ -29,12 +29,12 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('localidad.create')}}" class="btn bg-cyan">Nueva localidad</a>
-                            @if( Auth::user()->tipo == 1 )
+                            @if( Auth::user()->perfil == 'A' )
                             <a  href="{{route('localidad.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
 
-                        <table class="table table-sm table-hover" id="lista">
+                        <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
                                 <th class="w-10">Codigo

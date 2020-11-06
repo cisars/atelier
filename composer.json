@@ -9,16 +9,17 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "arcanedev/log-viewer": "~7.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "fzaninotto/faker": "^1.9.1",
         "guzzlehttp/guzzle": "^6.3",
         "jeroennoten/laravel-adminlte": "^3.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "ext-pdo": "*",
-        "fzaninotto/faker": "^1.9.1",
-        "laravel/ui": "^2.2",
-        "ext-json": "*"
+        "laravel/ui": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",

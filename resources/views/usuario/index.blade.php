@@ -27,17 +27,19 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+
                         <div class="form-group">
                             <a  href="{{route('usuario.create')}}" class="btn bg-cyan">Nueva Usuario</a>
-                            @if( Auth::user()->tipo == 1 )
+                            @if( Auth::user()->perfil == 'A' )
 
-                                    <a  href="{{route('usuario_cliente.factory')}}" class="btn bg-teal float-right ">Generar Usuario - Cliente</a>
-                                    <a  href="{{route('usuario_empleado.factory')}}" class="btn bg-info float-right ">Generar Usuario - Empleado</a>
+                                    <a  href="{{route('usuario.factory')}}" class="btn bg-teal float-right ">Generar Usuario</a>
+{{--                                    <a  href="{{route('usuario_cliente.factory')}}" class="btn bg-teal float-right ">Generar Usuario - Cliente</a>--}}
+{{--                                    <a  href="{{route('usuario_empleado.factory')}}" class="btn bg-info float-right ">Generar Usuario - Empleado</a>--}}
 
                             @endif
                         </div>
 
-                        <table class="table table-sm table-hover nowrap" id="lista">
+                        <table class="table table-sm table-hover nowrap d-table" id="lista"  >
                             <thead class="">
                             <tr>
                                 <th class="w-10">Usuario  </th>
@@ -70,7 +72,7 @@
                                     <td class=" ">
                                         <a
                                             href="{{ route('usuario.edit', $usuario->usuario) }}"
-                                            class= "btn btn-info disabled">
+                                            class= "btn bg-gradient-gray disabled">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                         <button

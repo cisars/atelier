@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
             return false;
         });
         Gate::define('admin', function ($user) {
-            if ($user->tipo == 1) {
+            if ($user->perfil == 'A') {
                 return true;
             }
             return false;

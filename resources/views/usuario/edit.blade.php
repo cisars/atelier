@@ -151,13 +151,14 @@
                                                 class   ="form-control"
                                                 name    ="perfil"
                                                 id      ="perfil">
-
-<option value = "{{ $perfiles['Perfil1']}}"       {{ $perfiles['Perfil1'] == old('perfil',      $usuario->perfil) ? 'selected' : '' }} > Perfil1 </option>
-<option value = "{{ $perfiles['Perfil2']}}"       {{ $perfiles['Perfil2'] == old('perfil',      $usuario->perfil) ? 'selected' : '' }} > Perfil2 </option>
+                                                <option value = "{{ $perfiles['Administrador']}}"  {{ $perfiles['Administrador'] == old('perfil', $usuario->perfil) ? 'selected' : '' }} > Administrador </option>
+                                                <option value = "{{ $perfiles['Funcionario']}}"    {{ $perfiles['Funcionario'] == old('perfil',   $usuario->perfil) ? 'selected' : '' }} > Funcionario </option>
+                                                <option value = "{{ $perfiles['Cliente']}}"        {{ $perfiles['Cliente'] == old('perfil',       $usuario->perfil) ? 'selected' : '' }} > Cliente </option>
+                                                <option value = "{{ $perfiles['Bootstrap']}}"      {{ $perfiles['Bootstrap'] == old('perfil',     $usuario->perfil) ? 'selected' : '' }} > Bootstrap </option>
 
                                             </select>
 
-                                            @foreach ($errors->get('estado_civil') as $error)
+                                            @foreach ($errors->get('perfil') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
@@ -170,10 +171,9 @@
                                                 name    ="tipo"
                                                 id      ="tipo">
 
-                                                <option value = "{{ $tipos['Administrador']}}"  {{ $tipos['Administrador'] == old('perfil', $usuario->tipo) ? 'selected' : '' }} > Administrador </option>
-                                                <option value = "{{ $tipos['Funcionario']}}"    {{ $tipos['Funcionario'] == old('perfil',   $usuario->tipo) ? 'selected' : '' }} > Funcionario </option>
-                                                <option value = "{{ $tipos['Cliente']}}"        {{ $tipos['Cliente'] == old('perfil',       $usuario->tipo) ? 'selected' : '' }} > Cliente </option>
-                                                <option value = "{{ $tipos['Bootstrap']}}"      {{ $tipos['Bootstrap'] == old('perfil',     $usuario->tipo) ? 'selected' : '' }} > Bootstrap </option>
+                                                <option value = "{{ $tipos['Cliente']}}"       {{ $tipos['Cliente'] == old('tipo',      $usuario->tipo) ? 'selected' : '' }} > Cliente </option>
+                                                <option value = "{{ $tipos['Empleado']}}"      {{ $tipos['Empleado'] == old('tipo',     $usuario->tipo) ? 'selected' : '' }} > Empleado </option>
+
 
                                             </select>
 

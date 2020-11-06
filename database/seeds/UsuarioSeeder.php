@@ -17,10 +17,10 @@ class UsuarioSeeder extends Seeder
             'usuario'  => 'admin',
             'clave'  => bcrypt('admin'),
             'fecha_ingreso' => now(),
-            'estado'        => '1',
+            'estado'        => 'A',
             'observacion'   => '',
-            'perfil'        => '1',
-            'tipo'          => '1',
+            'perfil'        => 'A',
+            'tipo'          => 'E',
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
@@ -46,10 +46,10 @@ class UsuarioSeeder extends Seeder
             ])->empleado,
             'clave'  => bcrypt('empleado'),
             'fecha_ingreso' => now(),
-            'estado'        => '1',
+            'estado'        => 'A',
             'observacion'   => '',
-            'perfil'        => '1',
-            'tipo'          => '2',
+            'perfil'        => 'F',
+            'tipo'          => 'E',
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
@@ -76,10 +76,10 @@ class UsuarioSeeder extends Seeder
             ])->empleado,
             'clave'  => bcrypt('isaias'),
             'fecha_ingreso' => now(),
-            'estado'        => '1',
+            'estado'        => 'A',
             'observacion'   => '',
-            'perfil'        => '1',
-            'tipo'          => '1',
+            'perfil'        => 'A',
+            'tipo'          => 'E',
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
@@ -105,10 +105,10 @@ class UsuarioSeeder extends Seeder
             ])->empleado,
             'clave'  => bcrypt('yami'),
             'fecha_ingreso' => now(),
-            'estado'        => '1',
+            'estado'        => 'A',
             'observacion'   => '',
-            'perfil'        => '1',
-            'tipo'          => '1',
+            'perfil'        => 'A',
+            'tipo'          => 'E',
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
@@ -134,10 +134,10 @@ class UsuarioSeeder extends Seeder
             ])->empleado,
             'clave'  => bcrypt('bootstrap'),
             'fecha_ingreso' => now(),
-            'estado'        => '1',
+            'estado'        => 'A',
             'observacion'   => '',
-            'perfil'        => '1',
-            'tipo'          => 'B',
+            'perfil'        => 'B',
+            'tipo'          => 'E',
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
@@ -157,10 +157,10 @@ class UsuarioSeeder extends Seeder
             ])->cliente,
             'clave'  => bcrypt('cliente'),
             'fecha_ingreso' => now(),
-            'estado'        => '1',
+            'estado'        => 'A',
             'observacion'   => '',
-            'perfil'        => '1',
-            'tipo'          => '3',
+            'perfil'        => 'C',
+            'tipo'          => 'C',
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);

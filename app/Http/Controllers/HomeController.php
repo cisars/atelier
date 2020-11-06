@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -26,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Log::info(Usuario::USUARIO_ACTIVO);
         $usuarios = Usuario::all();
         $empleados = Empleado::all();
         return View::make('home')

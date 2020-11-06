@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/turno/factory', 'TurnoController@factory')->name('turno.factory');
     Route::get('/grupo/factory', 'GrupoController@factory')->name('grupo.factory');
     Route::get('/empleado/factory', 'EmpleadoController@factory')->name('empleado.factory');
+    Route::get('/usuario/factory', 'UsuarioController@factory')->name('usuario.factory');
     Route::get('/usuario_cliente/factory', 'UsuarioController@factoryCliente')->name('usuario_cliente.factory');
     Route::get('/usuario_empleado/factory', 'UsuarioController@factoryEmpleado')->name('usuario_empleado.factory');
 

@@ -146,8 +146,9 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": false,
             "responsive": true,
+            "scrollX": true,
         });
 
         $('#data').DataTable({
@@ -159,7 +160,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": false,
             "responsive": true,
         });
 
@@ -172,7 +173,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": false,
             "responsive": true,
         });
 
