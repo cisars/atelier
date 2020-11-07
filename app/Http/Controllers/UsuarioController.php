@@ -7,6 +7,7 @@ use App\Models\Empleado;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UpdateUsuarioRequest;
@@ -34,6 +35,12 @@ class UsuarioController extends Controller
 
             $usuario->tipo === Usuario::USUARIO_T_CLIENTE       ? $usuario->tipo = 'Cliente' : false ;
             $usuario->tipo === Usuario::USUARIO_T_EMPLEADO      ? $usuario->tipo = 'Empleado' : false ;
+
+            Log::info('usuario->usuario			'.' - '. $usuario->usuario				    );
+            Log::info('usuario->estado 			'.' - '. $usuario->estado				    );
+            Log::info('usuario->perfil 			'.' - '. $usuario->perfil				    );
+            Log::info('usuario->tipo 			'.' - '. $usuario->tipo						);
+            Log::info('----------------------------------------------'						);
         });
 
 
