@@ -23,7 +23,7 @@
                     @endif
 
                     {{ __('Iniciaste sesion!') }}
-<br> Mis datos
+<br> Mis datos <a  href="{{route('listausuarios')}}" class="btn bg-cyan">Lista Usuarios</a>
                         <br>
                         {{ Auth::user()  }}
 
