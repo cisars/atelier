@@ -25,21 +25,22 @@ class UsuarioController extends Controller
             $usuario->empleado = Empleado::find($usuario->empleado);
             $usuario->cliente = Cliente::find($usuario->cliente);
 
-            $usuario->estado === Usuario::USUARIO_ACTIVO        ? $usuario->estado = 'Activo' : $usuario->estado = 'Inactivo' ;
+            ($usuario->estado == Usuario::USUARIO_ACTIVO        ) ? $usuario->estado = 'Activo' : $usuario->estado = 'Inactivo' ;
 
-            $usuario->perfil   === Usuario::USUARIO_ADMIN         ? $usuario->perfil   = 'Administrador'    : false ;
-            $usuario->perfil   === Usuario::USUARIO_FUNCIONARIO   ? $usuario->perfil   = 'Funcionario'      : false ;
-            $usuario->perfil   === Usuario::USUARIO_CLIENTE       ? $usuario->perfil   = 'Cliente'          : false ;
-            $usuario->perfil   === Usuario::USUARIO_BOOTSTRAP     ? $usuario->perfil   = 'Bootstrap'        : false ;
-            $usuario->perfil   === Usuario::USUARIO_RECEPCIONISTA ? $usuario->perfil   = 'Recepcionista'    : false ;
+            ($usuario->perfil  == Usuario::USUARIO_ADMIN        ) ? $usuario->perfil   = 'Administrador'    : false ;
+            ($usuario->perfil  == Usuario::USUARIO_FUNCIONARIO  ) ? $usuario->perfil   = 'Funcionario'      : false ;
+            ($usuario->perfil  == Usuario::USUARIO_CLIENTE      ) ? $usuario->perfil   = 'Cliente'          : false ;
+            ($usuario->perfil  == Usuario::USUARIO_BOOTSTRAP    ) ? $usuario->perfil   = 'Bootstrap'        : false ;
+            ($usuario->perfil  == Usuario::USUARIO_RECEPCIONISTA) ? $usuario->perfil   = 'Recepcionista'    : false ;
 
-            $usuario->tipo === Usuario::USUARIO_T_CLIENTE       ? $usuario->tipo = 'Cliente' : false ;
-            $usuario->tipo === Usuario::USUARIO_T_EMPLEADO      ? $usuario->tipo = 'Empleado' : false ;
+            ($usuario->tipo == Usuario::USUARIO_T_CLIENTE      ) ? $usuario->tipo = 'Cliente' : false ;
+            ($usuario->tipo == Usuario::USUARIO_T_EMPLEADO     ) ? $usuario->tipo = 'Empleado' : false ;
 
-            Log::info('usuario->usuario			'.' - '. $usuario->usuario				    );
-            Log::info('usuario->estado 			'.' - '. $usuario->estado				    );
-            Log::info('usuario->perfil 			'.' - '. $usuario->perfil				    );
-            Log::info('usuario->tipo 			'.' - '. $usuario->tipo						);
+            Log::info('test: usuario->perfil			'.' === '. Usuario::USUARIO_ADMIN				    );
+            Log::info('usuario->usuario			'.' === '. $usuario->usuario				    );
+            Log::info('usuario->estado 			'.' === '. $usuario->estado				    );
+            Log::info('usuario->perfil 			'.' === '. $usuario->perfil				    );
+            Log::info('usuario->tipo 			'.' === '. $usuario->tipo						);
             Log::info('----------------------------------------------'						);
         });
 
