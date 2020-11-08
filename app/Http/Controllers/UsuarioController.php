@@ -33,10 +33,11 @@ private  $getPerfil  ;
 
             foreach ($this->getPerfil as $clave=>$valor)
             {
-                Log::info('usuario->perfil bucle:'. $usuario->perfil	);
-                Log::info(Log::info(" datos bucle  { $clave } => [ $valor ]"		    ));
+//                Log::info('usuario->perfil bucle:'. $usuario->perfil	);
+//                Log::info(Log::info(" datos bucle  { $clave } => [ $valor ]"		    ));
 
-                if( trim($usuario->perfil) == trim($valor) ){
+               // if( trim($usuario->perfil) == trim($valor) ){
+                if( $usuario->perfil === $valor ){
                     Log::info('-------------$this->getPerfil as $clave=>$valor---------------------------------'	);
                     Log::info("AntesDe: $usuario->perfil"		    );
 
@@ -45,7 +46,6 @@ private  $getPerfil  ;
                     Log::info("clave{ $clave } - valor{ $valor }"		    );
                     Log::info("Guardado: $usuario->perfil"		    );
                 }
-
 
             }
 
