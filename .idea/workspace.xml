@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
+    <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php IV recorrido constantes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -229,7 +230,7 @@
       <workItem from="1603056146753" duration="508000" />
       <workItem from="1603056713112" duration="27921000" />
       <workItem from="1603256355913" duration="131837000" />
-      <workItem from="1603994883000" duration="160651000" />
+      <workItem from="1603994883000" duration="169810000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de estructura para los modelos, enviados a la carpeta Models en la raiz (Usuario.php, Empleado.php, CalendarioAtencion.php">
       <created>1600374098496</created>
@@ -462,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604765582847</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php III">
+      <created>1604785682226</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1604785682226</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +478,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ Agregado componente alertas, pero se opto por include blade para los modals&#10;+ CRUD Localidades Listo" />
     <MESSAGE value="+ CRUD Clasificacion" />
     <MESSAGE value="+ CRUD Sucursal&#10;- belongsTo Localidad&#10;faltan&#10;- hasMany sectores, entradas y tallerres" />
     <MESSAGE value="+ CRUD Taller&#10;- belongsTo Localidad&#10;faltan&#10;hasMany &#10;-&gt; Reservas&#10;-&gt; OT&#10;-&gt; Entregas&#10;-&gt; Usuarios Talleres&#10;-&gt; Recepciones" />
@@ -495,7 +502,8 @@
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php II" />
-    <option name="LAST_COMMIT_MESSAGE" value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php II" />
+    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php III" />
+    <option name="LAST_COMMIT_MESSAGE" value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php III" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="177" key="#Deployment" timestamp="1600373901178">
@@ -527,11 +535,11 @@
     </state>
     <state x="624" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600372844715" />
     <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604765101460" />
-    <state x="170" y="1141" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1604765581190">
+    <state x="170" y="1141" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1604856026629">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="479" y="0" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603881390990" />
-    <state x="170" y="1141" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604765581190" />
+    <state x="170" y="1141" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604856026629" />
     <state x="545" y="1404" key="ComposerInitDialogKey" timestamp="1604030884628">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -582,10 +590,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="425" y="727" key="run.anything.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604519661556" />
-    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup" timestamp="1604765355716">
+    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup" timestamp="1604788799936">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600375080394" />
-    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604765355716" />
+    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604788799936" />
   </component>
 </project>

@@ -14,11 +14,15 @@ use App\Http\Requests\Usuario\UpdateUsuarioRequest;
 
 class UsuarioController extends Controller
 {
-
+private  $newUsuario  ;
+private  $getPerfil  ;
     public function index()
     {
 
         $usuarios = Usuario::all();
+        $this->newUsuario = new Usuario();
+        $this->getPerfil = $this->newUsuario->getPerfiles();
+
 
         $usuarios->each(function($usuario)
         {
@@ -27,21 +31,22 @@ class UsuarioController extends Controller
 
             ($usuario->estado == Usuario::USUARIO_ACTIVO        ) ? $usuario->estado = 'Activo' : $usuario->estado = 'Inactivo' ;
 
-            ($usuario->perfil  == Usuario::USUARIO_ADMIN        ) ? $usuario->perfil   = 'Administrador'    : false ;
-            ($usuario->perfil  == Usuario::USUARIO_FUNCIONARIO  ) ? $usuario->perfil   = 'Funcionario'      : false ;
-            ($usuario->perfil  == Usuario::USUARIO_CLIENTE      ) ? $usuario->perfil   = 'Cliente'          : false ;
-            ($usuario->perfil  == Usuario::USUARIO_BOOTSTRAP    ) ? $usuario->perfil   = 'Bootstrap'        : false ;
-            ($usuario->perfil  == Usuario::USUARIO_RECEPCIONISTA) ? $usuario->perfil   = 'Recepcionista'    : false ;
+            foreach ($this->getPerfil as $clave=>$valor)
+            {
+                if( $usuario->perfil == $valor )
+                    $usuario->perfil = $clave;
+            }
 
-            ($usuario->tipo == Usuario::USUARIO_T_CLIENTE      ) ? $usuario->tipo = 'Cliente' : false ;
-            ($usuario->tipo == Usuario::USUARIO_T_EMPLEADO     ) ? $usuario->tipo = 'Empleado' : false ;
-
-            Log::info('test: usuario->perfil			'.' === '. Usuario::USUARIO_ADMIN				    );
-            Log::info('usuario->usuario			'.' === '. $usuario->usuario				    );
-            Log::info('usuario->estado 			'.' === '. $usuario->estado				    );
-            Log::info('usuario->perfil 			'.' === '. $usuario->perfil				    );
-            Log::info('usuario->tipo 			'.' === '. $usuario->tipo						);
-            Log::info('----------------------------------------------'						);
+            ($usuario->tipo == Usuario::USUARIO_T_CLIENTE      ) ? $usuario->tipo = 'Cliente' : $usuario->tipo  = 'Empleado';
+//
+//            Log::info('-------------vardump ini---------------------------------'						);
+//            Log::info(Usuario::USUARIO_ADMIN		    );
+//            Log::info('-------------vardump fin---------------------------------'						);
+//            Log::info('usuario->usuario		      === '. $usuario->usuario				    );
+//            Log::info('usuario->estado 			  === '. $usuario->estado				    );
+//            Log::info('usuario->perfil 			  === '. $usuario->perfil				    );
+//            Log::info('usuario->tipo 			  === '. $usuario->tipo						);
+//            Log::info('----------------------------------------------'						);
         });
 
 
