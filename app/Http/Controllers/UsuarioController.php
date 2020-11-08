@@ -33,20 +33,28 @@ private  $getPerfil  ;
 
             foreach ($this->getPerfil as $clave=>$valor)
             {
-                if( $usuario->perfil == $valor )
+
+                if( $usuario->perfil == $valor ){
+                    Log::info('-------------$this->getPerfil as $clave=>$valor---------------------------------'	);
+                    Log::info("AntesDe: $usuario->perfil"		    );
+
                     $usuario->perfil = $clave;
+
+                    Log::info("clave{ $clave } - valor{ $valor }"		    );
+                    Log::info("Guardado: $usuario->perfil"		    );
+                }
+
+
             }
 
             ($usuario->tipo == Usuario::USUARIO_T_CLIENTE      ) ? $usuario->tipo = 'Cliente' : $usuario->tipo  = 'Empleado';
 //
-//            Log::info('-------------vardump ini---------------------------------'						);
-//            Log::info(Usuario::USUARIO_ADMIN		    );
-//            Log::info('-------------vardump fin---------------------------------'						);
+//
 //            Log::info('usuario->usuario		      === '. $usuario->usuario				    );
 //            Log::info('usuario->estado 			  === '. $usuario->estado				    );
 //            Log::info('usuario->perfil 			  === '. $usuario->perfil				    );
 //            Log::info('usuario->tipo 			  === '. $usuario->tipo						);
-//            Log::info('----------------------------------------------'						);
+//            Log::info('####################################################################'						);
         });
 
 
