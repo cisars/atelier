@@ -33,6 +33,8 @@ private  $getPerfil  ;
 
             foreach ($this->getPerfil as $clave=>$valor)
             {
+                Log::info('usuario->perfil bucle:'. $usuario->perfil	);
+                Log::info(Log::info(" datos bucle  { $clave } => [ $valor ]"		    ); ;
 
                 if( $usuario->perfil == $valor ){
                     Log::info('-------------$this->getPerfil as $clave=>$valor---------------------------------'	);
