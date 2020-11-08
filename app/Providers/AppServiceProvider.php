@@ -31,19 +31,19 @@ class AppServiceProvider extends ServiceProvider
         $this->register();
 
         Gate::define('manage-blog', function ($user) {
-            if ($user->tipo == 'm') {
+            if (trim($user->perfil) == 'm') {
                 return true;
             }
             return false;
         });
         Gate::define('admin', function ($user) {
-            if ($user->perfil == 'A') {
+            if (trim($user->perfil) == 'A') {
                 return true;
             }
             return false;
         });
         Gate::define('example-bootstrap', function ($user) {
-            if ($user->tipo == 'B') {
+            if (trim($user->perfil) == 'B') {
                 return true;
             }
             return false;
