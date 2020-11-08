@@ -14,52 +14,37 @@ use App\Http\Requests\Usuario\UpdateUsuarioRequest;
 
 class UsuarioController extends Controller
 {
-private  $newUsuario  ;
-private  $getPerfil  ;
+    private  $newUsuario  ;
+    private  $getPerfil  ;
+    private  $getTipo  ;
+    private  $getEstado  ;
     public function index()
     {
 
         $usuarios = Usuario::all();
         $this->newUsuario = new Usuario();
         $this->getPerfil = $this->newUsuario->getPerfiles();
-
+        $this->getTipo = $this->newUsuario->getTipos();
+        $this->getEstado = $this->newUsuario->getEstados();
 
         $usuarios->each(function($usuario)
         {
             $usuario->empleado = Empleado::find($usuario->empleado);
             $usuario->cliente = Cliente::find($usuario->cliente);
 
-            ($usuario->estado == Usuario::USUARIO_ACTIVO        ) ? $usuario->estado = 'Activo' : $usuario->estado = 'Inactivo' ;
-
             foreach ($this->getPerfil as $clave=>$valor)
-            {
-//                Log::info('usuario->perfil bucle:'. $usuario->perfil	);
-//                Log::info(Log::info(" datos bucle  { $clave } => [ $valor ]"		    ));
-
-                if( trim($usuario->perfil) == trim($valor) ){
-                // if( $usuario->perfil === $valor ){
-                    Log::info('-------------$this->getPerfil as $clave=>$valor---------------------------------'	);
-                    Log::info("AntesDe: $usuario->perfil"		    );
-
+              if( trim($usuario->perfil) == trim($valor) )
                     $usuario->perfil = $clave;
 
-                    Log::info("clave{ $clave } - valor{ $valor }"		    );
-                    Log::info("Guardado: $usuario->perfil"		    );
-                }
+            foreach ($this->getTipo as $clave=>$valor)
+                if( trim($usuario->tipo) == trim($valor) )
+                    $usuario->tipo = $clave;
 
-            }
+            foreach ($this->getEstado as $clave=>$valor)
+                if( trim($usuario->estado) == trim($valor) )
+                    $usuario->estado = $clave;
 
-            ($usuario->tipo == Usuario::USUARIO_T_CLIENTE      ) ? $usuario->tipo = 'Cliente' : $usuario->tipo  = 'Empleado';
-//
-//
-//            Log::info('usuario->usuario		      === '. $usuario->usuario				    );
-//            Log::info('usuario->estado 			  === '. $usuario->estado				    );
-//            Log::info('usuario->perfil 			  === '. $usuario->perfil				    );
-//            Log::info('usuario->tipo 			  === '. $usuario->tipo						);
-//            Log::info('####################################################################'						);
         });
-
-
 
         return view('usuario.index', compact('usuarios', $usuarios));
 
