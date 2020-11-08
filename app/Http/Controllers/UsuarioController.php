@@ -36,8 +36,8 @@ private  $getPerfil  ;
 //                Log::info('usuario->perfil bucle:'. $usuario->perfil	);
 //                Log::info(Log::info(" datos bucle  { $clave } => [ $valor ]"		    ));
 
-               // if( trim($usuario->perfil) == trim($valor) ){
-                if( $usuario->perfil === $valor ){
+                if( trim($usuario->perfil) == trim($valor) ){
+                // if( $usuario->perfil === $valor ){
                     Log::info('-------------$this->getPerfil as $clave=>$valor---------------------------------'	);
                     Log::info("AntesDe: $usuario->perfil"		    );
 
