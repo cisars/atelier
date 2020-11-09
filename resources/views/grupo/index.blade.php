@@ -19,7 +19,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="card card-cyan">
                     <div class="card-header">
                         <h3 class="card-title">Grupos de Trabajo   </h3>
@@ -35,11 +35,9 @@
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
-                            <thead class="">
+                            <thead class="col-md">
                             <tr>
-                                <th class="w-10">Codigo
-
-                                </th>
+                                <th class="w-10">Codigo </th>
                                 <th class="w-80">Descripcion</th>
                                 <th class="w-10">Accion</th>
                             </tr>

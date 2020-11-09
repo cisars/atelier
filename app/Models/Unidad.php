@@ -12,6 +12,6 @@ class Unidad extends Model
     protected $guarded = [];
 //    public function productos_servicios()
 //    {
-//        return $this->hasMany(Empleado::class, 'empleado', 'empleado');
+//        return $this->hasMany(ProductoServicio::class, 'producto_servicio', 'producto_servicio');
 //    }
 }

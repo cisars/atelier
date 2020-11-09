@@ -325,6 +325,15 @@ return [
             'url'        => '#',
         ],
     ],
+
+
+           [
+            'text'        => 'pages',
+            'url'         => '#',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
     */
     // MIMENU
     'menu' => [
@@ -402,6 +411,7 @@ return [
         [   'header' => 'SISTEMA',
             'can'    => 'admin',
         ],
+
             [
                 'text'       => 'Usuarios',
                 'icon_color' => 'green',
@@ -409,7 +419,7 @@ return [
                 'can'        => 'admin',
             ],
             [
-                'text'       => 'Usuarios Talleres',
+                'text'       => 'Usuarios de Talleres',
                 'icon_color' => 'red',
                 'url'        => '#',
                 'can'        => 'admin',
@@ -430,6 +440,12 @@ return [
                 'can'        => 'admin',
             ],
             [
+                'text'       => 'Sectores',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
                 'text'       => 'Cargos',
                 'icon_color' => 'green',
                 'url'        => 'cargo',
@@ -442,7 +458,7 @@ return [
                 'can'        => 'admin',
             ],
             [
-                'text'       => 'TurnosEmpleados',
+                'text'       => 'Turnos',
                 'icon_color' => 'green',
                 'url'        => 'turno',
                 'can'        => 'admin',
@@ -455,6 +471,30 @@ return [
             ],
             [
                 'text'       => 'Tipo de Maquinaria',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Maquinarias',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Asignacion a Maquinarias',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Feriados Laborales',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Calendarios de Reservas',
                 'icon_color' => 'red',
                 'url'        => '#',
                 'can'        => 'admin',
@@ -500,8 +540,8 @@ return [
         ],
             [
                 'text'       => 'Marcas',
-                'icon_color' => 'red',
-                'url'        => '#',
+                'icon_color' => 'green',
+                'url'        => 'marca',
                 'can'        => 'admin',
             ],
             [
@@ -517,21 +557,136 @@ return [
                 'can'        => 'admin',
             ],
 
-
-        [
-            'text'       => 'Asignar Usuario Taller',
-            'icon_color' => 'red',
-            'url'        => '#',
-            'can'        => 'admin',
+        [   'header' => 'MOVIMIENTOS',
+            'can'    => 'admin',
         ],
+            [
+                'text'       => 'Reservas',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Recepcion de Vehiculos',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Sintomas',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Ordenes de Trabajo',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Confirmacion de OTs',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Servicios Realizados',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Entregas de Vehiculos',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Visualizar Prefacturacion',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
 
-
-        [
-            'text'       => 'Confirmar Ot',
-            'icon_color' => 'red',
-            'url'        => '#',
-            'can'        => 'admin',
+        [   'header' => 'STOCK',
+            'can'    => 'admin',
         ],
+            [
+                'text'       => 'Entrada de Repuestos',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Salida de Repuestos',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Stock de Manejo',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+        [   'header' => 'INFORMES',
+            'can'    => 'admin',
+        ],
+            [
+                'text'       => 'Usuarios del Sistema',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Accesos de Usuarios',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Auditorias del Sistema',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Reservas',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Recepciones',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Ordenes de Trabajo',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Entregas',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Entradas de Repuestos',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
+            [
+                'text'       => 'Salidas de Repuestos',
+                'icon_color' => 'red',
+                'url'        => '#',
+                'can'        => 'admin',
+            ],
         [ 'header' => 'EJEMPLOS BOOTSTRAP', 'can' => ['admin', 'example-bootstrap'],],
         [
             'text'    => 'Datatables',

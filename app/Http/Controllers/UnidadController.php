@@ -73,7 +73,7 @@ public function show(Unidad $unidad)
     }
 
     public function destroy(Request $request)
-{
+    {
     $unidad = Unidad::findOrFail($request->unidad);
         $unidad->delete();
 

@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado de Unidad')
+@section('title', 'Listado de Marcas')
 
 @section('css' )
 
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Unidades </li>
+    <li class="breadcrumb-item active">ABM Marcas </li>
 @stop
 
 @section('content')
@@ -22,38 +22,36 @@
             <div class="col-md-6">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Unidades   </h3>
+                        <h3 class="card-title">Marcas   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('unidad.create')}}" class="btn bg-cyan">Nueva Unidad</a>
+                            <a  href="{{route('marca.create')}}" class="btn bg-cyan">Nueva Marcas</a>
                             @if( trim(Auth::user()->perfil) == 'A' )
-                            <a  href="{{route('unidad.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                            <a  href="{{route('marca.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
-                            <thead class="col-md">
+                            <thead class="">
                             <tr>
                                 <th class="w-10">Codigo
 
                                 </th>
                                 <th class="w-80">Descripcion</th>
-                                <th class="w-80">Sigla</th>
                                 <th class="w-10">Accion</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($unidades as $key => $unidad)
+                            @foreach($marcas as $key => $marca)
                                 <tr>
-                                    <td>{{ $unidad->unidad }}</td>
-                                    <td>{{ $unidad->descripcion }}</td>
-                                    <td>{{ $unidad->sigla }}</td>
+                                    <td>{{ $marca->marca }}</td>
+                                    <td>{{ $marca->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('unidad.edit', $unidad->unidad) }}"
+                                            href="{{ route('marca.edit', $marca->marca) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -61,15 +59,15 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$unidad->unidad}}"
-                                            data-data   ="{{$unidad->unidad}}">
+                                            data-target ="#modal-danger{{$marca->marca}}"
+                                            data-data   ="{{$marca->marca}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'unidad',
-                                                'value' => $unidad->unidad,
-                                                'ruta'  => 'unidad.destroy',
+                                                'pk'   => 'marca',
+                                                'value' => $marca->marca,
+                                                'ruta'  => 'marca.destroy',
                                             ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)
