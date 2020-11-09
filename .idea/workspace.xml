@@ -5,47 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ColorController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MaquinariaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MaquinariaTipoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SintomaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Color/StoreColorRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Color/UpdateColorRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/StoreMaquinariaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/UpdateMaquinariaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/MaquinariaTipo/StoreMaquinariaTipoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/MaquinariaTipo/UpdateMaquinariaTipoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Sintoma/StoreSintomaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Sintoma/UpdateSintomaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Color.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Maquinaria.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/MaquinariaTipo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Sintoma.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ColorFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/MaquinariaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/MaquinariaTipoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/SintomaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_200612_create_colores_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_201915_create_maquinarias_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_202323_create_maquinarias_tipos_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_205137_create_sintomas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hfresh.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hpush.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hseed.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/menudesplegado.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/color/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/color/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/color/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/maquinaria_tipo/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/maquinaria_tipo/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/maquinaria_tipo/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sintoma/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sintoma/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sintoma/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUpdate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUpdate.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +230,7 @@
       <workItem from="1603056713112" duration="27921000" />
       <workItem from="1603256355913" duration="131837000" />
       <workItem from="1603994883000" duration="177460000" />
-      <workItem from="1604931495173" duration="21982000" />
+      <workItem from="1604931495173" duration="23233000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de estructura para los modelos, enviados a la carpeta Models en la raiz (Usuario.php, Empleado.php, CalendarioAtencion.php">
       <created>1600374098496</created>
@@ -593,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604949260642</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas">
+      <created>1604961376879</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1604961376879</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +569,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Procfile+Heroku command line VIII - Add faker factory db:seed en composer.json" />
     <MESSAGE value="Fix de crud Sucursales&#10;- Agregados plantillas controller y views 1FK1BelongsTo 1PK2HasMany" />
     <MESSAGE value="Fix de plantillas&#10;Fix de relaciones Eloquent: &#10;- Localidades, &#10;- Cargos, &#10;- Turnos, &#10;- Grupos, &#10;- Empleados, &#10;- Clientes, &#10;- Sucursales" />
     <MESSAGE value="Nuevo usuario en seed.&#10;Fix estados y tipos por default, generacion automatica de Usuarios cliente y Usuarios empleados.&#10;Crud Empleados.&#10;Crud Usuarios.&#10;Librerias para manejo avanzado de calendario" />
@@ -626,7 +593,8 @@
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XIII recorrido constantes" />
     <MESSAGE value="Fix Update Request, no comprobaba campos unicos. Se retiro RULE. Barra de navegacion principal modificada segun interfaces" />
     <MESSAGE value="Fix bootstrap columnas MD card para visualizar en dispositivos moviles.&#10;Crud Unidades agregado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix bootstrap columnas MD card para visualizar en dispositivos moviles.&#10;Crud Unidades agregado" />
+    <MESSAGE value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="177" key="#Deployment" timestamp="1600373901178">
@@ -658,11 +626,11 @@
     </state>
     <state x="624" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600372844715" />
     <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604948507554" />
-    <state x="170" y="1141" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1604949254569">
+    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1604961372540">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="479" y="0" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603881390990" />
-    <state x="170" y="1141" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604949254569" />
+    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604961372540" />
     <state x="545" y="1404" key="ComposerInitDialogKey" timestamp="1604030884628">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
