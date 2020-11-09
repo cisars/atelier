@@ -53,6 +53,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/usuario_empleado/factory', 'UsuarioController@factoryEmpleado')->name('usuario_empleado.factory');
     Route::get('/unidad/factory', 'UnidadController@factory')->name('unidad.factory');
     Route::get('/marca/factory', 'MarcaController@factory')->name('marca.factory');
+    Route::get('/color/factory', 'ColorController@factory')->name('color.factory');
+    Route::get('/maquinaria/factory', 'MaquinariaController@factory')->name('maquinaria.factory');
+    Route::get('/maquinaria_tipo/factory', 'MaquinariaTipoController@factory')->name('maquinaria_tipo.factory');
+    Route::get('/sintoma/factory', 'SintomaController@factory')->name('sintoma.factory');
 
     //Cruds simples
     Route::resource('localidad', 'LocalidadController');
@@ -66,6 +70,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('usuario', 'UsuarioController');
     Route::resource('unidad', 'UnidadController');
     Route::resource('marca', 'MarcaController');
+    Route::resource('color', 'ColorController');
+    Route::resource('maquinaria', 'MaquinariaController');
+    Route::resource('maquinaria_tipo', 'MaquinariaTipoController');
+    Route::resource('sintoma', 'SintomaController');
 
 });
 
