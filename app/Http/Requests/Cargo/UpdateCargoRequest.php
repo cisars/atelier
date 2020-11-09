@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Cargo;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 class UpdateCargoRequest extends FormRequest
 {
     /**
@@ -21,23 +20,11 @@ class UpdateCargoRequest extends FormRequest
      *
      * @return array
      */
-    public function campoUnicoSQL($campo)
-    {
-        $tabla = 'cargos';
-        $pk = 'cargo';
-
-        Rule::unique($tabla, $campo)
-            ->ignore($this->sucursal, $pk)
-            ->where(function ($query) {
-                return $query
-                    ->where($pk, $this->sucursal);
-            });
-    }
 
     public function rules()
     {
         return [
-            'descripcion'       =>['required','max:40', $this->campoUnicoSQL('descripcion')],
+            'descripcion'   =>'required|max:40|unique:cargos,descripcion,' . $this->cargo . ',cargo',
         ];
     }
 

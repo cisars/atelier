@@ -21,23 +21,12 @@ class UpdateTurnoRequest extends FormRequest
      *
      * @return array
      */
-    public function campoUnicoSQL($campo)
-    {
-        $tabla = 'turnos';
-        $pk = 'turno_empleado';
 
-        Rule::unique($tabla, $campo)
-            ->ignore($this->turno_empleado, $pk)
-            ->where(function ($query) {
-                return $query
-                    ->where($pk, $this->turno_empleado);
-            });
-    }
 
     public function rules()
     {
         return [
-            'descripcion'       =>['required','max:40', $this->campoUnicoSQL('descripcion')],
+            'descripcion'   =>'required|max:40|unique:turnos,descripcion,' . $this->turno . ',turno',
         ];
     }
 

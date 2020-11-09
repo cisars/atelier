@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Localidad;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UpdateLocalidadRequest extends FormRequest
 {
@@ -25,14 +24,8 @@ class UpdateLocalidadRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>['required',
-                'max:60',
-                Rule::unique('localidades', 'descripcion')
-                    ->ignore($this->localidad, 'localidad')
-                    ->where(function ($query) {
-                        return $query->where('localidad', $this->localidad);
-                    })
-            ],
+            'descripcion'   =>'required|max:60|unique:localidades,descripcion,' . $this->localidad . ',localidad',
+
         ];
     }
 

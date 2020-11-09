@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Clasificacion;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UpdateClasificacionRequest extends FormRequest
 {
@@ -25,14 +24,7 @@ class UpdateClasificacionRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>['required',
-                'max:40',
-                Rule::unique('clasificaciones', 'descripcion')
-                    ->ignore($this->clasificacion, 'descripcion')
-                    ->where(function ($query) {
-                        return $query->where('clasificacion', $this->clasificacion);
-                    })
-            ],
+            'descripcion'   =>'required|max:40|unique:clasificaciones,descripcion,' . $this->clasificacion . ',clasificacion',
         ];
     }
 

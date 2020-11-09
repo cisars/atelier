@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Sucursal;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UpdateSucursalRequest extends FormRequest
 {
@@ -22,26 +21,16 @@ class UpdateSucursalRequest extends FormRequest
      *
      * @return array
      */
-    public function campoUnicoSQL($campo)
-    {
-        $tabla = 'sucursales';
-        $pk = 'sucursal';
 
-        Rule::unique($tabla, $campo)
-            ->ignore($this->sucursal, $pk)
-            ->where(function ($query) {
-                return $query
-                    ->where($pk, $this->sucursal);
-            });
-    }
 
     public function rules()
     {
         return [
             'direccion'         =>'required|max:40',
             'telefono'          =>'required|max:12',
-            'email'             =>['required','max:80', $this->campoUnicoSQL('email')],
-            'descripcion'       =>['required','max:40', $this->campoUnicoSQL('descripcion')],
+            'email'              =>'required|max:12|unique:sucursales,email,' . $this->sucursal . ',sucursal',
+            'descripcion'        =>'required|max:40|unique:sucursales,descripcion,' . $this->sucursal . ',sucursal',
+
         ];
     }
 

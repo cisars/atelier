@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Taller;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UpdateTallerRequest extends FormRequest
 {
@@ -25,14 +24,7 @@ class UpdateTallerRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>['required',
-                'max:40',
-                Rule::unique('talleres', 'descripcion')
-                    ->ignore($this->taller, 'taller')
-                    ->where(function ($query) {
-                        return $query->where('taller', $this->taller);
-                    })
-            ],
+            'descripcion'       =>'required|max:40|unique:talleres,descripcion,' . $this->taller . ',taller',
             'direccion'         =>'required|max:80',
             'telefono'          =>'required|max:12',
         ];

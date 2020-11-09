@@ -21,18 +21,7 @@ class UpdateEmpleadoRequest extends FormRequest
      *
      * @return array
      */
-    public function campoUnicoSQL($campo)
-    {
-        $tabla = 'empleados';
-        $pk = 'empleado';
 
-        Rule::unique($tabla, $campo)
-            ->ignore($this->empleado, $pk)
-            ->where(function ($query) {
-                return $query
-                    ->where($pk, $this->empleado);
-            });
-    }
 
     public function rules()
     {
@@ -40,7 +29,7 @@ class UpdateEmpleadoRequest extends FormRequest
         return [
             'nombres'           =>'required|max:40',
             'apellidos'         =>'required|max:40',
-            'ci'                =>['required','max:12', $this->campoUnicoSQL('ci')],
+            'ci'                =>'required|max:12|unique:empleados,ci,' . $this->empleado . ',empleado',
             'estado_civil'      =>'required',
             'sexo'              =>'required',
             'direccion'         =>'required|max:80',
