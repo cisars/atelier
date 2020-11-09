@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('grupo.create')}}" class="btn bg-cyan">Nuevo Grupo de Trabajo</a>
-                            @if( Auth::user()->perfil == 'A' )
+                            @if( trim(Auth::user()->perfil) == 'A' )
                             <a  href="{{route('grupo.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>

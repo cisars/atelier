@@ -118,7 +118,7 @@ class Usuario extends Authenticatable
     }
 
     public function isAdmin(){
-        if(Auth::user()->perfil == 'A' )
+        if(trim(Auth::user()->perfil) == 'A' )
             return true;
         else
             return false;

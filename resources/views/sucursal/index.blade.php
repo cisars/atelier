@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('sucursal.create')}}" class="btn bg-cyan">Nueva Sucursal</a>
-                            @if( Auth::user()->perfil == 'A' )
+                            @if( trim(Auth::user()->perfil) == 'A' )
                             <a  href="{{route('sucursal.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>

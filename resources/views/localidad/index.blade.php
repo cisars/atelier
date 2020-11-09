@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('localidad.create')}}" class="btn bg-cyan">Nueva localidad</a>
-                            @if( trim(Auth::user()->perfil) == trim('A') )
+                            @if( trim(Auth::user()->perfil) == 'A' )
                             <a  href="{{route('localidad.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>

@@ -162,7 +162,7 @@
                                                 class   ="form-control"
                                                 name    ="tipo"
                                                 id      ="tipo">
-                                                @if( Auth::user()->perfil == 'A' )
+                                                @if( trim(Auth::user()->perfil) == 'A' )
                                                     <option value="{{ $tipos['Cliente'] }}" selected > Cliente      </option>
                                                     <option value="{{ $tipos['Empleado'] }}">      Empleado           </option>
 

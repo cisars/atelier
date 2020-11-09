@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <a  href="{{route('usuario.create')}}" class="btn bg-cyan">Nueva Usuario</a>
-                            @if( Auth::user()->perfil == 'A' )
+                            @if( trim(Auth::user()->perfil) == 'A' )
 
                                     <a  href="{{route('usuario.factory')}}" class="btn bg-teal float-right ">Generar Usuario</a>
 {{--                                    <a  href="{{route('usuario_cliente.factory')}}" class="btn bg-teal float-right ">Generar Usuario - Cliente</a>--}}
