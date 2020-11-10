@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM ZZNOMBREZZ </li>
+    <li class="breadcrumb-item active">ABM Modelo </li>
 @stop
 
 @section('content')
@@ -20,13 +20,13 @@
                         <div class="col-md-6">
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear ZZNOMBREZZ</h3>
+                                    <h3 class="card-title">Crear Modelo</h3>
                                 </div>
                                 <form
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('ZZnombreZZ.store') }}">
+                                    action  ="{{ route('modelo.store') }}">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
@@ -36,17 +36,38 @@
                                                    name     = "descripcion"
                                                    id       = "descripcion"
                                                    value    = "{{ old('descripcion') }}"
-                                                   placeholder="Introduzca descripcion para la ZZnombreZZ nueva">
+                                                   placeholder="Introduzca descripcion para la modelo nueva">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="marca">Marca</label>
+                                            <select
+                                                class   ="form-control"
+                                                name    ="marca"
+                                                id      ="marca">
+                                                <option value="">Seleccione marca</option>
+                                                @foreach($marcas as $key => $marca)
+                                                    <option
+                                                        value   ="{{ $marca->marca }}"
+                                                        {{ old('marca') == $marca->marca ? 'selected' : '' }}
+                                                    >{{ $marca->descripcion }}</option>
+                                                @endforeach
+                                            </select>
+                                            @foreach ($errors->get('marca') as $error)
+                                                <span class="text text-danger">{{ $error }}</span>
+                                            @endforeach
+                                        </div>
+
+
                                     </div>
                                     <div class="card-footer">
                                         <button
                                             type    ="submit"
                                             class   ="btn btn-info">Grabar</button>
-                                        <a href="{{ route('ZZnombreZZ.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('modelo.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>
                             </div>

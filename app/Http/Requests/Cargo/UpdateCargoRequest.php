@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Cargo;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 class UpdateCargoRequest extends FormRequest
 {
@@ -24,7 +25,16 @@ class UpdateCargoRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>'required|max:40|unique:cargos,descripcion,' . $this->cargo . ',cargo',
+         //   'descripcion'   =>'required|max:40|unique:cargos,descripcion,' . $this->cargo . ',cargo',
+            'localidad'         =>'required',
+            'descripcion'=>['required',
+                'max:40',
+                Rule::unique('cargos', 'descripcion')
+                    ->ignore($this->cargo, 'cargo')
+                    ->where(function ($query) {
+                        return $query->where('localidad', $this->localidad);
+                    })
+            ],
         ];
     }
 

@@ -5,8 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ModeloController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Modelo/StoreModeloRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Modelo/UpdateModeloRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUpdateBelongsTo1FK" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Modelo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ModeloFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_000756_create_modelos_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/modelo/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/modelo/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/modelo/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/1fkBelongsToController.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/1fkBelongsToController.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/1pkHasManyController.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/1pkHasManyController.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Cargo/StoreCargoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Cargo/StoreCargoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Cargo/UpdateCargoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Cargo/UpdateCargoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUpdate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUpdateHasMany1Pk.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Sucursal/StoreSucursalRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Sucursal/StoreSucursalRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Sucursal/UpdateSucursalRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Sucursal/UpdateSucursalRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Taller/StoreTallerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Taller/StoreTallerRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Taller/UpdateTallerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Taller/UpdateTallerRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Marca.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Marca.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/templates/1FK1BelongsTo/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/templates/1FK1BelongsTo/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/templates/1FK1BelongsTo/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/templates/1FK1BelongsTo/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/templates/1FK1BelongsTo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/templates/1FK1BelongsTo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/templates/1PK2hasMany/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/templates/1PK2hasMany/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/templates/1PK2hasMany/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/templates/1PK2hasMany/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/templates/1PK2hasMany/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/templates/1PK2hasMany/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +259,7 @@
       <workItem from="1603056713112" duration="27921000" />
       <workItem from="1603256355913" duration="131837000" />
       <workItem from="1603994883000" duration="177460000" />
-      <workItem from="1604931495173" duration="23233000" />
+      <workItem from="1604931495173" duration="37707000" />
     </task>
     <task id="LOCAL-00001" summary="Correccion de estructura para los modelos, enviados a la carpeta Models en la raiz (Usuario.php, Empleado.php, CalendarioAtencion.php">
       <created>1600374098496</created>
@@ -561,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604961376879</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Fix menu colores">
+      <created>1604962748354</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1604962748354</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +605,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix de crud Sucursales&#10;- Agregados plantillas controller y views 1FK1BelongsTo 1PK2HasMany" />
     <MESSAGE value="Fix de plantillas&#10;Fix de relaciones Eloquent: &#10;- Localidades, &#10;- Cargos, &#10;- Turnos, &#10;- Grupos, &#10;- Empleados, &#10;- Clientes, &#10;- Sucursales" />
     <MESSAGE value="Nuevo usuario en seed.&#10;Fix estados y tipos por default, generacion automatica de Usuarios cliente y Usuarios empleados.&#10;Crud Empleados.&#10;Crud Usuarios.&#10;Librerias para manejo avanzado de calendario" />
     <MESSAGE value="Usuario listado index fix" />
@@ -594,7 +629,8 @@
     <MESSAGE value="Fix Update Request, no comprobaba campos unicos. Se retiro RULE. Barra de navegacion principal modificada segun interfaces" />
     <MESSAGE value="Fix bootstrap columnas MD card para visualizar en dispositivos moviles.&#10;Crud Unidades agregado" />
     <MESSAGE value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
+    <MESSAGE value="Fix menu colores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix menu colores" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="177" key="#Deployment" timestamp="1600373901178">
@@ -613,6 +649,10 @@
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="223" y="1147" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600193576679" />
+    <state x="481" y="1294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605016407506">
+      <screen x="0" y="1080" width="1536" height="832" />
+    </state>
+    <state x="481" y="1294" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605016407506" />
     <state x="561" y="1080" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604504716839">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -621,16 +661,16 @@
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="499" y="1239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602888417023" />
-    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604948507554">
+    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605025003666">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="624" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600372844715" />
-    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604948507554" />
-    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1604961372540">
+    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605025003666" />
+    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1604962746967">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="479" y="0" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603881390990" />
-    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604961372540" />
+    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604962746967" />
     <state x="545" y="1404" key="ComposerInitDialogKey" timestamp="1604030884628">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -648,10 +688,10 @@
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="349" y="1235" key="IDE.errors.dialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604932639618" />
-    <state x="528" y="1215" key="NewPhpClassDialog" timestamp="1604955595738">
+    <state x="528" y="1215" key="NewPhpClassDialog" timestamp="1604969399821">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
-    <state x="528" y="1215" key="NewPhpClassDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604955595738" />
+    <state x="528" y="1215" key="NewPhpClassDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604969399821" />
     <state x="604" y="1415" key="NewPhpFileDialog" timestamp="1604136689434">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -675,21 +715,21 @@
     </state>
     <state x="733" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600444576668" />
     <state x="586" y="1406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600442368124" />
-    <state x="399" y="1134" width="876" height="730" key="find.popup" timestamp="1604960003941">
+    <state x="399" y="1134" width="876" height="730" key="find.popup" timestamp="1605017940897">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="474" y="32" width="876" height="724" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602165719671" />
     <state x="593" y="40" width="1095" height="913" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604601109250" />
-    <state x="399" y="1134" width="876" height="730" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604960003941" />
+    <state x="399" y="1134" width="876" height="730" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605017940897" />
     <state x="425" y="727" key="run.anything.popup" timestamp="1604519661556">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="425" y="727" key="run.anything.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604519661556" />
-    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup" timestamp="1604957410556">
+    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup" timestamp="1605012758895">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600375080394" />
-    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604957410556" />
+    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605012758895" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

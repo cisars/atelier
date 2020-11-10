@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado de {{('NOMBRE')}}')
+@section('title', 'Listado de ZZNOMBREZZ')
 
 @section('css' )
 
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM {{('NOMBRE')}}es </li>
+    <li class="breadcrumb-item active">ABM ZZNOMBRESZZ </li>
 @stop
 
 @section('content')
@@ -22,15 +22,15 @@
             <div class="col-md-6">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">{{('NOMBRE')}}es   </h3>
+                        <h3 class="card-title">ZZNOMBRESZZ   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('{{('nombre')}}.create')}}" class="btn bg-cyan">Nueva {{('NOMBRE')}}</a>
+                            <a  href="{{route('ZZnombreZZ.create')}}" class="btn bg-cyan">Nueva ZZNOMBREZZ</a>
                             @if( trim(Auth::user()->perfil) == 'A' )
-                            <a  href="{{route('{{('nombre')}}.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                            <a  href="{{route('ZZnombreZZ.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
 
@@ -45,13 +45,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(${{('nombre')}}es as $key => ${{('nombre')}})
+                            @foreach($ZZnombresZZ as $key => $ZZnombreZZ)
                                 <tr>
-                                    <td>{{ ${{('nombre')}}->{{('nombre')}} }}</td>
-                                    <td>{{ ${{('nombre')}}->descripcion }}</td>
+                                    <td>{{ $ZZnombreZZ->ZZnombreZZ }}</td>
+                                    <td>{{ $ZZnombreZZ->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('{{('nombre')}}.edit', ${{('nombre')}}->{{('nombre')}}) }}"
+                                            href="{{ route('ZZnombreZZ.edit', $ZZnombreZZ->ZZnombreZZ) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,15 +59,15 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{${{('nombre')}}->{{('nombre')}}}}"
-                                            data-data   ="{{${{('nombre')}}->{{('nombre')}}}}">
+                                            data-target ="#modal-danger{{$ZZnombreZZ->ZZnombreZZ}}"
+                                            data-data   ="{{$ZZnombreZZ->ZZnombreZZ}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => '{{('nombre')}}',
-                                                'value' => ${{('nombre')}}->{{('nombre')}},
-                                                'ruta'  => '{{('nombre')}}.destroy',
+                                                'pk'   => 'ZZnombreZZ',
+                                                'value' => $ZZnombreZZ->ZZnombreZZ,
+                                                'ruta'  => 'ZZnombreZZ.destroy',
                                             ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)

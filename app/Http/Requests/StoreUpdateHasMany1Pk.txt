@@ -1,36 +1,11 @@
 
-
-<?php
-
-namespace App\Http\Requests\<<NOMBRE>>;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class Store<<NOMBRE>>Request extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'descripcion'       =>'required|max:40|unique:<<nombre>>es,descripcion',
+            'descripcion'       =>'required|max:40|unique:ZZnombresZZ,descripcion',
             'direccion'         =>'required|max:40',
             'telefono'          =>'required|max:12',
-            'email'             =>'required|max:80|unique:<<nombre>>es,email|email',
+            'email'             =>'required|max:80|unique:ZZnombresZZ,email|email',
         ];
     }
 
@@ -58,32 +33,15 @@ class Store<<NOMBRE>>Request extends FormRequest
     }
 }
 
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 UPDATEREQUEST
-
-
-  /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function rules()
     {
         return [
              'descripcion'   =>'required|max:40|unique:unidades,descripcion,' . $this->unidad . ',unidad',
+             'sigla'         =>'required|max:12|unique:unidades,sigla,' . $this->unidad . ',unidad',
         ];
     }
 
@@ -121,61 +79,20 @@ UPDATEREQUEST
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ALTERNATIVA CON PUBLIC FUNCTION RULE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-para una tabla simple hasmany
-    public function rules()
-    {
-        return [
-            'descripcion'   =>'required|max:40|unique:unidades,descripcion,' . $this->unidad . ',unidad',
-            'sigla'         =>'required|max:12|unique:unidades,sigla,' . $this->unidad . ',unidad',
-
-        ];
-    }
-
-
-<?php
-
-namespace App\Http\Requests\<<NOMBRE>>;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class Update<<NOMBRE>>Request extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function campoUnicoSQL($campo)
     {
-        $tabla = '<<nombre>>es';
-        $pk = '<<nombre>>';
+        $tabla = 'ZZnombresZZ';
+        $pk = 'ZZnombreZZ';
 
         Rule::unique($tabla, $campo)
-            ->ignore($this-><<nombre>>, $pk)
+            ->ignore($this->ZZnombreZZ, $pk)
             ->where(function ($query) {
                 return $query
-                    ->where($pk, $this-><<nombre>>);
+                    ->where($pk, $this->ZZnombreZZ);
             });
     }
 

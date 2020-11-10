@@ -23,7 +23,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ClienteSeeder::class);
     }
 }
+
 /**
+ * Creacion de DER diagramas en app que combina con Laravel
+ * https://www.dbdesigner.net/features/
+
 $newEmpleado = factory('App\Models\Empleado')->create();
 $newCliente = factory('App\Models\Cliente')->create();
 $newCalendario = factory('App\Models\CalerndarioAtencion')->create();
@@ -42,8 +46,7 @@ App\Models\Usuario::where('empleado',5)->first();
 
 
 
+*/
 
 
 
-
- */

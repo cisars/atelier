@@ -1,84 +1,84 @@
  public function index()
     {
-        if($<<nombre>>es = <<NOMBRE>>::orderBy('descripcion', 'ASC')->get()){
-            $<<nombre>>es = <<NOMBRE>>::all();
+        if($ZZnombresZZ = ZZNOMBREZZ::orderBy('descripcion', 'ASC')->get()){
+            $ZZnombresZZ = ZZNOMBREZZ::all();
 
-            $<<nombre>>es->each(function($<<nombre>>)
+            $ZZnombresZZ->each(function($ZZnombreZZ)
             {
-                $<<nombre>>-><<fk>> = <<FK>>::find($<<nombre>>-><<fk>>);
+                $ZZnombreZZ-><<fk>> = <<FK>>::find($ZZnombreZZ-><<fk>>);
             });
         }
-        return view('<<nombre>>.index', compact('<<nombre>>es', $<<nombre>>es)); // Lista con BelongsTo
+        return view('ZZnombreZZ.index', compact('ZZnombresZZ', $ZZnombresZZ)); // Lista con BelongsTo
     }
 
     public function create()
     {
-        if($<<nombre>>es = <<NOMBRE>>::orderBy('descripcion', 'ASC')->get())
+        if($ZZnombresZZ = ZZNOMBREZZ::orderBy('descripcion', 'ASC')->get())
         {
             $<<fk>>es = <<FK>>::all();
-            return view('<<nombre>>.create')
-                ->with('<<nombre>>es', $<<nombre>>es)
+            return view('ZZnombreZZ.create')
+                ->with('ZZnombresZZ', $ZZnombresZZ)
                 ->with('<<fk>>es', $<<fk>>es);
         } else {
-            return view('<<nombre>>.create') ;
+            return view('ZZnombreZZ.create') ;
         }
     }
 
     public function factory()
     {
-        factory('App\Models\<<NOMBRE>>')->create();
+        factory('App\Models\ZZNOMBREZZ')->create();
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'success');
     }
 
-    public function store(Store<<NOMBRE>>Request $request)
+    public function store(StoreZZNOMBREZZRequest $request)
     {
-        $<<nombre>> = new <<NOMBRE>>([
+        $ZZnombreZZ = new ZZNOMBREZZ([
             'descripcion' => $request->get('descripcion'),
             '<<fk>>' => $request->get('<<fk>>'),
             'direccion' => $request->get('direccion'),
             'telefono' => $request->get('telefono'),
         ]);
-        $<<nombre>>->save();
+        $ZZnombreZZ->save();
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'info');
     }
 
-    public function show(<<NOMBRE>> $<<nombre>>)
+    public function show(ZZNOMBREZZ $ZZnombreZZ)
     {
         //
     }
 
-    public function edit(<<NOMBRE>> $<<nombre>>)
+    public function edit(ZZNOMBREZZ $ZZnombreZZ)
     {
         $<<fk>>es = <<FK>>::orderBy('descripcion', 'ASC')->get();
-        return view('<<nombre>>.edit')
-            ->with('<<nombre>>',$<<nombre>>)
+        return view('ZZnombreZZ.edit')
+            ->with('ZZnombreZZ',$ZZnombreZZ)
             ->with('<<fk>>es',$<<fk>>es);
     }
 
-    public function update(Update<<NOMBRE>>Request $request, <<NOMBRE>> $<<nombre>>)
+    public function update(UpdateZZNOMBREZZRequest $request, ZZNOMBREZZ $ZZnombreZZ)
     {
-        $<<nombre>>->fill($request->all());
-        $<<nombre>>->save();
+        $ZZnombreZZ->fill($request->all());
+        $ZZnombreZZ->save();
 
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Actualizado Correctamente')
             ->with('type', 'info');
     }
 
     public function destroy(Request $request)
     {
-        $<<nombre>> = <<NOMBRE>>::findOrFail($request-><<nombre>>);
-        $<<nombre>>->delete();
+        $ZZnombreZZ = ZZNOMBREZZ::findOrFail($request->ZZnombreZZ);
+        $ZZnombreZZ->delete();
 
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Eliminado Correctamente')
             ->with('type', 'danger');
     }

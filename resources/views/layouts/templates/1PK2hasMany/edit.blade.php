@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar {{('NOMBRE')}}')
+@section('title', 'Editar ZZNOMBREZZ')
 
 @section('css' )
 
@@ -21,13 +21,13 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar {{('NOMBRE')}}</h3>
+                                    <h3 class="card-title">Editar ZZNOMBREZZ</h3>
                                 </div>
                                 <form
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('{{('nombre')}}.update', ${{('nombre')}}->{{('nombre')}}) }}"
+                                    action  ="{{ route('ZZnombreZZ.update', $ZZnombreZZ->ZZnombreZZ) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -40,20 +40,20 @@
                                                 type    ="text"
                                                 name    ="descripcion"
                                                 id      ="descripcion"
-                                                value   ="{{ old('descripcion', ${{('nombre')}}->descripcion) }}"
-                                                placeholder="Introduzca nombre de la {{('NOMBRE')}}">
+                                                value   ="{{ old('descripcion', $ZZnombreZZ->descripcion) }}"
+                                                placeholder="Introduzca nombre de la ZZNOMBREZZ">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="{{('nombre')}}">Codigo de {{('NOMBRE')}}</label>
+                                            <label for="ZZnombreZZ">Codigo de ZZNOMBREZZ</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="{{('nombre')}}"
-                                                id      ="{{('nombre')}}" readonly
-                                                value   ="{{ old('{{('nombre')}}', ${{('nombre')}}->{{('nombre')}}) }}"
+                                                name    ="ZZnombreZZ"
+                                                id      ="ZZnombreZZ" readonly
+                                                value   ="{{ old('ZZnombreZZ', $ZZnombreZZ->ZZnombreZZ) }}"
                                                  >
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                         <button
                                             type="submit"
                                             class="btn btn-info">Grabar</button>
-                                        <a href="{{ route('{{('nombre')}}.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('ZZnombreZZ.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>
                             </div>

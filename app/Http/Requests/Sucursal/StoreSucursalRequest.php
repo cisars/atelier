@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Sucursal;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreSucursalRequest extends FormRequest
 {
@@ -24,7 +25,14 @@ class StoreSucursalRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'       =>'required|max:40|unique:sucursales,descripcion',
+            'descripcion'       =>['required',
+                'max:40',
+                Rule::unique('sucursales', 'descripcion')
+                    ->ignore($this->sucursal, 'sucursal')
+                    ->where(function ($query) {
+                        return $query->where('localidad', $this->localidad);
+                    })
+            ],
             'direccion'         =>'required|max:40',
             'telefono'          =>'required|max:12',
             'email'             =>'required|max:80|unique:sucursales,email|email',

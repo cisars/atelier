@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Cargo;
+namespace App\Http\Requests\Modelo;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreCargoRequest extends FormRequest
+class UpdateModeloRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,34 +22,53 @@ class StoreCargoRequest extends FormRequest
      *
      * @return array
      */
+    public function campoUnicoSQL($campo)
+    {
+        $tabla = 'modelos';
+        $pk = 'modelos';
+
+        Rule::unique($tabla, $campo)
+            ->ignore($this->modelo, $pk)
+            ->where(function ($query) {
+                return $query
+                    ->where('marca', $this->marca);
+            });
+    }
     public function rules()
     {
+//        return[
+//            'descripcion'       =>['required','max:40', $this->campoUnicoSQL('descripcion')],
+//
+//        ];
         return [
-         //   'descripcion'       =>'required|max:40|unique:sucursales,descripcion',
-            'localidad'         =>'required',
-            'descripcion'       =>['required',
+            'descripcion'=>['required',
                 'max:40',
-                Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
+                Rule::unique('modelos', 'descripcion')
+                    ->ignore($this->modelo, 'modelo')
                     ->where(function ($query) {
                         return $query->where('marca', $this->marca);
                     })
             ],
         ];
+
+//        return [
+//            'descripcion'   =>'required|max:40|unique:modelos,descripcion,' . $this->modelo . ',modelo',
+//        ];
     }
 
     /**
      * Get the error messages for the defined validation rules.
-     *
+     *'required|max:80|unique:<<tabla>>,<<campo>>'
      * @return array
      */
     public function messages()
     {
         return [
-            'localidad.required'  => 'Debe seleccionar una localidad',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
         ];
     }
+
+
 }

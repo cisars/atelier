@@ -417,7 +417,7 @@ return [
             'label'         => '1/2',
             'label_color'   => 'info',
             'submenu'       => [
-                [ 'icon_color' => 'info',  'can' => ['admin'], 'url'=> 'usuario',  'text' => 'Usuarios', ],
+                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'usuario',  'text' => 'Usuarios', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',        'text' => 'Usuarios de Talleres', ],
             ],
         ],
@@ -479,7 +479,7 @@ return [
             'label_color'   => 'info',
             'submenu'       => [
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'marca',        'text' => 'Marcas', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Modelos', ],
+                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'modelo',       'text' => 'Modelos', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Vehiculos', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'color',        'text' => 'Colores', ],
             ],

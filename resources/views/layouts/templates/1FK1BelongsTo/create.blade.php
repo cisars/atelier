@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM {{('NOMBRE')}} </li>
+    <li class="breadcrumb-item active">ABM ZZNOMBREZZ </li>
 @stop
 
 @section('content')
@@ -20,13 +20,13 @@
                         <div class="col-md-6">
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear {{('NOMBRE')}}</h3>
+                                    <h3 class="card-title">Crear ZZNOMBREZZ</h3>
                                 </div>
                                 <form
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('{{('nombre')}}.store') }}">
+                                    action  ="{{ route('ZZnombreZZ.store') }}">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
@@ -36,27 +36,27 @@
                                                    name     = "descripcion"
                                                    id       = "descripcion"
                                                    value    = "{{ old('descripcion') }}"
-                                                   placeholder="Introduzca descripcion para la {{('nombre')}} nueva">
+                                                   placeholder="Introduzca descripcion para la ZZnombreZZ nueva">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="{{('fk')}}">{{('FK')}}</label>
+                                            <label for="ZZfkZZ">ZZFKZZ</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="{{('fk')}}"
-                                                id      ="{{('fk')}}">
-                                                <option value="">Seleccione {{('fk')}}</option>
-                                                @foreach(${{('fk')}}es as $key => ${{('fk')}})
+                                                name    ="ZZfkZZ"
+                                                id      ="ZZfkZZ">
+                                                <option value="">Seleccione ZZfkZZ</option>
+                                                @foreach($ZZfksZZ as $key => $ZZfkZZ)
                                                     <option
-                                                        value   ="{{ ${{('fk')}}->{{('fk')}} }}"
-                                                        {{ old('{{('fk')}}') == ${{('fk')}}->{{('fk')}} ? 'selected' : '' }}
-                                                    >{{ ${{('fk')}}->descripcion }}</option>
+                                                        value   ="{{ $ZZfkZZ->ZZfkZZ }}"
+                                                        {{ old('ZZfkZZ') == $ZZfkZZ->ZZfkZZ ? 'selected' : '' }}
+                                                    >{{ $ZZfkZZ->descripcion }}</option>
                                                 @endforeach
                                             </select>
-                                            @foreach ($errors->get('{{('fk')}}') as $error)
+                                            @foreach ($errors->get('ZZfkZZ') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
@@ -70,7 +70,7 @@
                                                 name    ="direccion"
                                                 id      ="direccion"
                                                 value   ="{{ old('direccion') }}"
-                                                placeholder="Direccion de la {{('NOMBRE')}}">
+                                                placeholder="Direccion de la ZZNOMBREZZ">
                                             @foreach ($errors->get('direccion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
@@ -81,7 +81,7 @@
                                         <button
                                             type    ="submit"
                                             class   ="btn btn-info">Grabar</button>
-                                        <a href="{{ route('{{('nombre')}}.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('ZZnombreZZ.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>
                             </div>

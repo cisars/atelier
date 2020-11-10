@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar ZZNOMBREZZ')
+@section('title', 'Editar Modelo')
 
 @section('css' )
 
@@ -21,28 +21,28 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar ZZNOMBREZZ</h3>
+                                    <h3 class="card-title">Editar Modelo</h3>
                                 </div>
                                 <form
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('ZZnombreZZ.update', $ZZnombreZZ->ZZnombreZZ) }}"
+                                    action  ="{{ route('modelo.update', $modelo->modelo) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="ZZnombreZZ">Codigo de ZZNOMBREZZ</label>
+                                            <label for="modelo">Codigo de Modelo</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="ZZnombreZZ"
-                                                id      ="ZZnombreZZ" readonly
-                                                value   ="{{ old('ZZnombreZZ', $ZZnombreZZ->ZZnombreZZ) }}"
+                                                name    ="modelo"
+                                                id      ="modelo" readonly
+                                                value   ="{{ old('modelo', $modelo->modelo) }}"
                                             >
-                                            @foreach ($errors->get('ZZnombreZZ') as $error)
+                                            @foreach ($errors->get('modelo') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
@@ -54,49 +54,35 @@
                                                 type    ="text"
                                                 name    ="descripcion"
                                                 id      ="descripcion"
-                                                value   ="{{ old('descripcion', $ZZnombreZZ->descripcion) }}"
-                                                placeholder="Introduzca nombre de la ZZNOMBREZZ">
+                                                value   ="{{ old('descripcion', $modelo->descripcion) }}"
+                                                placeholder="Introduzca nombre de la Modelo">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="ZZfkZZ">ZZFKZZ</label>
+                                            <label for="marca">Marca</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="ZZfkZZ"
-                                                id      ="ZZfkZZ">
-                                                @foreach($ZZfksZZ as $key => $ZZfkZZ)
-                                                    <option value="{{ $ZZfkZZ->ZZfkZZ }}"
-                                                            @if ($ZZnombreZZ->ZZfkZZ == old('ZZfkZZ', $ZZfkZZ->ZZfkZZ))
+                                                name    ="marca"
+                                                id      ="marca">
+                                                @foreach($marcas as $key => $marca)
+                                                    <option value="{{ $marca->marca }}"
+                                                            @if ($modelo->marca == old('marca', $marca->marca))
                                                             selected="selected"
                                                         @endif
-                                                    >{{ $ZZfkZZ->descripcion }}</option>
+                                                    >{{ $marca->descripcion }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="direccion">Direccion</label>
-                                            <input
-                                                class   ="form-control"
-                                                maxlength="40"
-                                                type    ="text"
-                                                name    ="direccion"
-                                                id      ="direccion"
-                                                value   ="{{ old('direccion', $ZZnombreZZ->direccion) }}"
-                                            >
-                                            @foreach ($errors->get('direccion') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
 
                                     </div>
                                     <div class="card-footer">
                                         <button
                                             type="submit"
                                             class="btn btn-info">Grabar</button>
-                                        <a href="{{ route('ZZnombreZZ.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('modelo.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>
                             </div>

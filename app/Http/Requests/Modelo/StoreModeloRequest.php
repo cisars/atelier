@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Cargo;
+namespace App\Http\Requests\Modelo;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCargoRequest extends FormRequest
+class StoreModeloRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,13 @@ class StoreCargoRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-         //   'descripcion'       =>'required|max:40|unique:sucursales,descripcion',
-            'localidad'         =>'required',
+            'marca'             =>'required',
             'descripcion'       =>['required',
                 'max:40',
-                Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
+                Rule::unique('modelos', 'descripcion')
+                    ->ignore($this->modelo, 'modelo')
                     ->where(function ($query) {
                         return $query->where('marca', $this->marca);
                     })
@@ -46,10 +46,10 @@ class StoreCargoRequest extends FormRequest
     public function messages()
     {
         return [
-            'localidad.required'  => 'Debe seleccionar una localidad',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
+            'marca.required'        => 'Debe introducir una marca',
         ];
     }
 }

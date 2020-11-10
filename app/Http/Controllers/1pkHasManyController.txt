@@ -7,8 +7,8 @@ web.php
     adminlte menu
 ---------------------------------------------------------------------
 
-use App\Http\Requests\<<NOMBRE>>\Store<<NOMBRE>>Request;
-use App\Http\Requests\<<NOMBRE>>\Update<<NOMBRE>>Request;
+use App\Http\Requests\ZZNOMBREZZ\StoreZZNOMBREZZRequest;
+use App\Http\Requests\ZZNOMBREZZ\UpdateZZNOMBREZZRequest;
 use Illuminate\Support\Facades\View;
 
 
@@ -16,71 +16,71 @@ use Illuminate\Support\Facades\View;
 
     public function index()
     {
-        $<<nombre>>es = <<NOMBRE>>::all();
-        return View::make('<<nombre>>.index')
-            ->with('<<nombre>>es', $<<nombre>>es);
+        $ZZnombresZZ = ZZNOMBREZZ::all();
+        return View::make('ZZnombreZZ.index')
+            ->with('ZZnombresZZ', $ZZnombresZZ);
     }
     public function create()
     {
-        if($<<nombre>>es = <<NOMBRE>>::orderBy('descripcion', 'ASC')->get())
-        return view('<<nombre>>.create')
-            ->with('<<nombre>>es', $<<nombre>>es);
+        if($ZZnombresZZ = ZZNOMBREZZ::orderBy('descripcion', 'ASC')->get())
+        return view('ZZnombreZZ.create')
+            ->with('ZZnombresZZ', $ZZnombresZZ);
         else
-            return view('<<nombre>>.create') ;
+            return view('ZZnombreZZ.create') ;
     }
 
     public function factory()
     {
-        factory('App\Models\<<NOMBRE>>')->create();
+        factory('App\Models\ZZNOMBREZZ')->create();
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'success');
     }
 
-    public function store(Store<<NOMBRE>>Request $request)
+    public function store(StoreZZNOMBREZZRequest $request)
     {
 
-        $<<nombre>> = new <<NOMBRE>>([
+        $ZZnombreZZ = new ZZNOMBREZZ([
             'descripcion' => $request->get('descripcion')
         ]);
-        $<<nombre>>->save();
+        $ZZnombreZZ->save();
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'info');
     }
 
-    public function show(<<NOMBRE>> $<<nombre>>)
+    public function show(ZZNOMBREZZ $ZZnombreZZ)
     {
         //
     }
 
-    public function edit(<<NOMBRE>> $<<nombre>>)
+    public function edit(ZZNOMBREZZ $ZZnombreZZ)
     {
-        return view('<<nombre>>.edit')
-            ->with('<<nombre>>',$<<nombre>>) ;
+        return view('ZZnombreZZ.edit')
+            ->with('ZZnombreZZ',$ZZnombreZZ) ;
     }
 
-    public function update(Update<<NOMBRE>>Request $request, <<NOMBRE>> $<<nombre>>)
+    public function update(UpdateZZNOMBREZZRequest $request, ZZNOMBREZZ $ZZnombreZZ)
     {
 
-        $<<nombre>>->fill($request->all());
-        $<<nombre>>->save();
+        $ZZnombreZZ->fill($request->all());
+        $ZZnombreZZ->save();
 
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Actualizado Correctamente')
             ->with('type', 'info');
     }
 
     public function destroy(Request $request)
     {
-        $<<nombre>> = <<NOMBRE>>::findOrFail($request-><<nombre>>);
-        $<<nombre>>->delete();
+        $ZZnombreZZ = ZZNOMBREZZ::findOrFail($request->ZZnombreZZ);
+        $ZZnombreZZ->delete();
 
         return redirect()
-            ->route('<<nombre>>.index')
+            ->route('ZZnombreZZ.index')
             ->with('msg', 'Registro Eliminado Correctamente')
             ->with('type', 'danger');
     }

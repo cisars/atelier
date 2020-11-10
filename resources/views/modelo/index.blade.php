@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado de ZZNOMBREZZ')
+@section('title', 'Listado de Modelo')
 
 @section('css' )
 
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM ZZNOMBRESZZ </li>
+    <li class="breadcrumb-item active">ABM Modelos </li>
 @stop
 
 @section('content')
@@ -22,15 +22,15 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">ZZNOMBRESZZ   </h3>
+                        <h3 class="card-title">Modelos   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('ZZnombreZZ.create')}}" class="btn bg-cyan">Nueva ZZNOMBREZZ</a>
+                            <a  href="{{route('modelo.create')}}" class="btn bg-cyan">Nueva Modelo</a>
                             @if( trim(Auth::user()->perfil) == 'A' )
-                            <a  href="{{route('ZZnombreZZ.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                            <a  href="{{route('modelo.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
 
@@ -39,21 +39,19 @@
                             <tr>
                                 <th class="w-10">Codigo </th>
                                 <th class="">Descripcion</th>
-                                <th class="">ZZFKZZ</th>
-                                <th class="">Direccion</th>
+                                <th class="">Marca</th>
                                 <th class="w-10">Accion</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($ZZnombresZZ as $key => $ZZnombreZZ)
+                            @foreach($modelos as $key => $modelo)
                                 <tr>
-                                    <td>{{ $ZZnombreZZ->ZZnombreZZ }}</td>
-                                    <td>{{ $ZZnombreZZ->descripcion }}</td>
-                                    <td>{{ $ZZnombreZZ->ZZfkZZ->descripcion }}</td>
-                                    <td>{{ $ZZnombreZZ->direccion }}</td>
+                                    <td>{{ $modelo->modelo }}</td>
+                                    <td>{{ $modelo->descripcion }}</td>
+                                    <td>{{ $modelo->marca->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('ZZnombreZZ.edit', $ZZnombreZZ->ZZnombreZZ) }}"
+                                            href="{{ route('modelo.edit', $modelo->modelo) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -61,15 +59,15 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$ZZnombreZZ->ZZnombreZZ}}"
-                                            data-data   ="{{$ZZnombreZZ->ZZnombreZZ}}">
+                                            data-target ="#modal-danger{{$modelo->modelo}}"
+                                            data-data   ="{{$modelo->modelo}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'ZZnombreZZ',
-                                                'value' => $ZZnombreZZ->ZZnombreZZ,
-                                                'ruta'  => 'ZZnombreZZ.destroy',
+                                                'pk'   => 'modelo',
+                                                'value' => $modelo->modelo,
+                                                'ruta'  => 'modelo.destroy',
                                             ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)
