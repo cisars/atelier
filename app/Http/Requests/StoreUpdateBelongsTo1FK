@@ -1,7 +1,7 @@
 public function rules()
     {
         return [
-            'marca'             =>'required',
+            'ZZfkZZ'             =>'required',
             'descripcion'       =>['required',
                 'max:40',
                 Rule::unique('ZZnombresZZ', 'descripcion')
@@ -20,9 +20,46 @@ public function rules()
     public function messages()
     {
         return [
+            'ZZfkZZ.required'        => 'Debe introducir una ZZfkZZ',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
-            'marca.required'        => 'Debe introducir una marca',
+        ];
+    }
+
+
+
+////////////////////----------------------------------------------belongsto update request
+
+
+
+   public function rules()
+    {
+        return [
+            'ZZfkZZ'             =>'required',
+            'descripcion'=>['required',
+                'max:40',
+                Rule::unique('ZZnombresZZ', 'descripcion')
+                    ->ignore($this->ZZnombreZZ, 'ZZnombreZZ')
+                    ->where(function ($query) {
+                        return $query->where('ZZfkZZ', $this->ZZfkZZ);
+                    })
+            ],
+        ];
+
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *'required|max:80|unique:<<tabla>>,<<campo>>'
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'ZZfkZZ.required'  => 'Debe seleccionar una ZZfkZZ',
+            'descripcion.required'  => 'Debe introducir una descripcion',
+            'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
+            'descripcion.unique'    => 'El registro ya existe',
         ];
     }

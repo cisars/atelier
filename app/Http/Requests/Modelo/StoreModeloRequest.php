@@ -46,10 +46,10 @@ class StoreModeloRequest extends FormRequest
     public function messages()
     {
         return [
+            'marca.required'        => 'Debe seleccionar una marca',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',
-            'marca.required'        => 'Debe introducir una marca',
         ];
     }
 }

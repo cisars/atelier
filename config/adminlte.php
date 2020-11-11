@@ -432,7 +432,7 @@ return [
             'submenu'       => [
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sucursal',         'text' => 'Sucursales', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'taller',           'text' => 'Talleres', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Sectores', ],
+                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sector',           'text' => 'Sectores', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'cargo',            'text' => 'Cargos', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'empleado',         'text' => 'Empleados', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'turno',            'text' => 'Turnos', ],

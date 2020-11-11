@@ -5,7 +5,7 @@
 
             $ZZnombresZZ->each(function($ZZnombreZZ)
             {
-                $ZZnombreZZ-><<fk>> = <<FK>>::find($ZZnombreZZ-><<fk>>);
+                $ZZnombreZZ->ZZfkZZ = ZZFKZZ::find($ZZnombreZZ->ZZfkZZ);
             });
         }
         return view('ZZnombreZZ.index', compact('ZZnombresZZ', $ZZnombresZZ)); // Lista con BelongsTo
@@ -15,10 +15,10 @@
     {
         if($ZZnombresZZ = ZZNOMBREZZ::orderBy('descripcion', 'ASC')->get())
         {
-            $<<fk>>es = <<FK>>::all();
+            $ZZfksZZ = ZZFKZZ::all();
             return view('ZZnombreZZ.create')
                 ->with('ZZnombresZZ', $ZZnombresZZ)
-                ->with('<<fk>>es', $<<fk>>es);
+                ->with('ZZfksZZ', $ZZfksZZ);
         } else {
             return view('ZZnombreZZ.create') ;
         }
@@ -37,7 +37,7 @@
     {
         $ZZnombreZZ = new ZZNOMBREZZ([
             'descripcion' => $request->get('descripcion'),
-            '<<fk>>' => $request->get('<<fk>>'),
+            'ZZfkZZ' => $request->get('ZZfkZZ'),
             'direccion' => $request->get('direccion'),
             'telefono' => $request->get('telefono'),
         ]);
@@ -55,10 +55,10 @@
 
     public function edit(ZZNOMBREZZ $ZZnombreZZ)
     {
-        $<<fk>>es = <<FK>>::orderBy('descripcion', 'ASC')->get();
+        $ZZfksZZ = ZZFKZZ::orderBy('descripcion', 'ASC')->get();
         return view('ZZnombreZZ.edit')
             ->with('ZZnombreZZ',$ZZnombreZZ)
-            ->with('<<fk>>es',$<<fk>>es);
+            ->with('ZZfksZZ',$ZZfksZZ);
     }
 
     public function update(UpdateZZNOMBREZZRequest $request, ZZNOMBREZZ $ZZnombreZZ)
