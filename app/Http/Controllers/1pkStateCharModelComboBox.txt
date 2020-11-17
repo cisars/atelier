@@ -1,0 +1,87 @@
+  ######VAR#######
+  ZZNOMBREZZ
+  ZZnombreZZ
+  ZZnombresZZ
+  ZZFKZZ
+  ZZfkZZ
+  ZZfksZZ
+  ZZestado1ZZ
+  ZZestado2ZZ
+  ################ <<getEstados>> y <<estados>> quitar <<>>
+
+
+  public function index()
+    {
+        $ZZnombresZZ = ZZNOMBREZZ::all();
+        $ZZnombresZZ->each(function ($ZZnombreZZ) {
+            $ZZnombreZZ->ZZfkZZ = ZZFKZZ::find($ZZnombreZZ->ZZfkZZ);
+
+        //manual    $ZZnombreZZ->ZZestado1ZZ === ZZNOMBREZZ::ZZCONST1ZZ ? $ZZnombreZZ->ZZestado1ZZ = 'Activo' : $ZZnombreZZ->ZZestado1ZZ = 'Inactivo' ;
+        //          $ZZnombreZZ->ZZestado2ZZ === ZZNOMBREZZ::ZZCONST2ZZ ? $ZZnombreZZ->ZZestado2ZZ = 'Casado' : $ZZnombreZZ->ZZestado2ZZ = 'Soltero' ;
+
+           //Recorre y carga cada estado
+            foreach ((new ZZNOMBREZZ())-><<getEstados>>() as $clave=>$valor)
+                trim($$ZZnombreZZ->ZZestado1ZZ) == trim($valor) ? $ZZnombreZZ->ZZestado1ZZ = $clave : NULL ;
+
+
+        });
+        return view('ZZnombreZZ.index', compact('ZZnombresZZ', $ZZnombresZZ));
+    }
+    public function create()
+    {
+        $ZZfksZZ = ZZFKZZ::orderBy('descripcion', 'ASC')->get();
+
+
+        $ZZnombreZZ   = new ZZNOMBREZZ();
+        $<<estados>>    = $ZZnombreZZ-><<getEstados>>();
+
+        return view('ZZnombreZZ.create')
+            ->with('ZZfksZZ', $ZZfksZZ)
+            ->with('ZZnombreZZ', $ZZnombreZZ)
+            ->with('<<estados>>', $<<estados>>);
+    }
+    public function store(StoreZZNOMBREZZRequest $request )
+    {
+        $ZZnombreZZ = new ZZNOMBREZZ($request->all());
+        $ZZnombreZZ->save();
+
+        return redirect()
+            ->route('ZZnombreZZ.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'info');
+    }
+    public function destroy()
+    {
+        //
+    }
+    public function edit(ZZNOMBREZZ $ZZnombreZZ)
+    {
+        $ZZfksZZ = ZZFKZZ::orderBy('descripcion', 'ASC')->get();
+        $cargos = Cargo::orderBy('descripcion', 'ASC')->get();
+        $turnos = Turno::orderBy('descripcion', 'ASC')->get();
+        $grupos = Grupo::orderBy('descripcion', 'ASC')->get();
+        $<<estados>> = $ZZnombreZZ-><<getEstados>>();
+        return view('ZZnombreZZ.edit')
+            ->with('<<estados>>', $<<estados>>)
+            ->with('ZZnombreZZ', $ZZnombreZZ);
+    }
+    public function update(UpdateZZNOMBREZZRequest $request, ZZNOMBREZZ $ZZnombreZZ)
+    {
+
+        $requestData = $request->all();
+        $ZZnombreZZ->fill($requestData);
+        $ZZnombreZZ->save();
+
+        return redirect()
+            ->route('ZZnombreZZ.index')
+            ->with('msg', 'Registro Actualizado Correctamente')
+            ->with('type', 'info');
+    }
+    public function factory()
+    {
+        factory('App\Models\ZZNOMBREZZ')->create();
+        return redirect()
+            ->route('ZZnombreZZ.index')
+            ->with('msg', 'Registro Creado Correctamente')
+            ->with('type', 'success');
+    }

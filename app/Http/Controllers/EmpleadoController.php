@@ -31,7 +31,6 @@ class EmpleadoController extends Controller
             $empleado->estado_civil === Empleado::EMPLEADO_VIUDO        ? $empleado->estado_civil = 'Viudo' : "" ;
             $empleado->sexo === Empleado::EMPLEADO_MASCULINO ? $empleado->sexo = 'Masculino' : $empleado->sexo = 'Femenino' ;
 
-
         });
         return view('empleado.index', compact('empleados', $empleados));
     }

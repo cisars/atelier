@@ -20,7 +20,7 @@ public function rules()
     public function messages()
     {
         return [
-            'ZZfkZZ.required'        => 'Debe introducir una ZZfkZZ',
+            'ZZfkZZ.required'        => 'Debe seleccionar una ZZfkZZ',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',

@@ -32,6 +32,10 @@
         .page-link {
             color: #343a40 !important;
         }
+
+        /* Fix cabecera de listados para que se reajuste al maximizar o reducir la ventana */
+         .dataTables_scrollHeadInner, .table{ width:100%!important; }
+
     </style>
 
 

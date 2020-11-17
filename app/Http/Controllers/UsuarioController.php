@@ -15,9 +15,9 @@ use App\Http\Requests\Usuario\UpdateUsuarioRequest;
 class UsuarioController extends Controller
 {
     private  $newUsuario  ;
+    private  $getEstado  ;
     private  $getPerfil  ;
     private  $getTipo  ;
-    private  $getEstado  ;
     public function index()
     {
 

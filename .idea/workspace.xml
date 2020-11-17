@@ -5,24 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SectorController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Sector/StoreSectorRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Sector/UpdateSectorRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Sector.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/SectorFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_223511_create_sectores_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sector/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sector/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sector/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/1pkStateCharModelComboBox.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/templates/create_miscelanea.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/templates/edit_miscelanea.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/templates/index_miscelanea.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/maquinaria/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/maquinaria/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/maquinaria/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/1fkBelongsToController.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/1fkBelongsToController.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Modelo/StoreModeloRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Modelo/StoreModeloRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Modelo/UpdateModeloRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Modelo/UpdateModeloRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmpleadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmpleadoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaquinariaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaquinariaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/StoreMaquinariaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/StoreMaquinariaRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/UpdateMaquinariaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/UpdateMaquinariaRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUpdateBelongsTo1FK" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUpdateBelongsTo1FK" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUpdateHasMany1Pk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUpdateHasMany1Pk.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Maquinaria.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Maquinaria.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ModeloFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ModeloFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_18_233122_create_sucursales_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_18_233122_create_sucursales_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/MaquinariaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MaquinariaFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_09_201915_create_maquinarias_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_201915_create_maquinarias_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_09_202323_create_maquinarias_tipos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_201914_create_maquinarias_tipos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +191,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/maquinaria_tipo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts/templates" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -197,18 +200,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\partials\modals" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\views" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\pages\charts" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\lang\es" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\auth" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programas\laragon\www\atelier\app\Http\Controllers" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\layouts" />
       <recent name="D:\Programas\laragon\www\atelier\public\js" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\pages\tables" />
       <recent name="D:\Programas\laragon\www\atelier\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programas\laragon\www\atelier\resources\views\layouts\templates" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\partials\modals" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\views" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\pages\charts" />
+      <recent name="D:\Programas\laragon\www\atelier\resources\lang\es" />
     </key>
   </component>
   <component name="RunManager">
@@ -247,14 +251,9 @@
       <workItem from="1603056713112" duration="27921000" />
       <workItem from="1603256355913" duration="131837000" />
       <workItem from="1603994883000" duration="177460000" />
-      <workItem from="1604931495173" duration="46096000" />
-    </task>
-    <task id="LOCAL-00001" summary="Correccion de estructura para los modelos, enviados a la carpeta Models en la raiz (Usuario.php, Empleado.php, CalendarioAtencion.php">
-      <created>1600374098496</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1600374098496</updated>
+      <workItem from="1604931495173" duration="54348000" />
+      <workItem from="1605101394436" duration="580000" />
+      <workItem from="1605110290062" duration="48141000" />
     </task>
     <task id="LOCAL-00002" summary="Acceso de Usuarios con password personalizado, cambiado a clave. No se modificaron datos en VENDOR. Garantiza la portabilidad del proyecto sin sacrificar token y cambios en archivos de solo lectura">
       <created>1600448907660</created>
@@ -592,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605025205343</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Vuelta a Fix request y rules.&#10;Se agrego CRUD Sector">
+      <created>1605054588200</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1605054588200</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +606,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Nuevo usuario en seed.&#10;Fix estados y tipos por default, generacion automatica de Usuarios cliente y Usuarios empleados.&#10;Crud Empleados.&#10;Crud Usuarios.&#10;Librerias para manejo avanzado de calendario" />
     <MESSAGE value="Usuario listado index fix" />
     <MESSAGE value="Usuario factory default 1 activo" />
     <MESSAGE value="Usuario seccion en matenimiento" />
@@ -625,7 +630,8 @@
     <MESSAGE value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
     <MESSAGE value="Fix menu colores" />
     <MESSAGE value="Fix Request para aceptar misma descripcion con distintas claves foraneas.&#10;Fix y update de todos los templates, HasMany, BelongsTo, en controller, request, views&#10;&lt;&lt;nombre&gt;&gt; por ZZnombreZZ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Request para aceptar misma descripcion con distintas claves foraneas.&#10;Fix y update de todos los templates, HasMany, BelongsTo, en controller, request, views&#10;&lt;&lt;nombre&gt;&gt; por ZZnombreZZ" />
+    <MESSAGE value="Vuelta a Fix request y rules.&#10;Se agrego CRUD Sector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vuelta a Fix request y rules.&#10;Se agrego CRUD Sector" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="177" key="#Deployment" timestamp="1600373901178">
@@ -644,10 +650,10 @@
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="223" y="1147" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600193576679" />
-    <state x="481" y="1294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605016407506">
+    <state x="481" y="1294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605295898865">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
-    <state x="481" y="1294" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605016407506" />
+    <state x="481" y="1294" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605295898865" />
     <state x="561" y="1080" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604504716839">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -656,16 +662,16 @@
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="499" y="1239" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602888417023" />
-    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605025003666">
+    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605654246465">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="624" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600372844715" />
-    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605025003666" />
-    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1605025200783">
+    <state x="499" y="1247" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605654246465" />
+    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2" timestamp="1605054584506">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="479" y="0" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603881390990" />
-    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605025200783" />
+    <state x="246" y="1136" width="1135" height="744" key="CommitChangelistDialog2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605054584506" />
     <state x="545" y="1404" key="ComposerInitDialogKey" timestamp="1604030884628">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -675,10 +681,10 @@
     </state>
     <state x="168" y="159" width="1536" height="860" key="DiffContextDialog/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603882148982" />
     <state x="0" y="1080" key="DiffContextDialog/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600448991414" />
-    <state x="549" y="1247" key="FileChooserDialogImpl" timestamp="1604953941915">
+    <state x="549" y="1247" key="FileChooserDialogImpl" timestamp="1605466628920">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
-    <state x="549" y="1247" key="FileChooserDialogImpl/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604953941915" />
+    <state x="549" y="1247" key="FileChooserDialogImpl/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605466628920" />
     <state x="349" y="1235" key="IDE.errors.dialog" timestamp="1604932639618">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
@@ -700,30 +706,30 @@
     </state>
     <state x="346" y="71" key="SettingsEditor/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603215441381" />
     <state x="277" y="1137" key="SettingsEditor/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1602209359352" />
-    <state x="442" y="1282" key="Vcs.Push.Dialog.v2" timestamp="1604567919639">
+    <state x="442" y="1282" key="Vcs.Push.Dialog.v2" timestamp="1605197792606">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603881507503" />
-    <state x="442" y="1282" key="Vcs.Push.Dialog.v2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1604567919639" />
+    <state x="442" y="1282" key="Vcs.Push.Dialog.v2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605197792606" />
     <state x="733" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600444576668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="733" y="408" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600444576668" />
     <state x="586" y="1406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1600442368124" />
-    <state x="399" y="1134" width="876" height="730" key="find.popup" timestamp="1605051621116">
+    <state x="399" y="1134" width="876" height="730" key="find.popup" timestamp="1605533090612">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="474" y="32" width="876" height="724" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602165719671" />
     <state x="593" y="40" width="1095" height="913" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1604601109250" />
-    <state x="399" y="1134" width="876" height="730" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605051621116" />
-    <state x="425" y="727" key="run.anything.popup" timestamp="1605049241069">
+    <state x="399" y="1134" width="876" height="730" key="find.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605533090612" />
+    <state x="425" y="727" key="run.anything.popup" timestamp="1605534414184">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="425" y="727" key="run.anything.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605049241069" />
-    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup" timestamp="1605052479749">
+    <state x="425" y="727" key="run.anything.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605534414184" />
+    <state x="431" y="1233" width="711" height="295" key="search.everywhere.popup" timestamp="1605533084400">
       <screen x="0" y="1080" width="1536" height="832" />
     </state>
     <state x="539" y="191" width="840" height="848" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600375080394" />
-    <state x="431" y="1233" width="672" height="346" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605052479749" />
+    <state x="431" y="1233" width="711" height="295" key="search.everywhere.popup/0.1080.1536.832/0.0.1920.1040@0.1080.1536.832" timestamp="1605533084400" />
   </component>
 </project>

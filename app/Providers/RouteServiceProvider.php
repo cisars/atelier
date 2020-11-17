@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Maquinaria;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +32,19 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
+
+        // Route::model('maquinaria', Maquinaria::class);
+//        Route::bind('maquinarium', function ($value) {
+//            dd(Maquinaria::where('maquinaria', $value)->first());
+//            return Maquinaria::where('maquinaria', $value)->first() ?? abort('hola');
+//        });
+
+        Route::bind('maquinarium', function ($value) {
+            return Maquinaria::where('maquinaria', $value)->first() ?? Route::bind('maquinaria', function ($value) {
+                    return Maquinaria::where('maquinaria', $value)->first() ?? abort(dd('error bind maquinarium'));
+                });
+        });
     }
 
     /**

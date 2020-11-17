@@ -427,7 +427,7 @@ return [
             'icon'          => 'fas fa-fw fa-building',
             'icon_color'    => 'maroon',
             'can'           => ['admin' ],
-            'label'         => '7/12',
+            'label'         => '9/12',
             'label_color'   => 'info',
             'submenu'       => [
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sucursal',         'text' => 'Sucursales', ],
@@ -438,7 +438,7 @@ return [
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'turno',            'text' => 'Turnos', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'grupo',            'text' => 'Grupos de trabajos', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'maquinaria_tipo',  'text' => 'Tipo de Maquinaria', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Maquinarias', ],
+                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'maquinaria',       'text' => 'Maquinarias', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Asignacion a Maquinarias', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Feriados Laborales', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Calendarios Reservas', ],
