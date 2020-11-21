@@ -17,8 +17,8 @@ $factory->define(Vehiculo::class, function (Faker $faker) {
         'chapa' => substr($faker->bankAccountNumber, 0,11) ,
         'chasis' => substr($faker->bankAccountNumber, 0,11) ,
         'color'  => \App\Models\Color::inRandomOrder()->first()->color,
-        'combustion' => Vehiculo::COMBUSTION_UNO,
-        'tipo' => Vehiculo::TIPO_UNO,
+        'combustion' => (new Vehiculo)->getCombustiones()[array_rand( (new Vehiculo)->getCombustiones())],
+        'tipo' => (new Vehiculo)->getTipos()[array_rand( (new Vehiculo)->getTipos())],
         'año' => $faker->numberBetween(1950,2020),
     ];
 });

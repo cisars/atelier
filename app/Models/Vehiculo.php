@@ -10,25 +10,72 @@ class Vehiculo extends Model
     protected $primaryKey = 'vehiculo';
     protected $guarded = [];
 
-    //Combustion
-    const COMBUSTION_UNO = 'x';
-    const COMBUSTION_DOS = 'y';
+    //Combustion Gasoil, Diesel, Alcohol, Flex, Eléctrico, Gas
+    const COMBUSTION_GASOIL = 'N';
+    const COMBUSTION_DIESEL = 'D';
+    const COMBUSTION_ALCOHOL = 'A';
+    const COMBUSTION_FLEX = 'F';
+    const COMBUSTION_ELECTRICO = 'E';
+    const COMBUSTION_GAS = 'G';
+    const COMBUSTION_HIDROGENO = 'H';
+
     //Tipo
-    const TIPO_UNO = 'u';
-    const TIPO_DOS = 'd';
+    const TIPO_SUBCOMPACTO 		= 'a';
+    const TIPO_HATCHBACK 		= 'b';
+    const TIPO_FAMILIAR 		= 'c';
+    const TIPO_SEDAN 			= 'd';
+    const TIPO_BERLINA 			= 'e';
+    const TIPO_DESCAPOTABLE 	= 'f';
+    const TIPO_COUPE 			= 'g';
+    const TIPO_MUSCLE  			= 'h';
+    const TIPO_DEPORTIVOS 		= 'i';
+    const TIPO_SUPERDEPORTIVOS 	= 'j';
+    const TIPO_HYPERCAR 		= 'k';
+    const TIPO_MEGAGT 			= 'l';
+    const TIPO_MONOVOLUMEN 		= 'm';
+    const TIPO_TODOTERRENO 		= 'n';
+    const TIPO_SUV 				= 'o';
+    const TIPO_CROSSOVER 		= 'p';
+    const TIPO_COMERCIAL 		= 'q';
+    const TIPO_AUTOCARAVANA 	= 'r';
+    const TIPO_PICKUP 			= 's';
+    const TIPO_CLASICOS 		= 't';
 
     public function getCombustiones()
     {
         return $combustiones = [
-            'COMBUSTION_UNO' => Vehiculo::COMBUSTION_UNO,
-            'COMBUSTION_DOS' => Vehiculo::COMBUSTION_DOS,
+            'Nafta'      => Vehiculo::COMBUSTION_GASOIL,
+            'Diesel'     => Vehiculo::COMBUSTION_DIESEL,
+            'Alcohol'    => Vehiculo::COMBUSTION_ALCOHOL,
+            'Flex'       => Vehiculo::COMBUSTION_FLEX,
+            'Electrico'  => Vehiculo::COMBUSTION_ELECTRICO,
+            'Gas'        => Vehiculo::COMBUSTION_GAS,
+            'Hidrogeno'  => Vehiculo::COMBUSTION_HIDROGENO,
         ];
     }
     public function getTipos()
     {
         return $tipos = [
-            'TIPO_UNO' => Vehiculo::TIPO_UNO,
-            'TIPO_DOS' => Vehiculo::TIPO_DOS,
+            'Subcompacto' 		=> Vehiculo::TIPO_SUBCOMPACTO 	,
+            'Hatchback' 		=> Vehiculo::TIPO_HATCHBACK 	,
+            'Familiar' 			=> Vehiculo::TIPO_FAMILIAR 		,
+            'Sedan' 			=> Vehiculo::TIPO_SEDAN 		,
+            'Berlina' 			=> Vehiculo::TIPO_BERLINA 		,
+            'Descapotable' 		=> Vehiculo::TIPO_DESCAPOTABLE 	,
+            'Coupe' 			=> Vehiculo::TIPO_COUPE 		,
+            'Muscle' 			=> Vehiculo::TIPO_MUSCLE  		,
+            'Deportivos' 		=> Vehiculo::TIPO_DEPORTIVOS 	,
+            'Superdeportivos' 	=> Vehiculo::TIPO_SUPERDEPORTIVOS,
+            'Hypercar' 			=> Vehiculo::TIPO_HYPERCAR 		,
+            'Mega Gt' 			=> Vehiculo::TIPO_MEGAGT 		,
+            'Monovolumen' 		=> Vehiculo::TIPO_MONOVOLUMEN	,
+            'Todoterreno' 		=> Vehiculo::TIPO_TODOTERRENO	,
+            'Suv' 				=> Vehiculo::TIPO_SUV 			,
+            'Crossover' 		=> Vehiculo::TIPO_CROSSOVER 	,
+            'Comercial' 		=> Vehiculo::TIPO_COMERCIAL 	,
+            'Autocaravana' 		=> Vehiculo::TIPO_AUTOCARAVANA 	,
+            'Pick Up' 			=> Vehiculo::TIPO_PICKUP 		,
+            'Clasicos' 			=> Vehiculo::TIPO_CLASICOS 		,
         ];
     }
 
