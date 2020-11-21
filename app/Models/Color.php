@@ -10,8 +10,8 @@ class Color extends Model
     protected $primaryKey = 'color';
     //protected $fillable = [];
     protected $guarded = [];
-//    public function vehiculos()
-//    {
-//        return $this->hasMany(Vehiculo::class, 'vehiculo', 'vehiculo');
-//    }
+    public function vehiculos()
+    {
+        return $this->hasMany(Vehiculo::class, 'color', 'color');
+    }
 }

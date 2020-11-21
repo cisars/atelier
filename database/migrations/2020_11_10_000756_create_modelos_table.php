@@ -14,7 +14,7 @@ class CreateModelosTable extends Migration
     public function up()
     {
         Schema::create('modelos', function (Blueprint $table) {
-            $table->tinyInteger('modelo',true);
+            $table->tinyInteger('modelo',true)->unsigned();
             $table->unsignedTinyInteger('marca')->nullable();
             $table->string('descripcion','40')->nullable();
 

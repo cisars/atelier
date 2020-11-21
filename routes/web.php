@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/sintoma/factory', 'SintomaController@factory')->name('sintoma.factory');
     Route::get('/modelo/factory', 'ModeloController@factory')->name('modelo.factory');
     Route::get('/sector/factory', 'SectorController@factory')->name('sector.factory');
+    Route::get('/vehiculo/factory', 'VehiculoController@factory')->name('vehiculo.factory');
 
     //Validaciones request
     Route::resource('localidad', 'LocalidadController');
@@ -78,7 +79,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('maquinaria_tipo', 'MaquinariaTipoController');
     Route::resource('sintoma', 'SintomaController');
     Route::resource('modelo', 'ModeloController');
-    Route::resource('sector', 'SectorController');
+    Route::resource('vehiculo', 'VehiculoController');
 
 });
 

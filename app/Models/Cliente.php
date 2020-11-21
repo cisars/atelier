@@ -30,10 +30,10 @@ class Cliente extends Model
 //    {
 //        return $this->hasMany(Factura::class, 'cliente', 'cliente');
 //    }
-//    public function vehiculos()
-//    {
-//        return $this->hasMany(Vehiculo::class, 'cliente', 'cliente');
-//    }
+    public function vehiculos()
+    {
+        return $this->hasMany(Vehiculo::class, 'cliente', 'cliente');
+    }
 //    public function Ots()
 //    {
 //        return $this->hasMany(Ot::class, 'cliente', 'cliente');
