@@ -10,7 +10,7 @@ class Sector extends Model
     protected $primaryKey = 'sector';
     //protected $fillable = [];
     protected $guarded = [];
-    public function sucursales()
+    public function sucursal()
     {
         return $this->belongsTo(Sucursal::class, 'sucursal', 'sucursal');
     }

@@ -10,16 +10,16 @@ class Taller extends Model
     protected $primaryKey = 'taller';
     //protected $fillable = [];
     protected $guarded = [];
+
     public function sucursal()
     {
-        return $this->belongsTo(Sucursal::class, 'taller', 'taller');
+        return $this->belongsTo(Sucursal::class, 'sucursal', 'sucursal');
     }
 
-
-//    public function reservas()
-//    {
-//        return $this->hasMany(Reserva::class, 'localidad', 'localidad');
-//    }
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'taller', 'taller');
+    }
 
 //    public function Ots()
 //    {

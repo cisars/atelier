@@ -19,6 +19,6 @@ $factory->define(Vehiculo::class, function (Faker $faker) {
         'color'  => \App\Models\Color::inRandomOrder()->first()->color,
         'combustion' => (new Vehiculo)->getCombustiones()[array_rand( (new Vehiculo)->getCombustiones())],
         'tipo' => (new Vehiculo)->getTipos()[array_rand( (new Vehiculo)->getTipos())],
-        'año' => $faker->numberBetween(1950,2020),
+        'año' => $faker->numberBetween(1990,2020),
     ];
 });

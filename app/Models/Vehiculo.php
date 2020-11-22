@@ -10,7 +10,7 @@ class Vehiculo extends Model
     protected $primaryKey = 'vehiculo';
     protected $guarded = [];
 
-    //Combustion Gasoil, Diesel, Alcohol, Flex, Eléctrico, Gas
+    //Combustion
     const COMBUSTION_GASOIL = 'N';
     const COMBUSTION_DIESEL = 'D';
     const COMBUSTION_ALCOHOL = 'A';
@@ -79,10 +79,10 @@ class Vehiculo extends Model
         ];
     }
 
-//    public function reservas()
-//    {
-//        return $this->hasMany(Reserva::class, 'vehiculo', 'vehiculo');
-//    }
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'vehiculo', 'vehiculo');
+    }
 //    public function entregas()
 //    {
 //        return $this->hasMany(Entregas::class, 'vehiculo', 'vehiculo');

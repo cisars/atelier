@@ -14,7 +14,7 @@ class CreateTalleresTable extends Migration
     public function up()
     {
         Schema::create('talleres', function (Blueprint $table) {
-            $table->tinyInteger('taller',true);
+            $table->tinyInteger('taller',true)->unsigned();
             $table->smallInteger('localidad')->nullable();
             $table->string('descripcion','40')->nullable();
             $table->string('direccion','80')->nullable();

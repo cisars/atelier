@@ -94,10 +94,10 @@ class Usuario extends Authenticatable
         return $this->hasMany(CalendarioAtencion::class, 'usuario', 'usuario');
     }
 
-//    public function reservas()
-//    {
-//        return $this->hasMany(Reserva::class, 'usuario', 'usuario');
-//    }
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'usuario', 'usuario');
+    }
 
 //    public function usuarios_talleres()
 //    {

@@ -38,8 +38,8 @@ class Cliente extends Model
 //    {
 //        return $this->hasMany(Ot::class, 'cliente', 'cliente');
 //    }
-//    public function reservas()
-//    {
-//        return $this->hasMany(Reserva::class, 'cliente', 'cliente');
-//    }
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'cliente', 'cliente');
+    }
 }

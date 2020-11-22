@@ -492,7 +492,7 @@ return [
             'label'         => '1/8',
             'label_color'   => 'info',
             'submenu'       => [
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Reservas', ],
+                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'reserva',      'text' => 'Reservas', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Recepcion de Vehiculos', ],
                 [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sintoma',      'text' => 'Sintomas', ],
                 [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Ordenes de Trabajo', ],
