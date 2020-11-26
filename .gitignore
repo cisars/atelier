@@ -3,6 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/app/Http/Controllers/_template/*
+/resources/views/layouts/_template/*
+/app/Http/Requests/_template/*
 .env
 .env.backup
 .phpunit.result.cache

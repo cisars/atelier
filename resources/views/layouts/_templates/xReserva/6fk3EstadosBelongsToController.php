@@ -1,20 +1,3 @@
-################################################VARs#################################################
-Reserva
-reservas
-reserva
-
-Taller     -       talleres        -       taller
-Cliente     -       clientes        -       cliente
-Vehiculo     -       vehiculos        -       vehiculo
-Empleado     -       empleados        -       empleado
-Usuario     -       usuarios        -       usuario
-ZZFK6ZZ     -       ZZfks6ZZ        -       ZZfk6ZZ
-
-ZZESTADO1ZZ     -   ZZestado1ZZ    -    ZZestados1ZZ    -   getEstados    -    estados
-ZZESTADO2ZZ     -   ZZestado2ZZ    -    ZZestados2ZZ    -   getFormas    -    formas_reservas
-ZZESTADO3ZZ     -   ZZestado3ZZ    -    ZZestados3ZZ    -   getPrioridades    -    prioridades
-################################################VARs#################################################
-
 <?php
 
 namespace App\Http\Controllers;

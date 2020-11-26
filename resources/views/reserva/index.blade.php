@@ -52,14 +52,14 @@
                                 <th class="">Usuario</th>
                                 <th class="w-10">Accion</th>
                             </tr>
-                            </thead>
+                            </thead>descripcion
                             <tbody>
                             @foreach($reservas as $key => $reserva)
                                 <tr>
                                     <td>{{ $reserva->reserva }}</td>
                                     <td>{{ $reserva->taller->descripcion }}</td>
                                     <td>{{ $reserva->cliente->razon_social }}</td>
-                                    <td>{{ $reserva->vehiculo->modelo->descripcion }}</td>
+                                    <td>{{ $reserva->vehiculo->modelo->descripcion  }}</td>
                                     <td>{{ $reserva->fecha }}</td>
                                     <td>{{ $reserva->para_fecha }}</td>
                                     <td>{{ $reserva->empleado->apellidos . ', ' . $reserva->empleado->nombres }}</td>

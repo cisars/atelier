@@ -30,7 +30,10 @@ class CreateCalendariosAtencionesTable extends Migration
             //$table->primary(['calendario_atencion']);
             $table->foreign('usuario')
                 ->references('usuario')
-                ->on('usuarios');
+                ->on('usuarios')
+                ->onDelete('cascade')
+                ->onUpdate('cascade')
+            ;
 
         });
     }

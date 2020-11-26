@@ -25,7 +25,7 @@ class ReservaController extends Controller
             $reserva->taller = Taller::find($reserva->taller);
             $reserva->cliente = Cliente::find($reserva->cliente);
             $reserva->vehiculo = Vehiculo::find($reserva->vehiculo);
-                $reserva->vehiculo->modelo = Modelo::find($reserva->vehiculo->modelo);
+                 $reserva->vehiculo->modelo = Modelo::find($reserva->vehiculo->modelo);
 
             $reserva->empleado = Empleado::find($reserva->empleado);
             $reserva->usuario = Usuario::find($reserva->usuario);
@@ -115,6 +115,7 @@ class ReservaController extends Controller
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
         $vehiculos = Vehiculo::all();
+        $modelos = Modelo::all();
         $empleados = Empleado::orderBy('apellidos', 'ASC')->get();
         $usuarios = Usuario::orderBy('usuario', 'ASC')->get();
 
@@ -127,6 +128,7 @@ class ReservaController extends Controller
             ->with('talleres',$talleres)
             ->with('clientes',$clientes)
             ->with('vehiculos',$vehiculos)
+            ->with('modelos',$modelos)
             ->with('empleados',$empleados)
             ->with('usuarios',$usuarios)
             ->with('estados', $estados)

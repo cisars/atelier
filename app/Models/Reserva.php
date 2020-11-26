@@ -69,7 +69,14 @@ class Reserva extends Model
     public function vehiculo()
     {
         return $this->belongsTo(Vehiculo::class, 'vehiculo', 'vehiculo');
+//        return $this->belongsToMany(Vehiculo::class, 'vehiculo', 'vehiculo')
+//            ->using(Modelo::class )
+//            ->withPivot([
+//                'vehiculo',
+//            ]);
     }
+
+
 
 //    public function recepciones()
 //    {

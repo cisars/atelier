@@ -82,7 +82,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
+{{ dd($reserva->vehiculo)}}
                                         {{-- FK3 Select--}}
                                         <div class="form-group">
                                             <label for="vehiculo">Vehiculo</label>
@@ -90,12 +90,12 @@
                                                 class   ="form-control"
                                                 name    ="vehiculo"
                                                 id      ="vehiculo">
-                                                @foreach($vehiculos as $key => $vehiculo)
-                                                    <option value="{{ $vehiculo->vehiculo }}"
-                                                            @if ($reserva->vehiculo == old('vehiculo', $vehiculo->vehiculo))
+                                                @foreach($modelos as $key => $modelo)
+                                                    <option value="{{ $modelo->modelo }}"
+                                                            @if ($reserva->vehiculo->modelo == old('vehiculo', $modelo->modelo))
                                                             selected="selected"
                                                         @endif
-                                                    >{{ $vehiculo->modelo }}</option>
+                                                    >{{ $modelo->descripcion }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
