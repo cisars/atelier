@@ -99,6 +99,11 @@ Route::group(['middleware' => ['auth']], function (){
 // Resources/views/vendor/adminlte/pages agregados a mano
 Route::view('/usuario.email.check', 'usuario.email.check')->name('usuario.email.check');
 
+
+Route::get('/inicio',  'BootstrapExampleController@inicio')->name('inicio');
+Route::get('/enviartodo',  'BootstrapExampleController@enviartodo')->name('enviartodo');
+
+
 Route::get('/chartjs',  'BootstrapExampleController@chartjs')->name('chartjs');
 Route::get('/flot',     'BootstrapExampleController@flot')->name('flot');
 Route::get('/inline',   'BootstrapExampleController@inline')->name('inline');

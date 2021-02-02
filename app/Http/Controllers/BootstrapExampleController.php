@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CierreOt;
+use App\Mail\ConfirmacionOt;
+use App\Mail\EntregaVehiculo;
+use App\Mail\RealizacionOt;
+use App\Mail\Registrarse;
+use App\Mail\VerificacionOt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BootstrapExampleController extends Controller
 {
@@ -29,4 +36,21 @@ class BootstrapExampleController extends Controller
     {
         return view('vendor/adminlte/pages/tables/data');
     }
+
+
+    public function inicio()
+    {
+        return view('vendor/adminlte/pages/examples/inicio');
+    }
+
+    public function enviartodo()
+    {
+        Mail::to('cisarcode@gmail.com')->send( new RealizacionOt());
+
+
+        return view('home');
+
+    }
+
+
 }

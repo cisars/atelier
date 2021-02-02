@@ -449,6 +449,7 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Feriados Laborales',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_calendarioatencionc', 'text' => 'Calendarios Reservas',],
 
+
                 [
                     'submenu' => [
                         [ 'url' => 'sucursal/create'],
@@ -535,7 +536,7 @@ return [
             //'label'         => '1/8',
             'label_color' => 'info',
             'submenu' => [
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'reserva', 'text' => 'Reservas',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_reservanormal', 'text' => 'Reserva',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Sintomas de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_recepcionvehiculo', 'text' => 'Recepcion de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_confirmacionot', 'text' => 'Confirmacion de OTs',],
@@ -547,6 +548,7 @@ return [
                 [
                     'submenu' => [
                         [ 'url' => 'reserva/create'],
+                        [ 'url' => '_reservanormalc'],
                         [ 'url' => 'sintoma/create'],
                         [ 'url' => '_recepcionvehiculoc'],
                         [ 'url' => '_confirmacionotc'],
@@ -570,7 +572,7 @@ return [
             'submenu' => [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_entradarepuesto', 'text' => 'Entrada de Repuestos',],
 //                [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Salida de Repuestos', ],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Stock de Manejo',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informestock.pdf', 'text' => 'Stock de Manejo', 'target'  => '_blank'],
                 [
                     'submenu' => [
                         [ 'url' => '_entradarepuestoc'],
@@ -587,13 +589,13 @@ return [
             // 'label'         => '0/9',
             'label_color' => 'info',
             'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informeentregas.pdf', 'text' => 'Entregas de Vehiculos', 'target'  => '_blank'],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informereservas.pdf', 'text' => 'Reservas', 'target'  => '_blank'],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informeordenes.pdf', 'text' => 'Ordenes de Trabajo', 'target'  => '_blank'],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Usuarios del Sistema',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Accesos de Usuarios',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Auditorias del Sistema',],
-                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Reservas',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Recepciones de Vehiculos',],
-                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Ordenes de Trabajo',],
-                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Entregas de Vehiculos',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Entregas de Repuestos',],
                 [
                     'submenu' => [

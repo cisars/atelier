@@ -44,16 +44,18 @@
                                 <td class="content-cell" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
                                     <br />
                                     <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #ab0a4e; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">
-                                        Entrega de Vehículo  </h1>
+                                        Realización de Orden de Trabajo  </h1>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
                                         Señor Isaias Silva, <br>
 
-                                        Le informamos que su vehículo Toyota Platz ha sido retirado del taller.
-                                        Esperamos que haya sido de su agrado nuestro servicio y lo esperamos cuando ud. necesite.
+                                        Taller Atelier le informa que ya se finalizaron los servicios de su vehículo.
+                                        El mismo pasará ahora a verificación. Será informado en breve sobre los avances.
                                     </p>
 
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Gracias,<br>
                                         Atelier</p>
+
+
 
                                 </td>
                             </tr>

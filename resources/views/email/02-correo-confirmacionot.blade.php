@@ -30,7 +30,7 @@
                 <tr>
                     <td class="header" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 25px 0; text-align: center;">
                         <a href="http://localhost" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #ffffff; font-size: 19px; font-weight: bold; text-decoration: none; display: inline-block;">
-                            .: Taller Atelier :.
+                           .: Taller Atelier :.
                         </a>
                     </td>
                 </tr>
@@ -44,16 +44,17 @@
                                 <td class="content-cell" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
                                     <br />
                                     <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #ab0a4e; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">
-                                        Entrega de Vehículo  </h1>
+                                         Confirmacion de Orden de Trabajo  </h1>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
                                         Señor Isaias Silva, <br>
 
-                                        Le informamos que su vehículo Toyota Platz ha sido retirado del taller.
-                                        Esperamos que haya sido de su agrado nuestro servicio y lo esperamos cuando ud. necesite.
+                                        El Taller Atelier le confirma que Ud. acepto el presupuesto de los servicios. Será informado en breve sobre los avances.
                                     </p>
 
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Gracias,<br>
                                         Atelier</p>
+
+
 
                                 </td>
                             </tr>
