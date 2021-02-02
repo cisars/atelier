@@ -57,7 +57,7 @@
 
 
 
-{{--                                    nowrap d-table--}}
+                                    {{--                                    nowrap d-table--}}
                                     <table class="table table-sm table-hover " >
                                         <thead class="">
                                         <tr>
@@ -84,7 +84,52 @@
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group"> 1
-{{--                                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">--}}
+                                                                {{--                                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">--}}
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td class="cuadrado" >
+                                                <div class="container h-100 btn btn-success">
+                                                    <div class="row h-100 justify-content-center align-items-center">
+                                                        <form class="col-12">
+                                                            <div class="form-group ">
+                                                                Libre
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="cuadrado" >
+                                                <div class="container h-100 btn btn-success">
+                                                    <div class="row h-100 justify-content-center align-items-center">
+                                                        <form class="col-12">
+                                                            <div class="form-group ">
+                                                                Libre
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="cuadrado" >
+                                                <div class="container h-100 btn btn-success">
+                                                    <div class="row h-100 justify-content-center align-items-center">
+                                                        <form class="col-12">
+                                                            <div class="form-group ">
+                                                                Libre
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="cuadrado" >
+                                                <div class="container h-100 btn btn-success">
+                                                    <div class="row h-100 justify-content-center align-items-center">
+                                                        <form class="col-12">
+                                                            <div class="form-group ">
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -142,51 +187,6 @@
                                                         <form class="col-12">
                                                             <div class="form-group ">
                                                                 Libre
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-success">
-                                                    <div class="row h-100 justify-content-center align-items-center">
-                                                        <form class="col-12">
-                                                            <div class="form-group ">
-                                                                Libre
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
-                                                    <div class="row h-100 justify-content-center align-items-center">
-                                                        <form class="col-12">
-                                                            <div class="form-group ">
-                                                                Ocupado
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-success">
-                                                    <div class="row h-100 justify-content-center align-items-center">
-                                                        <form class="col-12">
-                                                            <div class="form-group ">
-                                                                Libre
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
-                                                    <div class="row h-100 justify-content-center align-items-center">
-                                                        <form class="col-12">
-                                                            <div class="form-group ">
-                                                                Ocupado
                                                             </div>
                                                         </form>
                                                     </div>
@@ -308,11 +308,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -413,11 +413,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -481,11 +481,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -608,11 +608,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -631,11 +631,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -781,11 +781,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -863,11 +863,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -908,11 +908,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -931,11 +931,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1013,11 +1013,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1081,11 +1081,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1313,11 +1313,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1358,11 +1358,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1381,11 +1381,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1508,11 +1508,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1531,11 +1531,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1613,11 +1613,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1658,11 +1658,11 @@
                                                 </div>
                                             </td>
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1681,11 +1681,11 @@
                                             </td>
 
                                             <td class="cuadrado" >
-                                                <div class="container h-100 btn btn-danger">
+                                                <div class="container h-100 btn btn-success">
                                                     <div class="row h-100 justify-content-center align-items-center">
                                                         <form class="col-12">
                                                             <div class="form-group ">
-                                                                Ocupado
+                                                                Libre
                                                             </div>
                                                         </form>
                                                     </div>
@@ -1731,10 +1731,7 @@
                                         </tbody>
                                     </table>
                                     <div class="card-footer  ">
-                                        <button
-                                            type="submit"
-                                            class="btn btn-info">Grabar
-                                        </button>
+
                                         <a href="" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
 
