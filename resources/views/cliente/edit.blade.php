@@ -1,21 +1,24 @@
+<?php
+
+// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] Clientes
+// $NOMBRE   = $gen->tabla['ZNOMBREZ'] Cliente
+// $nombres  = $gen->tabla['ZnombresZ'] clientes
+// $nombre   = $gen->tabla['ZnombreZ'] cliente
+//
+// ,
+// GENISA Begin
+?>
 @extends('adminlte::page')
-
-@section('title', 'Cargo')
-
-@section('css' )
-
+@section('title', 'Clientes')
+@section('css')
 @stop
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    @isset($cargo)
-        <li class="breadcrumb-item active"> Editar </li>
-    @else
-        <li class="breadcrumb-item active"> Nuevo </li>
-    @endisset
+    <li class="breadcrumb-item active"> Editar Clientes </li>
 @stop
-
 @section('content')
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -25,53 +28,224 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    @isset($cargo)
-                                        <h3 class="card-title">Editar Cargo</h3>
+                                    @isset($cliente->id)
+                                        <h3 class="card-title">Editar Cliente</h3>
                                     @else
-                                        <h3 class="card-title">Crear Cargo</h3>
+                                        <h3 class="card-title">Crear Clientes</h3>
                                     @endisset
                                 </div>
+
+
                                 <div class="card-body">
-                                    @isset($cargo)
-                                        {!! Form::model($cargo, ['route' => ['cargo.update', $cargo->id], 'method' => 'PATCH']) !!}
+                                    @isset($cliente->id)
+                                        {!! Form::model($cliente, ['route' => ['cliente.update', $cliente->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
-                                            {!! Form::label('id', 'Codigo de Cargo') !!}
+                                            {!! Form::label('id', 'Codigo de Cliente') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                         </div>
                                     @else
                                         {!! Form::open(
                                             ['route' =>
-                                                ['cargo.store' ],
+                                                ['cliente.store' ],
                                                     'method'    => 'post',
                                                     'id'        => 'form',
                                                 ]
                                         ) !!}
                                     @endisset
-{{--                                                                    {{ dd($errors->all() ) }}--}}
-                                    {{--  return back()->route('welcome');--}}
-                                    @csrf
-                                    {{--                                    @method('PATCH')--}}
-                                        <div class="form-group col">
-                                            {!! Form::label('descripcion', 'Descripcion') !!}
-                                            {!! Form::text('descripcion', old('descripcion'), ['class' => 'form-control', 'id' => 'descripcion']) !!}
-                                            @error('descripcion')
-                                            <span class="text text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
 
+                                    {{--<div class="form-row">--}}
+
+                                    {{--Set all function cons base model dropdown list char 1--}}
+
+                                    <div class="form-group col">
+                                        {{--CONST Sociedades - personeria --}}
+                                        {!! Form::label('personeria', 'Personeria') !!} {{--personeria--}}
+                                        {!! Form::select('personeria',
+                                            [
+                                                '0'                             => 'Seleccione Personeria'  ,
+                                                $personerias['Sociedades']           => 'Sociedades' ,
+                                                $personerias['Civiles']           => 'Civiles' ,
+                                                $personerias['Simples ']           => 'Simples ' ,
+                                                $personerias['Fundaciones']           => 'Fundaciones' ,
+                                                $personerias['Entidades']           => 'Entidades' ,
+                                                $personerias['Mutuales']           => 'Mutuales' ,
+                                                $personerias['Cooperativas']           => 'Cooperativas' ,
+                                                {{--  --}}
+                                                $personerias['Consorcios']           => 'Consorcios'
+                                            ],
+                                            old('personeria') ,
+                                            ['class' => 'form-control']
+                                        ) !!}
+                                        @error("personeria")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    <div class="card-footer">
+                                    {{--CONST ------------------------------------ --}}
+
+
+
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Razon Social --}}
+                                        {!! Form::label('razon_social', 'Razon Social') !!}
+                                        {!! Form::text(
+                                            'razon_social',
+                                            old('razon_social') ,
+                                            [
+                                                'maxlength'     => '40',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Razon Social'
+                                            ]) !!}
+                                        @error("razon_social")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT TEXT Razon Social ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Documento --}}
+                                        {!! Form::label('documento', 'Documento') !!}
+                                        {!! Form::text(
+                                            'documento',
+                                            old('documento') ,
+                                            [
+                                                'maxlength'     => '12',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Documento'
+                                            ]) !!}
+                                        @error("documento")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT TEXT Documento ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Direccion --}}
+                                        {!! Form::label('direccion', 'Direccion') !!}
+                                        {!! Form::text(
+                                            'direccion',
+                                            old('direccion') ,
+                                            [
+                                                'maxlength'     => '80',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Direccion'
+                                            ]) !!}
+                                        @error("direccion")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT TEXT Direccion ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--SELECT FK Localidad --}}
+                                        {!! Form::label('localidad_id', 'Localidad') !!}
+                                        {!! Form::select('localidad_id', $localidades->pluck('descripcion', 'id')  ,
+                                            old('localidad_id') ,
+                                            [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Seleccione Localidad']
+                                        ) !!}
+                                        @error("localidad_id")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--SELECT FK Localidad ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Telefono --}}
+                                        {!! Form::label('telefono', 'Telefono') !!}
+                                        {!! Form::text(
+                                            'telefono',
+                                            old('telefono') ,
+                                            [
+                                                'maxlength'     => '20',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Telefono'
+                                            ]) !!}
+                                        @error("telefono")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT TEXT Telefono ------------------------------------ --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Movil --}}
+                                        {!! Form::label('Movil', 'Movil') !!}
+                                        {!! Form::text(
+                                            'Movil',
+                                            old('Movil') ,
+                                            [
+                                                'maxlength'     => '20',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Movil'
+                                            ]) !!}
+                                        @error("Movil")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT TEXT Movil ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--DATE TIMESTAMP Fecha de Nacimiento --}}
+                                        @if (isset($cliente->id))
+                                            {{ $retrieveDate =  date('Y-m-d', strtotime($cliente->fecha_nacimiento ))  }}
+                                        @else
+                                            {{ $retrieveDate = null  }}
+                                        @endif
+                                        <label for="fecha_nacimiento">Fecha de Nacimiento </label>
+                                        <input class    = "form-control"
+                                               type     = "date"
+                                               name     = "fecha_nacimiento"
+                                               id       = "fecha_nacimiento"
+                                               value    = '{{ old('fecha_nacimiento', $retrieveDate )   }}'
+                                               placeholder="Introduzca Fecha de Nacimiento">
+                                        @foreach ($errors->get('fecha_nacimiento') as $error)
+                                            <span class="text text-danger">{{ $error }}</span>
+                                        @endforeach
+                                    </div>
+                                    {{--DATE TIMESTAMP Fecha de Nacimiento------------------------------------ --}}
+
+
+
+                                    {{--</div>--}}
+
+
+                                    <div class="card-footer  ">
                                         <button
                                             type="submit"
                                             class="btn btn-info">Grabar</button>
-                                        <a href="{{ route('cargo.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('cliente.index') }}  " class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
-                                {!! Form::close() !!}
+
+                                    {!! Form::close() !!}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
         </div>
     </div>
@@ -79,5 +253,6 @@
 
 @section('js')
 
+    <script>
+    </script>
 @endsection
-

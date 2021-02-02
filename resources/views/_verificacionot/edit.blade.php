@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Realizacion OT')
+@section('title', 'Verificacion OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item"><a href="/Reservas "> Reservas</a></li>
-    <li class="breadcrumb-item active"> ABM Realizacion OT</li>
+    <li class="breadcrumb-item"><a href="/Reservas "> Verificacion</a></li>
+    <li class="breadcrumb-item active"> ABM Verificacion OT</li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Realizacion OT</h3>
+                                    <h3 class="card-title">Crear Verificacion OT</h3>
                                 </div>
 
 
@@ -117,9 +117,11 @@
                                         <tr>
                                             <th class="">#     </th>
                                             <th class="">Servicio   </th>
-                                            <th class="">Realizado     </th>
+                                            <th class="">Verificado     </th>
                                             <th class="">Fecha   </th>
-                                            <th class="">Mecanico   </th>
+                                            <th class="">Mecanico    </th>
+                                            <th class="">Verificador    </th>
+                                            <th class="">Observacion   </th>
                                             <th class="">Accion   </th>
                                         </tr>
                                         </thead>
@@ -131,6 +133,8 @@
                                             <td> v </td>
                                             <td> 18/01/2021 15:45  </td>
                                             <td> Juan Villalba</td>
+                                            <td> Juan Sosa</td>
+                                            <td> OK </td>
 
 
                                             <td class="">
@@ -158,9 +162,11 @@
                                         <tr class="">
                                             <td>   2 </td>
                                             <td> Cambio de Aceite </td>
-                                            <td> v </td>
+                                            <td> x </td>
                                             <td> 18/01/2021 15:45 </td>
                                             <td> Roque Saucedo  </td>
+                                            <td> Juan Sosa</td>
+                                            <td> Se detecto suciedad  </td>
 
                                             <td class="">
                                                 <a
@@ -190,6 +196,8 @@
                                             <td> v </td>
                                             <td> 18/01/2021 15:45 </td>
                                             <td> Alicia Vera </td>
+                                            <td> Juan Sosa</td>
+                                            <td> OK  </td>
 
                                             <td class="">
                                                 <a

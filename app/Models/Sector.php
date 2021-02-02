@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Sector extends Model
 {
     protected $table = 'sectores';
-    protected $primaryKey = 'sector';
+    //protected $primaryKey = 'sector';
     //protected $fillable = [];
     protected $guarded = [];
     public function sucursal()
     {
-        return $this->belongsTo(Sucursal::class, 'sucursal', 'sucursal');
+        return $this->belongsTo(Sucursal::class, 'sucursal_id' );
     }
 
 //    public function existencias_manejos()

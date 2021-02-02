@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('clasificacion.create')}}" class="btn bg-cyan">Nueva Clasificacion</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
 {{--                            <a  href="{{route('clasificacion.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>--}}
                             <a  href="{{route('clasificacion.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
@@ -48,11 +48,11 @@
                             <tbody>
                             @foreach($clasificaciones as $key => $clasificacion)
                                 <tr>
-                                    <td>{{ $clasificacion->clasificacion }}</td>
+                                    <td>{{ $clasificacion->id }}</td>
                                     <td>{{ $clasificacion->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('clasificacion.edit', $clasificacion->clasificacion) }}"
+                                            href="{{ route('clasificacion.edit', $clasificacion->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -60,14 +60,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$clasificacion->clasificacion}}"
-                                            data-data   ="{{$clasificacion->clasificacion}}">
+                                            data-target ="#modal-danger{{$clasificacion->id}}"
+                                            data-data   ="{{$clasificacion->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'clasificacion',
-                                                'value' => $clasificacion->clasificacion,
+                                                'pk'   => 'id',
+                                                'value' => $clasificacion->id,
                                                 'ruta'  => 'clasificacion.destroy',
                                             ]
                                         ?>

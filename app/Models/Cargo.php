@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Cargo extends Model
 {
     protected $table = 'cargos';
-    protected $primaryKey = 'cargo';
+    //protected $primaryKey = 'cargo';
     //protected $fillable = [];
     protected $guarded = [];
     public function empleados()
     {
-        return $this->hasMany(Empleado::class, 'empleado', 'empleado');
+        return $this->hasMany(Empleado::class, 'cargo_id');
     }
 }

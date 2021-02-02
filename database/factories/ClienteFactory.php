@@ -11,7 +11,7 @@ $factory->define(Cliente::class, function (Faker $faker) {
         'razon_social' => $faker->lastName . ', ' .$faker->firstName,
         'documento' => $faker->numberBetween(700000 , 8000000),
         'direccion' => $faker->address,
-        'localidad'  => \App\Models\Localidad::inRandomOrder()->first()->localidad,
+        'localidad_id'  => \App\Models\Localidad::inRandomOrder()->first()->id,
         'telefono' => '(+59521)'. $faker->numberBetween(333333,999999),
         'movil' => '(+595981)'.$faker->numberBetween(333333,999999),
         'fecha_nacimiento' => $faker->dateTimeBetween('-50 years', '-20 years' ),

@@ -14,7 +14,7 @@ class CreateGruposTable extends Migration
     public function up()
     {
         Schema::create('grupos', function (Blueprint $table) {
-            $table->tinyInteger('grupo_trabajo',true)->unsigned();
+            $table->tinyInteger('id',true)->unsigned();
             $table->string('descripcion',40)->nullable();
             $table->timestamps();
         });

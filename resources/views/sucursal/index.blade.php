@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('sucursal.create')}}" class="btn bg-cyan">Nueva Sucursal</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('sucursal.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,9 +47,10 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             @foreach($sucursales as $key => $sucursal)
                                 <tr>
-                                    <td>{{ $sucursal->sucursal }}</td>
+                                    <td>{{ $sucursal->id }}</td>
                                     <td>{{ $sucursal->descripcion }}</td>
                                     <td>{{ $sucursal->localidad->descripcion }}</td>
                                     <td>{{ $sucursal->direccion }}</td>
@@ -57,7 +58,7 @@
                                     <td>{{ $sucursal->email }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('sucursal.edit', $sucursal->sucursal) }}"
+                                            href="{{ route('sucursal.edit', $sucursal->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -65,14 +66,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$sucursal->sucursal}}"
-                                            data-data   ="{{$sucursal->sucursal}}">
+                                            data-target ="#modal-danger{{$sucursal->id}}"
+                                            data-data   ="{{$sucursal->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'sucursal',
-                                                'value' => $sucursal->sucursal,
+                                                'pk'   => 'id',
+                                                'value' => $sucursal->id,
                                                 'ruta'  => 'sucursal.destroy',
                                             ]
                                         ?>

@@ -14,13 +14,13 @@ class CreateReservasTable extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
-            $table->increments('reserva');
-            $table->unsignedTinyInteger('taller')->nullable();
-            $table->unsignedInteger('cliente')->nullable();
-            $table->unsignedInteger('vehiculo')->nullable();
+            $table->increments('id');
+            $table->unsignedTinyInteger('taller_id')->nullable();
+            $table->unsignedInteger('cliente_id')->nullable();
+            $table->unsignedInteger('vehiculo_id')->nullable();
             $table->timestamp('fecha')->nullable();
             $table->timestamp('para_fecha')->nullable();
-            $table->unsignedInteger('empleado')->nullable();
+            $table->unsignedInteger('empleado_id')->nullable();
             $table->char('estado',1)->nullable();
             $table->char('forma_reserva',1)->nullable();
             $table->char('prioridad',1)->nullable();
@@ -28,17 +28,17 @@ class CreateReservasTable extends Migration
             $table->string('usuario', 255);
 
 
-            $table->foreign('taller')
-                ->references('taller')
+            $table->foreign('taller_id')
+                ->references('id')
                 ->on('talleres');
-            $table->foreign('cliente')
-                ->references('cliente')
+            $table->foreign('cliente_id')
+                ->references('id')
                 ->on('clientes');
-            $table->foreign('vehiculo')
-                ->references('vehiculo')
+            $table->foreign('vehiculo_id')
+                ->references('id')
                 ->on('vehiculos');
-            $table->foreign('empleado')
-                ->references('empleado')
+            $table->foreign('empleado_id')
+                ->references('id')
                 ->on('empleados');
             $table->foreign('usuario')
                 ->references('usuario')

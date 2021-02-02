@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Empleado')
+@section('title', 'Empleado')
 
 @section('css' )
   @stop
@@ -20,60 +20,55 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar Empleado</h3>
+                                    @isset($empleado->id)
+                                        <h3 class="card-title">Editar Empleado</h3>
+                                    @else
+                                        <h3 class="card-title">Crear Empleado</h3>
+                                    @endisset
                                 </div>
-                                <form
-                                    role    ="form"
-                                    id      ="form"
-                                    method  ="POST"
-                                    action  ="{{ route('empleado.update', $empleado->empleado) }}"
-                                >
-                                    {{--  return back()->route('welcome');--}}
-                                    @csrf
-                                    @method('PATCH')
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="empleado">Codigo de Empleado</label>
-                                            <input
-                                                class   ="form-control"
-                                                type    ="text"
-                                                name    ="empleado"
-                                                id      ="empleado" readonly
-                                                value   ="{{ old('empleado', $empleado->empleado) }}"
-                                            >
-                                            @foreach ($errors->get('empleado') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
 
-                                        {{-- form-row 2--}}
+                                <div class="card-body">
+                                    @isset($empleado->id)
+                                        {!! Form::model($empleado, ['route' => ['empleado.update', $empleado->id], 'method' => 'PATCH']) !!}
+                                        <div class="form-group col">
+                                            {!! Form::label('id', 'Codigo de Empleado') !!}
+                                            {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
+
+                                        </div>
+                                    @else
+                                        {!! Form::open(
+                                            ['route' =>
+                                                ['empleado.store' ],
+                                                    'method'    => 'post',
+                                                    'id'        => 'form',
+                                                ]
+                                        ) !!}
+                                    @endisset
+
                                         <div class="form-row">
                                             <div class="form-group col">
-                                                <label for="nombres" >Nombres   </label>
-                                                <input class    = "form-control"
-                                                       maxlength="40"
-                                                       type     = "text"
-                                                       name     = "nombres"
-                                                       id       = "nombres"
-                                                       value    = "{{ old('nombres', $empleado->nombres) }}"
-                                                       placeholder="Introduzca nombres">
-                                                @foreach ($errors->get('nombres') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('nombres', 'Nombres') !!}
+                                                {!! Form::text('nombres', old('nombres'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'nombres',
+                                                    'placeholder'   => 'Nombres',
+                                                ]) !!}
+
+                                                @error('nombres')
+                                                    <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col">
-                                                <label for="apellidos" >Apellidos</label>
-                                                <input class    = "form-control"
-                                                       maxlength="40"
-                                                       type     = "text"
-                                                       name     = "apellidos"
-                                                       id       = "apellidos"
-                                                       value    = "{{ old('apellidos', $empleado->apellidos) }}"
-                                                       placeholder="Introduzca apellidos">
-                                                @foreach ($errors->get('apellidos') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('apellidos', 'Apellidos') !!}
+                                                {!! Form::text('apellidos', old('apellidos'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'apellidos',
+                                                    'placeholder'   => 'Apellidos',
+                                                ]) !!}
+                                                @error('apellidos')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                         </div>
@@ -82,42 +77,32 @@
                                         {{-- form-row 3--}}
                                         <div class="form-row">
                                             <div class="form-group col">
-                                                <label for="ci" >CI</label>
-                                                <input class    = "form-control"
-                                                       maxlength="12"
-                                                       type     = "text"
-                                                       name     = "ci"
-                                                       id       = "ci"
-                                                       value    = "{{ old('ci', $empleado->ci) }}"
-                                                       placeholder="Introduzca ci">
-                                                @foreach ($errors->get('ci') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('ci', 'CI') !!}
+                                                {!! Form::text('ci', old('ci'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'ci',
+                                                    'placeholder'   => 'ci',
+                                                ]) !!}
+                                                @error('ci')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             {{--CONST Estado--}}
                                             <div class="form-group col">
-                                                <label for="estado_civil" >Estado Civil</label>
-                                                <select
-                                                    class   ="form-control"
-                                                    name    ="estado_civil"
-                                                    id      ="estado_civil">
-
-                <option value = "{{ $estadosciviles['Soltero']}}"       {{ $estadosciviles['Soltero'] == old('estado_civil',     $empleado->estado_civil) ? 'selected' : '' }} > Soltero </option>
-                <option value = "{{ $estadosciviles['Casado']}}"        {{ $estadosciviles['Casado'] == old('estado_civil',      $empleado->estado_civil) ? 'selected' : '' }} > Casado </option>
-                <option value = "{{ $estadosciviles['Divorciado']}}"    {{ $estadosciviles['Divorciado'] == old('estado_civil',  $empleado->estado_civil) ? 'selected' : '' }} > Divorciado </option>
-                <option value = "{{ $estadosciviles['Viudo']}}"         {{ $estadosciviles['Viudo'] == old('estado_civil',       $empleado->estado_civil) ? 'selected' : '' }} > Viudo </option>
-
-                                                </select>
-
-                                                @foreach ($errors->get('estado_civil') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('estado_civil', 'Estado Civil') !!}
+                                                {!! Form::select('estado_civil', [
+                                                    '0'      => 'Seleccione Estado Civil'  ,
+                                                    $estadosciviles['Soltero']      => 'Soltero'  ,
+                                                    $estadosciviles['Casado']       => 'Casado'  ,
+                                                    $estadosciviles['Divorciado']   => 'Divorciado'  ,
+                                                    $estadosciviles['Viudo']        => 'Viudo'
+                                                    ]
+                                                    ,$empleado->estado_civil , ['class' => 'form-control']) !!}
+                                                @error("estado_civil")
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
-
-
-
-
 
 
 
@@ -132,84 +117,69 @@
 
 
                                             {{--CONST Sexo--}}
+{{--                                            $pug->ipbans->pluck('ip')->toArray();--}}
+{{--                                            $posts->pluck("title","id")--}}
+{{--                                            $plucked = $collection->pluck('color', 'brand');--}}
+{{--                                            $plucked->all();--}}
                                             <div class="form-group col">
-                                                <label for="sexo" >Sexo</label>
-                                                <select
-                                                    class   ="form-control"
-                                                    name    ="sexo"
-                                                    id      ="sexo">
-                 <option value="{{ $sexos['Masculino']}}"    {{ $sexos['Masculino'] == old('sexo', $empleado->sexo) ? 'selected' : ''  }} > Masculino </option>
-                 <option value="{{ $sexos['Femenino']}}"     {{ $sexos['Femenino'] == old('sexo', $empleado->sexo) ? 'selected' : ''   }} > Femenino </option>
-                                                </select>
-                                                @foreach ($errors->get('sexo') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('sexo', 'Sexo') !!}
+                                                {!! Form::select('sexo', [
+                                                    '0' => 'Seleccione Sexo'  ,
+                                                    $sexos['Masculino'] => 'Masculino'  ,
+                                                    $sexos['Femenino'] =>  'Femenino'
+                                                    ]
+                                                 ,$empleado->sexo , ['class' => 'form-control']) !!}
+                                                @error("sexo")
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         {{--  end form-row--}}
 
                                         <div class="form-group">
-                                            <label for="direccion" >Direccion</label>
-                                            <input class    = "form-control"
-                                                   maxlength="80"
-                                                   type     = "text"
-                                                   name     = "direccion"
-                                                   id       = "direccion"
-                                                   value    = "{{ old('direccion', $empleado->direccion) }}"
-                                                   placeholder="Introduzca direccion">
-                                            @foreach ($errors->get('direccion') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                            {!! Form::label('direccion', 'Direccion') !!}
+                                            {!! Form::text('direccion', old('direccion'), [
+                                                'class'         => 'form-control',
+                                                'id'            => 'direccion',
+                                                'placeholder'   => 'direccion',
+                                            ]) !!}
+                                            @error('direccion')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         {{-- form-row 3--}}
-                                        <div class="form-row ">
-                                            {{--FK Localidad--}}
+                                        <div class="form-row">
                                             <div class="form-group col">
-                                                <label for="localidad" >Localidad</label>
-                                                <select
-                                                    class   ="form-control "
-                                                    name    ="localidad"
-                                                    id      ="localidad">
-                                                    <option value="">Seleccione localidad</option>
-                                                    @foreach($localidades as $key => $localidad)
-                                                         <option value="{{ $localidad->localidad }}"
-                                                             {{ $localidad->localidad  == old('localidad', $empleado->localidad) ? 'selected' : ''  }} >
-                                                             {{ $localidad->descripcion }}
-                                                         </option>
-                                                    @endforeach
-                                                </select>
-                                                @foreach ($errors->get('localidad') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('localidad_id', 'Localidad') !!}
+                                                {!! Form::select('localidad_id', $localidades->pluck('descripcion', 'id')->prepend('Seleccione Localidad') ,$empleado->localidad_id , ['class' => 'form-control']) !!}
+                                                @error("localidad_id")
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col">
-                                                <label for="movil" >Movil</label>
-                                                <input class    = "form-control"
-                                                       maxlength="20"
-                                                       type     = "text"
-                                                       name     = "movil"
-                                                       id       = "movil"
-                                                       value    = "{{ old('movil', $empleado->movil) }}"
-                                                       placeholder="Introduzca movil">
-                                                @foreach ($errors->get('movil') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('movil', 'Movil') !!}
+                                                {!! Form::text('movil', old('movil'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'movil',
+                                                    'placeholder'   => 'movil',
+                                                ]) !!}
+                                                @error('movil')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col">
-                                                <label for="telefono">Telefono   </label>
-                                                <input class    = "form-control"
-                                                       maxlength="20"
-                                                       type     = "text"
-                                                       name     = "telefono"
-                                                       id       = "telefono"
-                                                       value    = "{{ old('telefono', $empleado->telefono)  }}"
-                                                       placeholder="Introduzca telefono">
-                                                @foreach ($errors->get('telefono') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('telefono', 'Telefono') !!}
+                                                {!! Form::text('telefono', old('telefono'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'telefono',
+                                                    'placeholder'   => 'telefono',
+                                                ]) !!}
+                                                @error('telefono')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         {{--  end form-row--}}
@@ -219,65 +189,30 @@
                                         <div class="form-row ">
                                             {{--FK Cargo--}}
                                             <div class="form-group col">
-                                                <label for="cargo" >Cargo</label>
-                                                <select
-                                                    class   ="form-control"
-                                                    name    ="cargo"
-                                                    id      ="cargo">
-                                                    <option value="">Seleccione cargo</option>
-                                                    @foreach($cargos as $key => $cargo)
-                                                        <option value="{{ $cargo->cargo }}"
-                                                            {{ $cargo->cargo  == old('cargo', $empleado->cargo) ? 'selected' : ''  }} >
-                                                            {{ $cargo->descripcion }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @foreach ($errors->get('cargo') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('cargo_id', 'Cargo') !!}
+                                                {!! Form::select('cargo_id', $cargos->pluck('descripcion', 'id')->prepend('Seleccione Cargo') ,$empleado->cargo_id , ['class' => 'form-control']) !!}
+                                                @error("cargo_id")
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
+{{--                                            {{ dd($errors->all() ) }}--}}
                                             {{--FK Turno Empleado--}}
-                                            <div class="form-group col">
-                                                <label for="turno_empleado" >Turno Empleado</label>
-                                                <select
-                                                    class   ="form-control"
-                                                    name    ="turno_empleado"
-                                                    id      ="turno_empleado">
-                                                    <option value="">Seleccione turno de empleado</option>
-                                                    @foreach($turnos as $key => $turno_empleado)
-                                                        <option value="{{ $turno_empleado->turno_empleado }}"
-                                                            {{ $turno_empleado->turno_empleado  == old('cargo', $empleado->turno_empleado) ? 'selected' : ''  }} >
-                                                            {{ $turno_empleado->descripcion }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @foreach ($errors->get('turno_empleado') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                            <div class="form-group">
+                                                {!! Form::label('turno_id', 'Turno') !!}
+                                                {!! Form::select('turno_id', $turnos->pluck('descripcion', 'id')->prepend('Seleccione Turno') ,$empleado->turno_id , ['class' => 'form-control']) !!}
+                                                @error("turno_id")
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
-                                        </div>
-                                        {{--  end form-row--}}
-
 
                                         {{--FK Grupo Trabajo--}}
                                         <div class="form-group">
-                                            <label for="grupo_trabajo" >Grupo de Trabajo</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="grupo_trabajo"
-                                                id      ="grupo_trabajo">
-                                                <option value="">Seleccione grupo de trabajo</option>
-                                                @foreach($grupos as $key => $grupo_trabajo)
-                                                    <option value="{{ $grupo_trabajo->grupo_trabajo }}"
-                                                        {{ $grupo_trabajo->grupo_trabajo  == old('cargo', $empleado->grupo_trabajo) ? 'selected' : ''  }} >
-                                                        {{ $grupo_trabajo->descripcion }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            @foreach ($errors->get('grupo_trabajo') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                            {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
+                                            {!! Form::select('grupo_id', $grupos->pluck('descripcion', 'id')->prepend('Seleccione Grupo') ,$empleado->grupo_id , ['class' => 'form-control']) !!}
+                                            @error("grupo_id")
+                                                <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         {{-- form-row 2--}}
@@ -294,6 +229,26 @@
                                                     <span class="text text-danger">{{ $error }}</span>
                                                 @endforeach
                                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{--                                            {{  dd( $empleado->fecha_nacimiento  )  }}--}}
 {{--                                            {{  dd( $empleado->fecha_ingreso  )  }}--}}
@@ -320,32 +275,28 @@
                                         <div class="form-row">
                                             {{--CONST Estado--}}
                                             <div class="form-group col">
-                                                <label for="estado" >Estado</label>
-                                                <select
-                                                    class   ="form-control"
-                                                    name    ="estado"
-                                                    id      ="estado">
-                                                    <option value="{{ $estados['Activo'] }}" selected > Activo   </option>
-                                                    <option value="{{ $estados['Inactivo'] }}"> Inactivo               </option>
-                                                </select>
-                                                @foreach ($errors->get('estado') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('estado', 'Estado') !!}
+                                                {!! Form::select('estado', [
+                                                    '0' => 'Seleccione Estado',
+                                                    $estados['Activo']      => 'Activo'  ,
+                                                    $estados['Inactivo']    => 'Inactivo'
+                                                    ]
+                                                    ,$empleado->estado , ['class' => 'form-control']) !!}
+                                                @error('estado')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col">
-                                                <label for="salario" >Salario </label>
-                                                <input class    = "form-control currency "
-                                                       type     = "number"
-                                                       name     = "salario"
-                                                       id       = "salario"
-                                                       value    = "{{ old('salario', $empleado->salario)  }}"
-                                                       placeholder="0"
-                                                       min      ="0"
-                                                >
-                                                @foreach ($errors->get('salario') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('salario', 'Salario') !!}
+                                                {!! Form::text('salario', old('salario'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'salario',
+                                                    'placeholder'   => 'salario',
+                                                ]) !!}
+                                                @error('salario')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         {{--  end form-row--}}
@@ -360,7 +311,7 @@
                                                        type     = "date"
                                                        name     = "fecha_egreso"
                                                        id       = "fecha_egreso"
-                                                       value    = "{{ old('fecha_egreso', date("Y-m-d", strtotime($empleado->fecha_egreso )))  }}"
+{{--                                                       value    = "{{ old('fecha_egreso', date("Y-m-d", strtotime($empleado->fecha_egreso )))  }}"--}}
                                                        >
                                                 @foreach ($errors->get('fecha_egreso') as $error)
                                                     <span class="text text-danger">{{ $error }}</span>
@@ -370,17 +321,15 @@
 
 
                                             <div class="form-group col">
-                                                <label for="motivo_egreso">Motivo Egreso </label>
-                                                <input class    = "form-control"
-                                                       maxlength="200"
-                                                       type     = "text"
-                                                       name     = "motivo_egreso"
-                                                       id       = "motivo_egreso"
-                                                       value    = "{{ old('motivo_egreso', $empleado->motivo_egreso)  }}"
-                                                       placeholder="Introduzca motivo_egreso">
-                                                @foreach ($errors->get('motivo_egreso') as $error)
-                                                    <span class="text text-danger">{{ $error }}</span>
-                                                @endforeach
+                                                {!! Form::label('motivo_egreso', 'Motivo Egreso') !!}
+                                                {!! Form::text('motivo_egreso', old('motivo_egreso'), [
+                                                    'class'         => 'form-control',
+                                                    'id'            => 'motivo_egreso',
+                                                    'placeholder'   => 'motivo_egreso',
+                                                ]) !!}
+                                                @error('motivo_egreso')
+                                                <span class="text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         {{--  end form-row--}}
@@ -391,7 +340,8 @@
                                             class="btn btn-info">Grabar</button>
                                         <a href="{{ route('empleado.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
-                                </form>
+{{--                                </form>--}}
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

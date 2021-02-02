@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('turno.create')}}" class="btn bg-cyan">Nuevo Turno</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('turno.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($turnos as $key => $turno)
                                 <tr>
-                                    <td>{{ $turno->turno_empleado }}</td>
+                                    <td>{{ $turno->id }}</td>
                                     <td>{{ $turno->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('turno.edit', $turno->turno_empleado) }}"
+                                            href="{{ route('turno.edit', $turno->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$turno->turno_empleado}}"
-                                            data-data   ="{{$turno->turno_empleado}}">
+                                            data-target ="#modal-danger{{$turno->id}}"
+                                            data-data   ="{{$turno->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'turno_empleado',
-                                                'value' => $turno->turno_empleado,
+                                                'pk'   => 'id',
+                                                'value' => $turno->id,
                                                 'ruta'  => 'turno.destroy',
                                             ]
                                         ?>

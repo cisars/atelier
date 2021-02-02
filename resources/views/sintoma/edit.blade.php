@@ -27,7 +27,7 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('sintoma.update', $sintoma->sintoma) }}"
+                                    action  ="{{ route('sintoma.update', $sintoma->id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -53,7 +53,7 @@
                                                 type    ="text"
                                                 name    ="sintoma"
                                                 id      ="sintoma" readonly
-                                                value   ="{{ old('sintoma', $sintoma->sintoma) }}"
+                                                value   ="{{ old('sintoma', $sintoma->id) }}"
                                                  >
                                         </div>
                                     </div>

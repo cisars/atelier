@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Realizacion OT')
+@section('title', 'Listado de Verificacion de OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Realizacion OT </li>
+    <li class="breadcrumb-item active">ABM Verificacion de OT </li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Realizacion OT   </h3>
+                        <h3 class="card-title">Verificacion de OT   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_realizacionotc" class="btn bg-cyan">Nueva Realizacion OT</a>
+                            <a  href="_verificacionotc" class="btn bg-cyan">Nueva Verificacion de OT</a>
 
                         </div>
 
@@ -55,7 +55,7 @@
                                     <td> 23/01/2021 08:30 </td>
                                     <td class="">Juan Estigarribia</td>
                                     <td class="">Toyota Platz</td>
-                                    <td class=""> Aprobado  </td>
+                                    <td class=""> Verificado  </td>
 
                                     <td class="">
                                         <a
@@ -79,7 +79,7 @@
                                     <td> 23/01/2021 08:45 </td>
                                     <td class="">Edgar Acosta</td>
                                     <td class="">Kia Picanto</td>
-                                    <td class=""> Aprobado  </td>
+                                    <td class=""> Verificado  </td>
 
                                     <td class="">
                                         <a

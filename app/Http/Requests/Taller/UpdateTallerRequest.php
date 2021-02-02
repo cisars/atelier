@@ -26,15 +26,15 @@ class UpdateTallerRequest extends FormRequest
     {
         return [
          //   'descripcion'       =>'required|max:40|unique:talleres,descripcion,' . $this->taller . ',taller',
-            'localidad'         =>'required',
+            'localidad_id'         =>'required',
             'direccion'         =>'required|max:80',
             'telefono'          =>'required|max:12',
             'descripcion'=>['required',
                 'max:40',
                 Rule::unique('talleres', 'descripcion')
-                    ->ignore($this->taller, 'taller')
+                    ->ignore($this->id, 'id')
                     ->where(function ($query) {
-                        return $query->where('localidad', $this->localidad);
+                        return $query->where('localidad_id', $this->localidad_id);
                     })
             ],
         ];

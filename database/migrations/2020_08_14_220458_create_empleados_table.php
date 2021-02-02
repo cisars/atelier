@@ -14,19 +14,19 @@ class CreateEmpleadosTable extends Migration
     public function up()
     {
         Schema::create('empleados', function (Blueprint $table) {
-            $table->increments('empleado');
+            $table->increments('id' );
             $table->string('nombres',40)->nullable();
             $table->string('apellidos',40)->nullable();
             $table->float('ci',12,0)->nullable();
             $table->char('estado_civil')->nullable();
             $table->char('sexo')->nullable();
             $table->string('direccion',80)->nullable();
-            $table->smallInteger('localidad')->nullable();
+            $table->smallInteger('localidad_id')->nullable();
             $table->string('movil',20)->nullable();
             $table->string('telefono',20)->nullable();
-            $table->unsignedTinyInteger('cargo')->nullable();
-            $table->smallInteger('turno_empleado')->nullable();
-            $table->unsignedTinyInteger('grupo_trabajo')->nullable();
+            $table->unsignedTinyInteger('cargo_id')->nullable();
+            $table->smallInteger('turno_id')->nullable();
+            $table->unsignedTinyInteger('grupo_id')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->timestamp('fecha_ingreso')->nullable();
             $table->char('estado')->nullable();
@@ -34,17 +34,20 @@ class CreateEmpleadosTable extends Migration
             $table->string('motivo_egreso',200)->nullable();
             $table->float('salario',12,0)->nullable();
 
-            $table->foreign('localidad')
-                ->references('localidad')
+            $table->foreign('localidad_id')
+                ->references('id')
                 ->on('localidades');
-            $table->foreign('cargo')
-                ->references('cargo')
-                ->on('cargos');
-            $table->foreign('turno_empleado')
-                ->references('turno_empleado')
+            $table->foreign('cargo_id')
+                ->references('id')
+                ->on('cargos')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE')
+            ;
+            $table->foreign('turno_id')
+                ->references('id')
                 ->on('turnos');
-            $table->foreign('grupo_trabajo')
-                ->references('grupo_trabajo')
+            $table->foreign('grupo_id')
+                ->references('id')
                 ->on('grupos');
 
             $table->timestamps();

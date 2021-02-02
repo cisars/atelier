@@ -24,7 +24,7 @@ class UpdateLocalidadRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>'required|max:60|unique:localidades,descripcion,' . $this->localidad . ',localidad',
+            'descripcion'   =>'required|max:60|unique:localidades,descripcion,' . $this->id . ',id',
 
         ];
     }

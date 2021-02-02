@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     protected $table = 'reservas';
-    protected $primaryKey = 'reserva';
-    protected $guarded = [];
+    //protected $primaryKey = 'reserva';
+   protected $guarded = [];
 
     //Estado
     const ESTADO_UNO = 'U';
@@ -21,6 +21,11 @@ class Reserva extends Model
     //Prioridad
     const PRIORIDAD_UNO		= 'U';
     const PRIORIDAD_DOS     = 'D';
+
+
+//    protected $fillable = [
+//        'observacion',
+//    ];
 
     public function getEstados()
     {
@@ -48,35 +53,28 @@ class Reserva extends Model
 
     public function taller()
     {
-        return $this->belongsTo(Taller::class, 'taller', 'taller');
+        return $this->belongsTo(Taller::class, 'taller_id');
     }
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'usuario', 'usuario');
+        return $this->belongsTo(Usuario::class, 'usuario' );
     }
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cliente', 'cliente');
+        return $this->belongsTo(Cliente::class, 'cliente_id' );
     }
 
     public function empleado()
     {
-        return $this->belongsTo(Empleado::class, 'empleado', 'empleado');
+        return $this->belongsTo(Empleado::class, 'empleado_id'  );
     }
 
     public function vehiculo()
     {
-        return $this->belongsTo(Vehiculo::class, 'vehiculo', 'vehiculo');
-//        return $this->belongsToMany(Vehiculo::class, 'vehiculo', 'vehiculo')
-//            ->using(Modelo::class )
-//            ->withPivot([
-//                'vehiculo',
-//            ]);
+        return $this->belongsTo(Vehiculo::class, 'vehiculo_id' );
     }
-
-
 
 //    public function recepciones()
 //    {

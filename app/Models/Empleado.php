@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     protected $table = 'empleados';
-    protected $primaryKey = 'empleado';
+    //protected $primaryKey = 'empleado';
     //protected $fillable = [];
     protected $guarded = [];
 
@@ -47,21 +47,30 @@ class Empleado extends Model
         ];
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->apellidos . ', ' . $this->nombres;
+    }
+
     public function usuarios()
     {
-        return $this->hasMany(Usuario::class, 'empleado', 'empleado');
+        return $this->hasMany(Usuario::class, 'empleado_id' );
     }
     public function turno()
     {
-        return $this->belongsTo(Turno::class, 'turno_empleado', 'turno_empleado');
+        return $this->belongsTo(Turno::class,'turno_id' );
     }
     public function cargo()
     {
-        return $this->belongsTo(Cargo::class, 'cargo', 'cargo');
+        return $this->belongsTo(Cargo::class, 'cargo_id' );
     }
     public function grupo()
     {
-        return $this->belongsTo(Grupo::class, 'grupo_trabajo', 'grupo_trabajo');
+        return $this->belongsTo(Grupo::class);
+    }
+    public function localidad()
+    {
+        return $this->belongsTo(Localidad::class, 'localidad_id');
     }
 
 

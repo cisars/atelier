@@ -16,24 +16,26 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
 
             $table->string('usuario', 255)->primary();
-            $table->unsignedInteger('empleado')->nullable();
-            $table->unsignedInteger('cliente')->nullable();
+            $table->unsignedInteger('empleado_id')->nullable();
+            $table->unsignedInteger('cliente_id')->nullable();
             $table->string('clave')->nullable();
             $table->timestamp('fecha_ingreso')->nullable();
             $table->char('estado')->default('A');
             $table->string('observacion')->nullable();
             $table->char('perfil')->nullable();
             $table->char('tipo')->nullable();
+            $table->string('email','200')->unique()->nullable();
             $table->timestamp('usuario_verified_at')->nullable();
+            $table->string('mailtoken')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
             // $table->primary(['usuario'  ]);
-            $table->foreign('empleado')
-                ->references('empleado')
+            $table->foreign('empleado_id')
+                ->references('id')
                 ->on('empleados');
-            $table->foreign('cliente')
-                ->references('cliente')
+            $table->foreign('cliente_id')
+                ->references('id')
                 ->on('clientes');
         });
     }

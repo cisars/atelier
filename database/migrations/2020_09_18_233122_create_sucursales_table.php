@@ -14,15 +14,15 @@ class CreateSucursalesTable extends Migration
     public function up()
     {
         Schema::create('sucursales', function (Blueprint $table) {
-            $table->tinyInteger('sucursal',true)->unsigned();
+            $table->tinyInteger('id',true)->unsigned();
             $table->string('descripcion','40')->nullable();
             $table->string('direccion','40')->nullable();
-            $table->smallInteger('localidad')->nullable();
+            $table->smallInteger('localidad_id')->nullable();
             $table->string('telefono','15')->nullable();
             $table->string('email','80')->nullable();
 
-            $table->foreign('localidad')
-                ->references('localidad')
+            $table->foreign('localidad_id')
+                ->references('id')
                 ->on('localidades');
 
             $table->timestamps();

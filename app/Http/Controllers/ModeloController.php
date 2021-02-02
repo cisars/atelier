@@ -12,14 +12,8 @@ class ModeloController extends Controller
 {
     public function index()
     {
-        if($modelos = Modelo::orderBy('descripcion', 'ASC')->get()){
-        $modelos = Modelo::all();
+         $modelos = Modelo::orderBy('descripcion', 'ASC')->get();
 
-            $modelos->each(function($modelo)
-            {
-                $modelo->marca = Marca::find($modelo->marca);
-            });
-        }
         return view('modelo.index', compact('modelos', $modelos)); // Lista con BelongsTo
     }
 

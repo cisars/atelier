@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('unidad.create')}}" class="btn bg-cyan">Nueva Unidad</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('unidad.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -48,12 +48,12 @@
                             <tbody>
                             @foreach($unidades as $key => $unidad)
                                 <tr>
-                                    <td>{{ $unidad->unidad }}</td>
+                                    <td>{{ $unidad->id }}</td>
                                     <td>{{ $unidad->descripcion }}</td>
                                     <td>{{ $unidad->sigla }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('unidad.edit', $unidad->unidad) }}"
+                                            href="{{ route('unidad.edit', $unidad->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -61,14 +61,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$unidad->unidad}}"
-                                            data-data   ="{{$unidad->unidad}}">
+                                            data-target ="#modal-danger{{$unidad->id}}"
+                                            data-data   ="{{$unidad->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'unidad',
-                                                'value' => $unidad->unidad,
+                                                'pk'   => 'id',
+                                                'value' => $unidad->id,
                                                 'ruta'  => 'unidad.destroy',
                                             ]
                                         ?>

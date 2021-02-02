@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Sucursal')
+@section('title', 'Sucursal')
 
 @section('css' )
 
@@ -8,7 +8,11 @@
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> Editar </li>
+    @isset($sucursal)
+        <li class="breadcrumb-item active"> Editar </li>
+    @else
+        <li class="breadcrumb-item active"> Nuevo </li>
+    @endisset
 @stop
 
 @section('content')
@@ -21,102 +25,77 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar Sucursal</h3>
+                                    @isset($sucursal)
+                                        <h3 class="card-title">Editar Sucursal</h3>
+                                    @else
+                                        <h3 class="card-title">Crear Sucursal</h3>
+                                    @endisset
+
                                 </div>
-                                <form
-                                    role    ="form"
-                                    id      ="form"
-                                    method  ="POST"
-                                    action  ="{{ route('sucursal.update', $sucursal->sucursal) }}"
-                                >
+
+                                <div class="card-body">
+                                @isset($sucursal)
+                                    {!! Form::model($sucursal, ['route' => ['sucursal.update', $sucursal->id], 'method' => 'PATCH']) !!}
+                                    <div class="form-group col">
+                                        {!! Form::label('id', 'Codigo de Sucursal') !!}
+                                        {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
+
+                                    </div>
+                                @else
+                                    {!! Form::open(
+                                        ['route' =>
+                                            ['sucursal.store' ],
+                                                'method'    => 'post',
+                                                'id'        => 'form',
+                                            ]
+                                    ) !!}
+                                @endisset
+{{--                                {{ dd($errors->all() ) }}--}}
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
-                                    @method('PATCH')
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="sucursal">Codigo de Sucursal</label>
-                                            <input
-                                                class   ="form-control"
-                                                type    ="text"
-                                                name    ="sucursal"
-                                                id      ="sucursal" readonly
-                                                value   ="{{ old('sucursal', $sucursal->sucursal) }}"
-                                            >
-                                            @foreach ($errors->get('sucursal') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+{{--                                    @method('PATCH')--}}
+
+
+
+                                        <div class="form-group col">
+                                            {!! Form::label('descripcion', 'Descripcion') !!}
+                                            {!! Form::text('descripcion', old('descripcion'), ['class' => 'form-control','descripcion' => 'descripcion']) !!}
+                                            @error('descripcion')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col">
+                                            <label for="localidad_id" >Localidad</label>
+                                            {!! Form::select('localidad_id', $localidades->pluck('descripcion', 'id') , 'localidad_id' , ['class' => 'form-control']) !!}
+                                            @error("localidad_id")
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
-                                            <input
-                                                class   ="form-control"
-                                                type    ="text"
-                                                name    ="descripcion"
-                                                id      ="descripcion"
-                                                value   ="{{ old('descripcion', $sucursal->descripcion) }}"
-                                                placeholder="Introduzca nombre de la Sucursal">
-                                            @foreach ($errors->get('descripcion') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="localidad">Localidad</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="localidad"
-                                                id      ="localidad">
-                                                @foreach($localidades as $key => $localidad)
-                                                    <option value="{{ $localidad->localidad }}"
-                                                            @if ($sucursal->localidad == old('localidad', $localidad->localidad))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $localidad->descripcion }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        <div class="form-group col">
 
-                                        <div class="form-group">
-                                            <label for="direccion">Direccion</label>
-                                            <input
-                                                class   ="form-control"
-                                                maxlength="40"
-                                                type    ="text"
-                                                name    ="direccion"
-                                                id      ="direccion"
-                                                value   ="{{ old('direccion', $sucursal->direccion) }}"
-                                            >
-                                            @foreach ($errors->get('direccion') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                            {!! Form::label('direccion', 'Direccion') !!}
+                                            {!! Form::text('direccion', old('direccion'), ['class' => 'form-control','direccion' => 'direccion']) !!}
+                                            @error('direccion')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="telefono">Telefono</label>
-                                            <input
-                                                class   ="form-control"
-                                                maxlength="12"
-                                                type    ="text"
-                                                name    ="telefono"
-                                                id      ="telefono"
-                                                value   ="{{ old('telefono', $sucursal->telefono) }}"
-                                            >
-                                            @foreach ($errors->get('telefono') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                        <div class="form-group col">
+
+                                            {!! Form::label('telefono', 'Telefono') !!}
+                                            {!! Form::text('telefono', old('telefono'), ['class' => 'form-control','telefono' => 'telefono']) !!}
+                                            @error('telefono')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input
-                                                class   ="form-control"
-                                                maxlength="80"
-                                                type    ="text"
-                                                name    ="email"
-                                                id      ="email"
-                                                value   ="{{ old('email', $sucursal->email) }}"
-                                            >
-                                            @foreach ($errors->get('email') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                        <div class="form-group col">
+
+                                            {!! Form::label('email', 'Email') !!}
+{{--                                            {!! Form::email('email', old('email'), 'Email',  ['class' => 'form-control','email' => 'email']) !!}--}}
+                                            {!! Form::text('email', old('email'), ['class' => 'form-control','email' => 'email']) !!}
+                                            @error('email')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
 
@@ -127,7 +106,7 @@
                                             class="btn btn-info">Grabar</button>
                                         <a href="{{ route('sucursal.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
-                                </form>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de ProductosServicios')
+@section('title', 'Listado de Sectores de Respuestos')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM ProductosServicios </li>
+    <li class="breadcrumb-item active">ABM Sectores de Respuestos </li>
 @stop
 
 @section('content')
@@ -27,26 +27,22 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">ProductosServicios   </h3>
+                        <h3 class="card-title">Sectores de Respuestos   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('productoservicio.create')}}" class="btn bg-cyan">Nuevo Producto/Servicio</a>
+                            <a  href="_sectorrepuestoc" class="btn bg-cyan">Nuevo Sector de Respuesto</a>
 
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">Producto </th>
-                                <th class="">Codigo </th>
+                                <th class="">Sector </th>
+                                <th class="">Sucursal </th>
                                 <th class="">Descripcion </th>
-                                <th class="">Clasificacion </th>
-                                <th class="">Unidad </th>
-                                <th class="">Impuesto </th>
-                                <th class="">Precio de Venta </th>
                                 <th class="">Accion </th>
                             </tr>
                             </thead>
@@ -54,12 +50,8 @@
 
                                 <tr class="">
                                     <td> 1 </td>
-                                    <td class="">1</td>
+                                    <td class="">Matriz</td>
                                     <td class="">Descripcion1</td>
-                                    <td class="">Clasificacion1</td>
-                                    <td class="">1</td>
-                                    <td class="">10000</td>
-                                    <td class="">100.000</td>
 
                                     <td class="">
                                         <a
@@ -80,12 +72,8 @@
                                 </tr>
                                 <tr class="">
                                     <td>   2 </td>
-                                    <td class="">  2</td>
+                                    <td class="">  Sucursal1</td>
                                     <td class="">  Descripcion2</td>
-                                    <td class="">  Clasificacion2</td>
-                                    <td class="">  2</td>
-                                    <td class="">  20</td>
-                                    <td class="">200.000</td>
 
                                     <td class="">
                                         <a

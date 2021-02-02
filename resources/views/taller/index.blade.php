@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('taller.create')}}" class="btn bg-cyan">Nuevo Taller</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('taller.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -50,14 +50,14 @@
                             <tbody>
                             @foreach($talleres as $key => $taller)
                                 <tr>
-                                    <td>{{ $taller->taller }}</td>
+                                    <td>{{ $taller->id }}</td>
                                     <td>{{ $taller->descripcion }}</td>
                                     <td>{{ $taller->direccion }}</td>
-                                    <td>{{ $taller->localidad->descripcion }}</td>
+                                    <td> {{ $taller->localidad->descripcion }}</td>
                                     <td>{{ $taller->telefono }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('taller.edit', $taller->taller) }}"
+                                            href="{{ route('taller.edit', $taller->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -65,14 +65,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$taller->taller}}"
-                                            data-data   ="{{$taller->taller}}">
+                                            data-target ="#modal-danger{{$taller->id}}"
+                                            data-data   ="{{$taller->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'taller',
-                                                'value' => $taller->taller,
+                                                'pk'   => 'id',
+                                                'value' => $taller->id,
                                                 'ruta'  => 'taller.destroy',
                                             ]
                                         ?>

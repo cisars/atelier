@@ -15,7 +15,6 @@ class MaquinariaController extends Controller
         $maquinarias = Maquinaria::all();
 
         $maquinarias->each(function ($maquinaria) {
-            $maquinaria->maquinaria_tipo = MaquinariaTipo::find($maquinaria->maquinaria_tipo);
 
             //Recorre y carga cada estado
             foreach ((new Maquinaria())->getEstados() as $clave=>$valor)

@@ -163,4 +163,28 @@
     @if (Route::current()->getName() == 'data')
 {{--        <script src="{{ asset('js/scriptData.js') }}" defer></script>--}}
     @endif
+
+    @if(
+    Route::current()->getName() == 'maketemplate' ||
+    Route::current()->getName() == 'empleadogen' ||
+    Route::current()->getName() == 'productoserviciogen' ||
+    Route::current()->getName() == 'clientegen'
+)
+
+                <link href="{{ asset('/codemirror/lib/codemirror.css') }}"       rel="stylesheet">
+                <link href="{{ asset('/codemirror/theme/monokai.css') }}"        rel="stylesheet">
+                <link href="{{ asset('/codemirror/theme/material.css') }}"        rel="stylesheet">
+                <script src="{{ asset('/codemirror/lib/codemirror.js') }}"               ></script>
+
+                <script src="{{ asset('/codemirror/mode/htmlmixed/htmlmixed.js') }}"     ></script>
+                <script src="{{ asset('/codemirror/addon/edit/matchbrackets.js') }}"     ></script>
+                <script src="{{ asset('/codemirror/mode/htmlmixed/htmlmixed.js') }}"     ></script>
+                <script src="{{ asset('/codemirror/mode/xml/xml.js') }}"                ></script>
+                <script src="{{ asset('/codemirror/mode/javascript/javascript.js') }}"  ></script>
+                <script src="{{ asset('/codemirror/mode/css/css.js') }}"            ></script>
+                <script src="{{ asset('/codemirror/mode/clike/clike.js') }}"        ></script>
+                <script src="{{ asset('/codemirror/mode/php/php.js') }}"            ></script>
+
+    @endif
+
 @stop

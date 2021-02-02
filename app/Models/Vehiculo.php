@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehiculo extends Model
 {
     protected $table = 'vehiculos';
-    protected $primaryKey = 'vehiculo';
+    //protected $primaryKey = 'vehiculo';
     protected $guarded = [];
 
     //Combustion
@@ -79,9 +79,14 @@ class Vehiculo extends Model
         ];
     }
 
+    /*public function setFullNameAttribute()
+    {
+        return $this->fmodelo->descripcion . ' ' . $this->fmodelo->fmarca->descripcion;
+    }*/
+
     public function reservas()
     {
-        return $this->hasMany(Reserva::class, 'vehiculo', 'vehiculo');
+        return $this->hasMany(Reserva::class, 'vehiculo_id' );
     }
 //    public function entregas()
 //    {
@@ -98,14 +103,19 @@ class Vehiculo extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cliente', 'cliente');
+        return $this->belongsTo(Cliente::class, 'cliente_id');
     }
     public function color()
     {
-        return $this->belongsTo(Color::class, 'color', 'color');
+        return $this->belongsTo(Color::class, 'color_id');
     }
     public function modelo()
     {
-        return $this->belongsTo(Modelo::class, 'modelo', 'modelo');
+        return $this->belongsTo(Modelo::class, 'modelo_id');
+    }
+
+    public function marcaObj()
+    {
+        return $this->hasOneThrough(Marca::class, Modelo::class  );
     }
 }

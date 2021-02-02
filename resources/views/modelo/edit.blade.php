@@ -27,7 +27,7 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('modelo.update', $modelo->modelo) }}"
+                                    action  ="{{ route('modelo.update', $modelo->id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -40,7 +40,7 @@
                                                 type    ="text"
                                                 name    ="modelo"
                                                 id      ="modelo" readonly
-                                                value   ="{{ old('modelo', $modelo->modelo) }}"
+                                                value   ="{{ old('modelo', $modelo->id) }}"
                                             >
                                             @foreach ($errors->get('modelo') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>

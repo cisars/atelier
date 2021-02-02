@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Reserva Normal')
+@section('title', 'Realizacion OT')
 @section('css')
 @stop
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/Reservas "> Reservas</a></li>
-    <li class="breadcrumb-item active"> ABM Reserva Normal</li>
+    <li class="breadcrumb-item active"> ABM Realizacion OT</li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Reserva Normal</h3>
+                                    <h3 class="card-title">Crear Realizacion OT</h3>
                                 </div>
 
 
@@ -40,27 +40,28 @@
 
                                     <div class="form-row">
                                         <div class="form-group col">
-                                            <label> Reserva </label>
+                                            <label> OT </label>
                                             <input class="form-control"
                                                    type="text"
-                                                   placeholder="Introduzca codigo" value="1045">
+                                                   placeholder="Introduzca codigo" value="1">
                                         </div>
-
                                         <div class="form-group col">
-                                            <label> Taller </label>
-                                            <select class="form-control">
-                                                <option value="" selected> Seleccione taller</option>
-                                                <option value=""> opcion 1</option>
-                                            </select>
+                                            <label> Fecha </label>
+                                            <input class="form-control"
+                                                   type="date"
+                                                   placeholder="" value="">
                                         </div>
-                                    </div>
 
+
+                                    </div>
                                     <div class="form-group col">
                                         <label> Cliente </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder="Introduzca cedula o nombre del cliente" value="">
                                     </div>
+
+
                                     <div class="form-group col">
 
                                         <input class="form-control"
@@ -84,65 +85,140 @@
 		                                        Placa CAA 2656. Chasis 202014522">
                                     </div>
 
-                                    <div class="form-row">
-                                        <div class="form-group col">
-                                            <label> Fecha Reserva </label>
-                                            <input class="form-control"
-                                                   type="date"
-                                                   placeholder="Introduzca impuesto"
-                                                   value="22/01/2021 06:40">
-                                        </div>
-
-                                        <div class="form-group col">
-                                            <label> Para Fecha </label>
-                                            <input class="form-control"
-                                                   type="date"
-                                                   placeholder="Introduzca impuesto"
-                                                   value="23/01/2021 08:45">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col">
-                                        <label> Empleado </label>
-                                        <input class="form-control"
-                                               type="text"
-                                               placeholder=" "
-                                               value="Carloz Ozorio">
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col">
-                                            <label> Forma Reserva </label>
-                                            <select class="form-control">
-                                                <option value="" selected> Seleccione forma reserva</option>
-                                                <option value=""> opcion 1</option>
-                                            </select>
-                                        </div>
-
-
-                                        <div class="form-group col">
-                                            <label> Prioridad </label>
-                                            <select class="form-control">
-                                                <option value="" selected> Seleccione prioridad</option>
-                                                <option value=""> opcion 1</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col">
+                                         <div class="form-group col">
                                             <label> Estado </label>
                                             <select class="form-control">
                                                 <option value="" selected> Seleccione estado</option>
                                                 <option value=""> opcion 1</option>
                                             </select>
                                         </div>
+
+
+
+
+
+                                    <label> Entrada 1 </label>
+                                    <div class="form-row col ">
+                                        <div class="form-group col ">
+                                            <button
+                                                type        ="button"
+                                                class       ="btn btn-warning " >
+                                                <i class ="fas fa-plus" > DET</i>
+                                            </button>
+                                            <button
+                                                type        ="button"
+                                                class       ="btn btn-warning  " >
+                                                <i class ="fas fa-minus" > DET</i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="form-group col">
-                                        <label> Observacion </label>
-                                        <input class="form-control"
-                                               type="text"
-                                               placeholder=" "
-                                               value="Ingrese una observacion">
-                                    </div>
+                                    <table class="table table-sm table-hover nowrap d-table" id="lista">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="">#     </th>
+                                            <th class="">Servicio   </th>
+                                            <th class="">Realizado     </th>
+                                            <th class="">Fecha   </th>
+                                            <th class="">Mecanico   </th>
+                                            <th class="">Accion   </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr class="">
+                                            <td> 1 </td>
+                                            <td> Limpieza de Filtro Motor  </td>
+                                            <td> v </td>
+                                            <td> 18/01/2021 15:45  </td>
+                                            <td> Juan Villalba</td>
+
+
+                                            <td class="">
+                                                <a
+                                                    href=" "
+                                                    class= "btn btn-info">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <button
+                                                    type        ="button"
+                                                    class       ="btn btn-danger"
+                                                    data-toggle ="modal"
+                                                    data-target ="#modal-danger "
+                                                    data-data   ="">
+                                                    <i class ="fas fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <button
+                                                    type        ="button"
+                                                    class       ="btn btn-warning  " >
+                                                    <i class ="fas fa-plus" ></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                        <tr class="">
+                                            <td>   2 </td>
+                                            <td> Cambio de Aceite </td>
+                                            <td> v </td>
+                                            <td> 18/01/2021 15:45 </td>
+                                            <td> Roque Saucedo  </td>
+
+                                            <td class="">
+                                                <a
+                                                    href=" "
+                                                    class= "btn btn-info">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <button
+                                                    type        ="button"
+                                                    class       ="btn btn-danger"
+                                                    data-toggle ="modal"
+                                                    data-target ="#modal-danger "
+                                                    data-data   ="">
+                                                    <i class ="fas fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <button
+                                                    type        ="button"
+                                                    class       ="btn btn-warning  " >
+                                                    <i class ="fas fa-plus" ></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                        <tr class="">
+                                            <td> 3 </td>
+                                            <td> Mant. Sensor Arranque  </td>
+                                            <td> v </td>
+                                            <td> 18/01/2021 15:45 </td>
+                                            <td> Alicia Vera </td>
+
+                                            <td class="">
+                                                <a
+                                                    href=" "
+                                                    class= "btn btn-info">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <button
+                                                    type        ="button"
+                                                    class       ="btn btn-danger"
+                                                    data-toggle ="modal"
+                                                    data-target ="#modal-danger "
+                                                    data-data   ="">
+                                                    <i class ="fas fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <button
+                                                    type        ="button"
+                                                    class       ="btn btn-warning  " >
+                                                    <i class ="fas fa-plus" ></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+
+
+                                </div>
 
                                     <div class="card-footer  ">
                                         <button

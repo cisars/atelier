@@ -28,9 +28,9 @@ class StoreSucursalRequest extends FormRequest
             'descripcion'       =>['required',
                 'max:40',
                 Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
+                    ->ignore($this->id, 'id')
                     ->where(function ($query) {
-                        return $query->where('localidad', $this->localidad);
+                        return $query->where('localidad_id', $this->localidad_id);
                     })
             ],
             'direccion'         =>'required|max:40',

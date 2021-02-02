@@ -5,6 +5,7 @@ namespace App\Models;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Auth;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,23 +17,16 @@ use Illuminate\Notifications\Notifiable;
 
 // fin datos del model user original
 
-class Usuario extends Authenticatable
+class Usuario extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
     protected $table = 'usuarios';
     protected $primaryKey = 'usuario';
+    protected $keyType = 'string';
+
     public $incrementing = false;
 
-//    protected $fillable = [
-//        'usuario',
-//        'clave',
-//        'clave',
-//        'clave',
-//        'clave',
-//        'clave',
-//        'clave',
-//    ];
     protected $guarded = [];
     protected $hidden = [
         'clave', 'remember_token',
@@ -53,6 +47,7 @@ class Usuario extends Authenticatable
     const USUARIO_CLIENTE       = 'C';
     const USUARIO_BOOTSTRAP     = 'B';
     const USUARIO_RECEPCIONISTA = 'R';
+    const USUARIO_DOCUMENTACION = 'D';
 
     public function getPerfiles()
     {
@@ -62,6 +57,7 @@ class Usuario extends Authenticatable
             'Cliente'       => Usuario::USUARIO_CLIENTE,
             'Bootstrap'     => Usuario::USUARIO_BOOTSTRAP,
             'Recepcionista' => Usuario::USUARIO_RECEPCIONISTA,
+            'Documentacion' => Usuario::USUARIO_DOCUMENTACION,
         ];
     }
     public function getTipos()
@@ -81,12 +77,12 @@ class Usuario extends Authenticatable
 
     public function empleado()
     {
-        return $this->belongsTo(Empleado::class, 'empleado', 'empleado');
+        return $this->belongsTo(Empleado::class, 'empleado_id');
     }
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cliente', 'cliente');
+        return $this->belongsTo(Cliente::class, 'cliente_id');
     }
 
     public function calendarios()
@@ -99,10 +95,29 @@ class Usuario extends Authenticatable
         return $this->hasMany(Reserva::class, 'usuario', 'usuario');
     }
 
-//    public function usuarios_talleres()
-//    {
-//        return $this->hasMany(UsuarioTaller::class, 'usuario', 'usuario');
-//    }
+
+
+
+
+    public function talleres()
+    {
+        return $this->belongsToMany(Taller::class, 'talleres_usuarios',
+            'usuario', 'taller_id');
+    }
+
+
+//return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
+
+
+
+
+
+
+
+
+
+
+
 
     //-------------------
     public function getAuthPassword()
@@ -125,5 +140,44 @@ class Usuario extends Authenticatable
 
 
     }
+/*
+    public function getClientes(Request $request)
+    {
+        $clients = [];
+        if ($request->q) {
+            $clients_data = Cliente::where('razon_social', 'ilike', '%' . $request->q . '%' )->get();
+            foreach ($clients_data as $client) {
+                $clients[] = [
+                    'id'    => $client->id,
+                    'text'  => $client->razon_social,
+                ];
+            }
+        }
+
+        return response()->json($clients);
+    }
+*/
+
+//
+//    public function getClientes(Request $request)
+//    {
+//        $clients = [];
+//        if ($request->q) {
+//            $clients_data = Cliente::whereHas(
+//                'roles',
+//                function ($q) {
+//                    $q->where('name', 'cliente');
+//                })->whereHas('ordenes')
+//                ->where('name', 'ilike', '%' . $request->q . '%')->get();
+//            foreach ($clients_data as $client) {
+//                $clients[] = [
+//                    'id'    => $client->id,
+//                    'text'  => $client->name,
+//                ];
+//            }
+//        }
+//
+//        return response()->json($clients);
+//    }
 }
 

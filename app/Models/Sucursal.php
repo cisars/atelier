@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     protected $table = 'sucursales';
-    protected $primaryKey = 'sucursal';
+    //protected $primaryKey = 'sucursal';
     //protected $fillable = [];
     protected $guarded = [];
     public function localidad()
     {
-        return $this->belongsTo(Localidad::class, 'localidad', 'localidad');
+        return $this->belongsTo(Localidad::class, 'localidad_id' );
     }
 
 //    public function sectores()
@@ -27,7 +27,7 @@ class Sucursal extends Model
 
     public function talleres()
     {
-        return $this->hasMany(Taller::class, 'localidad', 'localidad');
+        return $this->hasMany(Taller::class, 'sucursal_id' );
     }
 
 }

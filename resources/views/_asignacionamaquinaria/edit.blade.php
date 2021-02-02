@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Sector Repuesto')
+@section('title', 'Asignacion a Maquinaria')
 @section('css')
 @stop
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> ABM Sector Repuesto </li>
+    <li class="breadcrumb-item active"> ABM Asignacion a Maquinaria </li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                        <h3 class="card-title">Crear Sector Repuesto</h3>
+                                        <h3 class="card-title">Crear Asignacion a Maquinaria</h3>
                                 </div>
 
 
@@ -38,23 +38,26 @@
 
                                     {{--<div class="form-row">--}}
 
-                                        <div class="form-group col">
-                                            <label> Sector </label>
-                                            <input class    = "form-control"
-                                                   type     = "text"
-                                                   placeholder = "Introduzca codigo">
-                                        </div>
+
 
                                     <div class="form-group col">
-                                        <label> Taller </label>
+                                        <label>   Maquinaria </label>
                                         <select class = "form-control">
-                                            <option value="" selected > Seleccione Taller </option>
+                                            <option value="" selected > Seleccione Maquinaria </option>
                                             <option value=""> opcion 1 </option>
                                         </select>
                                     </div>
 
                                     <div class="form-group col">
-                                        <label> Descripcion </label>
+                                        <label>   Empleado </label>
+                                        <select class = "form-control">
+                                            <option value="" selected > Seleccione Empleado </option>
+                                            <option value=""> opcion 1 </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col">
+                                        <label> Observacion </label>
                                         <input class    = "form-control"
                                                type     = "text"
                                                placeholder="Introduzca descripcion">

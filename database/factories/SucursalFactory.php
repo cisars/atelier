@@ -9,11 +9,10 @@ use Faker\Generator as Faker;
 $factory->define(Sucursal::class, function (Faker $faker) {
 
     (Localidad::all() !== false ) ?  factory('App\Models\Localidad')->create() : "";
-
     return [
         'descripcion' => substr($faker->company, 0,39) ,
         'direccion' =>  substr($faker->address, 0,39) ,
-        'localidad'  => Localidad::inRandomOrder()->first()->localidad,
+        'localidad_id'  => Localidad::inRandomOrder()->first()->id,
         'telefono' => '+59521'. $faker->numberBetween(333333,999999),
         'email' => $faker->email
     ];

@@ -18,17 +18,19 @@ class ReservaController extends Controller
 {
     public function index()
     {
-        $reservas = Reserva::all();
+        $reservas =  new Reserva ;
+        $reservas =  Reserva::all();
+        // $reservas = Reserva::all();
 
         $reservas->each(function($reserva)
         {
-            $reserva->taller = Taller::find($reserva->taller);
-            $reserva->cliente = Cliente::find($reserva->cliente);
-            $reserva->vehiculo = Vehiculo::find($reserva->vehiculo);
-                 $reserva->vehiculo->modelo = Modelo::find($reserva->vehiculo->modelo);
-
-            $reserva->empleado = Empleado::find($reserva->empleado);
-            $reserva->usuario = Usuario::find($reserva->usuario);
+//            $reserva->taller = Taller::find($reserva->taller);
+//            $reserva->cliente = Cliente::find($reserva->cliente);
+//            $reserva->vehiculo = Vehiculo::find($reserva->vehiculo);
+//
+//
+//            $reserva->empleado = Empleado::find($reserva->empleado);
+//            $reserva->usuario = Usuario::find($reserva->usuario);
 
             foreach ((new Reserva())->getEstados() as $clave=>$valor)
                 trim($reserva->estado) == trim($valor) ? $reserva->estado = $clave : NULL ;
@@ -112,28 +114,58 @@ class ReservaController extends Controller
 
     public function edit(Reserva $reserva)
     {
+        //dd($reserva);
+     //   $reserva = Reserva::with('vehiculo')->where('reserva', $reserva->reserva)->first();
+        //$reserva = Reserva::with('vehiculo')->where('reserva', $reserva->reserva)->first();
+        //$reserva = Reserva::with('fvehiculo.fmodelo.fmarca')->get();
+        //$reserva = Reserva::find($reserva);
+
+        //dd( $reserva->fvehiculo->fmodelo->fmarca  );
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
-        $vehiculos = Vehiculo::all();
-        $modelos = Modelo::all();
-        $empleados = Empleado::orderBy('apellidos', 'ASC')->get();
-        $usuarios = Usuario::orderBy('usuario', 'ASC')->get();
 
-        $estados            = $reserva->getEstados();
-        $formas_reservas    = $reserva->getFormas();
-        $prioridades        = $reserva->getPrioridades();
 
-        return view('reserva.edit')
-            ->with('reserva',$reserva)
-            ->with('talleres',$talleres)
-            ->with('clientes',$clientes)
-            ->with('vehiculos',$vehiculos)
-            ->with('modelos',$modelos)
-            ->with('empleados',$empleados)
-            ->with('usuarios',$usuarios)
-            ->with('estados', $estados)
-            ->with('formas_reservas', $formas_reservas)
-            ->with('prioridades', $prioridades)
+        $vehiculos = Vehiculo::pluck('chapa', 'vehiculo');
+
+        //dd($vehiculos);
+
+        //dd($vehiculos);
+
+        $modelos = Modelo::pluck('modelo', 'descripcion');
+
+        $empleados = Empleado::orderBy('apellidos', 'ASC')->pluck('nombres', 'empleado');
+        $usuarios = Usuario::orderBy('usuario', 'ASC')->pluck('usuario', 'usuario');
+
+        $estados            = (new Reserva())->getEstados();
+        //dd($estados);
+        $formas_reservas    = (new Reserva())->getFormas();
+        $prioridades        = (new Reserva())->getPrioridades();
+
+
+        //dd($reserva);
+
+        return view('reserva.edit', compact(
+            'reserva',
+            'talleres',
+            'clientes',
+            'vehiculos',
+            'modelos',
+            'empleados',
+            'usuarios',
+            'estados',
+            'formas_reservas',
+            'prioridades'
+        ))
+//            ->with('reserva',$reserva)
+//            ->with('talleres',$talleres)
+//            ->with('clientes',$clientes)
+//            ->with('vehiculos',$vehiculos)
+//            ->with('modelos',$modelos)
+//            ->with('empleados',$empleados)
+//            ->with('usuarios',$usuarios)
+//            ->with('estados', $estados)
+//            ->with('formas_reservas', $formas_reservas)
+//            ->with('prioridades', $prioridades)
             ;
     }
 

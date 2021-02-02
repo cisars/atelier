@@ -45,6 +45,12 @@ class AppServiceProvider extends ServiceProvider
             }
             return false;
         });
+        Gate::define('doc', function ($user) {
+            if (trim($user->perfil) == 'D') {
+                return true;
+            }
+            return false;
+        });
         Gate::define('example-bootstrap', function ($user) {
             if (trim($user->perfil) == 'B') {
                 return true;

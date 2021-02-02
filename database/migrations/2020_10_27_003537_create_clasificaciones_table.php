@@ -14,7 +14,7 @@ class CreateClasificacionesTable extends Migration
     public function up()
     {
         Schema::create('clasificaciones', function (Blueprint $table) {
-            $table->smallInteger('clasificacion',true);
+            $table->smallInteger('id',true);
             $table->string('descripcion','40')->nullable();
             $table->timestamps();
         });

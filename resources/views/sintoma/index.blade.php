@@ -28,8 +28,8 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('sintoma.create')}}" class="btn bg-cyan">Nueva Sintoma</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            <a  href="{{route('sintoma.create')}}" class="btn bg-cyan">Nuevo Sintoma</a>
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('sintoma.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($sintomas as $key => $sintoma)
                                 <tr>
-                                    <td>{{ $sintoma->sintoma }}</td>
+                                    <td>{{ $sintoma->id }}</td>
                                     <td>{{ $sintoma->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('sintoma.edit', $sintoma->sintoma) }}"
+                                            href="{{ route('sintoma.edit', $sintoma->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$sintoma->sintoma}}"
-                                            data-data   ="{{$sintoma->sintoma}}">
+                                            data-target ="#modal-danger{{$sintoma->id}}"
+                                            data-data   ="{{$sintoma->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'sintoma',
-                                                'value' => $sintoma->sintoma,
+                                                'pk'   => 'id',
+                                                'value' => $sintoma->id,
                                                 'ruta'  => 'sintoma.destroy',
                                             ]
                                         ?>

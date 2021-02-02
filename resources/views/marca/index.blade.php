@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('marca.create')}}" class="btn bg-cyan">Nueva Marcas</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('marca.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($marcas as $key => $marca)
                                 <tr>
-                                    <td>{{ $marca->marca }}</td>
+                                    <td>{{ $marca->id }}</td>
                                     <td>{{ $marca->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('marca.edit', $marca->marca) }}"
+                                            href="{{ route('marca.edit', $marca->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$marca->marca}}"
-                                            data-data   ="{{$marca->marca}}">
+                                            data-target ="#modal-danger{{$marca->id}}"
+                                            data-data   ="{{$marca->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'marca',
-                                                'value' => $marca->marca,
+                                                'pk'   => 'id',
+                                                'value' => $marca->id,
                                                 'ruta'  => 'marca.destroy',
                                             ]
                                         ?>

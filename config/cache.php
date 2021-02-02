@@ -35,6 +35,7 @@ return [
 
         'apc' => [
             'driver' => 'apc',
+         //   'driver' => 'apc', cachelaravel
         ],
 
         'array' => [

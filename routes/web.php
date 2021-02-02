@@ -38,6 +38,11 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/listausuarios', 'UsuarioController@index')->name('listausuarios');
+    Route::get('/maketemplate', 'MakeTemplateController@index')->name('maketemplate');
+    Route::get('/empleadogen', 'EmpleadoGen@index')->name('empleadogen');
+    Route::get('/clientegen', 'ClienteGen@index')->name('clientegen');
+    Route::get('/productoserviciogen', 'ProductoServicioGen@index')->name('productoserviciogen');
+
 
     //Factorys
     Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
@@ -62,6 +67,8 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/sector/factory', 'SectorController@factory')->name('sector.factory');
     Route::get('/vehiculo/factory', 'VehiculoController@factory')->name('vehiculo.factory');
     Route::get('/reserva/factory', 'ReservaController@factory')->name('reserva.factory');
+    Route::get('/cliente/factory', 'ClienteController@factory')->name('cliente.factory');
+    Route::get('/productoservicio/factory', 'ProductoServicio@factory')->name('productoservicio.factory');
 
     //Validaciones request
     Route::resource('localidad', 'LocalidadController');
@@ -80,17 +87,53 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('maquinaria_tipo', 'MaquinariaTipoController');
     Route::resource('sintoma', 'SintomaController');
     Route::resource('modelo', 'ModeloController');
+    Route::resource('sector', 'SectorController');
     Route::resource('vehiculo', 'VehiculoController');
     Route::resource('reserva', 'ReservaController');
+    Route::resource('cliente', 'ClienteController');
+    Route::resource('productoservicio', 'ProductoServicioController');
 
 });
 
 // Rutas de los examples pages bootstrap.
 // Resources/views/vendor/adminlte/pages agregados a mano
+Route::view('/usuario.email.check', 'usuario.email.check')->name('usuario.email.check');
+
 Route::get('/chartjs',  'BootstrapExampleController@chartjs')->name('chartjs');
 Route::get('/flot',     'BootstrapExampleController@flot')->name('flot');
 Route::get('/inline',   'BootstrapExampleController@inline')->name('inline');
 Route::get('/data',     'BootstrapExampleController@data')->name('data');
+//Route::get('/tuindex',     'BootstrapExampleController@data')->name('tuindex');
+Route::view('/tallerusuario', 'talleres_usuarios/index')->name('tallerusuario');
+Route::view('/tallerusuario/create', 'talleres_usuarios/create')->name('tallerusuario.create');
+
+ Route::view('/tucreate', 'talleres_usuarios/create');
+ Route::view('/_reservanormal', '_reservanormal/index')->name('_reservanormal');
+ Route::view('/_reservanormalc', '_reservanormal/edit');
+Route::view('/_reservalinea', '_reservalinea/index')->name('_reservalinea');
+Route::view('/_reservalineac', '_reservalinea/edit');
+Route::view('/_confirmacionot', '_confirmacionot/index')->name('_confirmacionot');
+Route::view('/_confirmacionotc', '_confirmacionot/edit');
+Route::view('/_sectorrepuesto', '_sectorrepuesto/index')->name('_sectorrepuesto');
+Route::view('/_sectorrepuestoc', '_sectorrepuesto/edit');
+Route::view('/_entradarepuesto', '_entradarepuesto/index')->name('_entradarepuesto');
+Route::view('/_entradarepuestoc', '_entradarepuesto/edit');
+Route::view('/_salidarepuesto', '_salidarepuesto/index')->name('_salidarepuesto');
+Route::view('/_salidarepuestoc', '_salidarepuesto/edit');
+Route::view('/_asignacionamaquinaria', '_asignacionamaquinaria/index')->name('_asignacionamaquinaria');
+Route::view('/_asignacionamaquinariac', '_asignacionamaquinaria/edit');
+Route::view('/_recepcionvehiculo', '_recepcionvehiculo/index')->name('_recepcionvehiculo');
+Route::view('/_recepcionvehiculoc', '_recepcionvehiculo/edit');
+Route::view('/_calendarioatencion', '_calendarioatencion/index')->name('_calendarioatencion');
+Route::view('/_calendarioatencionc', '_calendarioatencion/edit');
+Route::view('/_realizacionot', '_realizacionot/index')->name('_realizacionot');
+Route::view('/_realizacionotc', '_realizacionot/edit');
+Route::view('/_finalizacionot', '_finalizacionot/index')->name('_finalizacionot');
+Route::view('/_finalizacionotc', '_finalizacionot/edit');
+Route::view('/_verificacionot', '_verificacionot/index')->name('_verificacionot');
+Route::view('/_verificacionotc', '_verificacionot/edit');
+Route::view('/_entregavehiculo', '_entregavehiculo/index')->name('_entregavehiculo');
+Route::view('/_entregavehiculoc', '_entregavehiculo/edit');
 /*
 Route::get('/login/admin',      'Auth\LoginController@showAdminLoginForm');
 Route::get('/register/admin',   'Auth\RegisterController@showAdminRegisterForm');

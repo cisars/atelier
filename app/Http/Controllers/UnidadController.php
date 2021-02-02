@@ -19,11 +19,10 @@ class UnidadController extends Controller
     }
     public function create()
     {
-        if($unidades = Unidad::orderBy('descripcion', 'ASC')->get())
+        $unidades = Unidad::orderBy('descripcion', 'ASC')->get() ;
         return view('unidad.create')
             ->with('unidades', $unidades);
-        else
-            return view('unidad.create') ;
+
     }
 
     public function factory()

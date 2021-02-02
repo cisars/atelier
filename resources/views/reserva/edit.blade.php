@@ -12,6 +12,7 @@
 @stop
 
 @section('content')
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -33,183 +34,29 @@
                                     @csrf
                                     @method('PATCH')
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="reserva">Codigo de Reserva</label>
-                                            <input
-                                                class   ="form-control"
-                                                type    ="text"
-                                                name    ="reserva"
-                                                id      ="reserva" readonly
-                                                value   ="{{ old('reserva', $reserva->reserva) }}"
-                                            >
-                                            @foreach ($errors->get('reserva') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
 
 
 
-                                        {{-- FK1 Select--}}
-                                        <div class="form-group">
-                                            <label for="taller">Taller</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="taller"
-                                                id      ="taller">
-                                                @foreach($talleres as $key => $taller)
-                                                    <option value="{{ $taller->taller }}"
-                                                            @if ($reserva->taller == old('taller', $taller->taller))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $taller->descripcion }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
 
-                                        {{-- FK2 Select--}}
-                                        <div class="form-group">
-                                            <label for="cliente">Cliente</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="cliente"
-                                                id      ="cliente">
-                                                @foreach($clientes as $key => $cliente)
-                                                    <option value="{{ $cliente->cliente }}"
-                                                            @if ($reserva->cliente == old('cliente', $cliente->cliente))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $cliente->razon_social }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-{{ dd($reserva->vehiculo)}}
+
+
+
+
                                         {{-- FK3 Select--}}
                                         <div class="form-group">
                                             <label for="vehiculo">Vehiculo</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="vehiculo"
-                                                id      ="vehiculo">
-                                                @foreach($modelos as $key => $modelo)
-                                                    <option value="{{ $modelo->modelo }}"
-                                                            @if ($reserva->vehiculo->modelo == old('vehiculo', $modelo->modelo))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $modelo->descripcion }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                            {!! Form::select('vehiculo', $vehiculos, $reserva->vehiculo, ['class' => 'form-control', 'placeholder' => 'Elige un valor']) !!}
 
-                                        {{-- FK4 Select--}}
-                                        <div class="form-group">
-                                            <label for="empleado">Empleado</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="empleado"
-                                                id      ="empleado">
-                                                @foreach($empleados as $key => $empleado)
-                                                    <option value="{{ $empleado->empleado }}"
-                                                            @if ($reserva->empleado == old('empleado', $empleado->empleado))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $empleado->apellidos. ', '.$empleado->nombres }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        {{-- FK5 Select--}}
-                                        <div class="form-group">
-                                            <label for="usuario">Usuario</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="usuario"
-                                                id      ="usuario">
-                                                @foreach($usuarios as $key => $usuario)
-                                                    <option value="{{ $usuario->usuario }}"
-                                                            @if ($reserva->usuario == old('usuario', $usuario->usuario))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $usuario->usuario }}</option>
-                                                @endforeach
-                                            </select>
                                         </div>
 
 
 
-                                        {{--CONST Estado1--}}
-                                        <div class="form-group col">
-                                            <label for="estado" >Estado</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="estado"
-                                                id      ="estado">
-                                                @foreach($estados as $key => $estado)
-                                                    <option value="{{ $estado }}"
-                                                            @if ($reserva->estado ==  $estado )
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $key }}</option>
-                                                @endforeach
-                                            </select>
-                                            @foreach ($errors->get('estado') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
 
-                                        {{--CONST Estado2--}}
-                                        <div class="form-group col">
-                                            <label for="forma_reserva" >Forma Reserva</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="forma_reserva"
-                                                id      ="forma_reserva">
-                                                @foreach($formas_reservas as $key => $forma_reserva)
-                                                    <option value="{{ $forma_reserva }}"
-                                                            @if ($reserva->forma_reserva ==  $forma_reserva )
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $key }}</option>
-                                                @endforeach
-                                            </select>
-                                            @foreach ($errors->get('forma_reserva') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
 
-                                        {{--CONST Estado3--}}
-                                        <div class="form-group col">
-                                            <label for="prioridad" >Prioridad</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="prioridad"
-                                                id      ="prioridad">
-                                                @foreach($prioridades as $key => $prioridad)
-                                                    <option value="{{ $prioridad }}"
-                                                            @if ($reserva->prioridad ==  $prioridad )
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $key }}</option>
-                                                @endforeach
-                                            </select>
-                                            @foreach ($errors->get('prioridad') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
-                                        </div>
 
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="direccion">Direccion</label>--}}
-{{--                                            <input--}}
-{{--                                                class   ="form-control"--}}
-{{--                                                maxlength="40"--}}
-{{--                                                type    ="text"--}}
-{{--                                                name    ="direccion"--}}
-{{--                                                id      ="direccion"--}}
-{{--                                                value   ="{{ old('direccion', $reserva->direccion) }}"--}}
-{{--                                            >--}}
-{{--                                            @foreach ($errors->get('direccion') as $error)--}}
-{{--                                                <span class="text text-danger">{{ $error }}</span>--}}
-{{--                                            @endforeach--}}
-{{--                                        </div>--}}
+
+
+
 
                                     </div>
                                     <div class="card-footer">

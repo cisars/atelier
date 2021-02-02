@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Atelier</b> Talleres',
-   // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img' => 'img/atelier1.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -241,101 +241,101 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#8-menu-configuration
     |
     // Original menu */
-        /*
-    'menu' => [
-        [
-            'text' => 'Busqueda',
-            'search' => false,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
+    /*
+'menu' => [
+    [
+        'text' => 'Busqueda',
+        'search' => false,
+        'topnav' => true,
+    ],
+    [
+        'text' => 'blog',
+        'url'  => 'admin/blog',
+        'can'  => 'manage-blog',
+    ],
+    [
+        'text'        => 'pages',
+        'url'         => 'admin/pages',
+        'icon'        => 'far fa-fw fa-file',
+        'label'       => 4,
+        'label_color' => 'success',
+    ],
+    ['header' => 'account_settings'],
+    [
+        'text' => 'profile',
+        'url'  => 'admin/settings',
+        'icon' => 'fas fa-fw fa-user',
+    ],
+    [
+        'text' => 'change_password',
+        'url'  => 'admin/settings',
+        'icon' => 'fas fa-fw fa-lock',
+    ],
+    [
+        'text'    => 'multilevel',
+        'icon'    => 'fas fa-fw fa-share',
+        'submenu' => [
+            [
+                'text' => 'level_one',
+                'url'  => '#',
+            ],
+            [
+                'text'    => 'level_one',
+                'url'     => '#',
+                'submenu' => [
+                    [
+                        'text' => 'level_two',
+                        'url'  => '#',
+                    ],
+                    [
+                        'text'    => 'level_two',
+                        'url'     => '#',
+                        'submenu' => [
+                            [
+                                'text' => 'level_three',
+                                'url'  => '#',
+                            ],
+                            [
+                                'text' => 'level_three',
+                                'url'  => '#',
                             ],
                         ],
                     ],
                 ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
+            ],
+            [
+                'text' => 'level_one',
+                'url'  => '#',
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
     ],
+    ['header' => 'labels'],
+    [
+        'text'       => 'important',
+        'icon_color' => 'red',
+        'url'        => '#',
+    ],
+    [
+        'text'       => 'warning',
+        'icon_color' => 'yellow',
+        'url'        => '#',
+    ],
+    [
+        'text'       => 'information',
+        'icon_color' => 'cyan',
+        'url'        => '#',
+    ],
+],
 
 
-           [
-            'text'        => 'pages',
-            'url'         => '#',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-    */
+       [
+        'text'        => 'pages',
+        'url'         => '#',
+        'icon'        => 'far fa-fw fa-file',
+        'label'       => 4,
+        'label_color' => 'success',
+    ],
+*/
     // MIMENU
     'menu' => [
         [
@@ -345,58 +345,58 @@ return [
         ],
         [
             'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text' => 'pages',
+            'url' => 'admin/pages',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
             'label_color' => 'success',
-            'can'  => 'sin esta linea',
+            'can' => 'sin esta linea',
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
-            'can'  => 'sin esta linea',
+            'can' => 'sin esta linea',
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-            'can'  => 'sin esta linea',
+            'can' => 'sin esta linea',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'can'     => 'sin asignar',
+            'text' => 'multilevel',
+            'icon' => 'fas fa-fw fa-share',
+            'can' => 'sin asignar',
             'submenu' => [
                 [
                     'text' => 'level_one',
-                    'url'  => '#',
+                    'url' => '#',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
+                    'text' => 'level_one',
+                    'url' => '#',
                     'submenu' => [
                         [
                             'text' => 'level_two',
-                            'url'  => '#',
+                            'url' => '#',
                         ],
                         [
-                            'text'    => 'level_two',
-                            'url'     => '#',
+                            'text' => 'level_two',
+                            'url' => '#',
                             'submenu' => [
                                 [
                                     'text' => 'level_three',
-                                    'url'  => '#',
+                                    'url' => '#',
                                 ],
                                 [
                                     'text' => 'level_three',
-                                    'url'  => '#',
+                                    'url' => '#',
                                 ],
                             ],
                         ],
@@ -404,150 +404,241 @@ return [
                 ],
                 [
                     'text' => 'level_one',
-                    'url'  => '#',
+                    'url' => '#',
                 ],
             ],
         ],
-        [ 'header' => 'SISTEMA', 'can' => ['admin' ],],
+        ['header' => 'SISTEMA', 'can' => ['admin', 'doc'],],
         [
-            'text'          => 'SISTEMA',
-            'icon'          => 'fas fa-fw fa-user-cog',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '1/2',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'usuario',  'text' => 'Usuarios', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',        'text' => 'Usuarios de Talleres', ],
-            ],
-        ],
-
-        [
-            'text'          => 'EMPRESARIAL',
-            'icon'          => 'fas fa-fw fa-building',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '9/12',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sucursal',         'text' => 'Sucursales', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'taller',           'text' => 'Talleres', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sector',           'text' => 'Sectores', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'cargo',            'text' => 'Cargos', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'empleado',         'text' => 'Empleados', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'turno',            'text' => 'Turnos', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'grupo',            'text' => 'Grupos de trabajos', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'maquinaria_tipo',  'text' => 'Tipo de Maquinaria', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'maquinaria',       'text' => 'Maquinarias', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Asignacion a Maquinarias', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Feriados Laborales', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Calendarios Reservas', ],
-            ],
-        ],
-        [
-            'text'          => 'PRODUCTOS',
-            'icon'          => 'fas fa-fw fa-toolbox',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '2/3',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'info',  'can' => ['admin'], 'url'=> 'clasificacion',    'text' => 'Clasificaciones', ],
-                [ 'icon_color' => 'info',  'can' => ['admin'], 'url'=> 'unidad',           'text' => 'Unidades', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',                'text' => 'Productos/Servicios', ],
-            ],
-        ],
-        [
-            'text'          => 'CLIENTES',
-            'icon'          => 'fas fa-fw fa-mug-hot',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '1/3',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'localidad',    'text' => 'Localidades', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Clientes', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Productos/Servicios', ],
-            ],
-        ],
-        [
-            'text'          => 'VEHICULOS',
-            'icon'          => 'fas fa-fw fa-car',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '4/4',
-            'label_color'   => 'warning',
-            'submenu'       => [
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'marca',        'text' => 'Marcas', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'modelo',       'text' => 'Modelos', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'vehiculo',     'text' => 'Vehiculos', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'color',        'text' => 'Colores', ],
-            ],
-        ],
-        [
-            'text'          => 'MOVIMIENTOS',
-            'icon'          => 'fas fa-fw fa-exchange-alt',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '1/8',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'reserva',      'text' => 'Reservas', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Recepcion de Vehiculos', ],
-                [ 'icon_color' => 'info',   'can' => ['admin'], 'url'=> 'sintoma',      'text' => 'Sintomas', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Ordenes de Trabajo', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Confirmacion de OTs', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Servicios Realizados', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Entregas de Vehiculos', ],
-                [ 'icon_color' => 'gray',   'can' => ['admin'], 'url'=> '#',            'text' => 'Visualizar Prefacturacion', ],
-            ],
-        ],
-        [
-            'text'          => 'STOCK',
-            'icon'          => 'fas fa-fw fa-cubes',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '0/3',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Entrada de Repuestos', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Salida de Repuestos', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Stock de Manejo', ],
-            ],
-        ],
-        [
-            'text'          => 'INFORMES',
-            'icon'          => 'fas fa-fw fa-clipboard-list',
-            'icon_color'    => 'maroon',
-            'can'           => ['admin' ],
-            'label'         => '0/9',
-            'label_color'   => 'info',
-            'submenu'       => [
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Usuarios del Sistema', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Accesos de Usuarios', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Auditorias del Sistema', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Reservas', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Recepciones', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Ordenes de Trabajo', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Entregas', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Entradas de Repuestos', ],
-                [ 'icon_color' => 'gray',  'can' => ['admin'], 'url'=> '#',              'text' => 'Salidas de Repuestos', ],
-            ],
-        ],
-
-
-        [ 'header' => 'EJEMPLOS BOOTSTRAP', 'can' => ['admin', 'example-bootstrap'],],
-        [
-            'text'    => 'Datatables',
-            'icon'    => 'fas fa-fw fa-table',
-            'can'     => ['admin', 'example-bootstrap'],
+            'text' => 'SISTEMA',
+            'icon' => 'fas fa-fw fa-user-cog',
+            'icon_color' => 'maroon',
+            'can' => ['admin', 'doc'],
+            //'label'         => '1/2',
+            'label_color' => 'info',
             'submenu' => [
-                [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'data', 'text' => 'Data', ],
-                [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'inline', 'text' => 'Inline', ],
-                [ 'icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url'=> 'flot', 'text' => 'Flot', ],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'usuario', 'text' => 'Usuarios',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'tallerusuario', 'text' => 'Usuarios de Talleres',],
+                [
+                    'submenu' => [
+                        ['url' => 'usuario/create',],
+                        ['url' => 'tallerusuario/create',],
+                    ],
+                ],
             ],
         ],
 
+        [
+            'text' => 'EMPRESARIAL',
+            'icon' => 'fas fa-fw fa-building',
+            'icon_color' => 'maroon',
+            'can' => ['admin', 'doc'],
+            //'label'         => '9/12',
+            'label_color' => 'info',
+            'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sucursal', 'text' => 'Sucursales',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'taller', 'text' => 'Talleres',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sector', 'text' => 'Sectores de trabajo',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'cargo', 'text' => 'Cargos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'empleado', 'text' => 'Empleados',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'turno', 'text' => 'Turnos de trabajo',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'grupo', 'text' => 'Grupos de trabajos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria_tipo', 'text' => 'Tipo de Maquinaria',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria', 'text' => 'Maquinarias',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_asignacionamaquinaria', 'text' => 'Asignacion a Maquinarias',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Feriados Laborales',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_calendarioatencionc', 'text' => 'Calendarios Reservas',],
+
+                [
+                    'submenu' => [
+                        [ 'url' => 'sucursal/create'],
+                        [ 'url' => 'taller/create'],
+                        [ 'url' => 'sector/create'],
+                        [ 'url' => 'cargo/create'],
+                        [ 'url' => 'empleado/create'],
+                        [ 'url' => 'turno/create'],
+                        [ 'url' => 'grupo/create'],
+                        [ 'url' => 'maquinaria_tipo/create'],
+                        [ 'url' => 'maquinaria/create'],
+                        [ 'url' => '_asignacionamaquinariac'],
+                        [ 'url' => '#', 'text' => 'Feriados Laborales/edit'],
+                        [ 'url' => '_calendarioatencionc'],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'text' => 'REPUESTOS/SERVICIOS',
+            'icon' => 'fas fa-fw fa-toolbox',
+            'icon_color' => 'maroon',
+            'can' => ['admin', 'doc'],
+            // 'label'         => '2/3',
+            'label_color' => 'info',
+            'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'clasificacion', 'text' => 'Clasificaciones',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'unidad', 'text' => 'Unidades de medidas',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'productoservicio', 'text' => 'Repuestos/Servicios',],
+                [
+                    'submenu' => [
+                        [ 'url' => 'clasificacion/create'],
+                        [ 'url' => 'unidad/create'],
+                        [ 'url' => 'productoservicio/create'],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'text' => 'CLIENTES',
+            'icon' => 'fas fa-fw fa-mug-hot',
+            'icon_color' => 'maroon',
+            'can' => ['admin', 'doc'],
+            //'label'         => '1/3',
+            'label_color' => 'info',
+            'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'localidad', 'text' => 'Localidades',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'cliente', 'text' => 'Clientes',],
+                [
+                    'submenu' => [
+                        [ 'url' => 'localidad/create'],
+                        [ 'url' => 'cliente/create'],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'text' => 'VEHICULOS',
+            'icon' => 'fas fa-fw fa-car',
+            'icon_color' => 'maroon',
+            'can' => ['admin', 'doc'],
+            //'label'         => '4/4',
+            'label_color' => 'warning',
+            'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'color', 'text' => 'Colores',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'marca', 'text' => 'Marcas',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'modelo', 'text' => 'Modelos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'vehiculo', 'text' => 'Vehiculos',],
+                [
+                    'submenu' => [
+                        [ 'url' => 'color/create'],
+                        [ 'url' => 'marca/create'],
+                        [ 'url' => 'modelo/create'],
+                        [ 'url' => 'vehiculo/create'],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'text' => 'MOVIMIENTOS',
+            'icon' => 'fas fa-fw fa-exchange-alt',
+            'icon_color' => 'maroon',
+            'can' => ['admin'],
+            //'label'         => '1/8',
+            'label_color' => 'info',
+            'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'reserva', 'text' => 'Reservas',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Sintomas de Vehiculos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_recepcionvehiculo', 'text' => 'Recepcion de Vehiculos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_confirmacionot', 'text' => 'Confirmacion de OTs',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_realizacionot', 'text' => 'Servicios Realizados',],
+
+                ['icon_color' => 'info', 'can' => 'admin', 'url' => '_verificacionot ', 'text' => 'Verificacion de OT ',],
+                ['icon_color' => 'info', 'can' => 'admin', 'url' => '_finalizacionot ', 'text' => 'Finalizacion de OT ',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_entregavehiculo', 'text' => 'Entregas de Vehiculos',],
+                [
+                    'submenu' => [
+                        [ 'url' => 'reserva/create'],
+                        [ 'url' => 'sintoma/create'],
+                        [ 'url' => '_recepcionvehiculoc'],
+                        [ 'url' => '_confirmacionotc'],
+                        [ 'url' => '_verificacionotc'],
+                        [ 'url' => '_finalizacionotc'],
+                        [ 'url' => '_entregavehiculoc'],
+                    ],
+                ],
+//
+//                [ 'icon_color' => 'gray',   'can' => ['admin', 'doc'], 'url'=> '#',            'text' => 'Ordenes de Trabajo', ],
+//                [ 'icon_color' => 'gray',   'can' => ['admin', 'doc'], 'url'=> '#',            'text' => 'Visualizar Prefacturacion', ],
+            ],
+        ],
+        [
+            'text' => 'STOCK',
+            'icon' => 'fas fa-fw fa-cubes',
+            'icon_color' => 'maroon',
+            'can' => ['admin'],
+            //'label'         => '0/3',
+            'label_color' => 'info',
+            'submenu' => [
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_entradarepuesto', 'text' => 'Entrada de Repuestos',],
+//                [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Salida de Repuestos', ],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Stock de Manejo',],
+                [
+                    'submenu' => [
+                        [ 'url' => '_entradarepuestoc'],
+                        [ 'url' => '_stock'],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'text' => 'INFORMES',
+            'icon' => 'fas fa-fw fa-clipboard-list',
+            'icon_color' => 'maroon',
+            'can' => ['admin'],
+            // 'label'         => '0/9',
+            'label_color' => 'info',
+            'submenu' => [
+//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Usuarios del Sistema',],
+//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Accesos de Usuarios',],
+//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Auditorias del Sistema',],
+                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Reservas',],
+//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Recepciones de Vehiculos',],
+                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Ordenes de Trabajo',],
+                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Entregas de Vehiculos',],
+//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Entregas de Repuestos',],
+                [
+                    'submenu' => [
+                        [ 'url' => '#'],
+                        [ 'url' => '#'],
+                        [ 'url' => '#'],
+                    ],
+                ],
+//                [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Entregas', ],
+//                [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Entradas de Repuestos', ],
+//                [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Salidas de Repuestos', ],
+            ],
+        ],
+
+
+//                                    ['header' => 'EJEMPLOS BOOTSTRAP', 'can' => ['admin', 'example-bootstrap'],],
+//                                    [
+//                                        'text' => 'Datatables',
+//                                        'icon' => 'fas fa-fw fa-table',
+//                                        'can' => ['admin', 'example-bootstrap'],
+//                                        'submenu' => [
+//                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'data', 'text' => 'Data',],
+//                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'inline', 'text' => 'Inline',],
+//                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'flot', 'text' => 'Flot',],
+//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'maketemplate', 'text' => 'MKT',],
+//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleadogen', 'text' => 'EmpleadoGen',],
+//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'clientegen', 'text' => 'ClienteGen',],
+//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'productoserviciogen', 'text' => 'ProductoServicioGen',],
+//
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservanormal', 'text' => 'reservanormal ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservalinea', 'text' => 'reservalinea',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_confirmacionot', 'text' => 'confirmacionot ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_sectorrepuesto', 'text' => 'sectorrepuesto ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_entradarepuesto', 'text' => 'entradarepuesto ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_salidarepuesto', 'text' => 'salidarepuesto ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_asignacionamaquinaria', 'text' => 'asignacionamaquinaria ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_recepcionvehiculo', 'text' => 'recepcionvehiculo ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_calendarioatencion', 'text' => 'calendarioatencion ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_realizacionot', 'text' => 'realizacionot ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_verificacionot', 'text' => 'verificacionot ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_finalizacionot', 'text' => 'finalizacionot ',],
+//                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_entregavehiculo', 'text' => 'entregavehiculo ',],
+//
+//                                        ],
+//                                    ],
 
 
     ],

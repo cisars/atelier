@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Empleado;
+use App\Models\Taller;
+use App\Models\TalleresUsuarios;
 use App\Models\Usuario;
+use App\Mail\EmailCheck;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\Usuario\StoreUsuarioRequest;
 use App\Http\Requests\Usuario\UpdateUsuarioRequest;
+use Illuminate\Support\Str;
+use mysql_xdevapi\Exception;
 
 class UsuarioController extends Controller
 {
@@ -29,8 +36,8 @@ class UsuarioController extends Controller
 
         $usuarios->each(function($usuario)
         {
-            $usuario->empleado = Empleado::find($usuario->empleado);
-            $usuario->cliente = Cliente::find($usuario->cliente);
+//            $usuario->empleado = Empleado::find($usuario->empleado);
+//            $usuario->cliente = Cliente::find($usuario->cliente);
 
             foreach ($this->getPerfil as $clave=>$valor)
               if( trim($usuario->perfil) == trim($valor) )
@@ -53,6 +60,9 @@ class UsuarioController extends Controller
     {
         $empleados = Empleado::orderBy('apellidos', 'ASC')->get();
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
+        $talleres = Taller::orderBy('descripcion', 'ASC')->get();
+
+        $empleados = Empleado::all()->pluck('full_name', 'id');
 
         $usuario    = new Usuario();
         $estados    = $usuario->getEstados();
@@ -65,6 +75,7 @@ class UsuarioController extends Controller
             ->with('usuario', $usuario)
             ->with('estados', $estados)
             ->with('perfiles', $perfiles)
+            ->with('talleres', $talleres)
             ->with('tipos', $tipos) ;
     }
     public function factory()
@@ -98,6 +109,7 @@ class UsuarioController extends Controller
 
     public function store(StoreUsuarioRequest $request)
     {
+
 //        $user = Usuario::findOrFail($request->usuario);
 //
 //        // Validate the new password length...
@@ -105,10 +117,49 @@ class UsuarioController extends Controller
 //        $user->fill([
 //            'password' => Hash::make($request->newPassword)
 //        ])->save();
-        $usuario = new Usuario($request->all());
-        $usuario['clave'] = Hash::make($request['clave']);
-        $usuario['fecha_ingreso'] = now();
-        $usuario->save();
+//dd($request->email);
+        try {
+            DB::beginTransaction();
+            $usuario = new Usuario($request->only(
+                ['usuario',
+                    'empleado_id',
+                    'cliente_id',
+                    'clave',
+                    'fecha_ingreso',
+                    'estado',
+                    'observacion',
+                    'perfil',
+                    'tipo',
+                    'usuario_verified_at',
+                    'remember_token',
+                    'mailtoken',
+                    'created_at',
+                    'updated_at']));
+            $usuario->mailtoken = $request->_token;
+            //$usuario->token = Str::uuid();
+            $usuario->clave = Hash::make($request->clave);
+            $usuario->fecha_ingreso = now();
+            $usuario->save();
+
+            Mail::to(trim($request->email))->send(new EmailCheck($usuario->mailtoken));
+
+
+
+           // dd($request->all());
+            foreach ($request->taller_id as $item) {
+                $talleresusuarios = new TalleresUsuarios();
+                $talleresusuarios->taller_id    = $item;
+                $talleresusuarios->usuario      = $usuario->usuario;
+//                dd($talleresusuarios);
+                $talleresusuarios->save();
+            }
+
+            DB::commit();
+
+        } catch ( Exception $e){
+            DB::rollBack();
+        }
+
         return redirect()
             ->route('usuario.index')
             ->with('msg', 'Registro Creado Correctamente')

@@ -28,8 +28,8 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('cargo.create')}}" class="btn bg-cyan">Nueva Cargo</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            <a  href="{{route('cargo.create')}}" class="btn bg-cyan">Nuevo Cargo</a>
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('cargo.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($cargos as $key => $cargo)
                                 <tr>
-                                    <td>{{ $cargo->cargo }}</td>
+                                    <td>{{ $cargo->id }}</td>
                                     <td>{{ $cargo->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('cargo.edit', $cargo->cargo) }}"
+                                            href="{{ route('cargo.edit', $cargo->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$cargo->cargo}}"
-                                            data-data   ="{{$cargo->cargo}}">
+                                            data-target ="#modal-danger{{$cargo->id}}"
+                                            data-data   ="{{$cargo->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'cargo',
-                                                'value' => $cargo->cargo,
+                                                'pk'   => 'id',
+                                                'value' => $cargo->id,
                                                 'ruta'  => 'cargo.destroy',
                                             ]
                                         ?>

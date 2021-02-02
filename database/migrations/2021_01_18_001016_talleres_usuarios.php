@@ -13,7 +13,20 @@ class TalleresUsuarios extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('talleres_usuarios', function (Blueprint $table) {
+            $table->tinyInteger('taller_id')->unsigned();
+            $table->string('usuario')->nullable();
+
+            $table->timestamps();
+
+            $table->foreign('taller_id')
+                ->references('id')
+                ->on('talleres');
+            $table->foreign('usuario')
+                ->references('usuario')
+                ->on('usuarios');
+
+        });
     }
 
     /**

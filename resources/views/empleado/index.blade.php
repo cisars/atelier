@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('empleado.create')}}" class="btn bg-cyan">Nuevo Empleado</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a  href="{{route('empleado.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -61,8 +61,9 @@
                             </thead>
                             <tbody>
                             @foreach($empleados as $key => $empleado)
+
                                 <tr class="">
-                                    <td>{{ $empleado->empleado }}</td>
+                                    <td>{{ $empleado->id }}</td>
                                     <td>{{ $empleado->nombres }}</td>
                                     <td>{{ $empleado->apellidos }}</td>
                                     <td>{{ $empleado->ci }}</td>
@@ -73,8 +74,8 @@
                                     <td>{{ $empleado->movil }}</td>
                                     <td>{{ $empleado->telefono }}</td>
                                     <td>{{ $empleado->cargo->descripcion }}</td>
-                                    <td>{{ $empleado->turno_empleado->descripcion }}</td>
-                                    <td>{{ $empleado->grupo_trabajo->descripcion }}</td>
+                                    <td>{{ $empleado->turno->descripcion }}</td>
+                                    <td>{{ $empleado->grupo->descripcion }}</td>
                                     <td>{{ $empleado->fecha_nacimiento }}</td>
                                     <td>{{ $empleado->fecha_ingreso }}</td>
                                     <td>{{ $empleado->estado }}</td>
@@ -83,7 +84,7 @@
                                     <td>{{ $empleado->salario }}</td>
                                     <td class="">
                                         <a
-                                            href="{{ route('empleado.edit', $empleado->empleado) }}"
+                                            href="{{ route('empleado.edit', $empleado->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -91,14 +92,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$empleado->empleado}}"
-                                            data-data   ="{{$empleado->empleado}}">
+                                            data-target ="#modal-danger{{$empleado->id}}"
+                                            data-data   ="{{$empleado->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                            'pk'   => 'empleado',
-                                            'value' => $empleado->empleado,
+                                            'pk'   => 'id',
+                                            'value' => $empleado->id,
                                             'ruta'  => 'empleado.destroy',
                                         ]
                                         ?>

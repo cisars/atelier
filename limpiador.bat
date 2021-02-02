@@ -1,4 +1,4 @@
 :loop
-php artisan view:clear
+php artisan config:clear
 SLEEP 3
 goto loop

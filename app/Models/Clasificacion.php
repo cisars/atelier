@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clasificacion extends Model
 {
     protected $table = 'clasificaciones';
-    protected $primaryKey = 'clasificacion';
+    //protected $primaryKey = 'clasificacion';
     //protected $fillable = [];
    //  public $timestamps = true;
     protected $guarded = [];

@@ -27,7 +27,7 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('turno.update', $turno->turno_empleado) }}"
+                                    action  ="{{ route('turno.update', $turno->turno_id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -47,13 +47,13 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="turno_empleado">Codigo de Turno</label>
+                                            <label for="turno_id">Codigo de Turno</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="turno_empleado"
-                                                id      ="turno_empleado" readonly
-                                                value   ="{{ old('turno_empleado', $turno->turno_empleado) }}"
+                                                name    ="turno_id"
+                                                id      ="turno_id" readonly
+                                                value   ="{{ old('turno_id', $turno->turno_id) }}"
                                                  >
                                         </div>
                                     </div>

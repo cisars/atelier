@@ -14,7 +14,7 @@ class CreateMaquinariasTiposTable extends Migration
     public function up()
     {
         Schema::create('maquinarias_tipos', function (Blueprint $table) {
-            $table->tinyInteger('maquinaria_tipo',true)->unsigned();
+            $table->tinyInteger('id',true)->unsigned();
             $table->string('descripcion',40)->nullable();
             $table->timestamps();
         });

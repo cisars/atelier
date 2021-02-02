@@ -14,14 +14,14 @@ class CreateCalendariosAtencionesTable extends Migration
     public function up()
     {
         Schema::create('calendarios_atenciones', function (Blueprint $table) {
-            $table->increments('calendario_atencion');
+            $table->increments('id');
             $table->date('fecha')->nullable();
             $table->smallInteger('turno_recepcion',false,true )->nullable();
             $table->time('hora_desde')->nullable();
             $table->time('hora_hasta')->nullable();
             $table->char('prioridad',1)->nullable();
             $table->char('estado',1)->nullable();
-            $table->bigInteger('cliente')->nullable();
+            $table->smallInteger('cliente_id')->nullable();
             //$table->foreign('usuario') ;
             $table->string('usuario', 255);
 

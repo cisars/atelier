@@ -20,11 +20,9 @@ class MaquinariaTipoController extends Controller
     }
     public function create()
     {
-        if($maquinarias_tipos = MaquinariaTipo::orderBy('descripcion', 'ASC')->get())
+        $maquinarias_tipos = MaquinariaTipo::orderBy('descripcion', 'ASC')->get();
         return view('maquinaria_tipo.create')
             ->with('maquinarias_tipos', $maquinarias_tipos);
-        else
-            return view('maquinaria_tipo.create') ;
     }
 
     public function factory()

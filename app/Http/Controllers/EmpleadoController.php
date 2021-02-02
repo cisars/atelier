@@ -10,6 +10,7 @@ use App\Models\Grupo;
 use App\Models\Localidad;
 use App\Models\Turno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class EmpleadoController extends Controller
@@ -19,10 +20,6 @@ class EmpleadoController extends Controller
     {
         $empleados = Empleado::all();
         $empleados->each(function ($empleado) {
-            $empleado->localidad = Localidad::find($empleado->localidad);
-            $empleado->grupo_trabajo = Grupo::find($empleado->grupo_trabajo);
-            $empleado->cargo = Cargo::find($empleado->cargo);
-            $empleado->turno_empleado = Turno::find($empleado->turno_empleado);
 
             $empleado->estado === Empleado::EMPLEADO_ACTIVO ? $empleado->estado = 'Activo' : $empleado->estado = 'Inactivo' ;
             $empleado->estado_civil === Empleado::EMPLEADO_CASADO       ? $empleado->estado_civil = 'Casado' : "" ;
@@ -32,26 +29,33 @@ class EmpleadoController extends Controller
             $empleado->sexo === Empleado::EMPLEADO_MASCULINO ? $empleado->sexo = 'Masculino' : $empleado->sexo = 'Femenino' ;
 
         });
+
+        //dd($empleados->first()->localidad->descripcion);
         return view('empleado.index', compact('empleados', $empleados));
     }
     public function create()
     {
+
         $localidades = Localidad::orderBy('descripcion', 'ASC')->get();
         $cargos = Cargo::orderBy('descripcion', 'ASC')->get();
         $turnos = Turno::orderBy('descripcion', 'ASC')->get();
         $grupos = Grupo::orderBy('descripcion', 'ASC')->get();
+
+        //$empleados = Empleado::pluck('full_name', 'id');
+        $empleados = Empleado::all()->pluck('full_name', 'id');
 
         $empleado   = new Empleado();
         $estados    = $empleado->getEstados();
         $sexos      = $empleado->getSexos();
         $estadosciviles= $empleado->getEstadosCiviles();
 
-        return view('empleado.create')
+        return view('empleado.edit')
             ->with('localidades', $localidades)
             ->with('cargos', $cargos)
             ->with('turnos', $turnos)
             ->with('grupos', $grupos)
             ->with('empleado', $empleado)
+            ->with('empleados', $empleados)
             ->with('estados', $estados)
             ->with('estadosciviles', $estadosciviles)
             ->with('sexos', $sexos);
@@ -67,9 +71,15 @@ class EmpleadoController extends Controller
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'info');
     }
-    public function destroy()
+    public function destroy(Request $request)
     {
-        //
+        $empleado = Empleado::findOrFail($request->empleado);
+        $empleado->delete();
+
+        return redirect()
+            ->route('empleado.index')
+            ->with('msg', 'Registro Eliminado Correctamente')
+            ->with('type', 'danger');
     }
     public function edit(Empleado $empleado)
     {
@@ -92,17 +102,30 @@ class EmpleadoController extends Controller
     }
     public function update(UpdateEmpleadoRequest $request, Empleado $empleado)
     {
+        try {
+            DB::beginTransaction();
+            $empleado->fill($request->all());
+            $empleado->save();
+            DB::commit();
+            return redirect()
+                ->route('empleado.index')
+                ->with('msg', 'Registro Actualizado Correctamente')
+                ->with('type', 'info');
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect()
+                ->route('empleado.index')
+                ->with('type', 'danger')
+                ->with('msg', 'Ocurrio un error');
+        }
+//
+//        $requestData = $request->all();
+////        $requestData['fecha_ingreso'] = date("Y-m-d H:i:s", strtotime(request('fecha_ingreso')));
+////        $requestData['fecha_egreso'] = date("Y-m-d H:i:s", strtotime(request('fecha_egreso')));
+//        $empleado->fill($requestData);
+//        $empleado->save();
 
-        $requestData = $request->all();
-//        $requestData['fecha_ingreso'] = date("Y-m-d H:i:s", strtotime(request('fecha_ingreso')));
-//        $requestData['fecha_egreso'] = date("Y-m-d H:i:s", strtotime(request('fecha_egreso')));
-        $empleado->fill($requestData);
-        $empleado->save();
 
-        return redirect()
-            ->route('empleado.index')
-            ->with('msg', 'Registro Actualizado Correctamente')
-            ->with('type', 'info');
     }
     public function factory()
     {

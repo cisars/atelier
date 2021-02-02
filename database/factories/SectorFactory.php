@@ -9,7 +9,7 @@ $factory->define(Sector::class, function (Faker $faker) {
     (\App\Models\Sucursal::all() !== false ) ?  factory('App\Models\Sucursal')->create() : "";
 
     return [
-        'sucursal'         => \App\Models\Sucursal::inRandomOrder()->first()->sucursal,
+        'sucursal_id'         => \App\Models\Sucursal::inRandomOrder()->first()->id,
         'descripcion'   => substr($faker->streetName, 0,79) ,
     ];
 });

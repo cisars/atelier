@@ -1,7 +1,8 @@
 @component('mail::message')
-# Introduction
 
-Activar tu cuenta
+Bienvenido al Taller Atelier,<br>
+
+Para confirmar tu usuario presiona en el siguiente enlace.
 
 @component('mail::button', ['url' => $url])
 Activar

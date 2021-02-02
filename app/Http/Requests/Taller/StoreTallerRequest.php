@@ -24,17 +24,18 @@ class StoreTallerRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
           //  'descripcion'       =>'required|max:40|unique:talleres,descripcion,' . $this->taller . ',taller,localidad,' . $this->localidad,
-            'localidad'         =>'required',
+            'localidad_id'         =>'required',
             'direccion'         =>'required|max:80',
             'telefono'          =>'required|max:12',
             'descripcion'       =>['required',
                 'max:40',
                 Rule::unique('talleres', 'descripcion')
-                    ->ignore($this->taller, 'taller')
+                    ->ignore($this->id, 'id')
                     ->where(function ($query) {
-                        return $query->where('localidad', $this->localidad);
+                        return $query->where('localidad_id', $this->localidad_id);
                     })
             ],
         ];
@@ -48,7 +49,7 @@ class StoreTallerRequest extends FormRequest
     public function messages()
     {
         return [
-            'localidad.required' => 'Debe seleccionar una localidad para el taller',
+            'localidad_id.required' => 'Debe seleccionar una localidad para el taller',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',

@@ -141,6 +141,9 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
     <script>
+
+
+
         $('#lista').DataTable({
             "language": {
                 "url": "{{ asset('js/dataTableSpanish.json') }}"

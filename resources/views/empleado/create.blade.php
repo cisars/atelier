@@ -204,20 +204,20 @@
 
                                             {{--FK Turno Empleado--}}
                                             <div class="form-group col">
-                                                <label for="turno_empleado" >Turno Empleado</label>
+                                                <label for="turno_id" >Turno Empleado</label>
                                                 <select
                                                     class   ="form-control"
-                                                    name    ="turno_empleado"
-                                                    id      ="turno_empleado">
+                                                    name    ="turno_id"
+                                                    id      ="turno_id">
                                                     <option value="">Seleccione turno de empleado</option>
-                                                    @foreach($turnos as $key => $turno_empleado)
+                                                    @foreach($turnos as $key => $turno_id)
                                                         <option
-                                                            value   ="{{ $turno_empleado->turno_empleado }}"
-                                                            {{ old('turno_empleado') == $turno_empleado->turno_empleado ? 'selected' : '' }}
-                                                        >{{ $turno_empleado->descripcion }}</option>
+                                                            value   ="{{ $turno_id->turno_id }}"
+                                                            {{ old('turno_id') == $turno_id->turno_id ? 'selected' : '' }}
+                                                        >{{ $turno_id->descripcion }}</option>
                                                     @endforeach
                                                 </select>
-                                                @foreach ($errors->get('turno_empleado') as $error)
+                                                @foreach ($errors->get('turno_id') as $error)
                                                     <span class="text text-danger">{{ $error }}</span>
                                                 @endforeach
                                             </div>
@@ -227,20 +227,20 @@
 
                                         {{--FK Grupo Trabajo--}}
                                         <div class="form-group">
-                                            <label for="grupo_trabajo" >Grupo de Trabajo</label>
+                                            <label for="grupo_id" >Grupo de Trabajo</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="grupo_trabajo"
-                                                id      ="grupo_trabajo">
+                                                name    ="grupo_id"
+                                                id      ="grupo_id">
                                                 <option value="">Seleccione grupo de trabajo</option>
-                                                @foreach($grupos as $key => $grupo_trabajo)
+                                                @foreach($grupos as $key => $grupo_id)
                                                     <option
-                                                        value   ="{{ $grupo_trabajo->grupo_trabajo }}"
-                                                        {{ old('grupo_trabajo') == $grupo_trabajo->grupo_trabajo ? 'selected' : '' }}
-                                                    >{{ $grupo_trabajo->descripcion }}</option>
+                                                        value   ="{{ $grupo_id->grupo_id }}"
+                                                        {{ old('grupo_id') == $grupo_id->grupo_id ? 'selected' : '' }}
+                                                    >{{ $grupo_id->descripcion }}</option>
                                                 @endforeach
                                             </select>
-                                            @foreach ($errors->get('grupo_trabajo') as $error)
+                                            @foreach ($errors->get('grupo_id') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>

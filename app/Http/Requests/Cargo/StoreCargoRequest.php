@@ -25,17 +25,9 @@ class StoreCargoRequest extends FormRequest
     public function rules()
     {
         return [
-         //   'descripcion'       =>'required|max:40|unique:sucursales,descripcion',
-            'localidad'         =>'required',
-            'descripcion'       =>['required',
-                'max:40',
-                Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
-                    ->where(function ($query) {
-                        return $query->where('marca', $this->marca);
-                    })
-            ],
-        ];
+            'descripcion'       =>'required|max:40|unique:cargos,descripcion',
+            ] ;
+
     }
 
     /**
@@ -46,7 +38,6 @@ class StoreCargoRequest extends FormRequest
     public function messages()
     {
         return [
-            'localidad.required'  => 'Debe seleccionar una localidad',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',

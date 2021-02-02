@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('grupo.create')}}" class="btn bg-cyan">Nuevo Grupo de Trabajo</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('grupo.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -45,11 +45,11 @@
                             <tbody>
                             @foreach($grupos as $key => $grupo)
                                 <tr>
-                                    <td>{{ $grupo->grupo_trabajo }}</td>
+                                    <td>{{ $grupo->id }}</td>
                                     <td>{{ $grupo->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('grupo.edit', $grupo->grupo_trabajo) }}"
+                                            href="{{ route('grupo.edit', $grupo->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -57,14 +57,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$grupo->grupo_trabajo}}"
-                                            data-data   ="{{$grupo->grupo_trabajo}}">
+                                            data-target ="#modal-danger{{$grupo->id}}"
+                                            data-data   ="{{$grupo->grupo_id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'grupo_trabajo',
-                                                'value' => $grupo->grupo_trabajo,
+                                                'pk'   => 'id',
+                                                'value' => $grupo->id,
                                                 'ruta'  => 'grupo.destroy',
                                             ]
                                         ?>

@@ -29,8 +29,8 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <a  href="{{route('usuario.create')}}" class="btn bg-cyan">Nueva Usuario</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            <a  href="{{route('usuario.create')}}" class="btn bg-cyan">Nuevo Usuario</a>
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
 
                                     <a  href="{{route('usuario.factory')}}" class="btn bg-teal float-right ">Generar Usuario</a>
 {{--                                    <a  href="{{route('usuario_cliente.factory')}}" class="btn bg-teal float-right ">Generar Usuario - Cliente</a>--}}
@@ -46,6 +46,7 @@
                                 <th class="w-80">Empleado</th>
                                 <th class="w-80">Cliente</th>
                                 <th class="w-80">Fecha Ingreso</th>
+                                <th class="w-80">Email</th>
                                 <th class="w-80">Estado</th>
                                 <th class="w-80">Observacion</th>
                                 <th class="w-80">Perfil</th>
@@ -54,10 +55,19 @@
                             </tr>
                             </thead>
                             <tbody>
+
+                            {{ $abc = null }}
                             @foreach($usuarios as $key => $usuario)
                                 <tr>
 
-                                    <td>{{ $usuario->usuario }}</td>
+                                    <td>
+                                        {{ $usuario->usuario }}
+{{--                                        @if ($abc == true)--}}
+{{--                                           {{ dd($usuario) }}--}}
+{{--                                        @else--}}
+{{--                                            {{ $abc = true}}--}}
+{{--                                        @endif--}}
+                                    </td>
                                     <td>
                                         {{ !empty($usuario->empleado->apellidos) ? $usuario->empleado->apellidos .', ' : ''  }}
                                         {{ !empty($usuario->empleado->nombres) ? $usuario->empleado->nombres : ''  }}
@@ -65,6 +75,7 @@
                                     </td>
                                     <td>{{ !empty($usuario->cliente->razon_social) ? $usuario->cliente->razon_social:''  }}</td>
                                     <td>{{ $usuario->fecha_ingreso }}   </td>
+                                    <td>{{ $usuario->email }}          </td>
                                     <td>{{ $usuario->estado }}          </td>
                                     <td>{{ $usuario->observacion }}     </td>
                                     <td>{{ $usuario->perfil }}          </td>
@@ -72,7 +83,7 @@
                                     <td class=" ">
                                         <a
                                             href="{{ route('usuario.edit', $usuario->usuario) }}"
-                                            class= "btn bg-gradient-gray disabled">
+                                            class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                         <button
@@ -95,6 +106,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            {{ $abc = false }}
                             </tbody>
                         </table>
 

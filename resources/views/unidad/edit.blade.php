@@ -27,7 +27,7 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('unidad.update', $unidad->unidad) }}"
+                                    action  ="{{ route('unidad.update', $unidad->id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -40,7 +40,7 @@
                                                 type    ="text"
                                                 name    ="unidad"
                                                 id      ="unidad" readonly
-                                                value   ="{{ old('unidad', $unidad->unidad) }}"
+                                                value   ="{{ old('unidad', $unidad->id) }}"
                                             >
                                         </div>
                                         <div class="form-group">

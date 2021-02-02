@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Verificacion de OT')
+@section('title', 'Listado de Finalizacion OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Verificacion de OT </li>
+    <li class="breadcrumb-item active">ABM Finalizacion OT </li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Verificacion de OT   </h3>
+                        <h3 class="card-title">Finalizacion OT   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_verificacionotc" class="btn bg-cyan">Nueva Verificacion de OT</a>
+                            <a  href="_finalizacionotc" class="btn bg-cyan">Nueva Finalizacion OT</a>
 
                         </div>
 
@@ -53,7 +53,7 @@
                                 <tr class=" ">
                                     <td> 1 </td>
                                     <td> 23/01/2021 08:30 </td>
-                                    <td class="">Juan Estigarribia</td>
+                                    <td class="">Juan Robles</td>
                                     <td class="">Toyota Platz</td>
                                     <td class=""> Verificado  </td>
 
@@ -77,8 +77,8 @@
                                 <tr class="">
                                     <td> 2 </td>
                                     <td> 23/01/2021 08:45 </td>
-                                    <td class="">Edgar Acosta</td>
-                                    <td class="">Kia Picanto</td>
+                                    <td class="">Margarita Vila</td>
+                                    <td class="">Hyundai Sonata</td>
                                     <td class=""> Verificado  </td>
 
                                     <td class="">

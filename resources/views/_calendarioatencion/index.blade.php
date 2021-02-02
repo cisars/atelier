@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Reserva en Linea')
+@section('title', 'Calendario Atencion')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Reserva en Linea </li>
+    <li class="breadcrumb-item active">Calendario Atencion </li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Reserva en Linea   </h3>
+                        <h3 class="card-title">Calendario Atencion   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_reservalineac" class="btn bg-cyan">Nueva Reserva en Linea</a>
+                            <a  href="_calendarioatencionc" class="btn bg-cyan">Calendario Atencion</a>
 
                         </div>
 

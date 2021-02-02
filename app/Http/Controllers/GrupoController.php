@@ -72,7 +72,7 @@ class GrupoController extends Controller
 
     public function destroy(Request $request)
 {
-    $grupo = Grupo::findOrFail($request->grupo_trabajo);
+    $grupo = Grupo::findOrFail($request->grupo_id);
         $grupo->delete();
 
         return redirect()

@@ -19,9 +19,9 @@ class VehiculoController extends Controller
 
         $vehiculos->each(function($vehiculo)
         {
-            $vehiculo->cliente = Cliente::find($vehiculo->cliente);
-            $vehiculo->modelo = Modelo::find($vehiculo->modelo);
-            $vehiculo->color = Color::find($vehiculo->color);
+//            $vehiculo->cliente = Cliente::find($vehiculo->cliente);
+//            $vehiculo->modelo = Modelo::find($vehiculo->modelo);
+//            $vehiculo->color = Color::find($vehiculo->color);
 
             foreach ((new Vehiculo())->getCombustiones() as $clave=>$valor)
                 trim($vehiculo->combustion) == trim($valor) ? $vehiculo->combustion = $clave : NULL ;

@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('localidad.create')}}" class="btn bg-cyan">Nueva localidad</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('localidad.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($localidades as $key => $localidad)
                                 <tr>
-                                    <td>{{ $localidad->localidad }}</td>
+                                    <td>{{ $localidad->id }}</td>
                                     <td>{{ $localidad->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('localidad.edit', $localidad->localidad) }}"
+                                            href="{{ route('localidad.edit', $localidad->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$localidad->localidad}}"
-                                            data-data   ="{{$localidad->localidad}}">
+                                            data-target ="#modal-danger{{$localidad->id}}"
+                                            data-data   ="{{$localidad->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'localidad',
-                                                'value' => $localidad->localidad,
+                                                'pk'   => 'id',
+                                                'value' => $localidad->id,
                                                 'ruta'  => 'localidad.destroy',
                                             ]
                                         ?>

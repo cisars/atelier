@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('color.create')}}" class="btn bg-cyan">Nueva Color</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('color.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($colores as $key => $color)
                                 <tr>
-                                    <td>{{ $color->color }}</td>
+                                    <td>{{ $color->id }}</td>
                                     <td>{{ $color->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('color.edit', $color->color) }}"
+                                            href="{{ route('color.edit', $color->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$color->color}}"
-                                            data-data   ="{{$color->color}}">
+                                            data-target ="#modal-danger{{$color->id}}"
+                                            data-data   ="{{$color->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'color',
-                                                'value' => $color->color,
+                                                'pk'   => 'id',
+                                                'value' => $color->id,
                                                 'ruta'  => 'color.destroy',
                                             ]
                                         ?>

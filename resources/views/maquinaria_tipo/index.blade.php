@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('maquinaria_tipo.create')}}" class="btn bg-cyan">Nueva Maquinaria Tipo</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('maquinaria_tipo.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($maquinarias_tipos as $key => $maquinaria_tipo)
                                 <tr>
-                                    <td>{{ $maquinaria_tipo->maquinaria_tipo }}</td>
+                                    <td>{{ $maquinaria_tipo->id }}</td>
                                     <td>{{ $maquinaria_tipo->descripcion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('maquinaria_tipo.edit', $maquinaria_tipo->maquinaria_tipo) }}"
+                                            href="{{ route('maquinaria_tipo.edit', $maquinaria_tipo->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -59,14 +59,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$maquinaria_tipo->maquinaria_tipo}}"
-                                            data-data   ="{{$maquinaria_tipo->maquinaria_tipo}}">
+                                            data-target ="#modal-danger{{$maquinaria_tipo->id}}"
+                                            data-data   ="{{$maquinaria_tipo->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'maquinaria_tipo',
-                                                'value' => $maquinaria_tipo->maquinaria_tipo,
+                                                'pk'   => 'id',
+                                                'value' => $maquinaria_tipo->id,
                                                 'ruta'  => 'maquinaria_tipo.destroy',
                                             ]
                                         ?>

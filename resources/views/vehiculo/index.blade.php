@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM ZZNOMBRESZZ </li>
+    <li class="breadcrumb-item active">ABM Vehiculos </li>
 @stop
 
 @section('content')
@@ -22,14 +22,14 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">ZZNOMBRESZZ   </h3>
+                        <h3 class="card-title"> Vehiculos   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('vehiculo.create')}}" class="btn bg-cyan">Nueva Vehiculo</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            <a  href="{{route('vehiculo.create')}}" class="btn bg-cyan">Nuevo Vehiculo</a>
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('vehiculo.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -52,18 +52,25 @@
                             <tbody>
                             @foreach($vehiculos as $key => $vehiculo)
                                 <tr>
-                                    <td>{{ $vehiculo->vehiculo }}</td>
-                                    <td>{{ $vehiculo->cliente->razon_social }}</td>
-                                    <td>{{ $vehiculo->modelo->descripcion }}</td>
+                                    <td>{{ $vehiculo->id }}</td>
+                                    <td>
+
+                                        {{ $vehiculo->cliente->razon_social }}
+                                    </td>
+                                    <td>
+                                     {{  $vehiculo->modelo->descripcion }}
+                                    </td>
                                     <td>{{ $vehiculo->chapa }}</td>
                                     <td>{{ $vehiculo->chasis }}</td>
-                                    <td>{{ $vehiculo->color->descripcion }}</td>
+                                    <td>
+                                         {{ $vehiculo->color->descripcion }}
+                                    </td>
                                     <td>{{ $vehiculo->combustion }}</td>
                                     <td>{{ $vehiculo->tipo }}</td>
                                     <td>{{ $vehiculo->año }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('vehiculo.edit', $vehiculo->vehiculo) }}"
+                                            href="{{ route('vehiculo.edit', $vehiculo->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -71,14 +78,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$vehiculo->vehiculo}}"
+                                            data-target ="#modal-danger{{$vehiculo->id}}"
                                             data-data   ="{{$vehiculo->vehiculo}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'vehiculo',
-                                                'value' => $vehiculo->vehiculo,
+                                                'pk'   => 'id',
+                                                'value' => $vehiculo->id,
                                                 'ruta'  => 'vehiculo.destroy',
                                             ]
                                         ?>

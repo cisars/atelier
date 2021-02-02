@@ -14,18 +14,18 @@ class CreateClientesTable extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->increments('cliente') ;
+            $table->increments('id') ;
             $table->string('razon_social',40)->nullable();
             $table->string('documento',12)->nullable();
             $table->string('direccion',80)->nullable();
-            $table->smallInteger('localidad')->nullable();
+            $table->smallInteger('localidad_id')->nullable();
             $table->string('telefono',20)->nullable();
             $table->string('movil',20)->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->char('personeria',1)->nullable();
 
-            $table->foreign('localidad')
-                ->references('localidad')
+            $table->foreign('localidad_id')
+                ->references('id')
                 ->on('localidades');
 
             $table->timestamps();

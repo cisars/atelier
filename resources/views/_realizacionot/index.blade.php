@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Reserva Normal')
+@section('title', 'Listado de Realizacion OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Reserva Normal </li>
+    <li class="breadcrumb-item active">ABM Realizacion OT </li>
 @stop
 
 @section('content')
@@ -27,19 +27,20 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Reserva Normal   </h3>
+                        <h3 class="card-title">Realizacion OT   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_reservanormalc" class="btn bg-cyan">Nueva Reserva Normal</a>
+                            <a  href="_realizacionotc" class="btn bg-cyan">Nueva Realizacion OT</a>
 
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
+                                <th class="">OT </th>
                                 <th class="">Fecha </th>
                                 <th class="">Cliente </th>
                                 <th class="">Vehiculo </th>
@@ -50,10 +51,11 @@
                             <tbody>
 
                                 <tr class=" ">
+                                    <td> 1 </td>
                                     <td> 23/01/2021 08:30 </td>
                                     <td class="">Juan Estigarribia</td>
                                     <td class="">Toyota Platz</td>
-                                    <td class=""> Verificado  </td>
+                                    <td class=""> Aprobado  </td>
 
                                     <td class="">
                                         <a
@@ -73,10 +75,11 @@
                                     </td>
                                 </tr>
                                 <tr class="">
+                                    <td> 2 </td>
                                     <td> 23/01/2021 08:45 </td>
                                     <td class="">Edgar Acosta</td>
                                     <td class="">Kia Picanto</td>
-                                    <td class=""> Pendiente  </td>
+                                    <td class=""> Aprobado  </td>
 
                                     <td class="">
                                         <a
@@ -95,29 +98,7 @@
 
                                     </td>
                                 </tr>
-                                <tr class="">
-                                    <td> 23/01/2021 09:00 </td>
-                                    <td class="">Valeria Ríos</td>
-                                    <td class="">Toyota Platz</td>
-                                    <td class=""> Pendiente  </td>
 
-                                    <td class="">
-                                        <a
-                                            href=" "
-                                            class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
-
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                         <!-- /.card-body -->

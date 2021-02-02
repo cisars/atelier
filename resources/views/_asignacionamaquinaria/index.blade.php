@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Sectores de Respuestos')
+@section('title', 'Asignacion a Maquinaria')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Sectores de Respuestos </li>
+    <li class="breadcrumb-item active">ABM Asignacion a Maquinaria </li>
 @stop
 
 @section('content')
@@ -27,31 +27,31 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Sectores de Respuestos   </h3>
+                        <h3 class="card-title">Asignacion a Maquinaria   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_sectorrepuestoc" class="btn bg-cyan">Nuevo Sector de Respuesto</a>
+                            <a  href="_asignacionamaquinariac" class="btn bg-cyan">Nueva Asignacion a Maquinaria</a>
 
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">Sector </th>
-                                <th class="">Sucursal </th>
-                                <th class="">Descripcion </th>
+                                <th class="">Maquinaria </th>
+                                <th class="">Empleado </th>
+                                <th class="">ID </th>
                                 <th class="">Accion </th>
                             </tr>
                             </thead>
                             <tbody>
 
                                 <tr class="">
-                                    <td> 1 </td>
-                                    <td class="">Matriz</td>
-                                    <td class="">Descripcion1</td>
+                                    <td> Leann Quitzon</td>
+                                    <td class="">Juan Perez</td>
+                                    <td class="">1</td>
 
                                     <td class="">
                                         <a
@@ -71,9 +71,9 @@
                                     </td>
                                 </tr>
                                 <tr class="">
-                                    <td>   2 </td>
-                                    <td class="">  Sucursal1</td>
-                                    <td class="">  Descripcion2</td>
+                                    <td>   Roxane Schinner	</td>
+                                    <td class="">  Yami</td>
+                                    <td class="">  2</td>
 
                                     <td class="">
                                         <a

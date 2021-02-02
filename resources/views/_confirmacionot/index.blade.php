@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de ProductosServicios')
+@section('title', 'Listado Confirmacion OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM ProductosServicios </li>
+    <li class="breadcrumb-item active">Confirmacion OT </li>
 @stop
 
 @section('content')
@@ -27,79 +27,79 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">ProductosServicios   </h3>
+                        <h3 class="card-title">Confirmacion OT   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="form-group">
-                            <a  href="{{route('productoservicio.create')}}" class="btn bg-cyan">Nuevo Producto/Servicio</a>
-
-                        </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">Producto </th>
-                                <th class="">Codigo </th>
-                                <th class="">Descripcion </th>
-                                <th class="">Clasificacion </th>
-                                <th class="">Unidad </th>
-                                <th class="">Impuesto </th>
-                                <th class="">Precio de Venta </th>
+                                <th class="">OT </th>
+                                <th class="">Cliente </th>
+                                <th class="">Vehiculo </th>
+                                <th class="">Chapa </th>
+                                <th class="">Recepcion </th>
+                                <th class="">Monto </th>
+                                <th class="">Estado </th>
                                 <th class="">Accion </th>
                             </tr>
                             </thead>
                             <tbody>
 
                                 <tr class="">
-                                    <td> 1 </td>
-                                    <td class="">1</td>
-                                    <td class="">Descripcion1</td>
-                                    <td class="">Clasificacion1</td>
-                                    <td class="">1</td>
-                                    <td class="">10000</td>
-                                    <td class="">100.000</td>
+                                    <td> 15 </td>
+                                    <td class="">Pedro Ramirez</td>
+                                    <td class="">Toyota Vitz</td>
+                                    <td class="">AAAX01</td>
+                                    <td class="">04/08/19</td>
+                                    <td class="">2.500.000</td>
+                                    <td class="">Pendiente</td>
 
                                     <td class="">
                                         <a
                                             href=" "
                                             class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a
+                                            href=" "
+                                            class= "btn btn-success">
+                                            <i class="fas fa-check"></i>
                                         </a>
                                         <button
                                             type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
+                                            class       ="btn btn-danger" >
+                                            <i class ="fas fa-file-pdf" aria-hidden="true"></i>
                                         </button>
 
                                     </td>
                                 </tr>
                                 <tr class="">
-                                    <td>   2 </td>
-                                    <td class="">  2</td>
-                                    <td class="">  Descripcion2</td>
-                                    <td class="">  Clasificacion2</td>
-                                    <td class="">  2</td>
-                                    <td class="">  20</td>
-                                    <td class="">200.000</td>
+                                    <td> 29 </td>
+                                    <td class="">Anselma Britez</td>
+                                    <td class="">Chevrolet-sail</td>
+                                    <td class="">BBBX02</td>
+                                    <td class="">10/08/19</td>
+                                    <td class="">3.500.000</td>
+                                    <td class="">Pendiente</td>
 
                                     <td class="">
                                         <a
                                             href=" "
                                             class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a
+                                            href=" "
+                                            class= "btn btn-success">
+                                            <i class="fas fa-check"></i>
                                         </a>
                                         <button
                                             type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
+                                            class       ="btn btn-danger" >
+                                            <i class ="fas fa-file-pdf" aria-hidden="true"></i>
                                         </button>
 
                                     </td>

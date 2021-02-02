@@ -14,16 +14,16 @@ class CreateTalleresTable extends Migration
     public function up()
     {
         Schema::create('talleres', function (Blueprint $table) {
-            $table->tinyInteger('taller',true)->unsigned();
-            $table->smallInteger('localidad')->nullable();
+            $table->tinyInteger('id',true)->unsigned();
+            $table->smallInteger('localidad_id')->nullable();
             $table->string('descripcion','40')->nullable();
             $table->string('direccion','80')->nullable();
             $table->string('telefono','12')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('localidad')
-                ->references('localidad')
+            $table->foreign('localidad_id')
+                ->references('id')
                 ->on('localidades');
 
         });

@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('reserva.create')}}" class="btn bg-cyan">Nueva Reserva</a>
-                            @if( trim(Auth::user()->perfil) == 'A' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('reserva.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -54,7 +54,7 @@
                             <tbody>
                             @foreach($reservas as $key => $reserva)
                                 <tr>
-                                    <td>{{ $reserva->reserva }}</td>
+                                    <td>{{ $reserva->id }}</td>
                                     <td>{{ $reserva->descripcion }}</td>
                                     <td>{{ $reserva->taller->descripcion }}</td>
                                     <td>{{ $reserva->cliente->descripcion }}</td>
@@ -68,7 +68,7 @@
                                     <td>{{ $reserva->direccion }}</td>
                                     <td class=" ">
                                         <a
-                                            href="{{ route('reserva.edit', $reserva->reserva) }}"
+                                            href="{{ route('reserva.edit', $reserva->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -76,14 +76,14 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger{{$reserva->reserva}}"
-                                            data-data   ="{{$reserva->reserva}}">
+                                            data-target ="#modal-danger{{$reserva->id}}"
+                                            data-data   ="{{$reserva->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php
                                         $confirmation = [
-                                                'pk'   => 'reserva',
-                                                'value' => $reserva->reserva,
+                                                'pk'   => 'id',
+                                                'value' => $reserva->id,
                                                 'ruta'  => 'reserva.destroy',
                                             ]
                                         ?>

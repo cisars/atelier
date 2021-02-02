@@ -22,11 +22,23 @@
                                 <div class="card-header">
                                     <h3 class="card-title">Crear Taller</h3>
                                 </div>
-                                <form
-                                    role    ="form"
-                                    id      ="form"
-                                    method  ="POST"
-                                    action  ="{{ route('taller.store') }}">
+                                @isset($taller->id)
+                                    {!! Form::model($taller, ['route' => ['taller.update', $taller->id], 'method' => 'PATCH']) !!}
+                                    <div class="form-group col">
+                                        {!! Form::label('id', 'Codigo de Taller') !!}
+                                        {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
+
+                                    </div>
+                                @else
+                                    {!! Form::open(
+                                        ['route' =>
+                                            ['taller.store' ],
+                                                'method'    => 'post',
+                                                'id'        => 'form',
+                                            ]
+                                    ) !!}
+                                @endisset
+
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
@@ -66,22 +78,11 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="localidad">Localidad</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="localidad"
-                                                id      ="localidad">
-                                                <option value="">Seleccione localidad</option>
-                                                @foreach($localidades as $key => $localidad)
-                                                    <option
-                                                        value   ="{{ $localidad->localidad }}"
-                                                        {{ old('localidad') == $localidad->localidad ? 'selected' : '' }}
-                                                    >{{ $localidad->descripcion }}</option>
-                                                @endforeach
-                                            </select>
-                                            @foreach ($errors->get('localidad') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                            {!! Form::label('localidad_id', 'Localidad') !!}
+                                            {!! Form::select('localidad_id', $localidades->pluck('descripcion', 'id') , null , ['class' => 'form-control', 'placeholder' => 'Seleccione Localidad']) !!}
+                                            @error("localidad_id")
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="card-footer">

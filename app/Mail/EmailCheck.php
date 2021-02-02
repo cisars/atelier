@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailVerification extends Mailable
+class EmailCheck extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,8 +30,8 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        $this->url = route('usuario.email.verificacion', $this->token);
+        $this->url = route('usuario.email.check', $this->token);
         return $this
-            ->markdown('email.emailVerification');
+            ->markdown('email.emailCheck');
     }
 }

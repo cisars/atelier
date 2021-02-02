@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Localidad')
+@section('title', 'Localidad')
 
 @section('css' )
 
@@ -8,7 +8,12 @@
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> Editar </li>
+    @isset($localidad)
+        <li class="breadcrumb-item active"> Editar </li>
+    @else
+        <li class="breadcrumb-item active"> Nuevo </li>
+    @endisset
+
 @stop
 
 @section('content')
@@ -21,41 +26,41 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar Localidad</h3>
+                                    @isset($localidad)
+                                        <h3 class="card-title">Editar Localidad</h3>
+                                    @else
+                                        <h3 class="card-title">Crear Localidad</h3>
+                                    @endisset
                                 </div>
-                                <form
-                                    role    ="form"
-                                    id      ="form"
-                                    method  ="POST"
-                                    action  ="{{ route('localidad.update', $localidad->localidad) }}"
-                                >
+                                <div class="card-body">
+                                    @isset($localidad)
+                                        {!! Form::model($localidad, ['route' => ['localidad.update', $localidad->id], 'method' => 'PATCH']) !!}
+                                        <div class="form-group col">
+                                            {!! Form::label('id', 'Codigo de Localidad') !!}
+                                            {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
+
+                                        </div>
+                                    @else
+                                        {!! Form::open(
+                                            ['route' =>
+                                                ['sucursal.store' ],
+                                                    'method'    => 'post',
+                                                    'id'        => 'form',
+                                                ]
+                                        ) !!}
+                                    @endisset
+                                    {{--                                {{ dd($errors->all() ) }}--}}
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
-                                    @method('PATCH')
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
-                                            <input
-                                                class   ="form-control"
-                                                type    ="text"
-                                                name    ="descripcion"
-                                                id      ="descripcion"
-                                                value   ="{{ old('descripcion', $localidad->descripcion) }}"
-                                                placeholder="Introduzca nombre de la localidad">
-                                            @foreach ($errors->get('descripcion') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                    {{--                                    @method('PATCH')--}}
+                                        <div class="form-group col">
+                                            {!! Form::label('descripcion', 'Descripcion') !!}
+                                            {!! Form::text('descripcion', old('descripcion'), ['class' => 'form-control', 'id' => 'descripcion']) !!}
+                                            @error('descripcion')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="localidad">Codigo de localidad</label>
-                                            <input
-                                                class   ="form-control"
-                                                type    ="text"
-                                                name    ="localidad"
-                                                id      ="localidad" readonly
-                                                value   ="{{ old('localidad', $localidad->localidad) }}"
-                                                 >
-                                        </div>
+
                                     </div>
                                     <div class="card-footer">
                                         <button
@@ -63,7 +68,7 @@
                                             class="btn btn-info">Grabar</button>
                                         <a href="{{ route('localidad.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
-                                </form>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

@@ -14,24 +14,24 @@ class CreateVehiculosTable extends Migration
     public function up()
     {
         Schema::create('vehiculos', function (Blueprint $table) {
-            $table->increments('vehiculo');
-            $table->unsignedInteger('cliente')->nullable();
-            $table->unsignedTinyInteger('modelo')->nullable();
+            $table->increments('id');
+            $table->unsignedInteger('cliente_id')->nullable();
+            $table->unsignedTinyInteger('modelo_id')->nullable();
             $table->string('chapa',12)->nullable();
             $table->string('chasis',12)->nullable();
-            $table->unsignedTinyInteger('color')->nullable();
+            $table->unsignedTinyInteger('color_id')->nullable();
             $table->char('combustion')->nullable();
             $table->char('tipo')->nullable();
             $table->smallInteger('año')->nullable();
 
-            $table->foreign('cliente')
-                ->references('cliente')
+            $table->foreign('cliente_id')
+                ->references('id')
                 ->on('clientes');
-            $table->foreign('modelo')
-                ->references('modelo')
+            $table->foreign('modelo_id')
+                ->references('id')
                 ->on('modelos');
-            $table->foreign('color')
-                ->references('color')
+            $table->foreign('color_id')
+                ->references('id')
                 ->on('colores');
 
             $table->timestamps();

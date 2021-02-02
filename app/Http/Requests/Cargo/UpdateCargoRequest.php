@@ -25,16 +25,8 @@ class UpdateCargoRequest extends FormRequest
     public function rules()
     {
         return [
-         //   'descripcion'   =>'required|max:40|unique:cargos,descripcion,' . $this->cargo . ',cargo',
-            'localidad'         =>'required',
-            'descripcion'=>['required',
-                'max:40',
-                Rule::unique('cargos', 'descripcion')
-                    ->ignore($this->cargo, 'cargo')
-                    ->where(function ($query) {
-                        return $query->where('localidad', $this->localidad);
-                    })
-            ],
+          'descripcion'   =>'required|max:40|unique:cargos,descripcion,' . $this->id . ',id',
+
         ];
     }
 

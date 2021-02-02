@@ -14,12 +14,12 @@ class CreateSectoresTable extends Migration
     public function up()
     {
         Schema::create('sectores', function (Blueprint $table) {
-            $table->tinyInteger('sector',true);
-            $table->unsignedTinyInteger('sucursal')->nullable();
+            $table->tinyInteger('id',true);
+            $table->unsignedTinyInteger('sucursal_id')->nullable();
             $table->string('descripcion','80')->nullable();
 
-            $table->foreign('sucursal')
-                ->references('sucursal')
+            $table->foreign('sucursal_id')
+                ->references('id')
                 ->on('sucursales');
 
             $table->timestamps();

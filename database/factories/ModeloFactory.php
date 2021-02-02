@@ -10,7 +10,7 @@ $factory->define(Modelo::class, function (Faker $faker) {
     (\App\Models\Marca::all() !== false ) ?  factory('App\Models\Marca')->create() : "";
 
     return [
-        'marca'         => \App\Models\Marca::inRandomOrder()->first()->marca,
+        'marca_id'         => \App\Models\Marca::inRandomOrder()->first()->id,
         'descripcion'   => substr($faker->city, 0,39) ,
     ];
 });

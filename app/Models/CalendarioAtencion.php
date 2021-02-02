@@ -13,6 +13,6 @@ class CalendarioAtencion extends Model
     protected $guarded = [];
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'usuario', 'usuario');
+        return $this->belongsTo(Usuario::class, 'usuario' );
     }
 }

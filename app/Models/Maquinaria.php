@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maquinaria extends Model
 {
     protected $table = 'maquinarias';
-    protected $primaryKey = 'maquinaria';
+   // protected $primaryKey = 'maquinaria';
     //protected $fillable = [];
     protected $guarded = [];
 
@@ -25,7 +25,7 @@ class Maquinaria extends Model
 
     public function maquinaria_tipo()
     {
-        return $this->belongsTo(MaquinariaTipo::class, 'maquinaria_tipo', 'maquinaria_tipo');
+        return $this->belongsTo(MaquinariaTipo::class, 'maquinaria_tipo_id' );
     }
 
 //    public function empleados_maquinas()

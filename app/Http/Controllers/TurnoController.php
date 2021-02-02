@@ -17,11 +17,9 @@ class TurnoController extends Controller
     }
     public function create()
     {
-        if($turnos = Turno::orderBy('descripcion', 'ASC')->get())
+         $turnos = Turno::orderBy('descripcion', 'ASC')->get();
         return view('turno.create')
             ->with('turnos', $turnos);
-        else
-            return view('turno.create') ;
     }
 
     public function factory()
@@ -71,7 +69,7 @@ class TurnoController extends Controller
 
     public function destroy(Request $request)
 {
-    $turno = Turno::findOrFail($request->turno_empleado);
+    $turno = Turno::findOrFail($request->turno_id);
         $turno->delete();
 
         return redirect()

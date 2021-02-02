@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Sectores de Respuestos')
+@section('title', 'Listado de Recepcion Vehiculo')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Sectores de Respuestos </li>
+    <li class="breadcrumb-item active">ABM Recepcion Vehiculo </li>
 @stop
 
 @section('content')
@@ -27,31 +27,35 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Sectores de Respuestos   </h3>
+                        <h3 class="card-title">Recepcion Vehiculo   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_sectorrepuestoc" class="btn bg-cyan">Nuevo Sector de Respuesto</a>
+                            <a  href="_recepcionvehiculoc" class="btn bg-cyan">Nueva Recepcion de Vehiculo</a>
 
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">Sector </th>
-                                <th class="">Sucursal </th>
-                                <th class="">Descripcion </th>
+                                <th class="">Fecha </th>
+                                <th class="">Reserva </th>
+                                <th class="">Cliente </th>
+                                <th class="">Vehículo </th>
+                                <th class="">Recepcionado </th>
                                 <th class="">Accion </th>
                             </tr>
                             </thead>
                             <tbody>
 
                                 <tr class="">
-                                    <td> 1 </td>
-                                    <td class="">Matriz</td>
-                                    <td class="">Descripcion1</td>
+                                    <td> 15/10/2020 </td>
+                                    <td class="">2027</td>
+                                    <td class="">Juan Sosa</td>
+                                    <td class="">Hyundai Sonata</td>
+                                    <td class="">Humberto Lezcano</td>
 
                                     <td class="">
                                         <a
@@ -71,9 +75,11 @@
                                     </td>
                                 </tr>
                                 <tr class="">
-                                    <td>   2 </td>
-                                    <td class="">  Sucursal1</td>
-                                    <td class="">  Descripcion2</td>
+                                    <td> 22/11/2020 </td>
+                                    <td class="">2029</td>
+                                    <td class="">Patricia Casco</td>
+                                    <td class="">Kia Picanto</td>
+                                    <td class="">Yami Caceres</td>
 
                                     <td class="">
                                         <a

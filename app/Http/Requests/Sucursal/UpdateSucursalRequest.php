@@ -29,13 +29,13 @@ class UpdateSucursalRequest extends FormRequest
         return [
             'direccion'         =>'required|max:40',
             'telefono'          =>'required|max:12',
-            'email'              =>'required|max:80|unique:sucursales,email,' . $this->sucursal . ',sucursal',
+            'email'              =>'required|max:80|unique:sucursales,email,' . $this->id . ',id',
             'descripcion'       =>['required',
                 'max:40',
                 Rule::unique('sucursales', 'descripcion')
-                    ->ignore($this->sucursal, 'sucursal')
+                    ->ignore($this->id, 'id')
                     ->where(function ($query) {
-                        return $query->where('localidad', $this->localidad);
+                        return $query->where('localidad_id', $this->localidad_id);
                     })
             ],
 

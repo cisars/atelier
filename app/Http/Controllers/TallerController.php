@@ -14,31 +14,18 @@ class TallerController extends Controller
 
     public function index()
     {
-
-        if($talleres = Taller::orderBy('descripcion', 'ASC')->get()){
-            $talleres = Taller::all();
-
-            $talleres->each(function($taller)
-            {
-                $taller->localidad = Localidad::find($taller->localidad);
-                //dd($taller->localidad);
-            });
-            return view('taller.index', compact('talleres', $talleres)); // Forma distinta para listar con BelongsTo
-        }
-
+        $talleres = Taller::all();
+        $localidades = Localidad::all();
+        return view('taller.index', compact('talleres', 'localidades'));
     }
     public function create()
     {
+        $talleres = Taller::orderBy('descripcion', 'ASC')->get();
+        $localidades = Localidad::all();
 
-        if($talleres = Taller::orderBy('descripcion', 'ASC')->get())
-        {
-            $localidades = Localidad::all();
-            return view('taller.create')
-                ->with('talleres', $talleres)
-                ->with('localidades', $localidades);
-        } else {
-            return view('taller.create') ;
-        }
+        return view('taller.create')
+            ->with('talleres', $talleres)
+            ->with('localidades', $localidades);
     }
 
     public function factory()
@@ -52,12 +39,8 @@ class TallerController extends Controller
 
     public function store(StoreTallerRequest $request)
     {
-        $taller = new Taller([
-            'descripcion' => $request->get('descripcion'),
-            'localidad' => $request->get('localidad'),
-            'direccion' => $request->get('direccion'),
-            'telefono' => $request->get('telefono'),
-        ]);
+
+        $taller = new Taller($request->all());
         $taller->save();
         return redirect()
             ->route('taller.index')

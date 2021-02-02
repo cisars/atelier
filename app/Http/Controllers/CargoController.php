@@ -16,13 +16,12 @@ class CargoController extends Controller
         return View::make('cargo.index')
             ->with('cargos', $cargos);
     }
+
     public function create()
     {
-        if($cargos = Cargo::orderBy('descripcion', 'ASC')->get())
-        return view('cargo.create')
+        $cargos = Cargo::orderBy('descripcion', 'ASC')->get();
+        return view('cargo.edit')
             ->with('cargos', $cargos);
-        else
-            return view('cargo.create') ;
     }
 
     public function factory()
@@ -36,7 +35,6 @@ class CargoController extends Controller
 
     public function store(StoreCargoRequest $request)
     {
-
         $cargo = new Cargo([
             'descripcion' => $request->get('descripcion')
         ]);
@@ -47,7 +45,7 @@ class CargoController extends Controller
             ->with('type', 'info');
     }
 
-public function show(Cargo $cargo)
+    public function show(Cargo $cargo)
     {
         //
     }
@@ -60,7 +58,6 @@ public function show(Cargo $cargo)
 
     public function update(UpdateCargoRequest $request, Cargo $cargo)
     {
-
         $cargo->fill($request->all());
         $cargo->save();
 
@@ -71,14 +68,15 @@ public function show(Cargo $cargo)
     }
 
     public function destroy(Request $request)
-{
-    $cargo = Cargo::findOrFail($request->cargo);
-        $cargo->delete();
+    {
 
-        return redirect()
-            ->route('cargo.index')
-            ->with('msg', 'Registro Eliminado Correctamente')
-            ->with('type', 'danger');
+        $cargo = Cargo::findOrFail($request->cargo);
+            $cargo->delete();
+
+            return redirect()
+                ->route('cargo.index')
+                ->with('msg', 'Registro Eliminado Correctamente')
+                ->with('type', 'danger');
     }
 
 }

@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Finalizacion OT')
+@section('title', 'Listado de Entrega Vehiculo')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Finalizacion OT </li>
+    <li class="breadcrumb-item active">ABM Entrega Vehiculo </li>
 @stop
 
 @section('content')
@@ -27,35 +27,37 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Finalizacion OT   </h3>
+                        <h3 class="card-title">Entrega Vehiculo   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_finalizacionotc" class="btn bg-cyan">Nueva Finalizacion OT</a>
+                            <a  href="_entregavehiculoc" class="btn bg-cyan">Nueva Entrega de Vehiculo</a>
 
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">OT </th>
-                                <th class="">Fecha </th>
+                                <th class="">Taller </th>
+                                <th class="">Entrega</th>
+                                <th class="">Ot </th>
                                 <th class="">Cliente </th>
-                                <th class="">Vehiculo </th>
-                                <th class="">Estado </th>
+                                <th class="">Vehiculo</th>
+                                <th class="">Entregado por</th>
                                 <th class="">Accion </th>
                             </tr>
                             </thead>
                             <tbody>
 
                                 <tr class=" ">
-                                    <td> 1 </td>
+                                    <td> Atelier </td>
                                     <td> 23/01/2021 08:30 </td>
-                                    <td class="">Juan Robles</td>
+                                    <td class="">2532</td>
+                                    <td class="">Juan Gayoso</td>
                                     <td class="">Toyota Platz</td>
-                                    <td class=""> Verificado  </td>
+                                    <td class=""> Eusebio Ayala  </td>
 
                                     <td class="">
                                         <a
@@ -74,30 +76,7 @@
 
                                     </td>
                                 </tr>
-                                <tr class="">
-                                    <td> 2 </td>
-                                    <td> 23/01/2021 08:45 </td>
-                                    <td class="">Margarita Vila</td>
-                                    <td class="">Hyundai Sonata</td>
-                                    <td class=""> Verificado  </td>
 
-                                    <td class="">
-                                        <a
-                                            href=" "
-                                            class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
-
-                                    </td>
-                                </tr>
 
                             </tbody>
                         </table>

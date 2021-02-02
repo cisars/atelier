@@ -14,7 +14,7 @@ class CreateUnidadesTable extends Migration
     public function up()
     {
         Schema::create('unidades', function (Blueprint $table) {
-            $table->tinyInteger('unidad',true)->unsigned();
+            $table->tinyInteger('id',true)->unsigned();
             $table->string('descripcion',40)->nullable();
             $table->string('sigla',12)->nullable();
             $table->timestamps();

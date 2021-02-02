@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Verificacion OT')
+@section('title', 'Finalizacion de OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item"><a href="/Reservas "> Verificacion</a></li>
-    <li class="breadcrumb-item active"> ABM Verificacion OT</li>
+    <li class="breadcrumb-item"><a href="/Reservas "> Finalizacion </a></li>
+    <li class="breadcrumb-item active"> ABM Finalizacion de OT</li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Verificacion OT</h3>
+                                    <h3 class="card-title">Crear Finalizacion de OT</h3>
                                 </div>
 
 
@@ -49,7 +49,8 @@
                                             <label> Fecha </label>
                                             <input class="form-control"
                                                    type="date"
-                                                   placeholder="" value="">
+                                                   placeholder=""
+                                                   value="17/01*2021 12:30">
                                         </div>
 
 
@@ -58,15 +59,15 @@
                                         <label> Cliente </label>
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="Introduzca cedula o nombre del cliente" value="">
+                                               placeholder="Introduzca cedula o nombre del cliente"
+                                               value="Juan Robles. ">
                                     </div>
-
-
                                     <div class="form-group col">
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email" value="">
+                                               placeholder=""
+                                               value="CI 825396. Telefono 0981562356. Emailjroblez@gmail">
                                     </div>
 
                                     <div class="form-group col">
@@ -74,21 +75,20 @@
                                         <input class="form-control"
                                                type="text"
                                                placeholder="Introduzca cedula o nombre del cliente"
-                                               value="Kia Picanto 2015">
+                                               value="Toyota Platz">
                                     </div>
                                     <div class="form-group col">
 
                                         <input class="form-control"
                                                type="text"
                                                placeholder="CI. Telefono. Email"
-                                               value="Color: Gris. 4 puertas. Naftero.
-		                                        Placa CAA 2656. Chasis 202014522">
+                                               value="Color: Gris plata. Placa CAA 2563. Año 2019">
                                     </div>
 
                                          <div class="form-group col">
                                             <label> Estado </label>
                                             <select class="form-control">
-                                                <option value="" selected> Seleccione estado</option>
+                                                <option value="" selected> Verificado</option>
                                                 <option value=""> opcion 1</option>
                                             </select>
                                         </div>
@@ -97,7 +97,7 @@
 
 
 
-                                    <label> Entrada 1 </label>
+                                    <label> A finalizar </label>
                                     <div class="form-row col ">
                                         <div class="form-group col ">
                                             <button
@@ -119,7 +119,8 @@
                                             <th class="">Servicio   </th>
                                             <th class="">Verificado     </th>
                                             <th class="">Fecha   </th>
-                                            <th class="">Mecanico Verificador   </th>
+                                            <th class="">Mecanico    </th>
+                                            <th class="">Verificador   </th>
                                             <th class="">Observacion   </th>
                                             <th class="">Accion   </th>
                                         </tr>
@@ -132,6 +133,7 @@
                                             <td> v </td>
                                             <td> 18/01/2021 15:45  </td>
                                             <td> Juan Villalba</td>
+                                            <td> Juan Sosa</td>
                                             <td> OK </td>
 
 
@@ -163,7 +165,8 @@
                                             <td> v </td>
                                             <td> 18/01/2021 15:45 </td>
                                             <td> Roque Saucedo  </td>
-                                            <td> OK   </td>
+                                            <td> Juan Sosa</td>
+                                            <td> OK!   </td>
 
                                             <td class="">
                                                 <a
@@ -193,6 +196,7 @@
                                             <td> v </td>
                                             <td> 18/01/2021 15:45 </td>
                                             <td> Alicia Vera </td>
+                                            <td> Juan Sosa</td>
                                             <td> OK  </td>
 
                                             <td class="">

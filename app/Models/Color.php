@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     protected $table = 'colores';
-    protected $primaryKey = 'color';
+    //protected $primaryKey = 'color';
     //protected $fillable = [];
     protected $guarded = [];
     public function vehiculos()
     {
-        return $this->hasMany(Vehiculo::class, 'color', 'color');
+        return $this->hasMany(Vehiculo::class, 'color_id');
     }
 }

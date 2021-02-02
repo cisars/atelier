@@ -27,7 +27,7 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('grupo.update', $grupo->grupo_trabajo) }}"
+                                    action  ="{{ route('grupo.update', $grupo->grupo_id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -47,13 +47,13 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="grupo_trabajo">Codigo de Grupo de Trabajo</label>
+                                            <label for="grupo_id">Codigo de Grupo de Trabajo</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="grupo_trabajo"
-                                                id      ="grupo_trabajo" readonly
-                                                value   ="{{ old('grupo_trabajo', $grupo->grupo_trabajo) }}"
+                                                name    ="grupo_id"
+                                                id      ="grupo_id" readonly
+                                                value   ="{{ old('grupo_id', $grupo->grupo_id) }}"
                                                  >
                                         </div>
                                     </div>
