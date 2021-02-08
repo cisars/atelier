@@ -12,14 +12,9 @@ class SectorController extends Controller
 {
     public function index()
     {
-        if($sectores = Sector::orderBy('descripcion', 'ASC')->get()){
+         $sectores = Sector::orderBy('descripcion', 'ASC')->get();
             $sectores = Sector::all();
 
-            $sectores->each(function($sector)
-            {
-                $sector->sucursal = Sucursal::find($sector->sucursal);
-            });
-        }
         return view('sector.index', compact('sectores', $sectores)); // Lista con BelongsTo
     }
 

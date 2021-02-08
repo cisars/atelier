@@ -5,39 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/web/css/full-width-pics.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/bootstrap/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/jquery/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/jquery/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/jquery/jquery.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/jquery/jquery.slim.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/jquery/jquery.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web/vendor/jquery/jquery.slim.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/agendamiento.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/reservaenlinea.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/EnvioPresupuesto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/fondo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/email/00-correo-registrarse.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/email/01-correo-enviopresupuesto.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_calendarioatencion/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_calendarioatencion/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BootstrapExampleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BootstrapExampleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SectorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SectorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/01-correo-registrarse.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,14 +274,9 @@
       <workItem from="1611720434214" duration="18311000" />
       <workItem from="1611806845718" duration="31784000" />
       <workItem from="1611904711920" duration="20739000" />
-      <workItem from="1612107878991" duration="35223000" />
-    </task>
-    <task id="LOCAL-00010" summary="+ CRUD Clasificacion">
-      <created>1603787392774</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1603787392774</updated>
+      <workItem from="1612107878991" duration="39061000" />
+      <workItem from="1612386971945" duration="1406000" />
+      <workItem from="1612723393306" duration="19165000" />
     </task>
     <task id="LOCAL-00011" summary="+ CRUD Sucursal&#10;- belongsTo Localidad&#10;faltan&#10;- hasMany sectores, entradas y tallerres">
       <created>1603790497926</created>
@@ -642,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612278710639</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Predefensa4">
+      <created>1612291174401</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1612291174401</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php III" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php IV recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php V recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php VI recorrido constantes" />
@@ -675,6 +653,7 @@
     <MESSAGE value="CRUD Reservas II incompleto*" />
     <MESSAGE value="Predefensa2" />
     <MESSAGE value="Predefensa3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Predefensa3" />
+    <MESSAGE value="Predefensa4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Predefensa4" />
   </component>
 </project>
