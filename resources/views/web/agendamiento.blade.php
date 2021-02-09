@@ -10,11 +10,13 @@
 
   <title>Full Width Pics - Start Bootstrap Template</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="/web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('web/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="/web/css/full-width-pics.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('web/css/full-width-pics.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 
 </head>
 

@@ -271,7 +271,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body" style="background:url('{{ asset('/img/fondo1.png') }}') no-repeat right top">
+                <div class="card-body" style="
+                    background-image:url('{{ asset('/img/fondo3.png') }}')  ;
+                    background-repeat: no-repeat;
+                    background-position: top right 20px ; ">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -279,7 +282,7 @@
                     @endif
 
                     {{ __('Sesion iniciada!') }} <br>
-                    <h1> {{ __('Bienvenido,')  }} usuario <b>{{ Auth::user()->usuario  }}</b></h1>
+                    <h1 class="text-maroon"  style="text-shadow: 1px 1px #FFF;"> {{ __('Bienvenido,')  }} usuario <b>{{ Auth::user()->usuario  }}</b></h1>
                     {{--<br> Mis datos <a  href="{{route('listausuarios')}}" class="btn bg-cyan">Lista Usuarios</a>--}}
 
                     {{--                        {{ Auth::user()  }}--}}
@@ -289,12 +292,12 @@
                             {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
                             <div class="row">
                                 <div class="form-group col-4 pt-2">
-                                    <label class="font-weight-normal">Seleccione un vehiculo</label>
+                                    <label class="font-weight-normal text-maroon" style="text-shadow: 1px 1px #FFF;">Seleccione un vehiculo</label>
                                 </div>
 
                                 <div class="form-group col-8">
                                     <select
-                                        class="form-control"
+                                        class="form-control text-maroon"
                                         name="marca"
                                         id="marca">
                                         <option value="" selected="selected"
@@ -307,7 +310,7 @@
 
 
                             <div class="btn-group col-md-12">
-                                <button type="button" class="btn btn-outline-danger col-4 btn-block">Dianostico</button>
+                                <button type="button" class="btn btn-outline-danger col-4 btn-block">Diagnostico</button>
                                 <button type="button" class="btn btn-outline-danger col-4">Linea de tiempo</button>
                                 <button type="button" class="btn btn-outline-danger col-4 btn-block">Mis Vehiculos
                                 </button>
@@ -319,9 +322,9 @@
                                     <form id="msform">
                                         <!-- progressbar -->
                                         <ul id="progressbar">
-                                            <li class="  fa fa-key"><strong class="person">Recepcion</strong></li>
-                                            <li class="fa fa-heart"><strong class="person"> Diagnostico</strong></li>
-                                            <li class="fa fa-business-time"><strong class="person"> Reparacion</strong>
+                                            <li class="active fa fa-key"><strong class="person">Recepción</strong></li>
+                                            <li class="active fa fa-heart"><strong class="person"> Diagnóstico</strong></li>
+                                            <li class="active fa fa-business-time"><strong class="person"> Reparación</strong>
                                             </li>
                                             <li class="fa fa-check"><strong class="person"> Finalizado</strong></li>
                                             <li class="fa fa-car"><strong class="person"> Entrega</strong></li>
@@ -334,7 +337,7 @@
                         <div class="col-sm-12 col-md-6 col-lg-8 mt-lg-5">
 
                             <div class="  " style="background-color: #d81b60; height:100px; margin-top:28px">
-                                <p class="text-right text-white h1 pt-5">Hyundai, Tucson.</p>
+                                <p class="text-right text-white h1 pt-5"  style="text-shadow: 1px 1px #000;">Hyundai, Tucson.</p>
                             </div>
 
                         </div>
@@ -350,7 +353,9 @@
 
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="card-title  text-maroon">Diagnóstico del Taller</div>
+                                            <div class="card-title  text-maroon">
+                                                <img src="{{ asset('/img/icono1.png') }}" class="figure-img">
+                                                Sintomas de Ingreso</div>
                                             <!-- MultiStep Form -->
                                             <div class=" col-sm-12  ">
                                                 <table class="table table-hover text-nowrap table-sm">
@@ -384,7 +389,9 @@
 
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="card-title  text-maroon">Sintomas de Ingreso</div>
+                                            <div class="card-title  text-maroon">
+                                                <img src="{{ asset('/img/icono2.png') }}" class="figure-img">
+                                                Diagnóstico del Taller</div>
                                             <!-- MultiStep Form -->
                                             <div class=" col-sm-12  ">
                                                 <table class="table table-hover text-nowrap table-sm">
@@ -418,7 +425,9 @@
 
                         <div class="col-md-4">
                             <div class="card">
-                                <div class="card-header  text-maroon">Recepcionista</div>
+                                <div class="card-header  text-maroon">
+                                    <i class="fa fa-user"></i>
+                                    Recepcionista</div>
                                 <div class="card-body">
                                     <div class="row">
                                         <!-- MultiStep Form -->
@@ -453,7 +462,9 @@
 
                         <div class="col-md-4">
                             <div class="card">
-                                <div class="card-header  text-maroon">Ficha del Vehiculo</div>
+                                <div class="card-header  text-maroon">
+                                    <i class="fa fa-car"></i>
+                                    Ficha del Vehiculo</div>
                                 <div class="card-body">
                                     <div class="row">
                                         <!-- MultiStep Form -->

@@ -103,6 +103,8 @@ Route::view('/usuario.email.check', 'usuario.email.check')->name('usuario.email.
 Route::view('/inicio', 'web.index')->name('inicio');
 Route::view('/agendamiento', 'web.agendamiento')->name('agendamiento');
 Route::view('/reservaenlinea', 'web.reservaenlinea')->name('reservaenlinea');
+Route::view('/lineatiempo', 'web.lineatiempo')->name('lineatiempo');
+Route::view('/panelcliente', 'web.panelcliente')->name('panelcliente');
 
 
 //Route::get('/inicio',  'BootstrapExampleController@inicio')->name('inicio');
