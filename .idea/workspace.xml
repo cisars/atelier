@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/fondo2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/fondo3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/icono1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/icono2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/lineatiempo.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/web/panelcliente.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/agendamiento.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/agendamiento.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/panelcliente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/panelcliente.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,14 +267,7 @@
       <workItem from="1611904711920" duration="20739000" />
       <workItem from="1612107878991" duration="39061000" />
       <workItem from="1612386971945" duration="1406000" />
-      <workItem from="1612723393306" duration="30266000" />
-    </task>
-    <task id="LOCAL-00012" summary="+ CRUD Taller&#10;- belongsTo Localidad&#10;faltan&#10;hasMany &#10;-&gt; Reservas&#10;-&gt; OT&#10;-&gt; Entregas&#10;-&gt; Usuarios Talleres&#10;-&gt; Recepciones">
-      <created>1603839962921</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1603839962921</updated>
+      <workItem from="1612723393306" duration="30584000" />
     </task>
     <task id="LOCAL-00013" summary="Procfile">
       <created>1603881392747</created>
@@ -621,7 +605,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612806565119</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="PreVerificacion2">
+      <created>1612861295512</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1612861295512</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +620,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php V recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php VI recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php VII recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php VIII recorrido constantes" />
@@ -654,6 +644,7 @@
     <MESSAGE value="Predefensa3" />
     <MESSAGE value="Predefensa4" />
     <MESSAGE value="PreVerificacion1" />
-    <option name="LAST_COMMIT_MESSAGE" value="PreVerificacion1" />
+    <MESSAGE value="PreVerificacion2" />
+    <option name="LAST_COMMIT_MESSAGE" value="PreVerificacion2" />
   </component>
 </project>

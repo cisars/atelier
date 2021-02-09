@@ -559,8 +559,8 @@
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="/web/vendor/jquery/jquery.min.js"></script>
-<script src="/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('web/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('web/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>
