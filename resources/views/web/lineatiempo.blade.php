@@ -20,7 +20,14 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Iniciar Sesion</a>
+        <a class="btn btn-default"
+           href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fa fa-fw fa-power-off"></i>
+            Cerrar sesión
+        </a>
+        <form id="logout-form" action="{{ 'logout' }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,19 +35,14 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio
+                    <a class="nav-link" href="inicio">Inicio
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Acerca de</a>
+                    <a class="nav-link" href="agendamiento">Reservas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -49,6 +51,7 @@
 <!-- Content section -->
 <section class="py-5"  style="background-color: #efe9ec">
     <div class="container">
+
         <div class="row">
             <div class="col-lg-12">
 
@@ -60,8 +63,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Bitacora</li>
+                                    <li class="breadcrumb-item"><a href="panelcliente">Home</a></li>
+                                    <li class="breadcrumb-item active">Bitácora</li>
                                 </ol>
                             </div>
                         </div>
@@ -87,13 +90,13 @@
                                         <i class="fas fa-key bg-maroon"></i>
                                         <div class="timeline-item">
                                             <span class="time"><i class="fas fa-clock"></i> 10:35</span>
-                                            <h3 class="timeline-header"><a href="#">Recepcion</a> del vehiculo
+                                            <h3 class="timeline-header"><a href="#">Recepción</a> del vehículo
                                             </h3>
 
                                             <div class="timeline-body">
                                                 - Hora de entrada 10:35hs <br>
                                                 - Recepcionista encargado fue <a href="#"> Carlos Torres</a> <br>
-                                                - Sintomas de entrada: Sintoma 1, Sintoma 2, Sintoma 3
+                                                - Síntomas de entrada: Síntoma 1, Síntoma 2, Síntoma 3
                                             </div>
 
                                         </div>
@@ -104,7 +107,7 @@
                                         <i class="fas fa-heart bg-maroon"></i>
                                         <div class="timeline-item">
                                             <span class="time"><i class="fas fa-clock"></i> 12:02</span>
-                                            <h3 class="timeline-header no-border"> <a href="#">Diagnostico</a>  del taller realizado </h3>
+                                            <h3 class="timeline-header no-border"> <a href="#">Diagnóstico</a>  del taller realizado </h3>
                                             <div class="timeline-body">
                                                 - Problema 1 <br>
                                                 - Problema 2 <br>
@@ -132,7 +135,7 @@
                                         <i class="fas fa-envelope bg-maroon"></i>
                                         <div class="timeline-item">
                                             <span class="time"><i class="fas fa-clock"></i> 12:47</span>
-                                            <h3 class="timeline-header no-border"> <a href="#"> Presupuesto </a> <B>APROBADO</B>. Correo de Confirmacion </h3>
+                                            <h3 class="timeline-header no-border"> <a href="#"> Presupuesto </a> <B>APROBADO</B>. Correo de Confirmación </h3>
 
                                         </div>
                                     </div>
@@ -163,7 +166,7 @@
                                             <h3 class="timeline-header">  <a href="#">  Realización de Servicios </a> . Correo de notificación
                                             </h3>
                                             <div class="timeline-body">
-                                                Concluyeron los trabajos de reparacion/mantenimiento. Se aguarda la verificación de las tareas por parte del
+                                                Concluyeron los trabajos de reparación/mantenimiento. Se aguarda la verificación de las tareas por parte del
                                                 jefe de mecánicos
                                             </div>
                                         </div>
@@ -185,7 +188,7 @@
                                         <i class="fas fa-envelope bg-maroon"></i>
                                         <div class="timeline-item">
                                             <span class="time"><i class="fas fa-clock"></i> 09:50</span>
-                                            <h3 class="timeline-header">  <a href="#">  Verificacion de Servicios </a> Notificacion por correo
+                                            <h3 class="timeline-header">  <a href="#">  Verificación de Servicios </a> Notificación por correo
                                             </h3>
                                         </div>
                                     </div>
@@ -195,7 +198,7 @@
                                         <i class="fas fa-envelope bg-maroon"></i>
                                         <div class="timeline-item">
                                             <span class="time"><i class="fas fa-clock"></i> 10:10</span>
-                                            <h3 class="timeline-header">  <a href="#">  Cierre de O.T. </a> Notificacion por correo.
+                                            <h3 class="timeline-header">  <a href="#">  Cierre de O.T. </a> Notificación por correo.
                                             </h3>
                                         </div>
                                     </div>

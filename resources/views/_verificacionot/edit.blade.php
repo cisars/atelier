@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Verificacion OT')
+@section('title', 'Verificación OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item"><a href="/Reservas "> Verificacion</a></li>
-    <li class="breadcrumb-item active"> ABM Verificacion OT</li>
+    <li class="breadcrumb-item"><a href="/Reservas "> Verificación</a></li>
+    <li class="breadcrumb-item active"> ABM Verificación OT</li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Verificacion OT</h3>
+                                    <h3 class="card-title">Crear Verificación OT</h3>
                                 </div>
 
 
@@ -66,11 +66,11 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email" value="">
+                                               placeholder="CI. Teléfono. Email" value="">
                                     </div>
 
                                     <div class="form-group col">
-                                        <label> Vehiculo </label>
+                                        <label> Vehículo </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder="Introduzca cedula o nombre del cliente"
@@ -80,7 +80,7 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email"
+                                               placeholder="CI. Teléfono. Email"
                                                value="Color: Gris. 4 puertas. Naftero.
 		                                        Placa CAA 2656. Chasis 202014522">
                                     </div>
@@ -119,10 +119,10 @@
                                             <th class="">Servicio   </th>
                                             <th class="">Verificado     </th>
                                             <th class="">Fecha   </th>
-                                            <th class="">Mecanico    </th>
+                                            <th class="">Mecánico    </th>
                                             <th class="">Verificador    </th>
-                                            <th class="">Observacion   </th>
-                                            <th class="">Accion   </th>
+                                            <th class="">Observación   </th>
+                                            <th class="">Acción   </th>
                                         </tr>
                                         </thead>
                                         <tbody>

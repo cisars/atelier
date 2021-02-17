@@ -283,221 +283,219 @@
 
                     {{ __('Sesion iniciada!') }} <br>
                     <h1 class="text-maroon"  style="text-shadow: 1px 1px #FFF;"> {{ __('Bienvenido,')  }} usuario <b>{{ Auth::user()->usuario  }}</b></h1>
-                    {{--<br> Mis datos <a  href="{{route('listausuarios')}}" class="btn bg-cyan">Lista Usuarios</a>--}}
+{{--              --}}
+{{--                    <div class="row pt-3">--}}
+{{--                        <!-- MultiStep Form -->--}}
+{{--                        <div class=" col-sm-12 col-md-6 col-lg-4   ">--}}
+{{--                            --}}{{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="form-group col-4 pt-2">--}}
+{{--                                    <label class="font-weight-normal text-maroon" style="text-shadow: 1px 1px #FFF;">Seleccione un vehiculo</label>--}}
+{{--                                </div>--}}
 
-                    {{--                        {{ Auth::user()  }}--}}
-                    <div class="row pt-3">
-                        <!-- MultiStep Form -->
-                        <div class=" col-sm-12 col-md-6 col-lg-4   ">
-                            {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-                            <div class="row">
-                                <div class="form-group col-4 pt-2">
-                                    <label class="font-weight-normal text-maroon" style="text-shadow: 1px 1px #FFF;">Seleccione un vehiculo</label>
-                                </div>
+{{--                                <div class="form-group col-8">--}}
+{{--                                    <select--}}
+{{--                                        class="form-control text-maroon"--}}
+{{--                                        name="marca"--}}
+{{--                                        id="marca">--}}
+{{--                                        <option value="" selected="selected"--}}
+{{--                                        >Ninguno--}}
+{{--                                        </option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
 
-                                <div class="form-group col-8">
-                                    <select
-                                        class="form-control text-maroon"
-                                        name="marca"
-                                        id="marca">
-                                        <option value="" selected="selected"
-                                        >Ninguno
-                                        </option>
-                                    </select>
-                                </div>
-
-                            </div>
+{{--                            </div>--}}
 
 
-                            <div class="btn-group col-md-12">
-                                <button type="button" class="btn btn-outline-danger col-4 btn-block">Diagnostico</button>
-                                <button type="button" class="btn btn-outline-danger col-4">Linea de tiempo</button>
-                                <button type="button" class="btn btn-outline-danger col-4 btn-block">Mis Vehiculos
-                                </button>
-                            </div>
+{{--                            <div class="btn-group col-md-12">--}}
+{{--                                <button type="button" class="btn btn-outline-danger col-4 btn-block">Diagnóstico</button>--}}
+{{--                                <button type="button" class="btn btn-outline-danger col-4">Linea de tiempo</button>--}}
+{{--                                <button type="button" class="btn btn-outline-danger col-4 btn-block">Mis Vehiculos--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
 
 
-                            <div class="row">
-                                <div class="col-md-12 mx-0">
-                                    <form id="msform">
-                                        <!-- progressbar -->
-                                        <ul id="progressbar">
-                                            <li class="active fa fa-key"><strong class="person">Recepción</strong></li>
-                                            <li class="active fa fa-heart"><strong class="person"> Diagnóstico</strong></li>
-                                            <li class="active fa fa-business-time"><strong class="person"> Reparación</strong>
-                                            </li>
-                                            <li class="fa fa-check"><strong class="person"> Finalizado</strong></li>
-                                            <li class="fa fa-car"><strong class="person"> Entrega</strong></li>
-                                        </ul> <!-- fieldsets -->
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 mx-0">--}}
+{{--                                    <form id="msform">--}}
+{{--                                        <!-- progressbar -->--}}
+{{--                                        <ul id="progressbar">--}}
+{{--                                            <li class="active fa fa-key"><strong class="person">Recepción</strong></li>--}}
+{{--                                            <li class="active fa fa-heart"><strong class="person"> Diagnóstico</strong></li>--}}
+{{--                                            <li class="active fa fa-business-time"><strong class="person"> Reparación</strong>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="fa fa-check"><strong class="person"> Finalizado</strong></li>--}}
+{{--                                            <li class="fa fa-car"><strong class="person"> Entrega</strong></li>--}}
+{{--                                        </ul> <!-- fieldsets -->--}}
 
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-8 mt-lg-5">
+{{--                                    </form>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-sm-12 col-md-6 col-lg-8 mt-lg-5">--}}
 
-                            <div class="  " style="background-color: #d81b60; height:100px; margin-top:28px">
-                                <p class="text-right text-white h1 pt-5"  style="text-shadow: 1px 1px #000;">Hyundai, Tucson.</p>
-                            </div>
+{{--                            <div class="  " style="background-color: #d81b60; height:100px; margin-top:28px">--}}
+{{--                                <p class="text-right text-white h1 pt-5"  style="text-shadow: 1px 1px #000;">Hyundai, Tucson.</p>--}}
+{{--                            </div>--}}
 
-                        </div>
-                    </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="row pt-2">
+{{--                    <div class="row pt-2">--}}
 
-                        <div class="col-md-4">
-
-
-                            <div class="col-md-12">
-                                <div class="card card-maroon card-outline">
-
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="card-title  text-maroon">
-                                                <img src="{{ asset('/img/icono1.png') }}" class="figure-img">
-                                                Sintomas de Ingreso</div>
-                                            <!-- MultiStep Form -->
-                                            <div class=" col-sm-12  ">
-                                                <table class="table table-hover text-nowrap table-sm">
-
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            Sin datos
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Sin datos
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Sin datos
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="card card-maroon card-outline">
-
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="card-title  text-maroon">
-                                                <img src="{{ asset('/img/icono2.png') }}" class="figure-img">
-                                                Diagnóstico del Taller</div>
-                                            <!-- MultiStep Form -->
-                                            <div class=" col-sm-12  ">
-                                                <table class="table table-hover text-nowrap table-sm">
-
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            Sin datos
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Sin datos
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Sin datos
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                        <div class="col-md-4">--}}
 
 
-                        </div>
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="card card-maroon card-outline">--}}
 
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header  text-maroon">
-                                    <i class="fa fa-user"></i>
-                                    Recepcionista</div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <!-- MultiStep Form -->
-                                        <div class=" col-sm-12  ">
-                                            {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-                                            <p>Progreso general</p>
-                                            <table class="table table-hover text-nowrap table-sm">
+{{--                                    <div class="card-body">--}}
+{{--                                        <div class="row">--}}
+{{--                                            <div class="card-title  text-maroon">--}}
+{{--                                                <img src="{{ asset('/img/icono1.png') }}" class="figure-img">--}}
+{{--                                                Síntomas de Ingreso</div>--}}
+{{--                                            <!-- MultiStep Form -->--}}
+{{--                                            <div class=" col-sm-12  ">--}}
+{{--                                                <table class="table table-hover text-nowrap table-sm">--}}
 
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        Sin datos
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Sin datos
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Sin datos
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{{--                                                    <tbody>--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td>--}}
+{{--                                                            Sin datos--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td>--}}
+{{--                                                            Sin datos--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td>--}}
+{{--                                                            Sin datos--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                    </tbody>--}}
+{{--                                                </table>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header  text-maroon">
-                                    <i class="fa fa-car"></i>
-                                    Ficha del Vehiculo</div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <!-- MultiStep Form -->
-                                        <div class=" col-sm-12  ">
-                                            {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-                                            <table class="table table-hover text-nowrap table-sm">
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="card card-maroon card-outline">--}}
 
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        Sin datos
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Sin datos
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Sin datos
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{{--                                    <div class="card-body">--}}
+{{--                                        <div class="row">--}}
+{{--                                            <div class="card-title  text-maroon">--}}
+{{--                                                <img src="{{ asset('/img/icono2.png') }}" class="figure-img">--}}
+{{--                                                Diagnóstico del Taller</div>--}}
+{{--                                            <!-- MultiStep Form -->--}}
+{{--                                            <div class=" col-sm-12  ">--}}
+{{--                                                <table class="table table-hover text-nowrap table-sm">--}}
+
+{{--                                                    <tbody>--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td>--}}
+{{--                                                            Sin datos--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td>--}}
+{{--                                                            Sin datos--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td>--}}
+{{--                                                            Sin datos--}}
+{{--                                                        </td>--}}
+{{--                                                    </tr>--}}
+{{--                                                    </tbody>--}}
+{{--                                                </table>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
-                    </div>
+{{--                        </div>--}}
+
+{{--                        <div class="col-md-4">--}}
+{{--                            <div class="card">--}}
+{{--                                <div class="card-header  text-maroon">--}}
+{{--                                    <i class="fa fa-user"></i>--}}
+{{--                                    Recepcionista</div>--}}
+{{--                                <div class="card-body">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <!-- MultiStep Form -->--}}
+{{--                                        <div class=" col-sm-12  ">--}}
+{{--                                            --}}{{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
+{{--                                            <p>Progreso general</p>--}}
+{{--                                            <table class="table table-hover text-nowrap table-sm">--}}
+
+{{--                                                <tbody>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>--}}
+{{--                                                        Sin datos--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>--}}
+{{--                                                        Sin datos--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>--}}
+{{--                                                        Sin datos--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="col-md-4">--}}
+{{--                            <div class="card">--}}
+{{--                                <div class="card-header  text-maroon">--}}
+{{--                                    <i class="fa fa-car"></i>--}}
+{{--                                    Ficha del Vehiculo</div>--}}
+{{--                                <div class="card-body">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <!-- MultiStep Form -->--}}
+{{--                                        <div class=" col-sm-12  ">--}}
+{{--                                            --}}{{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
+{{--                                            <table class="table table-hover text-nowrap table-sm">--}}
+
+{{--                                                <tbody>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>--}}
+{{--                                                        Sin datos--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>--}}
+{{--                                                        Sin datos--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                                <tr>--}}
+{{--                                                    <td>--}}
+{{--                                                        Sin datos--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

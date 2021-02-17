@@ -37,16 +37,16 @@
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">Codigo </th>
+                                <th class="">Código </th>
                                 <th class="">Nombres</th>
                                 <th class="">Apellidos</th>
                                 <th class="">CI</th>
                                 <th class="">Estado Civil</th>
                                 <th class="">Sexo</th>
-                                <th class="">Direccion</th>
+                                <th class="">Dirección</th>
                                 <th class="">Localidad</th>
-                                <th class="">Movil</th>
-                                <th class="">Telefono</th>
+                                <th class="">Móvil</th>
+                                <th class="">Teléfono</th>
                                 <th class="">Cargo</th>
                                 <th class="">Turno</th>
                                 <th class="">Grupo</th>
@@ -56,7 +56,7 @@
                                 <th class="">Fecha Egreso</th>
                                 <th class="">Motivo Egreso</th>
                                 <th class="">Salario</th>
-                                <th class="">Accion</th>
+                                <th class="">Acción</th>
                             </tr>
                             </thead>
                             <tbody>

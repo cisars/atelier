@@ -36,7 +36,7 @@
                                     @isset($localidad)
                                         {!! Form::model($localidad, ['route' => ['localidad.update', $localidad->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
-                                            {!! Form::label('id', 'Codigo de Localidad') !!}
+                                            {!! Form::label('id', 'Código de Localidad') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                         </div>
@@ -54,7 +54,7 @@
                                     @csrf
                                     {{--                                    @method('PATCH')--}}
                                         <div class="form-group col">
-                                            {!! Form::label('descripcion', 'Descripcion') !!}
+                                            {!! Form::label('descripcion', 'Descripción') !!}
                                             {!! Form::text('descripcion', old('descripcion'), ['class' => 'form-control', 'id' => 'descripcion']) !!}
                                             @error('descripcion')
                                             <span class="text text-danger">{{ $message }}</span>

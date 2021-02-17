@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Entrega Vehiculo')
+@section('title', 'Listado de Entrega Vehículo')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Entrega Vehiculo </li>
+    <li class="breadcrumb-item active">ABM Entrega Vehículo </li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Entrega Vehiculo   </h3>
+                        <h3 class="card-title">Entrega Vehículo   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_entregavehiculoc" class="btn bg-cyan">Nueva Entrega de Vehiculo</a>
+                            <a  href="_entregavehiculoc" class="btn bg-cyan">Nueva Entrega de Vehículo</a>
 
                         </div>
 
@@ -44,9 +44,9 @@
                                 <th class="">Entrega</th>
                                 <th class="">Ot </th>
                                 <th class="">Cliente </th>
-                                <th class="">Vehiculo</th>
+                                <th class="">Vehículo</th>
                                 <th class="">Entregado por</th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

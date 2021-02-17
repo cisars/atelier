@@ -34,14 +34,14 @@
                             <tr>
                                 <th class="w-80">Taller</th>
                                 <th class="">Usuario</th>
-                                <th class="w-10">Accion</th>
+                                <th class="w-10">Acción</th>
                             </tr>
                             </thead>
                             <tbody>
 
                                 <tr>
                                     <td>Kreiger Inc</td>
-                                    <td>Juan Perez</td>
+                                    <td>Juan Pérez</td>
                                     <td class=" ">
                                         <a
                                             href=""

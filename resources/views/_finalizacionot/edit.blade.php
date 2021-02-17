@@ -67,7 +67,7 @@
                                         <input class="form-control"
                                                type="text"
                                                placeholder=""
-                                               value="CI 825396. Telefono 0981562356. Emailjroblez@gmail">
+                                               value="CI 825396. Teléfono 0981562356. Emailjroblez@gmail">
                                     </div>
 
                                     <div class="form-group col">
@@ -81,7 +81,7 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email"
+                                               placeholder="CI. Teléfono. Email"
                                                value="Color: Gris plata. Placa CAA 2563. Año 2019">
                                     </div>
 
@@ -119,10 +119,10 @@
                                             <th class="">Servicio   </th>
                                             <th class="">Verificado     </th>
                                             <th class="">Fecha   </th>
-                                            <th class="">Mecanico    </th>
+                                            <th class="">Mecánico    </th>
                                             <th class="">Verificador   </th>
-                                            <th class="">Observacion   </th>
-                                            <th class="">Accion   </th>
+                                            <th class="">Observación   </th>
+                                            <th class="">Acción   </th>
                                         </tr>
                                         </thead>
                                         <tbody>

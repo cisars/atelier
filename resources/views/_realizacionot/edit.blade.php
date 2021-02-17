@@ -66,11 +66,11 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email" value="">
+                                               placeholder="CI. Teléfono. Email" value="">
                                     </div>
 
                                     <div class="form-group col">
-                                        <label> Vehiculo </label>
+                                        <label> Vehículo </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder="Introduzca cedula o nombre del cliente"
@@ -80,7 +80,7 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email"
+                                               placeholder="CI. Teléfono. Email"
                                                value="Color: Gris. 4 puertas. Naftero.
 		                                        Placa CAA 2656. Chasis 202014522">
                                     </div>
@@ -119,8 +119,8 @@
                                             <th class="">Servicio   </th>
                                             <th class="">Realizado     </th>
                                             <th class="">Fecha   </th>
-                                            <th class="">Mecanico   </th>
-                                            <th class="">Accion   </th>
+                                            <th class="">Mecánico   </th>
+                                            <th class="">Acción   </th>
                                         </tr>
                                         </thead>
                                         <tbody>

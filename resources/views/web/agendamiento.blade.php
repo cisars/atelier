@@ -17,7 +17,7 @@
     <link href="{{ asset('web/css/full-width-pics.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-
+{{--    https://github.com/drien/jquery-flipster--}}
 </head>
 
 <body>
@@ -25,26 +25,34 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Iniciar Sesion</a>
+        @if( Auth::user())
+            <a class="btn btn-default"
+               href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fa fa-fw fa-power-off"></i>
+                Cerrar sesión
+            </a>
+            <form id="logout-form" action="{{ 'logout' }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        @else
+            <a class="navbar-brand" href="login">Iniciar Sesion</a>
+        @endif
+
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio
+            <a class="nav-link" href="inicio">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Acerca de</a>
+            <a class="nav-link" href="agendamiento">Reservas</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
-          </li>
+
         </ul>
       </div>
     </div>
@@ -76,10 +84,7 @@
                                                        type="date"
                                                        placeholder=" " value="29/01/2021">
                                             </div>
-
                                         </div>
-
-
 
 
 

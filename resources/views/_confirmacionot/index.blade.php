@@ -7,7 +7,7 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado Confirmacion OT')
+@section('title', 'Listado Confirmación OT')
 @section('css')
 @stop
 
@@ -38,12 +38,12 @@
                             <tr>
                                 <th class="">OT </th>
                                 <th class="">Cliente </th>
-                                <th class="">Vehiculo </th>
+                                <th class="">Vehículo </th>
                                 <th class="">Chapa </th>
                                 <th class="">Recepcion </th>
                                 <th class="">Monto </th>
                                 <th class="">Estado </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

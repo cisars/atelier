@@ -57,7 +57,7 @@ class StoreTallerRequest extends FormRequest
             'direccion.max'       => 'La direccion no puede exceder 80 caracteres',
             'direccion.unique'    => 'El registro ya existe',
             'telefono.required'  => 'Debe introducir una descripcion',
-            'telefono.max'       => 'Telefono no puede exceder 12 caracteres',
+            'telefono.max'       => 'Teléfono no puede exceder 12 caracteres',
             'telefono.unique'    => 'El registro ya existe',
         ];
     }

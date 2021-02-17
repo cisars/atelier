@@ -36,6 +36,7 @@ Route::get('/localidad/destroy',  'LocalidadController@destroy')->name('localida
 Route::group(['middleware' => ['auth']], function (){
 
     Route::get('/', 'HomeController@index');
+
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/listausuarios', 'UsuarioController@index')->name('listausuarios');
     Route::get('/maketemplate', 'MakeTemplateController@index')->name('maketemplate');
@@ -105,6 +106,10 @@ Route::view('/agendamiento', 'web.agendamiento')->name('agendamiento');
 Route::view('/reservaenlinea', 'web.reservaenlinea')->name('reservaenlinea');
 Route::view('/lineatiempo', 'web.lineatiempo')->name('lineatiempo');
 Route::view('/panelcliente', 'web.panelcliente')->name('panelcliente');
+Route::view('/midiagnostico', 'web.midiagnostico')->name('midiagnostico');
+Route::get('/misvehiculos',  'HomeController@misvehiculos')->name('misvehiculos');
+Route::get('/mivehiculo',  'HomeController@mivehiculo')->name('mivehiculo');
+
 
 
 //Route::get('/inicio',  'BootstrapExampleController@inicio')->name('inicio');

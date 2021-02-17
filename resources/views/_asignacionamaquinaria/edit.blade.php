@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Asignacion a Maquinaria')
+@section('title', 'Asignación a Maquinaria')
 @section('css')
 @stop
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> ABM Asignacion a Maquinaria </li>
+    <li class="breadcrumb-item active"> ABM Asignación a Maquinaria </li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                        <h3 class="card-title">Crear Asignacion a Maquinaria</h3>
+                                        <h3 class="card-title">Crear Asignación a Maquinaria</h3>
                                 </div>
 
 
@@ -57,7 +57,7 @@
                                     </div>
 
                                     <div class="form-group col">
-                                        <label> Observacion </label>
+                                        <label> Observación </label>
                                         <input class    = "form-control"
                                                type     = "text"
                                                placeholder="Introduzca descripcion">

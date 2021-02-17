@@ -55,7 +55,7 @@ class UpdateTallerRequest extends FormRequest
             'direccion.required'  => 'Debe introducir una direccion',
             'direccion.max'       => 'La direccion no puede exceder 80 caracteres',
             'telefono.required'  => 'Debe introducir un telefono',
-            'telefono.max'       => 'Telefono no puede exceder 12 caracteres',
+            'telefono.max'       => 'Teléfono no puede exceder 12 caracteres',
         ];
     }
 }

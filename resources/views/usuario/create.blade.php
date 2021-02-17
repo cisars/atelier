@@ -25,7 +25,7 @@
                                 @isset($usuario->usuario)
                                     {!! Form::model($usuario, ['route' => ['empleado.update', $usuario->usuario], 'method' => 'PATCH']) !!}
                                     <div class="form-group col">
-                                        {!! Form::label('usuario', 'Codigo de Empleado') !!}
+                                        {!! Form::label('usuario', 'Código de Empleado') !!}
                                         {!! Form::text('usuario', old('usuario'), ['class' => 'form-control', 'readonly' ,'usuario' => 'usuario']) !!}
 
                                     </div>
@@ -74,7 +74,7 @@
 
 
                                             <div class="form-group col">
-                                                <label for="clave_verificacion">Clave Verificacion</label>
+                                                <label for="clave_verificacion">Clave Verificación</label>
                                                 <input class    = "form-control"
                                                        maxlength="20"
                                                        type     = "password"
@@ -148,7 +148,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="observacion">Observacion</label>
+                                            <label for="observacion">Observación</label>
                                             <input class    = "form-control"
                                                    maxlength="200"
                                                    type     = "text"

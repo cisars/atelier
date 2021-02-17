@@ -37,7 +37,7 @@
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Codigo </th>
+                                <th class="w-10">Código </th>
                                 <th class="">Cliente</th>
                                 <th class="">Modelo</th>
                                 <th class="">Chapa</th>
@@ -46,7 +46,7 @@
                                 <th class="">Combustion</th>
                                 <th class="">Tipo</th>
                                 <th class="">Año</th>
-                                <th class="w-10">Accion</th>
+                                <th class="w-10">Acción</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -79,7 +79,7 @@
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
                                             data-target ="#modal-danger{{$vehiculo->id}}"
-                                            data-data   ="{{$vehiculo->vehiculo}}">
+                                            data-data   ="{{$vehiculo->id}}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                         <?php

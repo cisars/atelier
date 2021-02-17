@@ -25,7 +25,7 @@
                                 @isset($taller->id)
                                     {!! Form::model($taller, ['route' => ['taller.update', $taller->id], 'method' => 'PATCH']) !!}
                                     <div class="form-group col">
-                                        {!! Form::label('id', 'Codigo de Taller') !!}
+                                        {!! Form::label('id', 'Código de Taller') !!}
                                         {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                     </div>
@@ -42,7 +42,7 @@
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    name     = "descripcion"
@@ -54,7 +54,7 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="direccion">Direccion</label>
+                                            <label for="direccion">Dirección</label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    name     = "direccion"
@@ -66,7 +66,7 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="telefono">Telefono</label>
+                                            <label for="telefono">Teléfono</label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    name     = "telefono"

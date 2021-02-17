@@ -37,18 +37,18 @@
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Codigo </th>
-                                <th class="">Descripcion</th>
+                                <th class="w-10">Código </th>
+                                <th class="">Descripción</th>
                                 <th class="">Taller</th>
                                 <th class="">Cliente</th>
-                                <th class="">Vehiculo</th>
+                                <th class="">Vehículo</th>
                                 <th class="">Empleado</th>
                                 <th class="">Usuario</th>
                                 <th class="">ZZFK6ZZ</th>
                                 <th class="">Estado</th>
                                 <th class="">Forma Reserva</th>
                                 <th class="">Prioridad</th>
-                                <th class="w-10">Accion</th>
+                                <th class="w-10">Acción</th>
                             </tr>
                             </thead>
                             <tbody>

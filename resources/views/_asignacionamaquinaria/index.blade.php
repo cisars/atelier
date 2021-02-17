@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Asignacion a Maquinaria')
+@section('title', 'Asignación a Maquinaria')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Asignacion a Maquinaria </li>
+    <li class="breadcrumb-item active">ABM Asignación a Maquinaria </li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Asignacion a Maquinaria   </h3>
+                        <h3 class="card-title">Asignación a Maquinaria   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_asignacionamaquinariac" class="btn bg-cyan">Nueva Asignacion a Maquinaria</a>
+                            <a  href="_asignacionamaquinariac" class="btn bg-cyan">Nueva Asignación a Maquinaria</a>
 
                         </div>
 
@@ -43,7 +43,7 @@
                                 <th class="">Maquinaria </th>
                                 <th class="">Empleado </th>
                                 <th class="">ID </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

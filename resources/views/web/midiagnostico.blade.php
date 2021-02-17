@@ -169,7 +169,7 @@
         }
 
         {{--        {{ asset('/vendor/adminlte/dist/css/adminlte.css.map') }}--}}
-          /*        #progressbar #account:before {*/
+           /*        #progressbar #account:before {*/
         /*            font-family: "Font Awesome 5 Free"; font-weight: 900;*/
         /*            content: "\f023"*/
         /*        }*/
@@ -280,7 +280,7 @@
         <a class="btn btn-default"
            href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fa fa-fw fa-power-off"></i>
-           Cerrar sesión
+            Cerrar sesión
         </a>
         <form id="logout-form" action="{{ 'logout' }}" method="POST" style="display: none;">
             {{ csrf_field() }}
@@ -326,9 +326,12 @@
                                 @endif
 
                                 <div class="form-group ">
-                                    <span class="text-maroon h3 "   style="text-shadow: 1px 1px #FFF;"> Bienvenido, </span>
-                                    <span class="text-bold h3 "   style="text-shadow: 1px 1px #FFF;"> {{Auth::user()->usuario}} </span><br>
-                                    <i class="fa fa-star text-maroon"   style="text-shadow: 1px 1px #FFF;"></i> <span   style="text-shadow: 1px 1px #FFF;"> {{Auth::user()->cliente->razon_social}} </span>
+                                    <span class="text-maroon h3 "
+                                          style="text-shadow: 1px 1px #FFF;"> Bienvenido, </span>
+                                    <span class="text-bold h3 "
+                                          style="text-shadow: 1px 1px #FFF;"> {{Auth::user()->usuario}} </span><br>
+                                    <i class="fa fa-star text-maroon" style="text-shadow: 1px 1px #FFF;"></i> <span
+                                        style="text-shadow: 1px 1px #FFF;"> {{Auth::user()->cliente->razon_social}} </span>
                                 </div>
 
                                 <div class="row pt-2">
@@ -347,7 +350,7 @@
                                                     name="marca"
                                                     id="marca">
                                                     <option value="" selected="selected"
-                                                    >Hyundai, Tucson
+                                                    >Ninguno
                                                     </option>
                                                 </select>
                                             </div>
@@ -392,12 +395,8 @@
 
                                         <div class="  "
                                              style="background-color: #d81b60; height:100px; margin-top:28px">
-
                                             <p class="text-right text-white h1 pt-5" style="text-shadow: 1px 1px #000;">
                                                 Hyundai, Tucson </p>
-                                            <div class="text-sm text-maroon float-right right align-right" >
-                                            <i class="fa fa-clock"></i> Servicio del
-                                                21 de Junio del 2020 </div>
                                         </div>
 
                                     </div>
@@ -405,132 +404,45 @@
 
                                 <div class="row pt-2">
 
-                                    <div class="col-md-4">
 
-
-                                        <div class="col-md-12">
-                                            <div class="card card-maroon card-outline">
-
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="card-title  text-maroon">
-                                                            <img src="{{ asset('/img/icono1.png') }}"
-                                                                 class="figure-img">
-                                                            Síntomas de Ingreso
-                                                        </div>
-                                                        <!-- MultiStep Form -->
-                                                        <div class=" col-sm-12  ">
-                                                            <table
-                                                                class="table table-hover text-nowrap table-sm text-sm">
-
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <i class="fa fa-check text-maroon"></i> Sin
-                                                                        datos
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        -
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        -
-                                                                    </td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="card card-maroon card-outline">
-
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="card-title  text-maroon">
-                                                            <img src="{{ asset('/img/icono2.png') }}"
-                                                                 class="figure-img">
-                                                            Diagnóstico del Taller
-                                                        </div>
-                                                        <!-- MultiStep Form -->
-                                                        <div class=" col-sm-12  ">
-                                                            <table
-                                                                class="table table-hover text-nowrap table-sm text-sm">
-
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <i class="fa fa-check text-maroon"></i> Sin
-                                                                        datos
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        -
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        -
-                                                                    </td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
+                                        {{-- Diagnostico del taller--}}
                                         <div class="card">
                                             <div class="card-header  text-maroon">
-                                                <i class="fa fa-user"></i>
-                                                Recepcionista
+                                                <i class="fa fa-clipboard-check"></i>
+                                                Diagnostico del taller
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <!-- MultiStep Form -->
                                                     <div class=" col-sm-12  ">
                                                         {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-                                                        <div class=" col-12  pull-right align-right">
-
-                                                            <h5>Miguel Pozo</h5>
-                                                        </div>
-                                                        <table class="table table-hover text-nowrap table-sm  text-sm">
+                                                        <table class="table table-hover text-nowrap  ">
 
                                                             <tbody>
                                                             <tr>
                                                                 <td class="text-maroon">
-                                                                    Correo
-                                                                </td>
-                                                                <td>
-                                                                    mpozo@atelier.com
+                                                                    <i class="fa fa-arrow-right"></i> Item
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="text-maroon">
-                                                                    Hora recepción
-                                                                </td>
-                                                                <td>
-                                                                    00:00 hs
+                                                                    <i class="fa fa-arrow-right"></i> Item
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="text-maroon">
-                                                                    Observaciones
+                                                                    <i class="fa fa-arrow-right"></i> Item
                                                                 </td>
-                                                                <td>
-                                                                    -
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-maroon">
+                                                                    <i class="fa fa-arrow-right"></i> Item
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-maroon">
+                                                                    <i class="fa fa-arrow-right"></i> Item
                                                                 </td>
                                                             </tr>
 
@@ -540,108 +452,64 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card">
-                                            <div class="card-header  text-maroon">
-                                                <i class="fa fa-user"></i>
-                                                Historial de Servicios
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <!-- MultiStep Form -->
-                                                    <div class=" col-sm-12  ">
 
-                                                        <table class="table table-hover table-striped text-nowrap table-sm  text-sm">
-
-
-                                                            <tr>
-                                                                <td class="text-maroon">
-                                                                   <i class="fa fa-clock"></i> 15 de Marzo del 2019
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="text-maroon">
-                                                                    <i class="fa fa-clock"></i> 19 de Diciembre del 2019
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="text-maroon bg-maroon">
-                                                                    <i class="fa fa-clock"></i> 21 de Junio del 2020  <i class="fa fa-hand-point-left"></i> (ACTUAL)
-                                                                </td>
-
-                                                            </tr>
-
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4">
+                                        {{--Presupuesto--}}
                                         <div class="card">
                                             <div class="card-header  text-maroon">
                                                 <i class="fa fa-car"></i>
-                                                Ficha del Vehiculo
+                                                Presupuesto segun O.T. Nro #352
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <!-- MultiStep Form -->
                                                     <div class=" col-sm-12  ">
+                                                        <div class="form-group">Asunción, 17 de abril del 2020</div>
                                                         {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-                                                        <table class="table table-hover text-nowrap table-sm  text-sm">
+                                                        <table class="table table-hover text-nowrap table-striped  ">
 
+                                                            <thead>
+                                                            <th class="w-75">Descripción</th>
+                                                            <th class="w-25">Monto</th>
+                                                            </thead>
                                                             <tbody>
                                                             <tr>
-                                                                <td class="text-maroon">
-                                                                    Marca
+                                                                <td>
+                                                                    <i class="fa fa-check-square text-maroon"></i> Item
                                                                 </td>
-                                                                <td class="text-bold">
-                                                                    -
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-maroon">
-                                                                    Modelo
-                                                                </td>
-                                                                <td class="text-bold">
-                                                                    -
+                                                                <td>
+                                                                    0 Gs.
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-maroon">
-                                                                    Año
+                                                                <td>
+                                                                    <i class="fa fa-check-square  text-maroon"></i> Item
                                                                 </td>
-                                                                <td class="text-bold">
-                                                                    -
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-maroon">
-                                                                    Chasis
-                                                                </td>
-                                                                <td class="text-bold">
-                                                                    -
+                                                                <td>
+                                                                    0 Gs.
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-maroon">
-                                                                    K.M.
+                                                                <td>
+                                                                    <i class="fa fa-check-square  text-maroon"></i> Item
                                                                 </td>
-                                                                <td class="text-bold">
-                                                                    -
+                                                                <td>
+                                                                    0 Gs.
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-maroon">
-                                                                    Observaciones
+                                                                <td>
+                                                                    <i class="fa fa-check-square  text-maroon"></i> Item
                                                                 </td>
-                                                                <td class="text-bold">
-                                                                    -
+                                                                <td>
+                                                                   0 Gs.
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td >
+                                                                    <i class="text-bold"></i> Total
+                                                                </td>
+                                                                <td >
+                                                                    <i class="text-bold"></i> 0 Gs.
                                                                 </td>
                                                             </tr>
 

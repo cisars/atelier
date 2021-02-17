@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Recepcion Vehiculo')
+@section('title', 'Recepción Vehiculo')
 @section('css')
 @stop
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> ABM Recepcion Vehiculo </li>
+    <li class="breadcrumb-item active"> ABM Recepción Vehiculo </li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                        <h3 class="card-title">Crear Recepcion Vehiculo</h3>
+                                        <h3 class="card-title">Crear Recepción Vehiculo</h3>
                                 </div>
 
 
@@ -40,7 +40,7 @@
 
                                 <div class="form-row ">
                                     <div class="form-group col">
-                                        <label> Recepcion  </label>
+                                        <label> Recepción  </label>
                                         <input class    = "form-control"
                                                type     = "text"
                                                placeholder = "Introduzca codigo" value="1">
@@ -73,7 +73,7 @@
                                     <div class="form-group col">
                                         <input class    = "form-control"
                                                type     = "text"
-                                               placeholder="CI Telefono Email" >
+                                               placeholder="CI Teléfono Email" >
                                     </div>
 
                                     <div class="form-group col">
@@ -98,13 +98,13 @@
 
 
 
-                                    <label> Sintomas </label>
+                                    <label> Síntomas </label>
                                     <table class="table table-sm table-hover nowrap d-table" id="lista">
                                         <thead class="">
                                         <tr>
                                             <th class="">Item </th>
-                                            <th class="">Descripcion </th>
-                                            <th class="">Accion </th>
+                                            <th class="">Descripción </th>
+                                            <th class="">Acción </th>
                                         </tr>
                                         </thead>
                                         <tbody>

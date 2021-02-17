@@ -34,7 +34,7 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -47,7 +47,7 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="clasificacion">Codigo de Clasificacion</label>
+                                            <label for="clasificacion">Código de Clasificacion</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"

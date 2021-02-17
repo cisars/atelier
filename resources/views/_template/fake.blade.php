@@ -40,7 +40,7 @@
                                 {{'@'}}isset(${{ $nombre }}->id)
                                 {{'{'}}!! Form::model(${{ $nombre }}, ['route' => ['{{ $nombre }}.update', ${{ $nombre }}->id], 'method' => 'PATCH']) !!{{'}'}}
                                 <div class="form-group col">
-                                    {{'{'}}!! Form::label('id', 'Codigo de {{ $NOMBRE }}') !!{{'}'}}
+                                    {{'{'}}!! Form::label('id', 'Código de {{ $NOMBRE }}') !!{{'}'}}
                                     {{'{'}}!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!{{'}'}}
 
                                 </div>

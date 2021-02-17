@@ -44,7 +44,7 @@
 
                                         {{-- FK3 Select--}}
                                         <div class="form-group">
-                                            <label for="vehiculo">Vehiculo</label>
+                                            <label for="vehiculo">Vehículo</label>
                                             {!! Form::select('vehiculo', $vehiculos, $reserva->vehiculo, ['class' => 'form-control', 'placeholder' => 'Elige un valor']) !!}
 
                                         </div>

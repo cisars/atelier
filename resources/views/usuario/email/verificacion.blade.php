@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">Verificacion </li>
+    <li class="breadcrumb-item active">Verificación </li>
 @stop
 
 @section('content')
@@ -22,7 +22,7 @@
             <div class="col-10">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Verificacion de correo aceptada!   </h3>
+                        <h3 class="card-title">Verificación de correo aceptada!   </h3>
 
                     </div>
                     <!-- /.card-header -->

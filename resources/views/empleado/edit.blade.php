@@ -31,7 +31,7 @@
                                     @isset($empleado->id)
                                         {!! Form::model($empleado, ['route' => ['empleado.update', $empleado->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
-                                            {!! Form::label('id', 'Codigo de Empleado') !!}
+                                            {!! Form::label('id', 'Código de Empleado') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                         </div>
@@ -137,7 +137,7 @@
                                         {{--  end form-row--}}
 
                                         <div class="form-group">
-                                            {!! Form::label('direccion', 'Direccion') !!}
+                                            {!! Form::label('direccion', 'Dirección') !!}
                                             {!! Form::text('direccion', old('direccion'), [
                                                 'class'         => 'form-control',
                                                 'id'            => 'direccion',
@@ -159,7 +159,7 @@
                                             </div>
 
                                             <div class="form-group col">
-                                                {!! Form::label('movil', 'Movil') !!}
+                                                {!! Form::label('movil', 'Móvil') !!}
                                                 {!! Form::text('movil', old('movil'), [
                                                     'class'         => 'form-control',
                                                     'id'            => 'movil',
@@ -171,7 +171,7 @@
                                             </div>
 
                                             <div class="form-group col">
-                                                {!! Form::label('telefono', 'Telefono') !!}
+                                                {!! Form::label('telefono', 'Teléfono') !!}
                                                 {!! Form::text('telefono', old('telefono'), [
                                                     'class'         => 'form-control',
                                                     'id'            => 'telefono',

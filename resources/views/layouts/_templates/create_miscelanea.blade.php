@@ -30,7 +30,7 @@
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    name     = "descripcion"
@@ -62,7 +62,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="direccion">Direccion</label>
+                                            <label for="direccion">Dirección</label>
                                             <input
                                                 class   ="form-control"
                                                 maxlength="40"
@@ -70,7 +70,7 @@
                                                 name    ="direccion"
                                                 id      ="direccion"
                                                 value   ="{{ old('direccion') }}"
-                                                placeholder="Direccion de la ZZNOMBREZZ">
+                                                placeholder="Dirección de la ZZNOMBREZZ">
                                             @foreach ($errors->get('direccion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach

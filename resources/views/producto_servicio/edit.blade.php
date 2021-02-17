@@ -39,14 +39,14 @@
                                     {{--<div class="form-row">--}}
 
                                         <div class="form-group col">
-                                            <label> Codigo </label>
+                                            <label> Código </label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    placeholder = "Introduzca codigo">
                                         </div>
 
                                         <div class="form-group col">
-                                            <label> Descripcion </label>
+                                            <label> Descripción </label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    placeholder="Introduzca descripcion">

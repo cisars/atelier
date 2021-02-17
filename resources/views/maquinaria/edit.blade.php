@@ -36,7 +36,7 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="maquinaria">Codigo de Maquinaria</label>
+                                            <label for="maquinaria">Código de Maquinaria</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -50,7 +50,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"

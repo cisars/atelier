@@ -33,7 +33,7 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="empleado">Codigo de Empleado</label>
+                                            <label for="empleado">Código de Empleado</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -149,7 +149,7 @@
                                         {{--  end form-row--}}
 
                                         <div class="form-group">
-                                            <label for="direccion" >Direccion</label>
+                                            <label for="direccion" >Dirección</label>
                                             <input class    = "form-control"
                                                    maxlength="80"
                                                    type     = "text"
@@ -185,7 +185,7 @@
                                             </div>
 
                                             <div class="form-group col">
-                                                <label for="movil" >Movil</label>
+                                                <label for="movil" >Móvil</label>
                                                 <input class    = "form-control"
                                                        maxlength="20"
                                                        type     = "text"
@@ -199,7 +199,7 @@
                                             </div>
 
                                             <div class="form-group col">
-                                                <label for="telefono">Telefono   </label>
+                                                <label for="telefono">Teléfono   </label>
                                                 <input class    = "form-control"
                                                        maxlength="20"
                                                        type     = "text"

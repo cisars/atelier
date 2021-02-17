@@ -34,7 +34,7 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="reserva">Codigo de Reserva</label>
+                                            <label for="reserva">Código de Reserva</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -48,7 +48,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -224,7 +224,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="direccion">Direccion</label>
+                                            <label for="direccion">Dirección</label>
                                             <input
                                                 class   ="form-control"
                                                 maxlength="40"

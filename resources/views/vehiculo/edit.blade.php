@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Vehiculo')
+@section('title', 'Editar Vehículo')
 
 @section('css' )
 
@@ -21,26 +21,26 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar Vehiculo</h3>
+                                    <h3 class="card-title">Editar Vehículo</h3>
                                 </div>
                                 <form
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('vehiculo.update', $vehiculo->vehiculo) }}"
+                                    action  ="{{ route('vehiculo.update', $vehiculo->id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="vehiculo">Codigo de Vehiculo</label>
+                                            <label for="vehiculo">Código de Vehiculo</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
                                                 name    ="vehiculo"
                                                 id      ="vehiculo" readonly
-                                                value   ="{{ old('vehiculo', $vehiculo->vehiculo) }}"
+                                                value   ="{{ old('vehiculo', $vehiculo->id) }}"
 
                                             >
                                         </div>

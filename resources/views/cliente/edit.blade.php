@@ -40,7 +40,7 @@
                                     @isset($cliente->id)
                                         {!! Form::model($cliente, ['route' => ['cliente.update', $cliente->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
-                                            {!! Form::label('id', 'Codigo de Cliente') !!}
+                                            {!! Form::label('id', 'Código de Cliente') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                         </div>
@@ -122,8 +122,8 @@
                                     {{--INPUT TEXT Documento ------------------------------------ --}}
 
                                     <div class="form-group col">
-                                        {{--INPUT TEXT Direccion --}}
-                                        {!! Form::label('direccion', 'Direccion') !!}
+                                        {{--INPUT TEXT Dirección --}}
+                                        {!! Form::label('direccion', 'Dirección') !!}
                                         {!! Form::text(
                                             'direccion',
                                             old('direccion') ,
@@ -131,13 +131,13 @@
                                                 'maxlength'     => '80',
                                                 'type'          => 'text',
                                                 'class'         => 'form-control',
-                                                'placeholder'   => 'Direccion'
+                                                'placeholder'   => 'Dirección'
                                             ]) !!}
                                         @error("direccion")
                                         <span class="text text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    {{--INPUT TEXT Direccion ------------------------------------ --}}
+                                    {{--INPUT TEXT Dirección ------------------------------------ --}}
 
                                     <div class="form-group col">
                                         {{--SELECT FK Localidad --}}
@@ -155,8 +155,8 @@
                                     {{--SELECT FK Localidad ------------------------------------ --}}
 
                                     <div class="form-group col">
-                                        {{--INPUT TEXT Telefono --}}
-                                        {!! Form::label('telefono', 'Telefono') !!}
+                                        {{--INPUT TEXT Teléfono --}}
+                                        {!! Form::label('telefono', 'Teléfono') !!}
                                         {!! Form::text(
                                             'telefono',
                                             old('telefono') ,
@@ -164,13 +164,13 @@
                                                 'maxlength'     => '20',
                                                 'type'          => 'text',
                                                 'class'         => 'form-control',
-                                                'placeholder'   => 'Telefono'
+                                                'placeholder'   => 'Teléfono'
                                             ]) !!}
                                         @error("telefono")
                                         <span class="text text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    {{--INPUT TEXT Telefono ------------------------------------ --}}
+                                    {{--INPUT TEXT Teléfono ------------------------------------ --}}
 
 
 
@@ -192,22 +192,22 @@
 
 
                                     <div class="form-group col">
-                                        {{--INPUT TEXT Movil --}}
-                                        {!! Form::label('Movil', 'Movil') !!}
+                                        {{--INPUT TEXT Móvil --}}
+                                        {!! Form::label('movil', 'Móvil') !!}
                                         {!! Form::text(
-                                            'Movil',
-                                            old('Movil') ,
+                                            'movil',
+                                            old('movil') ,
                                             [
                                                 'maxlength'     => '20',
                                                 'type'          => 'text',
                                                 'class'         => 'form-control',
-                                                'placeholder'   => 'Movil'
+                                                'placeholder'   => 'Móvil'
                                             ]) !!}
-                                        @error("Movil")
+                                        @error("movil")
                                         <span class="text text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    {{--INPUT TEXT Movil ------------------------------------ --}}
+                                    {{--INPUT TEXT Móvil ------------------------------------ --}}
 
                                     <div class="form-group col">
                                         {{--DATE TIMESTAMP Fecha de Nacimiento --}}

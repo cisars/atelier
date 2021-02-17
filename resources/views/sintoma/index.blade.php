@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Listado de Sintoma')
+@section('title', 'Listado de Síntoma')
 
 @section('css' )
 
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Sintomas </li>
+    <li class="breadcrumb-item active">ABM Síntomas </li>
 @stop
 
 @section('content')
@@ -22,13 +22,13 @@
             <div class="col-md-6">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Sintomas   </h3>
+                        <h3 class="card-title">Síntomas   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('sintoma.create')}}" class="btn bg-cyan">Nuevo Sintoma</a>
+                            <a  href="{{route('sintoma.create')}}" class="btn bg-cyan">Nuevo Síntoma</a>
                             @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                             <a  href="{{route('sintoma.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
@@ -37,11 +37,11 @@
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Codigo
+                                <th class="w-10">Código
 
                                 </th>
-                                <th class="w-80">Descripcion</th>
-                                <th class="w-10">Accion</th>
+                                <th class="w-80">Descripción</th>
+                                <th class="w-10">Acción</th>
                             </tr>
                             </thead>
                             <tbody>

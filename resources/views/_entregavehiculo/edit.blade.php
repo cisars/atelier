@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Entrega Vehiculo')
+@section('title', 'Entrega Vehículo')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item"><a href="/Reservas "> Entrega Vehiculo</a></li>
-    <li class="breadcrumb-item active"> ABM Entrega Vehiculo</li>
+    <li class="breadcrumb-item"><a href="/Reservas "> Entrega Vehículo</a></li>
+    <li class="breadcrumb-item active"> ABM Entrega Vehículo</li>
 @stop
 @section('content')
 
@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Entrega Vehiculo</h3>
+                                    <h3 class="card-title">Crear Entrega Vehículo</h3>
                                 </div>
 
 
@@ -70,11 +70,11 @@
                                     <div class="form-group col">
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email" value="">
+                                               placeholder="CI. Teléfono. Email" value="">
                                     </div>
 
                                     <div class="form-group col">
-                                        <label> Vehiculo </label>
+                                        <label> Vehículo </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder="Introduzca cedula o nombre del cliente"
@@ -84,7 +84,7 @@
                                     <div class="form-group col">
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email"
+                                               placeholder="CI. Teléfono. Email"
                                                value="Color: Beige. Chapa CAA 799. Año 2019  ">
                                     </div>
 
@@ -104,7 +104,7 @@
                                                value="Eusebio Ayala">
                                     </div>
                                     <div class="form-group col">
-                                        <label> Observacion </label>
+                                        <label> Observación </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder=""

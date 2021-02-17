@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Verificacion de OT')
+@section('title', 'Listado de Verificación de OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Verificacion de OT </li>
+    <li class="breadcrumb-item active">ABM Verificación de OT </li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Verificacion de OT   </h3>
+                        <h3 class="card-title">Verificación de OT   </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_verificacionotc" class="btn bg-cyan">Nueva Verificacion de OT</a>
+                            <a  href="_verificacionotc" class="btn bg-cyan">Nueva Verificación de OT</a>
 
                         </div>
 
@@ -45,7 +45,7 @@
                                 <th class="">Cliente </th>
                                 <th class="">Vehiculo </th>
                                 <th class="">Estado </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

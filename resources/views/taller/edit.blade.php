@@ -34,7 +34,7 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -47,7 +47,7 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="taller">Codigo de Taller</label>
+                                            <label for="taller">Código de Taller</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -58,7 +58,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="direccion">Direccion</label>
+                                            <label for="direccion">Dirección</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
@@ -71,7 +71,7 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="telefono">Telefono</label>
+                                            <label for="telefono">Teléfono</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"

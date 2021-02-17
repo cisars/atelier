@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Sintoma </li>
+    <li class="breadcrumb-item active">ABM Síntoma </li>
 @stop
 
 @section('content')
@@ -20,7 +20,7 @@
                         <div class="col-md-6">
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">Crear Sintoma</h3>
+                                    <h3 class="card-title">Crear Síntoma</h3>
                                 </div>
                                 <form
                                     role    ="form"
@@ -30,7 +30,7 @@
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    name     = "descripcion"

@@ -62,7 +62,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label >Clave verificacion</label>
+                                            <label >Clave verificación</label>
                                             <input
                                                 class   ="form-control"
                                                 maxlength="12"
@@ -131,14 +131,14 @@
                                         </div>
 
                                         <div class="form-group col">
-                                            <label for="observacion">Observacion </label>
+                                            <label for="observacion">Observación </label>
                                             <input class    = "form-control"
                                                    maxlength="200"
                                                    type     = "text"
                                                    name     = "observacion"
                                                    id       = "observacion"
                                                    value    = "{{ old('observacion', $usuario->observacion)  }}"
-                                                   placeholder="Introduzca observacion">
+                                                   placeholder="Introduzca observación">
                                             @foreach ($errors->get('observacion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach

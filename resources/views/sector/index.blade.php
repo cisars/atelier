@@ -37,10 +37,10 @@
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Codigo </th>
-                                <th class="">Descripcion</th>
+                                <th class="w-10">Código </th>
+                                <th class="">Descripción</th>
                                 <th class="">Sucursal</th>
-                                <th class="w-10">Accion</th>
+                                <th class="w-10">Acción</th>
                             </tr>
                             </thead>
                             <tbody>

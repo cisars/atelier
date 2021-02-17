@@ -105,7 +105,7 @@
                                             <th class="">Repuesto   </th>
                                             <th class="">Medida     </th>
                                             <th class="">Cantidad   </th>
-                                            <th class="">Accion   </th>
+                                            <th class="">Acción   </th>
                                         </tr>
                                         </thead>
                                         <tbody>

@@ -37,7 +37,7 @@
                                 @isset($sucursal)
                                     {!! Form::model($sucursal, ['route' => ['sucursal.update', $sucursal->id], 'method' => 'PATCH']) !!}
                                     <div class="form-group col">
-                                        {!! Form::label('id', 'Codigo de Sucursal') !!}
+                                        {!! Form::label('id', 'Código de Sucursal') !!}
                                         {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                     </div>
@@ -58,7 +58,7 @@
 
 
                                         <div class="form-group col">
-                                            {!! Form::label('descripcion', 'Descripcion') !!}
+                                            {!! Form::label('descripcion', 'Descripción') !!}
                                             {!! Form::text('descripcion', old('descripcion'), ['class' => 'form-control','descripcion' => 'descripcion']) !!}
                                             @error('descripcion')
                                             <span class="text text-danger">{{ $message }}</span>
@@ -74,7 +74,7 @@
 
                                         <div class="form-group col">
 
-                                            {!! Form::label('direccion', 'Direccion') !!}
+                                            {!! Form::label('direccion', 'Dirección') !!}
                                             {!! Form::text('direccion', old('direccion'), ['class' => 'form-control','direccion' => 'direccion']) !!}
                                             @error('direccion')
                                             <span class="text text-danger">{{ $message }}</span>
@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="form-group col">
 
-                                            {!! Form::label('telefono', 'Telefono') !!}
+                                            {!! Form::label('telefono', 'Teléfono') !!}
                                             {!! Form::text('telefono', old('telefono'), ['class' => 'form-control','telefono' => 'telefono']) !!}
                                             @error('telefono')
                                             <span class="text text-danger">{{ $message }}</span>

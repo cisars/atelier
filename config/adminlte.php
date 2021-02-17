@@ -445,7 +445,7 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'grupo', 'text' => 'Grupos de trabajos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria_tipo', 'text' => 'Tipo de Maquinaria',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria', 'text' => 'Maquinarias',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_asignacionamaquinaria', 'text' => 'Asignacion a Maquinarias',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_asignacionamaquinaria', 'text' => 'Asignación a Maquinarias',],
 //                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Feriados Laborales',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_calendarioatencionc', 'text' => 'Calendarios Reservas',],
 
@@ -537,8 +537,8 @@ return [
             'label_color' => 'info',
             'submenu' => [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_reservanormal', 'text' => 'Reserva',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Sintomas de Vehiculos',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_recepcionvehiculo', 'text' => 'Recepcion de Vehiculos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Síntomas de Vehiculos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_recepcionvehiculo', 'text' => 'Recepción de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_confirmacionot', 'text' => 'Confirmacion de OTs',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_realizacionot', 'text' => 'Servicios Realizados',],
 
@@ -597,10 +597,10 @@ return [
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Usuarios del Sistema',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Accesos de Usuarios',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Auditorias del Sistema',],
-//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Recepciones de Vehiculos',],
+//                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Recepciónes de Vehiculos',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Entregas de Repuestos',],
                 [
-                    'submenu' => [ 
+                    'submenu' => [
                         [ 'url' => '#'],
                         [ 'url' => '#'],
                         [ 'url' => '#'],

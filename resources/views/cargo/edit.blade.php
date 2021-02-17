@@ -35,7 +35,7 @@
                                     @isset($cargo)
                                         {!! Form::model($cargo, ['route' => ['cargo.update', $cargo->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
-                                            {!! Form::label('id', 'Codigo de Cargo') !!}
+                                            {!! Form::label('id', 'Código de Cargo') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                         </div>
@@ -53,7 +53,7 @@
                                     @csrf
                                     {{--                                    @method('PATCH')--}}
                                         <div class="form-group col">
-                                            {!! Form::label('descripcion', 'Descripcion') !!}
+                                            {!! Form::label('descripcion', 'Descripción') !!}
                                             {!! Form::text('descripcion', old('descripcion'), ['class' => 'form-control', 'id' => 'descripcion']) !!}
                                             @error('descripcion')
                                             <span class="text text-danger">{{ $message }}</span>

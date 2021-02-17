@@ -45,7 +45,7 @@
                                 <th class="">Cliente </th>
                                 <th class="">Vehiculo </th>
                                 <th class="">Estado </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

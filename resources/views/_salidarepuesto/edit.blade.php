@@ -61,7 +61,7 @@
 
 
                                     <div class="form-group col">
-                                        <label>Vehiculo </label>
+                                        <label>Vehículo </label>
                                         <input class    = "form-control"
                                                type     = "text"
                                                placeholder="Introduzca descripcion" value="Toyota Platz">
@@ -101,8 +101,8 @@
                                             <th class="">Medida     </th>
                                             <th class="">Cantidad   </th>
                                             <th class="">Registro   </th>
-                                            <th class="">Mecanico   </th>
-                                            <th class="">Accion   </th>
+                                            <th class="">Mecánico   </th>
+                                            <th class="">Acción   </th>
                                         </tr>
                                         </thead>
                                         <tbody>

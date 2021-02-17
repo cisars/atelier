@@ -30,7 +30,7 @@
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input class    = "form-control"
                                                    type     = "text"
                                                    name     = "descripcion"

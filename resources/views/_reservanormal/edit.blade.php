@@ -65,11 +65,11 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email" value="">
+                                               placeholder="CI. Teléfono. Email" value="">
                                     </div>
 
                                     <div class="form-group col">
-                                        <label> Vehiculo </label>
+                                        <label> Vehículo </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder="Introduzca cedula o nombre del cliente"
@@ -79,7 +79,7 @@
 
                                         <input class="form-control"
                                                type="text"
-                                               placeholder="CI. Telefono. Email"
+                                               placeholder="CI. Teléfono. Email"
                                                value="Color: Gris. 4 puertas. Naftero.
 		                                        Placa CAA 2656. Chasis 202014522">
                                     </div>
@@ -137,11 +137,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group col">
-                                        <label> Observacion </label>
+                                        <label> Observación </label>
                                         <input class="form-control"
                                                type="text"
                                                placeholder=" "
-                                               value="Ingrese una observacion">
+                                               value="Ingrese una observación">
                                     </div>
 
                                     <div class="card-footer  ">

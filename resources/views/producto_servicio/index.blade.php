@@ -41,13 +41,13 @@
                             <thead class="">
                             <tr>
                                 <th class="">Producto </th>
-                                <th class="">Codigo </th>
-                                <th class="">Descripcion </th>
+                                <th class="">Código </th>
+                                <th class="">Descripción </th>
                                 <th class="">Clasificacion </th>
                                 <th class="">Unidad </th>
                                 <th class="">Impuesto </th>
                                 <th class="">Precio de Venta </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,7 +55,7 @@
                                 <tr class="">
                                     <td> 1 </td>
                                     <td class="">1</td>
-                                    <td class="">Descripcion1</td>
+                                    <td class="">Descripción1</td>
                                     <td class="">Clasificacion1</td>
                                     <td class="">1</td>
                                     <td class="">10000</td>
@@ -81,7 +81,7 @@
                                 <tr class="">
                                     <td>   2 </td>
                                     <td class="">  2</td>
-                                    <td class="">  Descripcion2</td>
+                                    <td class="">  Descripción2</td>
                                     <td class="">  Clasificacion2</td>
                                     <td class="">  2</td>
                                     <td class="">  20</td>

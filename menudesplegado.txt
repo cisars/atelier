@@ -72,7 +72,7 @@
                 'can'        => 'admin',
             ],
             [
-                'text'       => 'Asignacion a Maquinarias',
+                'text'       => 'Asignación a Maquinarias',
                 'icon_color' => 'red',
                 'url'        => '#',
                 'can'        => 'admin',

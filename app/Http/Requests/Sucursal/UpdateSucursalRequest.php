@@ -55,7 +55,7 @@ class UpdateSucursalRequest extends FormRequest
             'descripcion.unique'    => 'El registro ya existe',
             'direccion.required'  => 'Debe introducir una direccion',
             'telefono.required'  => 'Debe introducir un telefono',
-            'telefono.max'       => 'Telefono no puede exceder 12 caracteres',
+            'telefono.max'       => 'Teléfono no puede exceder 12 caracteres',
             'email.required'  => 'Debe introducir un email',
             'email.max'       => 'Email no puede exceder 80 caracteres',
             'email.unique'    => 'El email ya existe',

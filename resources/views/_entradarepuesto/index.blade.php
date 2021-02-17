@@ -45,7 +45,7 @@
                                 <th class="">Documento </th>
                                 <th class="">OT </th>
                                 <th class="">Móvil </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

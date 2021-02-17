@@ -48,10 +48,10 @@
                                 <th class="w-80">Fecha Ingreso</th>
                                 <th class="w-80">Email</th>
                                 <th class="w-80">Estado</th>
-                                <th class="w-80">Observacion</th>
+                                <th class="w-80">Observación</th>
                                 <th class="w-80">Perfil</th>
                                 <th class="w-80">Tipo</th>
-                                <th class="w-10">Accion</th>
+                                <th class="w-10">Acción</th>
                             </tr>
                             </thead>
                             <tbody>

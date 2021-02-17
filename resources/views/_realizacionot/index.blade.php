@@ -43,9 +43,9 @@
                                 <th class="">OT </th>
                                 <th class="">Fecha </th>
                                 <th class="">Cliente </th>
-                                <th class="">Vehiculo </th>
+                                <th class="">Vehículo </th>
                                 <th class="">Estado </th>
-                                <th class="">Accion </th>
+                                <th class="">Acción </th>
                             </tr>
                             </thead>
                             <tbody>

@@ -45,13 +45,13 @@
 
                                     <th class="">Razon Social </th>
                                     <th class="">Documento </th>
-                                    <th class="">Direccion </th>
+                                    <th class="">Dirección </th>
                                     <th class="">Localidad </th>
-                                    <th class="">Telefono </th>
-                                    <th class="">Movil </th>
+                                    <th class="">Teléfono </th>
+                                    <th class="">Móvil </th>
                                     <th class="">Fecha de Nacimiento </th>
                                     <th class="">Tipo de Personeria </th>
-                                    <th class="w-10">Accion</th>
+                                    <th class="w-10">Acción</th>
 
                                 </tr>
                             </thead>
@@ -64,7 +64,7 @@
                                     <td>{{ $cliente->direccion      }}</td>
                                     <td>{{ $cliente->localidad_id      }}</td>
                                     <td>{{ $cliente->telefono      }}</td>
-                                    <td>{{ $cliente->Movil      }}</td>
+                                    <td>{{ $cliente->movil      }}</td>
                                     <td>{{ $cliente->fecha_nacimiento      }}</td>
                                     <td>{{ $cliente->personeria      }}</td>
 

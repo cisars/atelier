@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Sintoma')
+@section('title', 'Editar Síntoma')
 
 @section('css' )
 
@@ -21,7 +21,7 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    <h3 class="card-title">Editar Sintoma</h3>
+                                    <h3 class="card-title">Editar Síntoma</h3>
                                 </div>
                                 <form
                                     role    ="form"
@@ -34,20 +34,20 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
+                                            <label for="descripcion">Descripción</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
                                                 name    ="descripcion"
                                                 id      ="descripcion"
                                                 value   ="{{ old('descripcion', $sintoma->descripcion) }}"
-                                                placeholder="Introduzca nombre de la Sintoma">
+                                                placeholder="Introduzca nombre de la Síntoma">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="sintoma">Codigo de Sintoma</label>
+                                            <label for="sintoma">Código de Síntoma</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
