@@ -170,6 +170,9 @@
     Route::current()->getName() == 'maketemplate' ||
     Route::current()->getName() == 'empleadogen' ||
     Route::current()->getName() == 'productoserviciogen' ||
+    Route::current()->getName() == 'parametrogen' ||
+    Route::current()->getName() == 'descansogen' ||
+    Route::current()->getName() == 'vehiculogen' ||
     Route::current()->getName() == 'clientegen'
 )
 

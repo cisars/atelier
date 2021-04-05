@@ -11,16 +11,17 @@ class Reserva extends Model
    protected $guarded = [];
 
     //Estado
-    const ESTADO_UNO = 'U';
-    const ESTADO_DOS = 'D';
+    const ESTADO_ACTIVO = 'A';
+    const ESTADO_INACTIVO = 'I';
 
     //Forma reserva
-    const FORMA_UNO		= 'U';
-    const FORMA_DOS     = 'D';
+    const FORMA_ONLINE	    = 'O';
+    const FORMA_PRESENCIAL  = 'P';
+    const FORMA_TELEFONO    = 'T';
 
     //Prioridad
-    const PRIORIDAD_UNO		= 'U';
-    const PRIORIDAD_DOS     = 'D';
+    const PRIORIDAD_NORMAL		= 'N';
+    const PRIORIDAD_URGENTE     = 'U';
 
 
 //    protected $fillable = [
@@ -30,24 +31,25 @@ class Reserva extends Model
     public function getEstados()
     {
         return $estados = [
-            'euno'      => Reserva::ESTADO_UNO,
-            'edos'      => Reserva::ESTADO_DOS,
+            'Activo'        => Reserva::ESTADO_ACTIVO,
+            'Inactivo'      => Reserva::ESTADO_INACTIVO,
         ];
     }
 
     public function getFormas()
     {
         return $formas = [
-            'funo' 		=> Reserva::FORMA_UNO 	,
-            'fdos' 		=> Reserva::FORMA_DOS 	,
+            'Online' 		=> Reserva::FORMA_ONLINE 	,
+            'Presencial' 	=> Reserva::FORMA_PRESENCIAL 	,
+            'Telefono' 		=> Reserva::FORMA_TELEFONO 	,
         ];
     }
 
     public function getPrioridades()
     {
         return $prioridades = [
-            'puno' 		=> Reserva::PRIORIDAD_UNO 	,
-            'pdos' 		=> Reserva::PRIORIDAD_DOS 	,
+            'Normal' 		=> Reserva::PRIORIDAD_NORMAL 	,
+            'Urgente' 		=> Reserva::PRIORIDAD_URGENTE 	,
         ];
     }
 

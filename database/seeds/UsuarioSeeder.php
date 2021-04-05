@@ -80,7 +80,7 @@ class UsuarioSeeder extends Seeder
         ]);
 
 
-        // ISAIAS //
+        // ISAIAS ADMIN //
         DB::table('usuarios')->insert([
             'usuario'  => 'isaias',
             'empleado_id' => factory('App\Models\Empleado')->create([
@@ -104,13 +104,41 @@ class UsuarioSeeder extends Seeder
             'estado'        => Usuario::USUARIO_ACTIVO,
             'observacion'   => '',
             'perfil'        => Usuario::USUARIO_ADMIN,
-            'email'         => 'isaias85@gmail.com',
+            'email'         => 'cisarcode@gmail.com',
             'tipo'          => Usuario::USUARIO_T_EMPLEADO,
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
 
-        // Yami //
+        // ISAIAS cliente //
+        DB::table('usuarios')->insert([
+            'usuario'  => 'isilva',
+            'cliente_id' => factory('App\Models\Cliente')->create([
+                'razon_social' => 'Isaias Silva',
+                'documento' => 3996453,
+                'direccion' => 'Radio Op del chaco 1262',
+                'localidad_id' => App\Models\Localidad::inRandomOrder()->first()->id,
+                'movil' => '(+595981)863719',
+                'telefono' => '(+59521)200400' ,
+                'fecha_nacimiento' => '1985-10-10',
+                'personeria' => 1,
+            ])->id,
+            'clave'  => bcrypt('isilva'),
+            'fecha_ingreso' => now(),
+            'estado'        => Usuario::USUARIO_ACTIVO,
+            'observacion'   => '',
+            'perfil'        => Usuario::USUARIO_CLIENTE,
+            'email'         => 'isaias85@gmail.com',
+            'tipo'          => Usuario::USUARIO_T_CLIENTE,
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'isilva',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
+
+        // Yami ADMIN //
         DB::table('usuarios')->insert([
             'usuario'  => 'yami',
             'empleado_id' => factory('App\Models\Empleado')->create([

@@ -34,13 +34,13 @@
                                     @method('PATCH')
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="modelo">Código de Modelo</label>
+                                            <label for="id">Código de Modelo</label>
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="modelo"
-                                                id      ="modelo" readonly
-                                                value   ="{{ old('modelo', $modelo->id) }}"
+                                                name    ="id"
+                                                id      ="id" readonly
+                                                value   ="{{ old('id', $modelo->id) }}"
                                             >
                                             @foreach ($errors->get('modelo') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
@@ -61,14 +61,14 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="marca">Marca</label>
+                                            <label for="marca_id">Marca</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="marca"
-                                                id      ="marca">
+                                                name    ="marca_id"
+                                                id      ="marca_id">
                                                 @foreach($marcas as $key => $marca)
-                                                    <option value="{{ $marca->marca }}"
-                                                            @if ($modelo->marca == old('marca', $marca->marca))
+                                                    <option value="{{ $marca->id }}"
+                                                            @if ($modelo->marca_id == old('marca_id', $marca->id))
                                                             selected="selected"
                                                         @endif
                                                     >{{ $marca->descripcion }}</option>

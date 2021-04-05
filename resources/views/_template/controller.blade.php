@@ -90,7 +90,7 @@ class {{$NOMBRE}}Controller extends Controller
 
             DB::commit();
 
-        } catch ( Exception $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         }
         return redirect()
@@ -101,13 +101,18 @@ class {{$NOMBRE}}Controller extends Controller
 
     public function destroy(Request $request)
     {
-        ${{$nombre}} = {{$NOMBRE}}::findOrFail($request->{{$nombre}});
-        ${{$nombre}}->delete();
+        try {
+            ${{$nombre}} = {{$NOMBRE}}::findOrFail($request->id);
+            ${{$nombre}}->delete();
 
-        return redirect()
-            ->route('{{$nombre}}.index')
-            ->with('msg', 'Registro Eliminado Correctamente')
-            ->with('type', 'danger');
+            return redirect()
+                ->route('{{$nombre}}.index')
+                ->with('msg', 'Registro Eliminado Correctamente')
+                ->with('type', 'danger');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //dd($e);
+            return redirect()->route('{{$nombre}}.index')->with('error', $e->getMessage());
+        }
     }
 
     public function edit({{$NOMBRE}} ${{$nombre}})
@@ -118,7 +123,8 @@ class {{$NOMBRE}}Controller extends Controller
         ${{$dataCol['fks']}} = {{$dataCol['FK']}}::orderBy('{{$dataCol['orderby']}}', 'ASC')->get();
 @endif
 @endforeach
-// Set all function cons base model dropdown list char 1
+
+// Set all function cons base model dropdown list char 1 {{$aux = NULL}}
 @foreach ($gen->tabla['constantes'] as $dataCons)
 @if($aux != $dataCons['nombres'])
         ${{ $dataCons['nombres'] }} = ${{$nombre}}->get{{ucfirst($dataCons['nombres'])}}() ; // {{$aux = $dataCons['nombres']}}
@@ -126,6 +132,7 @@ class {{$NOMBRE}}Controller extends Controller
 @endforeach
 
         return view('{{$nombre}}.edit')
+            ->with('{{$nombre}}', ${{$nombre}})
 // Send all fk variables
 @foreach ($gen->tabla['columnas'] as $dataCol)
 @if ($dataCol['cardinalidad'] == 'fk')
@@ -133,7 +140,7 @@ class {{$NOMBRE}}Controller extends Controller
 @endif
 @endforeach
 
-// Send all cons variables
+// Send all cons variables {{$aux = NULL}}
 @foreach ($gen->tabla['constantes'] as $dataCons)
 @if($aux != $dataCons['nombres'])
             ->with('{{ $dataCons['nombres'] }}', ${{ $dataCons['nombres'] }})  // {{$aux = $dataCons['nombres']}}

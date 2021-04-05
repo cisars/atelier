@@ -43,17 +43,18 @@
                             <thead class="">
                                 <tr>
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['visibilidad'] != 'hidden')
-                                    <th class="">{{$dataCol['visibilidad']}} </th>
-@endif
+                                    <th class="">{{$dataCol['visibilidad'] === 'hidden' ? 'Id' : $dataCol['visibilidad']}} </th>
 @endforeach
+                                    <th class="">Acciones </th>
                                 </tr>
                             </thead>
                             <tbody>
                             {{'@'}}foreach(${{ $nombres }} as $key => ${{ $nombre }})
                                 <tr class="">
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['visibilidad'] != 'hidden')
+@if ($dataCol['cardinalidad'] == 'fk' )
+                                    <td>{{'{'}}{{'{'}} {{'$'}}{{ $nombre }}->{{ $dataCol['fk'] }}->{{ $dataCol['orderby'] }}      {{'}'}}{{'}'}}</td>
+@else
                                     <td>{{'{'}}{{'{'}} {{'$'}}{{ $nombre }}->{{ $dataCol['nombre'] }}      {{'}'}}{{'}'}}</td>
 @endif
 @endforeach
@@ -74,7 +75,7 @@
 
                                         {{'<?php'}}
                                         $confirmation = [
-                                            'pk'   => '{{ $nombre }}',
+                                            'pk'   => 'id',
                                             'value' => ${{ $nombre }}->id,
                                             'ruta'  => '{{ $nombre }}.destroy',
                                         ]

@@ -15,16 +15,16 @@ class CreateTalleresTable extends Migration
     {
         Schema::create('talleres', function (Blueprint $table) {
             $table->tinyInteger('id',true)->unsigned();
-            $table->smallInteger('localidad_id')->nullable();
+            $table->unsignedTinyInteger('sucursal_id')->nullable();
             $table->string('descripcion','40')->nullable();
             $table->string('direccion','80')->nullable();
             $table->string('telefono','12')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('localidad_id')
+            $table->foreign('sucursal_id')
                 ->references('id')
-                ->on('localidades');
+                ->on('sucursales');
 
         });
     }

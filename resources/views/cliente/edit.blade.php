@@ -58,30 +58,26 @@
 
                                     {{--Set all function cons base model dropdown list char 1--}}
 
+                                    {{--CONST Personeria | personeria | personeria --}}
                                     <div class="form-group col">
-                                        {{--CONST Sociedades - personeria --}}
-                                        {!! Form::label('personeria', 'Personeria') !!} {{--personeria--}}
-                                        {!! Form::select('personeria',
-                                            [
-                                                '0'                             => 'Seleccione Personeria'  ,
-                                                $personerias['Sociedades']           => 'Sociedades' ,
-                                                $personerias['Civiles']           => 'Civiles' ,
-                                                $personerias['Simples ']           => 'Simples ' ,
-                                                $personerias['Fundaciones']           => 'Fundaciones' ,
-                                                $personerias['Entidades']           => 'Entidades' ,
-                                                $personerias['Mutuales']           => 'Mutuales' ,
-                                                $personerias['Cooperativas']           => 'Cooperativas' ,
-                                                {{--  --}}
-                                                $personerias['Consorcios']           => 'Consorcios'
-                                            ],
-                                            old('personeria') ,
-                                            ['class' => 'form-control']
-                                        ) !!}
-                                        @error("personeria")
-                                        <span class="text text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <label for="personeria" >Personeria</label>
+                                        <select
+                                            class   ="form-control"
+                                            name    ="personeria"
+                                            id      ="personeria">
+                                            @foreach ($personerias as $key => $personeria)
+                                                <option value="{{   $personeria    }}"
+                                                        @if ($cliente->personeria == old('personeria', $personeria) )
+                                                        selected="selected"
+                                                    @endif
+                                                >{{   $key    }} </option>
+                                            @endforeach
+                                        </select>
+                                        @foreach ($errors->get('personeria') as $error)
+                                            <span class="text text-danger">{{   $error    }}</span>
+                                        @endforeach
                                     </div>
-                                    {{--CONST ------------------------------------ --}}
+                                    {{-- FIN CONST Sociedades------------------------------------ --}}
 
 
 
@@ -122,8 +118,8 @@
                                     {{--INPUT TEXT Documento ------------------------------------ --}}
 
                                     <div class="form-group col">
-                                        {{--INPUT TEXT Dirección --}}
-                                        {!! Form::label('direccion', 'Dirección') !!}
+                                        {{--INPUT TEXT Direccion --}}
+                                        {!! Form::label('direccion', 'Direccion') !!}
                                         {!! Form::text(
                                             'direccion',
                                             old('direccion') ,
@@ -131,13 +127,13 @@
                                                 'maxlength'     => '80',
                                                 'type'          => 'text',
                                                 'class'         => 'form-control',
-                                                'placeholder'   => 'Dirección'
+                                                'placeholder'   => 'Direccion'
                                             ]) !!}
                                         @error("direccion")
                                         <span class="text text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    {{--INPUT TEXT Dirección ------------------------------------ --}}
+                                    {{--INPUT TEXT Direccion ------------------------------------ --}}
 
                                     <div class="form-group col">
                                         {{--SELECT FK Localidad --}}
@@ -172,25 +168,6 @@
                                     </div>
                                     {{--INPUT TEXT Teléfono ------------------------------------ --}}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <div class="form-group col">
                                         {{--INPUT TEXT Móvil --}}
                                         {!! Form::label('movil', 'Móvil') !!}
@@ -211,24 +188,19 @@
 
                                     <div class="form-group col">
                                         {{--DATE TIMESTAMP Fecha de Nacimiento --}}
-                                        @if (isset($cliente->id))
-                                            {{ $retrieveDate =  date('Y-m-d', strtotime($cliente->fecha_nacimiento ))  }}
-                                        @else
-                                            {{ $retrieveDate = null  }}
-                                        @endif
+
                                         <label for="fecha_nacimiento">Fecha de Nacimiento </label>
                                         <input class    = "form-control"
                                                type     = "date"
                                                name     = "fecha_nacimiento"
                                                id       = "fecha_nacimiento"
-                                               value    = '{{ old('fecha_nacimiento', $retrieveDate )   }}'
+                                               value    = '{{ old('fecha_nacimiento',    date('Y-m-d', strtotime($cliente->fecha_nacimiento ))  )   }}'
                                                placeholder="Introduzca Fecha de Nacimiento">
                                         @foreach ($errors->get('fecha_nacimiento') as $error)
                                             <span class="text text-danger">{{ $error }}</span>
                                         @endforeach
                                     </div>
                                     {{--DATE TIMESTAMP Fecha de Nacimiento------------------------------------ --}}
-
 
 
                                     {{--</div>--}}
@@ -246,13 +218,16 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
             </section>
+
         </div>
-    </div>
+        @endsection
+
+        @section('js')
+
+            <script>
+            </script>
 @endsection
 
-@section('js')
-
-    <script>
-    </script>
-@endsection

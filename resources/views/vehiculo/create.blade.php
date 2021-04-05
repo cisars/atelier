@@ -35,37 +35,37 @@
                                             <label for="cliente">Cliente</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="cliente"
-                                                id      ="cliente">
+                                                name    ="cliente_id"
+                                                id      ="cliente_id">
                                                 <option value="">Seleccione cliente</option>
                                                 @foreach($clientes as $key => $cliente)
                                                     <option
-                                                        value   ="{{ $cliente->cliente }}"
-                                                        {{ old('cliente') == $cliente->cliente ? 'selected' : '' }}
+                                                        value   ="{{ $cliente->id }}"
+                                                        {{ old('cliente_id') == $cliente->id ? 'selected' : '' }}
                                                     >{{ $cliente->razon_social }}</option>
                                                 @endforeach
                                             </select>
-                                            @foreach ($errors->get('cliente') as $error)
+                                            @foreach ($errors->get('cliente_id') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
 
                                         {{-- FK2 Select--}}
                                         <div class="form-group">
-                                            <label for="modelo">Modelo</label>
+                                            <label for="modelo">Marca/Modelo</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="modelo"
-                                                id      ="modelo">
+                                                name    ="modelo_id"
+                                                id      ="modelo_id">
                                                 <option value="">Seleccione modelo</option>
                                                 @foreach($modelos as $key => $modelo)
                                                     <option
-                                                        value   ="{{ $modelo->modelo }}"
-                                                        {{ old('modelo') == $modelo->modelo ? 'selected' : '' }}
-                                                    >{{ $modelo->descripcion }}</option>
+                                                        value   ="{{ $modelo->id }}"
+                                                        {{ old('modelo_id') == $modelo->id ? 'selected' : '' }}
+                                                    >{{ $modelo->marca->descripcion }}, {{ $modelo->descripcion }}</option>
                                                 @endforeach
                                             </select>
-                                            @foreach ($errors->get('modelo') as $error)
+                                            @foreach ($errors->get('modelo_id') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
@@ -105,17 +105,17 @@
                                             <label for="color">Color</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="color"
-                                                id      ="color">
+                                                name    ="color_id"
+                                                id      ="color_id">
                                                 <option value="">Seleccione color</option>
                                                 @foreach($colores as $key => $color)
                                                     <option
-                                                        value   ="{{ $color->color }}"
-                                                        {{ old('color') == $color->color ? 'selected' : '' }}
+                                                        value   ="{{ $color->id }}"
+                                                        {{ old('color_id') == $color->id ? 'selected' : '' }}
                                                     >{{ $color->descripcion }}</option>
                                                 @endforeach
                                             </select>
-                                            @foreach ($errors->get('color') as $error)
+                                            @foreach ($errors->get('color_id') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>

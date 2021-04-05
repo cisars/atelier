@@ -18,14 +18,19 @@ class CreateReservasTable extends Migration
             $table->unsignedTinyInteger('taller_id')->nullable();
             $table->unsignedInteger('cliente_id')->nullable();
             $table->unsignedInteger('vehiculo_id')->nullable();
-            $table->timestamp('fecha')->nullable();
-            $table->timestamp('para_fecha')->nullable();
+            $table->date('fecha')->nullable();
+            $table->date('para_fecha')->nullable();
             $table->unsignedInteger('empleado_id')->nullable();
             $table->char('estado',1)->nullable();
             $table->char('forma_reserva',1)->nullable();
             $table->char('prioridad',1)->nullable();
             $table->string('observacion',200)->nullable();
             $table->string('usuario', 255);
+            $table->time('para_hora');
+            $table->tinyInteger('turno');
+            $table->tinyInteger('sector');
+            $table->tinyInteger('ticket');
+            $table->unsignedTinyInteger('parametro_id')->nullable();
 
 
             $table->foreign('taller_id')
@@ -43,6 +48,9 @@ class CreateReservasTable extends Migration
             $table->foreign('usuario')
                 ->references('usuario')
                 ->on('usuarios');
+            $table->foreign('parametro_id')
+                ->references('id')
+                ->on('parametros');
 
             $table->timestamps();
         });

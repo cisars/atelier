@@ -58,31 +58,28 @@
 
                                         {{'{'}}{{'{'}}--Set all function cons base model dropdown list char 1--{{'}'}}{{'}'}}
 
-@foreach ($gen->tabla['constantes'] as $dataCol)
-@if($aux != $dataCol['nombre'])
+@foreach ($gen->tabla['constantes'] as $dataCon)
+@if($aux != $dataCon['nombre'])
+                                        {{'{'}}{{'{'}}--CONST {{ $dataCon['descripcion'] }} | {{$auxFix = $dataCon['nombre']}} | {{$aux = $dataCon['nombre']}} --{{'}'}}{{'}'}}
                                         <div class="form-group col">
-                                            {{'{'}}{{'{'}}--CONST {{ $dataCol['visibilidad'] }} - {{$auxFix = $dataCol['nombre']}} --{{'}'}}{{'}'}}
-                                            {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}} {{'{'}}{{'{'}}--{{$aux = $dataCol['nombre']}}--{{'}'}}{{'}'}}
-                                            {{'{'}}!! Form::select('{{ $dataCol['nombre'] }}',
-                                                [
-                                                    '0'                             => 'Seleccione {{ $dataCol['visibilidad'] }}'  ,
-@foreach ($gen->tabla['constantes'] as $key => $dataCol)
-@if ($key === array_key_last($gen->tabla['constantes']))
-                                                    {{'{'}}{{'{'}}-- {{ $coma = ''}} --{{'}'}}{{'}'}}
-@endif
-@if($aux == $dataCol['nombre'])
-                                                    ${{ $dataCol['nombres'] }}['{{ $dataCol['descripcion'] }}']           => '{{ $dataCol['descripcion'] }}' {{ $coma }}
-@endif
-@endforeach
-                                                ],
-                                                old('{{ $auxFix }}') ,
-                                                ['class' => 'form-control']
-                                            ) !!{{'}'}}
-                                            {{'@'}}error("{{ $auxFix }}")
-                                                <span class="text text-danger">{{'{'}}{{'{'}} $message {{'}'}}{{'}'}}</span>
-                                            {{'@'}}enderror
-                                        </div> {{-- fin form-group col--}}
-                                            {{'{'}}{{'{'}}--CONST ------------------------------------ --{{'}'}}{{'}'}}
+                                            <label for="{{ $auxFix }}" >{{ $dataCon['descripcion'] }}</label>
+                                            <select
+                                                class   ="form-control"
+                                                name    ="{{ $auxFix }}"
+                                                id      ="{{ $auxFix }}">
+                                                {{'@'}}foreach (${{ $dataCon['nombres'] }} as $key => ${{ $auxFix }})
+                                                    <option value="{{'{'}}{{'{'}}   ${{ $auxFix }}    {{'}'}}{{'}'}}"
+                                                            {{'@'}}if (${{ $gen->tabla['ZnombreZ'] }}->{{ $auxFix }} == old('{{ $auxFix }}', ${{ $auxFix }}) )
+                                                            selected="selected"
+                                                        {{'@'}}endif
+                                                    >{{'{'}}{{'{'}}   $key    {{'}'}}{{'}'}} </option>
+                                                {{'@'}}endforeach
+                                            </select>
+                                            {{'@'}}foreach ($errors->get('{{ $auxFix }}') as $error)
+                                                <span class="text text-danger">{{'{'}}{{'{'}}   $error    {{'}'}}{{'}'}}</span>
+                                            {{'@'}}endforeach
+                                        </div>
+                                        {{'{'}}{{'{'}}-- FIN CONST {{ $dataCon['visibilidad'] }}------------------------------------ --{{'}'}}{{'}'}}
 
 @endif
 @endforeach
@@ -94,7 +91,7 @@
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--SELECT FK {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
                                             {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}
-                                            {{'{'}}!! Form::select('{{ $dataCol['nombre'] }}', ${{ $dataCol['fks'] }}->pluck('{{ $dataCol['selectdesc'] }}', 'id')  ,
+                                            {{'{'}}!! Form::select('{{ $dataCol['nombre'] }}', ${{ $dataCol['fks'] }}->pluck('{{ $dataCol['orderby'] }}', 'id')  ,
                                                 old('{{ $dataCol['nombre'] }}') ,
                                                 [
                                                     'class' => 'form-control',
@@ -109,17 +106,13 @@
 @elseif ( ($dataCol['tipo'] == 'date' || $dataCol['tipo'] == 'timestamp')  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'   ))
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
-                                            {{'@'}}if (isset(${{ $nombre }}->id))
-                                                {{'{'}}{{'{'}} $retrieveDate =  date('Y-m-d', strtotime(${{ $nombre }}->{{ $dataCol['nombre'] }} ))  {{'}'}}{{'}'}}
-                                            {{'@'}}else
-                                                {{'{'}}{{'{'}} $retrieveDate = null  {{'}'}}{{'}'}}
-                                            {{'@'}}endif
+
                                             <label for="{{ $dataCol['nombre'] }}">{{ $dataCol['visibilidad'] }} </label>
                                             <input class    = "form-control"
                                                    type     = "date"
                                                    name     = "{{ $dataCol['nombre'] }}"
                                                    id       = "{{ $dataCol['nombre'] }}"
-                                                   value    = '{{'{'}}{{'{'}} old('{{ $dataCol['nombre'] }}', $retrieveDate )   {{'}'}}{{'}'}}'
+                                                   value    = '{{'{'}}{{'{'}} old('{{ $dataCol['nombre'] }}',    date('Y-m-d', strtotime(${{ $nombre }}->{{ $dataCol['nombre'] }} ))  )   {{'}'}}{{'}'}}'
                                                    placeholder="Introduzca {{ $dataCol['visibilidad'] }}">
                                             {{'@'}}foreach ($errors->get('{{ $dataCol['nombre'] }}') as $error)
                                                 <span class="text text-danger">{{'{'}}{{'{'}} $error {{'}'}}{{'}'}}</span>
@@ -127,23 +120,42 @@
                                         </div> {{-- fin form-group col--}}
                                         {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }}------------------------------------ --{{'}'}}{{'}'}}
 
+@elseif ( ($dataCol['tipo'] == 'time' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'   ))
+                                                <div class="form-group col">
+                                                    {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
+
+                                                    <label for="{{ $dataCol['nombre'] }}">{{ $dataCol['visibilidad'] }} </label>
+                                                    <input class    = "form-control"
+                                                           type     = "time"
+                                                           name     = "{{ $dataCol['nombre'] }}"
+                                                           id       = "{{ $dataCol['nombre'] }}"
+                                                           value    = '{{'{'}}{{'{'}} old('{{ $dataCol['nombre'] }} ' ,    ${{ $nombre }}->{{ $dataCol['nombre'] }} ?? ''  ) {{'}'}}{{'}'}}'
+                                                    placeholder="Introduzca {{ $dataCol['visibilidad'] }}">
+                                                    {{'@'}}foreach ($errors->get('{{ $dataCol['nombre'] }}') as $error)
+                                                    <span class="text text-danger">{{'{'}}{{'{'}} $error {{'}'}}{{'}'}}</span>
+                                                    {{'@'}}endforeach
+                                                </div> {{-- fin form-group col--}}
+                                                {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }}------------------------------------ --{{'}'}}{{'}'}}
+
 
 @elseif (($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'numeric' || $dataCol['tipo'] == 'smallint' || $dataCol['tipo'] == 'tinyint' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'   ))
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--INPUT NUMERIC {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
                                             {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}
-                                            {{'{'}}!! Form::select('{{ $dataCol['nombre'] }}', ${{ $dataCol['fks'] }}->pluck('{{ $dataCol['selectdesc'] }}', 'id')  ,
-                                            old('{{ $dataCol['nombre'] }}') ,
-                                            [
-                                                'type'          => 'numeric',
-                                                'class'         => 'form-control',
-                                                'placeholder'   => '{{ $dataCol['visibilidad'] }}'
+                                            {{'{'}}!! Form::text(
+                                                '{{ $dataCol['nombre'] }}',
+                                                old('{{ $dataCol['nombre'] }}') ,
+                                                [
+                                                    'maxlength'     => '{{ $dataCol['longitud'] }}',
+                                                    'type'          => 'numeric',
+                                                    'class'         => 'form-control',
+                                                    'placeholder'   => '{{ $dataCol['visibilidad'] }}'
                                             ]) !!{{'}'}}
                                             {{'@'}}error("{{ $dataCol['nombre'] }}")
                                                 <span class="text text-danger">{{'{'}}{{'{'}} $message {{'}'}}{{'}'}}</span>
                                             {{'@'}}enderror
                                         </div> {{-- fin form-group col--}}
-                                            {{'{'}}{{'{'}}--INPUT NUMERIC {{ $dataCol['visibilidad'] }} ------------------------------------ --{{'}'}}{{'}'}}
+                                        {{'{'}}{{'{'}}--INPUT NUMERIC {{ $dataCol['visibilidad'] }} ------------------------------------ --{{'}'}}{{'}'}}
 
 @elseif (($dataCol['tipo'] == 'char' || $dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'text' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  ))
                                         <div class="form-group col">
@@ -164,6 +176,19 @@
                                         </div> {{-- fin form-group col--}}
                                         {{'{'}}{{'{'}}--INPUT TEXT {{ $dataCol['visibilidad'] }} ------------------------------------ --{{'}'}}{{'}'}}
 
+@elseif (($dataCol['tipo'] == 'boolean'   )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  ))
+                                                <div class="form-group col">
+                                                    {{'{'}}{{'{'}}--INPUT Radio {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
+                                                    {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}
+                                                    {{'{'}}!! Form::radio('{{ $dataCol['nombre'] }}', 0, old('{{ $dataCol['nombre'] }}') , [ 'id' => '{{ $dataCol['nombre'] }}' ]) !!{{'}'}}
+                                                    No
+                                                    {{'{'}}!! Form::radio('{{ $dataCol['nombre'] }}', 1, old('{{ $dataCol['nombre'] }}') , [ 'id' => '{{ $dataCol['nombre'] }}' ]) !!{{'}'}}
+                                                    Si
+                                                    {{'@'}}error("{{ $dataCol['nombre'] }}")
+                                                    <span class="text text-danger">{{'{'}}{{'{'}} $message {{'}'}}{{'}'}}</span>
+                                                    {{'@'}}enderror
+                                                </div> {{-- fin form-group col--}}
+
 @endif
 @endforeach
 
@@ -182,8 +207,10 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
             </section>
-        </div>
+
     </div>
 {{'@'}}endsection
 

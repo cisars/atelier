@@ -191,18 +191,26 @@ class MakeTemplateController extends Controller
         // ################################################VARs#################################################
         $tabla      =
             [
-                'ZNOMBRESZ'   => 'Empleados' ,
-                'ZNOMBREZ'    => 'Empleado' ,
-                'ZnombresZ'   => 'empleados' ,
-                'ZnombreZ'    => 'empleado' ,
+                'ZNOMBRESZ'   => 'Tests' ,
+                'ZNOMBREZ'    => 'Test' ,
+                'ZnombresZ'   => 'tests' ,
+                'ZnombreZ'    => 'test' ,
                 'columnas'  =>
                     [
-                        $this->parametros('id',               'hidden',               'int',      '10' ,  'notnull', 'pk', 'autoincrement','','','',''),
-                         ],
+                        $this->parametros('id',               'hidden',               'smallint', '' ,  'notnull', 'pk', 'autoincrement','','','',''),
+                          $this->parametros('test_id',     'Test',            'smallint',  '0',   'notnull','fk','',
+                            'Test','tests','test','razon_social',''),
+
+                        ],
+                'relaciones'  =>
+                    [
+                        $this->foreign('test_id','id','tests','CASCADE','CASCADE',
+                            'test', 'belongsTo', 'Test::class', 'test_id','', ''),
+                    ],
                 'constantes'  =>
                     [
 
-                        $this->constantes('estado_civil',   'EMPLEADO_CASADO',        'c' , 'estados_civiles'),
+                        $this->constantes('estado_civil',   'TEST_CASADO',        'c' , 'estados_civiles'),
 
 
                     ]

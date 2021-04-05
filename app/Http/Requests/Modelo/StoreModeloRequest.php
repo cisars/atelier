@@ -26,13 +26,13 @@ class StoreModeloRequest extends FormRequest
     {
 
         return [
-            'marca'             =>'required',
+            'marca_id'             =>'required',
             'descripcion'       =>['required',
                 'max:40',
                 Rule::unique('modelos', 'descripcion')
-                    ->ignore($this->modelo, 'modelo')
+                    ->ignore($this->modelo, 'id')
                     ->where(function ($query) {
-                        return $query->where('marca', $this->marca);
+                        return $query->where('marca_id', $this->marca_id);
                     })
             ],
         ];
@@ -46,7 +46,7 @@ class StoreModeloRequest extends FormRequest
     public function messages()
     {
         return [
-            'marca.required'        => 'Debe seleccionar una marca',
+            'marca_id.required'        => 'Debe seleccionar una marca',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',

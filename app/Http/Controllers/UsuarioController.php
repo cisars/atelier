@@ -134,6 +134,7 @@ class UsuarioController extends Controller
                     'remember_token',
                     'mailtoken',
                     'created_at',
+                    'email',
                     'updated_at']));
             $usuario->mailtoken = $request->_token;
             //$usuario->token = Str::uuid();
@@ -141,7 +142,8 @@ class UsuarioController extends Controller
             $usuario->fecha_ingreso = now();
             $usuario->save();
 
-            Mail::to(trim($request->email))->send(new EmailCheck($usuario->mailtoken));
+            // esto envia el correo electronico real de activacion al correo ingresado
+        //    Mail::to(trim($request->email))->send(new EmailCheck($usuario->mailtoken));
 
 
 

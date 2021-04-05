@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Color;
 use App\Models\Empleado;
+use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Usuario;
 use App\Models\Vehiculo;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
@@ -47,7 +49,24 @@ class HomeController extends Controller
 
         if( trim(Auth::user()->perfil) == 'C' )
         {
-            return View::make('web.panelcliente') ;
+
+      //  dd( Marca::where('descripcion', 'Hyundai')->first()->id);
+ //           dd(Cliente::find(Auth::user()->cliente_id)->vehiculos );
+//            dd( Auth::user()->cliente::with('vehiculos'  )->get());
+//            $usuario = Auth::user()->cliente;
+
+
+//            $vehiculos = Vehiculo::all()->pluck('marca_modelo', 'id');
+//            dd($vehiculos);
+//
+
+            $cliente = Cliente::with('vehiculos')->where('id', Auth::user()->cliente_id)->first();
+            //dd($cliente->vehiculos->pluck('marca_modelo', 'id'));
+
+            $vehiculos = $cliente->vehiculos->pluck('marca_modelo', 'id');
+
+            return View::make('web.panelcliente')
+                ->with('vehiculos', $vehiculos) ;
         }
 
 

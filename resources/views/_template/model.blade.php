@@ -47,7 +47,16 @@ class {{$NOMBRE}} extends Model
 @if ($dataCol['cardinalidad'] == 'fk')
     public function {{$dataCol['fk']}}()
     {
-        return $this->belongsTo({{$dataCol['FK']}}::class, '{{$gen->tabla['ZnombreZ']}}_id');
+        return $this->belongsTo({{$dataCol['FK']}}::class, '{{$dataCol['fk']}}_id');
+    }
+@endif
+@endforeach
+
+@foreach ($gen->tabla['relaciones'] as $dataRel)
+@if('hasMany' == $dataRel['eloquent'])
+    public function {{$dataRel['funcion']}}()
+    {
+        return $this->hasMany({{$dataRel['related']}}, '{{$nombre}}_id');
     }
 @endif
 @endforeach

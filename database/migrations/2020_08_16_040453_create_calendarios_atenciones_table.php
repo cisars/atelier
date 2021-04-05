@@ -19,21 +19,15 @@ class CreateCalendariosAtencionesTable extends Migration
             $table->smallInteger('turno_recepcion',false,true )->nullable();
             $table->time('hora_desde')->nullable();
             $table->time('hora_hasta')->nullable();
-            $table->char('prioridad',1)->nullable();
             $table->char('estado',1)->nullable();
-            $table->smallInteger('cliente_id')->nullable();
-            //$table->foreign('usuario') ;
-            $table->string('usuario', 255);
+            $table->string('usuario',15)->nullable();
+            $table->timestamp('fecha_registro')->nullable();
+            $table->tinyInteger('periodicidad')->nullable();
+            $table->time('desde',1)->nullable();
+            $table->time('hasta',1)->nullable();
+            $table->smallInteger('sector')->nullable();
 
             $table->timestamps();
-
-            //$table->primary(['calendario_atencion']);
-            $table->foreign('usuario')
-                ->references('usuario')
-                ->on('usuarios')
-                ->onDelete('cascade')
-                ->onUpdate('cascade')
-            ;
 
         });
     }

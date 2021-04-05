@@ -24,11 +24,11 @@ class StoreVehiculoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cliente'           =>'required',
-            'modelo'            =>'required',
+            'cliente_id'           =>'required',
+            'modelo_id'            =>'required',
             'chapa'             =>'required|max:12|unique:vehiculos,chapa',
             'chasis'            =>'required|max:12|unique:vehiculos,chasis',
-            'color'             =>'required',
+            'color_id'             =>'required',
             'combustion'        =>'required',
             'tipo'              =>'required',
             'año'               =>'required',
@@ -42,15 +42,15 @@ class StoreVehiculoRequest extends FormRequest
     public function messages()
     {
         return [
-            'cliente.required'      => 'Debe seleccionar  cliente',
-            'modelo.required'       => 'Debe seleccionar  modelo',
+            'cliente_id.required'      => 'Debe seleccionar  cliente',
+            'modelo_id.required'       => 'Debe seleccionar  modelo',
             'chapa.required'        => 'Debe ingresar una chapa',
             'chapa.max'             => 'La chapa no puede exceder 12 caracteres',
             'chapa.unique'          => 'El registro ya existe',
             'chasis.required'       => 'Debe ingresar un chasis',
             'chasis.max'            => 'El chasis no puede exceder 12 caracteres',
             'chasis.unique'         => 'El registro ya existe',
-            'color.required'        => 'Debe seleccionar  color',
+            'color_id.required'        => 'Debe seleccionar  color',
             'combustion.required'   => 'Debe seleccionar tipo de combustion',
             'tipo.required'         => 'Debe seleccionar  tipo',
         ];

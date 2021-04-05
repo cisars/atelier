@@ -43,7 +43,7 @@ class ModeloController extends Controller
     {
         $modelo = new Modelo([
             'descripcion' => $request->get('descripcion'),
-            'marca' => $request->get('marca'),
+            'marca_id' => $request->get('marca_id'),
         ]);
         $modelo->save();
         return redirect()
@@ -78,7 +78,7 @@ public function show(Modelo $modelo)
 
     public function destroy(Request $request)
     {
-        $modelo = Modelo::findOrFail($request->modelo);
+        $modelo = Modelo::findOrFail($request->id);
             $modelo->delete();
 
             return redirect()

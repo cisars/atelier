@@ -25,11 +25,11 @@ class UpdateVehiculoRequest extends FormRequest
     {
 
         return [
-            'cliente'           =>'required',
-            'modelo'            =>'required',
+            'cliente_id'           =>'required',
+            'modelo_id'            =>'required',
             'chapa'             =>'required|max:12|unique:vehiculos,chapa,' . $this->vehiculo . ',vehiculo',
             'chasis'            =>'required|max:12|unique:vehiculos,chasis,' . $this->vehiculo . ',vehiculo',
-            'color'             =>'required',
+            'color_id'             =>'required',
             'combustion'        =>'required',
             'tipo'              =>'required',
             'año'               =>'required',
@@ -46,9 +46,9 @@ class UpdateVehiculoRequest extends FormRequest
     {
 
         return [
-            'cliente.required'      => 'Debe seleccionar  cliente',
+            'cliente_id.required'      => 'Debe seleccionar  cliente',
 
-            'modelo.required'       => 'Debe seleccionar  modelo',
+            'modelo_id.required'       => 'Debe seleccionar  modelo',
 
             'chapa.required'        => 'Debe ingresar una chapa',
             'chapa.max'             => 'La chapa no puede exceder 12 caracteres',
@@ -58,7 +58,7 @@ class UpdateVehiculoRequest extends FormRequest
             'chasis.max'            => 'El chasis no puede exceder 12 caracteres',
             'chasis.unique'         => 'El registro ya existe',
 
-            'color.required'        => 'Debe seleccionar  color',
+            'color_id.required'        => 'Debe seleccionar  color',
 
             'combustion.required'   => 'Debe seleccionar tipo de combustion',
 

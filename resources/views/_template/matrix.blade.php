@@ -121,7 +121,7 @@
                 <div class="card card-outline card-info">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Edit/{{$gen->tabla['ZNOMBREZ']}}.php (View)
+                            Fake/{{$gen->tabla['ZNOMBREZ']}}.php (Fake)
                         </h3>
                     </div>
                     <div class="card-body border-primary col-md-12" >
@@ -129,7 +129,7 @@
                             id="Fake|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small"
-                        >@include('_template.edit',['gen'=>$gen])</textarea>
+                        >@include('_template.fake',['gen'=>$gen])</textarea>
                         <button
                             type        ="button"
                             class       ="btn btn-success pull-right"
@@ -139,7 +139,53 @@
                     </div>
                 </div>
             </div>
-
+            (Request)
+            {{-- Store|CodeMirror--}}
+            <div class="col-md-12 " >
+                <div class="card card-outline card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Store/{{$gen->tabla['ZNOMBREZ']}}.php (Request)
+                        </h3>
+                    </div>
+                    <div class="card-body border-primary col-md-12" >
+                        <textarea
+                            id="Store|CodeMirror"
+                            class="col-md-12"
+                            style="font-size: x-small"
+                        >@include('_template.store',['gen'=>$gen])</textarea>
+                        <button
+                            type        ="button"
+                            class       ="btn btn-success pull-right"
+                            onclick     ="copyText('Store|CodeMirror');" > Copiar
+                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {{-- Update|CodeMirror--}}
+            <div class="col-md-12 " >
+                <div class="card card-outline card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Update/{{$gen->tabla['ZNOMBREZ']}}.php (Request)
+                        </h3>
+                    </div>
+                    <div class="card-body border-primary col-md-12" >
+                        <textarea
+                            id="Update|CodeMirror"
+                            class="col-md-12"
+                            style="font-size: x-small"
+                        >@include('_template.update',['gen'=>$gen])</textarea>
+                        <button
+                            type        ="button"
+                            class       ="btn btn-success pull-right"
+                            onclick     ="copyText('Update|CodeMirror');" > Copiar
+                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!--   .col-->
@@ -154,39 +200,36 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="#" class="btn bg-cyan">Enlace</a>
+
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="w-10">Código </th>
-                                <th class="w-10">Acción</th>
+                                <th > </th>
+                                <th > </th>
                             </tr>
-                            </thead>descripcion
+                            </thead>Agregar rutas
                             <tbody>
                             {{--                            @dd($reservas)--}}
 
 
                             <tr>
                                 <td>{{ $gen->dat }}</td>
-                                <td class=" ">
-                                    <a
-                                        {{--                                            href="{{ route('reserva.edit', $dat->reserva) }}"--}}
-                                        class= "btn btn-info">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <button
-                                        type        = "button"
-                                        class       = "btn btn-danger"
-                                        data-toggle = "modal"
-                                        data-target = "#modal-danger{{$gen->dat}}"
-                                        data-data   = "{{$gen->dat}}">
-                                        <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                    </button>
+                            </tr>
+                            <tr>
+                                <td>En View/Vendor/adminlte/page.blade.php</td>
 
+                                <td>Route::current()->getName() == 'nuevogen'</td>
+                            </tr>
+                            <tr>
+                                <td>En web.php</td>
 
-                                </td>
+                                <td>Route::get('/nuevogen', 'NuevoGen@index')->name('nuevogen');</td>
+                            </tr>
+                            <tr>
+                                <td>En adminlte.config.php</td>
+
                             </tr>
 
                             </tbody>
@@ -261,6 +304,30 @@
             }).setSize( 1200, 700 );
 
             CodeMirror.fromTextArea(document.getElementById("Fake|CodeMirror"),{
+                theme: "material",
+                readOnly: true,
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "application/x-httpd-php",
+                indentUnit: 4,
+                indentWithTabs: true,
+                smartIndent:true,
+
+            }).setSize( 1200, 700 );
+
+            CodeMirror.fromTextArea(document.getElementById("Store|CodeMirror"),{
+                theme: "material",
+                readOnly: true,
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "application/x-httpd-php",
+                indentUnit: 4,
+                indentWithTabs: true,
+                smartIndent:true,
+
+            }).setSize( 1200, 700 );
+
+            CodeMirror.fromTextArea(document.getElementById("Update|CodeMirror"),{
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,

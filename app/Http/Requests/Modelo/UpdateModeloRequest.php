@@ -41,9 +41,9 @@ class UpdateModeloRequest extends FormRequest
             'descripcion'=>['required',
                 'max:40',
                 Rule::unique('modelos', 'descripcion')
-                    ->ignore($this->modelo, 'modelo')
+                    ->ignore($this->modelo_id, 'modelo_id')
                     ->where(function ($query) {
-                        return $query->where('marca', $this->marca);
+                        return $query->where('marca_id', $this->marca_id);
                     })
             ],
         ];

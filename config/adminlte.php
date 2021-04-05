@@ -420,9 +420,14 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'usuario', 'text' => 'Usuarios',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'tallerusuario', 'text' => 'Usuarios de Talleres',],
                 [
+                    'text' => 'Configuraciones',
+                    'url' => '#',
+                    'icon_color' => 'info',
+                    'can' => ['admin', 'doc'],
                     'submenu' => [
-                        ['url' => 'usuario/create',],
-                        ['url' => 'tallerusuario/create',],
+                        ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'parametro', 'text' => 'Parámetros',],
+                        ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'descanso', 'text' => 'Descanso',],
+
                     ],
                 ],
             ],
@@ -613,20 +618,22 @@ return [
         ],
 
 
-//                                    ['header' => 'EJEMPLOS BOOTSTRAP', 'can' => ['admin', 'example-bootstrap'],],
-//                                    [
-//                                        'text' => 'Datatables',
-//                                        'icon' => 'fas fa-fw fa-table',
-//                                        'can' => ['admin', 'example-bootstrap'],
-//                                        'submenu' => [
-//                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'data', 'text' => 'Data',],
-//                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'inline', 'text' => 'Inline',],
-//                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'flot', 'text' => 'Flot',],
-//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'maketemplate', 'text' => 'MKT',],
-//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleadogen', 'text' => 'EmpleadoGen',],
-//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'clientegen', 'text' => 'ClienteGen',],
-//                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'productoserviciogen', 'text' => 'ProductoServicioGen',],
-//
+                                    ['header' => 'EJEMPLOS BOOTSTRAP', 'can' => ['admin', 'example-bootstrap'],],
+                                    [
+                                        'text' => 'Datatables',
+                                        'icon' => 'fas fa-fw fa-table',
+                                        'can' => ['admin', 'example-bootstrap'],
+                                        'submenu' => [
+                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'data', 'text' => 'Data',],
+                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'inline', 'text' => 'Inline',],
+                                            ['icon_color' => 'yellow', 'can' => ['admin', 'example-bootstrap'], 'url' => 'flot', 'text' => 'Flot',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'maketemplate', 'text' => 'MKT',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleadogen', 'text' => 'EmpleadoGen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'clientegen', 'text' => 'ClienteGen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'productoserviciogen', 'text' => 'ProductoServicioGen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'parametrogen', 'text' => 'Parametrogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'descansogen', 'text' => 'Descansogen',],
+
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservanormal', 'text' => 'reservanormal ',],
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservalinea', 'text' => 'reservalinea',],
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_confirmacionot', 'text' => 'confirmacionot ',],
@@ -640,9 +647,9 @@ return [
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_verificacionot', 'text' => 'verificacionot ',],
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_finalizacionot', 'text' => 'finalizacionot ',],
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_entregavehiculo', 'text' => 'entregavehiculo ',],
-//
-//                                        ],
-//                                    ],
+
+                                        ],
+                                    ],
 
 
     ],

@@ -39,7 +39,7 @@ class Cliente extends Model
 
     public function usuarios()
     {
-        return $this->hasMany(Usuario::class, 'cliente_id' );
+        return $this->hasMany(Usuario::class, 'cliente_id', 'usuario' );
     }
     public function localidad()
     {

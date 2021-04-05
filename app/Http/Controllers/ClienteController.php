@@ -56,7 +56,6 @@ class ClienteController extends Controller
 
     public function store(StoreClienteRequest $request )
     {
-       // dd($request);
         try {
             DB::beginTransaction();
 
@@ -66,7 +65,7 @@ class ClienteController extends Controller
 
             DB::commit();
 
-        } catch ( Exception $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         }
         return redirect()
@@ -77,26 +76,35 @@ class ClienteController extends Controller
 
     public function destroy(Request $request)
     {
-        $cliente = Cliente::findOrFail($request->cliente);
-        $cliente->delete();
+        try {
+            $cliente = Cliente::findOrFail($request->id);
+            $cliente->delete();
 
-        return redirect()
-            ->route('cliente.index')
-            ->with('msg', 'Registro Eliminado Correctamente')
-            ->with('type', 'danger');
+            return redirect()
+                ->route('cliente.index')
+                ->with('msg', 'Registro Eliminado Correctamente')
+                ->with('type', 'danger');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //dd($e);
+            return redirect()->route('cliente.index')->with('error', $e->getMessage());
+        }
     }
 
     public function edit(Cliente $cliente)
     {
 // Get all data fk tables
         $localidades = Localidad::orderBy('descripcion', 'ASC')->get();
+
 // Set all function cons base model dropdown list char 1
+        $personerias = $cliente->getPersonerias() ; // personerias
 
         return view('cliente.edit')
+            ->with('cliente', $cliente)
 // Send all fk variables
             ->with('localidades', $localidades)
 
 // Send all cons variables
+            ->with('personerias', $personerias)  // personerias
             ;
     }
 
@@ -138,3 +146,4 @@ class ClienteController extends Controller
 }
 
 ?>
+

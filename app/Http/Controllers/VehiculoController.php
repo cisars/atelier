@@ -39,6 +39,7 @@ class VehiculoController extends Controller
         $vehiculos = Vehiculo::all();
 
             $vehiculo   = new Vehiculo();
+
             $combustiones    = $vehiculo->getCombustiones();
             $tipos    = $vehiculo->getTipos();
 
@@ -111,13 +112,19 @@ class VehiculoController extends Controller
 
     public function destroy(Request $request)
     {
-        $vehiculo = Vehiculo::findOrFail($request->vehiculo);
+        try {
+
+        $vehiculo = Vehiculo::findOrFail($request->id);
         $vehiculo->delete();
 
         return redirect()
             ->route('vehiculo.index')
             ->with('msg', 'Registro Eliminado Correctamente')
             ->with('type', 'danger');
+           } catch (\Illuminate\Database\QueryException $e) {
+               dd($e);
+               return redirect()->route('vehiculo.index')->with('error', $e->getMessage());
+           }
     }
 
 }

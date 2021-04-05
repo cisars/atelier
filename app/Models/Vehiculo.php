@@ -41,6 +41,23 @@ class Vehiculo extends Model
     const TIPO_PICKUP 			= 's';
     const TIPO_CLASICOS 		= 't';
 
+    public function getFuelAttribute()
+    {
+
+        foreach ($this->getCombustiones() as $k => $combustion):
+            if (trim($this->combustion) == trim($combustion)){
+                return $k;
+            }
+        endforeach;
+    }
+    public function getTypeAttribute()
+    {
+        foreach ($this->getTipos() as $k => $tipo):
+            if (trim($this->tipo) == trim($tipo)){
+                return $k;
+            }
+        endforeach;
+    }
     public function getCombustiones()
     {
         return $combustiones = [
@@ -78,11 +95,11 @@ class Vehiculo extends Model
             'Clasicos' 			=> Vehiculo::TIPO_CLASICOS 		,
         ];
     }
-
-    /*public function setFullNameAttribute()
-    {
-        return $this->fmodelo->descripcion . ' ' . $this->fmodelo->fmarca->descripcion;
-    }*/
+//
+//    public function setFullNameAttribute()
+//    {
+//        return   $this->modelo->marca->descripcion . ' ' . $this->modelo->descripcion;
+//    }
 
     public function reservas()
     {
@@ -101,6 +118,13 @@ class Vehiculo extends Model
 //        return $this->hasMany(Recepcion::class, 'vehiculo', 'vehiculo');
 //    }
 
+
+    function getMarcaModeloAttribute() {
+        //return $this->marca->descripcion . ", " . $this->modelo->marca->descripcion;
+        //return $this->marca ? $this->marca->descripcion . ", " . $this->modelo->marca->descripcion : '';
+        return $this->modelo->marca->descripcion . ", " . $this->modelo->descripcion;
+    }
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'cliente_id');
@@ -114,8 +138,8 @@ class Vehiculo extends Model
         return $this->belongsTo(Modelo::class, 'modelo_id');
     }
 
-    public function marcaObj()
+    public function marca()
     {
-        return $this->hasOneThrough(Marca::class, Modelo::class  );
+        return $this->hasOneThrough(Marca::class, Modelo::class , 'marca_id','id','marca_id' );
     }
 }

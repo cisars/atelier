@@ -38,7 +38,9 @@
                             <thead class="">
                             <tr>
                                 <th class="w-10">Código </th>
+
                                 <th class="">Cliente</th>
+                                <th class="">Marca</th>
                                 <th class="">Modelo</th>
                                 <th class="">Chapa</th>
                                 <th class="">Chasis</th>
@@ -53,9 +55,14 @@
                             @foreach($vehiculos as $key => $vehiculo)
                                 <tr>
                                     <td>{{ $vehiculo->id }}</td>
+
                                     <td>
 
                                         {{ $vehiculo->cliente->razon_social }}
+                                    </td>
+                                    <td>
+                                        {{  $vehiculo->modelo->marca->descripcion }}
+
                                     </td>
                                     <td>
                                      {{  $vehiculo->modelo->descripcion }}

@@ -32,6 +32,7 @@ class StoreUsuarioRequest extends FormRequest
             'observacion'       =>'max:200',
             'taller_id'       =>'required',
             'perfil'       =>'required',
+            'email'       =>'required',
 
         ];
     }
@@ -44,6 +45,7 @@ class StoreUsuarioRequest extends FormRequest
     public function messages()
     {
         return [
+            'email.required'              => 'Debe introducir un correo',
             'usuario.required'              => 'Debe introducir un usuario',
             'taller_id.required'          => 'Debe introducir un taller',
             'usuario.max'                   => 'Usuario no puede exceder 12 caracteres',

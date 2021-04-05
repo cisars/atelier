@@ -36,27 +36,27 @@
                                                    name     = "descripcion"
                                                    id       = "descripcion"
                                                    value    = "{{ old('descripcion') }}"
-                                                   placeholder="Introduzca descripcion para la modelo nueva">
+                                                   placeholder="Introduzca descripcion para el nuevo modelo">
                                             @foreach ($errors->get('descripcion') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="marca">Marca</label>
+                                            <label for="marca_id">Marca</label>
                                             <select
                                                 class   ="form-control"
-                                                name    ="marca"
-                                                id      ="marca">
+                                                name    ="marca_id"
+                                                id      ="marca_id">
                                                 <option value="">Seleccione marca</option>
                                                 @foreach($marcas as $key => $marca)
                                                     <option
-                                                        value   ="{{ $marca->marca }}"
-                                                        {{ old('marca') == $marca->marca ? 'selected' : '' }}
+                                                        value   ="{{ $marca->id }}"
+                                                        {{ old('marca_id') == $marca->id ? 'selected' : '' }}
                                                     >{{ $marca->descripcion }}</option>
                                                 @endforeach
                                             </select>
-                                            @foreach ($errors->get('marca') as $error)
+                                            @foreach ($errors->get('marca_id') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
