@@ -96,8 +96,18 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     }
 
 
-
-
+    public function tallerAsignadoExist()
+    {
+        return    \Auth::user()->talleres()->exists();
+    }
+    public function tallerAsignadoId()
+    {
+        return    \Auth::user()->talleres()->first()->id;
+    }
+    public function tallerAsignadoColl()
+    {
+        return    \Auth::user()->talleres()->get();
+    }
 
     public function talleres()
     {

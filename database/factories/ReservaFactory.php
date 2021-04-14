@@ -13,11 +13,11 @@ $factory->define(Reserva::class, function (Faker $faker) {
     (\App\Models\Usuario::all() !== false )     ?  factory('App\Models\Usuario')->create() : "";
 
     return [
-        'taller_id'  => \App\Models\Taller::inRandomOrder()->first()->id,
+        'taller_id'  => \App\Models\Taller::where('descripcion','Atelier')->first()->id,
         'cliente_id'  => \App\Models\Cliente::inRandomOrder()->first()->id,
         'vehiculo_id'  => \App\Models\Vehiculo::inRandomOrder()->first()->id,
-        'fecha' => $faker->dateTimeBetween('-30 days', '+10 days' ),
-        'para_fecha' => $faker->dateTimeBetween('+11 days', '+30 days' ),
+        'fecha' => $faker->dateTimeBetween('-1 days', '+1 days' ),
+        'para_fecha' => $faker->dateTimeBetween('+1 days', '+15 days' ),
         'empleado_id'  => \App\Models\Empleado::inRandomOrder()->first()->id,
         'estado' => (new Reserva)->getEstados()[array_rand( (new Reserva)->getEstados())],
         'forma_reserva' => (new Reserva)->getFormas()[array_rand( (new Reserva)->getFormas())],

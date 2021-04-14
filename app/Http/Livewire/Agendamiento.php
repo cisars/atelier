@@ -24,9 +24,11 @@ class Agendamiento extends Component
 
 
     public $grillaReservas;
+    public $banderaEditarCupo;
 
 //    formulario
     public $vehiculoSel;
+    public $vehiculoSelDescripcion;
     public $para_fechaSel;
     public $para_horaSel;
     public $sectorSel;
@@ -37,6 +39,7 @@ class Agendamiento extends Component
 
     public function mount()
     {
+        $this->banderaEditarCupo = false;
         $this->parametro = Parametro::where('activo', '1')->first();
         $this->client = Cliente::find(\Auth::user()->cliente_id);
         $this->misvehiculos = $this->client->vehiculos;
@@ -45,7 +48,11 @@ class Agendamiento extends Component
 
         //dd($this->parametro->descansos);
 
-        $this->grillaReservas = Reserva::where('para_fecha', $this->fechaSeleccionada)->get();
+        $this->grillaReservas = Reserva::where([
+            'para_fecha' => $this->fechaSeleccionada
+        ]
+
+        )->get();
 //dd($this->grillaReservas);
         //dd($this->grillaReservas);
 
@@ -56,39 +63,47 @@ class Agendamiento extends Component
     {
 
         //  $b = Usuario::find(Auth::user()->usuario)->talleres[0]->id ;
-      //     dd( $this->client->id );
+        //     dd( $this->client->id );
         //  dd(Auth::user()->usuario );
 
+        if ($this->banderaEditarCupo == true) {
+            $matchThese = [
+                'para_fecha' => $this->para_fechaSel,
+                'ticket' => $this->ticketSel ,
+                'usuario' => Auth::user()->usuario,
+            ];
+            Reserva::where($matchThese)->delete();
+            redirect()->to('/agendamiento');
+        } else {
 
-        $reserva = new Reserva([
-            'taller_id' => Usuario::find(Auth::user()->usuario)->talleres[0]->id,
-            'cliente_id' => $this->client->id,
-            'vehiculo_id' => $this->vehiculoSel,
-            'fecha' => date('Y-m-d'),
-            'para_fecha' => $this->para_fechaSel,
+            $reserva = new Reserva([
+                'taller_id' => Usuario::find(Auth::user()->usuario)->talleres[0]->id,
+                'cliente_id' => $this->client->id,
+                'vehiculo_id' => $this->vehiculoSel,
+                'fecha' => date('Y-m-d'),
+                'para_fecha' => $this->para_fechaSel,
 //            'empleado_id'   => '',
-            'estado' => Reserva::ESTADO_ACTIVO,
-            'forma_reserva' => Reserva::FORMA_ONLINE,
-            'prioridad' => Reserva::PRIORIDAD_NORMAL,
-            'observacion' => $this->observacionSel,
-            'usuario' => Auth::user()->usuario,
-            'para_hora' => $this->para_horaSel,
-            'turno' => 0,
-            'sector' => $this->sectorSel,
-            'ticket' => $this->ticketSel,
-            'parametro_id' => $this->parametroSel,
-        ]);
-
+                'estado' => Reserva::ESTADO_PENDIENTE,
+                'forma_reserva' => Reserva::FORMA_ONLINE,
+                'prioridad' => Reserva::PRIORIDAD_NORMAL,
+                'observacion' => $this->observacionSel,
+                'usuario' => Auth::user()->usuario,
+                'para_hora' => $this->para_horaSel,
+                'turno' => 0,
+                'sector' => $this->sectorSel,
+                'ticket' => $this->ticketSel,
+                'parametro_id' => $this->parametroSel,
+            ]);
 
 
 //        $reserva = new Reserva($request->all());
 
-        $reserva->save();
+            $reserva->save();
 
-        session()->flash('msg', 'Registro Creado Correctamente');
-        session()->flash('type', 'info');
-        redirect()->to('/');
-
+            session()->flash('msg', 'Registro Creado Correctamente');
+            session()->flash('type', 'info');
+            redirect()->to('/');
+        }
     }
 
 
@@ -97,7 +112,7 @@ class Agendamiento extends Component
         $this->variable = ['uno' => $this->fechaSeleccionada, 'dos' => 'b'];
         $this->grillaReservas = Reserva::where('para_fecha', $this->fechaSeleccionada)->get();
 
-       //dd($ver);
+        //dd($ver);
         $this->emit('test', $this->variable);
     }
 
@@ -109,6 +124,7 @@ class Agendamiento extends Component
 
     public function seleccionarCupo($sector, $turno, $ticket)
     {
+        $this->banderaEditarCupo = false;
         //no se utiliza
         $this->cupo = [
             'sector' => $sector,
@@ -122,29 +138,38 @@ class Agendamiento extends Component
         $this->para_fechaSel = $this->fechaSeleccionada;
         $this->parametroSel = '1';
 
-        $this->emit('triggerCupo', $this->cupo);
+        $this->variable = ['ticket' => $ticket, 'editarCupo' => false ,  'fechaSeleccionada' => $this->fechaSeleccionada];
+        $this->emit('triggerCupo', $this->variable);
     }
 
-    public function editarCupo(  $ticket)
+    public function editarCupo($ticket)
     {
 
+        $this->banderaEditarCupo = true;
 
         $miquery = Reserva::where([
             'para_fecha' => $this->fechaSeleccionada,
             'ticket' => $ticket
         ])->get();
 
-        //dd($miquery[0]->ticket);
-        $this->turnoSel         = $miquery[0]->para_hora;
-        $this->sectorSel        = $miquery[0]->sector;
-        $this->ticketSel        = $miquery[0]->ticket;
-        $this->para_horaSel     = $miquery[0]->para_hora;
-        $this->vehiculoSel      = $miquery[0]->vehiculo_id;
-        $this->para_fechaSel    = $this->fechaSeleccionada;
-        $this->parametroSel     = $miquery[0]->parametro_id;
-        $this->observacionSel   = $miquery[0]->observacion;
+        // traer descripcion del vehiculo seleccionado
+        $elVehiculo = Vehiculo::with('modelo')->where('id', $miquery[0]->vehiculo_id)->first();
+        $elmodelo = $elVehiculo->modelo->descripcion;
+        $lamarca = $elVehiculo->modelo::with('marca')->first()->marca->descripcion;
+        $this->vehiculoSelDescripcion = $lamarca . ', ' . $elmodelo;
 
-        $this->emit('triggerCupo', '');
+        //dd($miquery[0]->ticket);
+        $this->turnoSel = $miquery[0]->para_hora;
+        $this->sectorSel = $miquery[0]->sector;
+        $this->ticketSel = $miquery[0]->ticket;
+        $this->para_horaSel = $miquery[0]->para_hora;
+        $this->vehiculoSel = $miquery[0]->vehiculo_id;
+        $this->para_fechaSel = $this->fechaSeleccionada;
+        $this->parametroSel = $miquery[0]->parametro_id;
+        $this->observacionSel = $miquery[0]->observacion;
+
+        $this->variable = ['ticket' => $ticket, 'editarCupo' => true,  'fechaSeleccionada' => $this->fechaSeleccionada];
+        $this->emit('triggerCupo', $this->variable);
     }
 
 

@@ -13,6 +13,8 @@ class Reserva extends Model
     //Estado
     const ESTADO_ACTIVO = 'A';
     const ESTADO_INACTIVO = 'I';
+    const ESTADO_PENDIENTE = 'P';
+    const ESTADO_VERIFICADO = 'V';
 
     //Forma reserva
     const FORMA_ONLINE	    = 'O';
@@ -33,6 +35,8 @@ class Reserva extends Model
         return $estados = [
             'Activo'        => Reserva::ESTADO_ACTIVO,
             'Inactivo'      => Reserva::ESTADO_INACTIVO,
+            'Pendiente'     => Reserva::ESTADO_PENDIENTE,
+            'Verificado'    => Reserva::ESTADO_VERIFICADO,
         ];
     }
 
@@ -60,7 +64,7 @@ class Reserva extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'usuario' );
+        return $this->belongsTo(Usuario::class, 'usuario','usuario' );
     }
 
     public function cliente()

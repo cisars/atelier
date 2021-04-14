@@ -19,18 +19,11 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas =  new Reserva ;
-        $reservas =  Reserva::all();
+        $reservas =  Reserva::with('usuario', 'empleado')->get();
         // $reservas = Reserva::all();
 
         $reservas->each(function($reserva)
         {
-//            $reserva->taller = Taller::find($reserva->taller);
-//            $reserva->cliente = Cliente::find($reserva->cliente);
-//            $reserva->vehiculo = Vehiculo::find($reserva->vehiculo);
-//
-//
-//            $reserva->empleado = Empleado::find($reserva->empleado);
-//            $reserva->usuario = Usuario::find($reserva->usuario);
 
             foreach ((new Reserva())->getEstados() as $clave=>$valor)
                 trim($reserva->estado) == trim($valor) ? $reserva->estado = $clave : NULL ;
@@ -59,7 +52,16 @@ class ReservaController extends Controller
         $vehiculos = Vehiculo::all();
         $empleados = Empleado::all();
         $usuarios = Usuario::all();
-        return view('reserva.create')
+
+        if (\Auth::user()->tallerAsignadoExist()) {
+            $talleres = \Auth::user()->tallerAsignadoColl() ;
+            $taller_id = \Auth::user()->tallerAsignadoId() ;
+            }
+       // dd($talleres);
+
+        return view('reserva.edit')
+            ->with('reserva', $reserva)
+            ->with('taller_id', $taller_id)
             ->with('reservas', $reservas)
             ->with('talleres', $talleres)
             ->with('clientes', $clientes)
@@ -84,23 +86,22 @@ class ReservaController extends Controller
 
     public function store(StoreReservaRequest $request)
     {
-//        $reserva = new Reserva([
-//            'descripcion' => $request->get('descripcion'),
-//            'taller' => $request->get('taller'),
-//            'cliente' => $request->get('cliente'),
-//            'vehiculo' => $request->get('vehiculo'),
-//            'empleado' => $request->get('empleado'),
-//            'usuario' => $request->get('usuario'),
-//            'ZZfk6ZZ' => $request->get('ZZfk6ZZ'),
-//            'estado' => $request->get('estado'),
-//            'forma_reserva' => $request->get('forma_reserva'),
-//            'prioridad' => $request->get('ZZestado3ZZ'),
-//        ]);
+        $reserva = new Reserva([
+            'descripcion' => $request->get('descripcion'),
+            'taller' => $request->get('taller'),
+            'cliente' => $request->get('cliente'),
+            'vehiculo' => $request->get('vehiculo'),
+            'empleado' => $request->get('empleado'),
+            'usuario' => $request->get('usuario'),
+            'ZZfk6ZZ' => $request->get('ZZfk6ZZ'),
+            'estado' => $request->get('estado'),
+            'forma_reserva' => $request->get('forma_reserva'),
+            'prioridad' => $request->get('ZZestado3ZZ'),
+        ]);
 
         $reserva = new Reserva($request->all());
         $reserva->save();
 
-        $reserva->save();
         return redirect()
             ->route('reserva.index')
             ->with('msg', 'Registro Creado Correctamente')
@@ -114,27 +115,16 @@ class ReservaController extends Controller
 
     public function edit(Reserva $reserva)
     {
-        //dd($reserva);
-     //   $reserva = Reserva::with('vehiculo')->where('reserva', $reserva->reserva)->first();
-        //$reserva = Reserva::with('vehiculo')->where('reserva', $reserva->reserva)->first();
-        //$reserva = Reserva::with('fvehiculo.fmodelo.fmarca')->get();
-        //$reserva = Reserva::find($reserva);
 
-        //dd( $reserva->fvehiculo->fmodelo->fmarca  );
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
 
+        $vehiculos = Vehiculo::all();
 
-        $vehiculos = Vehiculo::pluck('chapa', 'vehiculo');
+        $modelos = Modelo::all();
 
-        //dd($vehiculos);
-
-        //dd($vehiculos);
-
-        $modelos = Modelo::pluck('modelo', 'descripcion');
-
-        $empleados = Empleado::orderBy('apellidos', 'ASC')->pluck('nombres', 'empleado');
-        $usuarios = Usuario::orderBy('usuario', 'ASC')->pluck('usuario', 'usuario');
+        $empleados = Empleado::all();
+        $usuarios = Usuario::whereNotNull('cliente_id' );
 
         $estados            = (new Reserva())->getEstados();
         //dd($estados);
@@ -156,16 +146,16 @@ class ReservaController extends Controller
             'formas_reservas',
             'prioridades'
         ))
-//            ->with('reserva',$reserva)
-//            ->with('talleres',$talleres)
-//            ->with('clientes',$clientes)
-//            ->with('vehiculos',$vehiculos)
-//            ->with('modelos',$modelos)
-//            ->with('empleados',$empleados)
-//            ->with('usuarios',$usuarios)
-//            ->with('estados', $estados)
-//            ->with('formas_reservas', $formas_reservas)
-//            ->with('prioridades', $prioridades)
+            ->with('reserva',$reserva)
+            ->with('talleres',$talleres)
+            ->with('clientes',$clientes)
+            ->with('vehiculos',$vehiculos)
+            ->with('modelos',$modelos)
+            ->with('empleados',$empleados)
+            ->with('usuarios',$usuarios)
+            ->with('estados', $estados)
+            ->with('formas_reservas', $formas_reservas)
+            ->with('prioridades', $prioridades)
             ;
     }
 

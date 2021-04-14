@@ -28,10 +28,10 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body text-center">
                 <h4 class="text-maroon"> Su solicitud ah sido enviada! </h4>
-                <BR> Un representante se pondrá en contacto con Ud. para confirmar la solicitud.
-                <br> Gracias por su preferencia!
+                <br> Un representante se pondrá en contacto con Ud. para confirmar la solicitud.
+                <br><br> Gracias por su preferencia!
             </div>
 
             <!-- Modal footer -->

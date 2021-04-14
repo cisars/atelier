@@ -41,6 +41,15 @@ class Vehiculo extends Model
     const TIPO_PICKUP 			= 's';
     const TIPO_CLASICOS 		= 't';
 
+
+
+    public function getFullDescAttribute()
+    {
+
+       return $this->modelo->marca->descripcion .', '. $this->modelo->descripcion;
+
+    }
+
     public function getFuelAttribute()
     {
 

@@ -26,7 +26,7 @@ $factory->define(Empleado::class, function (Faker $faker) {
         'turno_id'  => \App\Models\Turno::inRandomOrder()->first()->id,
         'grupo_id'  => \App\Models\Grupo::inRandomOrder()->first()->id,
         'fecha_nacimiento' => $faker->dateTimeBetween('-50 years', '-20 years' ),
-        'fecha_ingreso' => $faker->date('Y-m-d','now'),
+        'fecha_ingreso' => $faker->dateTimeBetween('-10 years', '-1 years' ),
         'estado' => 'A',
         'salario' => $faker->numberBetween(500,10000)
     ];

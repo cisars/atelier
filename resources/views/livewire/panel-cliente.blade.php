@@ -157,8 +157,16 @@
                                                             <div class=" col-sm-12  ">
                                                                 {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
                                                                 <table
-                                                                    class="table table-hover table-striped text-nowrap table-sm  text-sm">
+                                                                    class="table table-hover table-striped text-nowrap table-sm  text-sm text-right">
 
+                                                                    @foreach($vehiculo->reservas as $key2 => $res)
+
+                                                                        <tr>
+                                                                            <td class="text-maroon">
+                                                                                <i class="fa fa-ticket-alt"></i> Ticket # {{$res->ticket}} | {{ date('d/m/Y', strtotime($res->para_fecha)) }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        @endforeach
                                                                         <tr>
                                                                             <td class="text-maroon">
                                                                                 <i class="fa fa-clock"></i> -
@@ -190,6 +198,17 @@
                                                 </div>
 
                                             @endforeach
+                                                <div class="card col-sm-4 ">
+
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <!-- MultiStep Form -->
+                                                            <div class=" col-sm-12 btn btn-outline-danger  p-5 " wire:click="newCar()">
+                                                                 <button class="form-control text-maroon  "  > <i class=" fa fa-plus-circle"></i> Agregar Vehículo </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="card  col-sm-12">
                                                     <div class="card-body">
@@ -207,7 +226,7 @@
                                         @endif
                                         @if($options == 1)
                                             <div class="col-md-4">
-
+{{$mivehiculo}}
 
                                                 <div class="col-md-12">
                                                     <div class="card card-maroon card-outline">
@@ -344,7 +363,7 @@
                                                 <div class="card">
                                                     <div class="card-header  text-maroon">
                                                         <i class="fa fa-user"></i>
-                                                        Historial de Servicios
+                                                        Historial
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="row">
@@ -352,6 +371,15 @@
                                                             <div class=" col-sm-12  ">
                                                                 <table
                                                                     class="table table-hover table-striped text-nowrap table-sm  text-sm">
+
+                                                                        @php setlocale(LC_TIME,"es_ES"); @endphp
+                                                                    @foreach($mivehiculo->reservas as $key => $res)
+                                                                        <tr>
+                                                                            <td class="text-maroon">
+                                                                                <i class="fa fa-ticket-alt"></i> Ticket  {{ $res->ticket }} {{ date('H:i', strtotime($res->para_hora)) }} {{ date('d/m/Y', strtotime($res->para_fecha)) }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
                                                                     <tr>
                                                                         <td class="text-maroon">
                                                                             <i class="fa fa-clock"></i> 15 de Marzo del
@@ -779,135 +807,141 @@
                                                         <h3 class="card-title"><i class="fa fa-pen-alt"></i> Nuevo
                                                             Vehículo</h3>
                                                     </div>
-                                                    <form
-                                                        role="form"
-                                                        id="form"
-                                                        method="POST"
-                                                        action="{{ route('vehiculo.store') }}">
+                                                    <form wire:submit.prevent="submitVehiculo"  >
                                                         @csrf
                                                         <div class="card-body">
 
                                                             {{-- FK2 Select--}}
                                                             <div class="form-group">
-                                                                <label for="modelo">Modelo</label>
+                                                                <label for="modelo">Marca/Modelo</label>
                                                                 <select
                                                                     class="form-control"
-                                                                    name="modelo"
-                                                                    id="modelo">
+                                                                    name="modeloSel"
+                                                                    id="modeloSel"
+                                                                    wire:model="modeloSel"
+                                                                >
                                                                     <option value="">Seleccione modelo</option>
-                                                                    @foreach($modelos as $key => $modelo)
+                                                                    @foreach($losModelos as $key => $modelo)
                                                                         <option
-                                                                            value="{{ $modelo->modelo }}"
-                                                                            {{ old('modelo') == $modelo->modelo ? 'selected' : '' }}
-                                                                        >{{ $modelo->descripcion }}</option>
+                                                                            value="{{ $modelo->id }}"
+                                                                            {{ old('modeloSel') == $modelo->modelo ? 'selected' : '' }}
+                                                                        >
+                                                                            {{ $modelo->marca->descripcion }},
+                                                                            {{ $modelo->descripcion }}
+                                                                        </option>
                                                                     @endforeach
                                                                 </select>
-                                                                @foreach ($errors->get('modelo') as $error)
+                                                                @foreach ($errors->get('modeloSel') as $error)
                                                                     <span class="text text-danger">{{ $error }}</span>
                                                                 @endforeach
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="chapa">Chapa</label>
+                                                                <label for="chapaSel">Chapa</label>
                                                                 <input
                                                                     class="form-control"
                                                                     maxlength="12"
                                                                     type="text"
-                                                                    name="chapa"
-                                                                    id="chapa"
-                                                                    value="{{ old('chapa') }}"
-                                                                    placeholder="Chapa">
-                                                                @foreach ($errors->get('chapa') as $error)
+                                                                    name="chapaSel"
+                                                                    id="chapaSel"
+                                                                    value="{{ old('chapaSel') }}"
+                                                                    placeholder="Chapa"
+                                                                    wire:model="chapaSel"
+                                                                >
+                                                                @foreach ($errors->get('chapaSel') as $error)
                                                                     <span class="text text-danger">{{ $error }}</span>
                                                                 @endforeach
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="chasis">Chasis</label>
+                                                                <label for="chasisSel">Chasis</label>
                                                                 <input
                                                                     class="form-control"
                                                                     maxlength="12"
                                                                     type="text"
-                                                                    name="chasis"
-                                                                    id="chasis"
-                                                                    value="{{ old('chasis') }}"
-                                                                    placeholder="Chasis">
-                                                                @foreach ($errors->get('chasis') as $error)
+                                                                    name="chasisSel"
+                                                                    id="chasisSel"
+                                                                    value="{{ old('chasisSel') }}"
+                                                                    placeholder="Chasis"
+                                                                    wire:model="chasisSel"
+                                                                >
+                                                                @foreach ($errors->get('chasisSel') as $error)
                                                                     <span class="text text-danger">{{ $error }}</span>
                                                                 @endforeach
                                                             </div>
 
                                                             {{-- FK3 Select--}}
                                                             <div class="form-group">
-                                                                <label for="color">Color</label>
+                                                                <label for="colorSel">Color</label>
                                                                 <select
                                                                     class="form-control"
-                                                                    name="color"
-                                                                    id="color">
-                                                                    <option value="">Seleccione color</option>
-                                                                    @foreach($colores as $key => $color)
-                                                                        <option
-                                                                            value="{{ $color->color }}"
-                                                                            {{ old('color') == $color->color ? 'selected' : '' }}
-                                                                        >{{ $color->descripcion }}</option>
+                                                                    wire:model="colorSel"
+                                                                >
+                                                                    <option value="-1">Seleccione color</option>
+                                                                    @foreach($losColores as $key => $color)
+                                                                        <option value="{{ $color->id }}" >{{ $color->descripcion }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                @foreach ($errors->get('color') as $error)
-                                                                    <span class="text text-danger">{{ $error }}</span>
-                                                                @endforeach
+
                                                             </div>
 
                                                             {{--CONST Estado1--}}
                                                             <div class="form-group col">
-                                                                <label for="combustion">Combustion</label>
+                                                                <label for="combustionSel">Combustion</label>
                                                                 <select
                                                                     class="form-control"
-                                                                    name="combustion"
-                                                                    id="combustion">
+                                                                    name="combustionSel"
+                                                                    id="combustionSel"
+                                                                    wire:model="combustionSel"
+                                                                >
                                                                     <option value="">Seleccione Combustion</option>
-                                                                    @foreach($combustiones as $key => $combustion)
+                                                                    @foreach($lasCombustiones as $key => $combustion)
                                                                         <option
                                                                             value="{{ $combustion }}"
-                                                                            {{ old('combustion') == $combustion ? 'selected' : '' }}
+                                                                            {{ old('combustionSel') == $combustion ? 'selected' : '' }}
                                                                         >{{ $key }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                @foreach ($errors->get('combustion') as $error)
+                                                                @foreach ($errors->get('combustionSel') as $error)
                                                                     <span class="text text-danger">{{ $error }}</span>
                                                                 @endforeach
                                                             </div>
 
                                                             {{--CONST Estado2--}}
                                                             <div class="form-group col">
-                                                                <label for="tipo">Tipo</label>
+                                                                <label for="tipoSel">Tipo</label>
                                                                 <select
                                                                     class="form-control"
-                                                                    name="tipo"
-                                                                    id="tipo">
+                                                                    name="tipoSel"
+                                                                    id="tipoSel"
+                                                                    wire:model="tipoSel"
+                                                                >
                                                                     <option value="">Seleccione Tipo</option>
-                                                                    @foreach($tipos as $key => $tipo)
+                                                                    @foreach($losTipos as $key => $tipo)
                                                                         <option
                                                                             value="{{ $tipo }}"
-                                                                            {{ old('tipo') == $tipo ? 'selected' : '' }}
+                                                                            {{ old('tipoSel') == $tipo ? 'selected' : '' }}
                                                                         >{{ $key }}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                @foreach ($errors->get('tipo') as $error)
+                                                                @foreach ($errors->get('tipoSel') as $error)
                                                                     <span class="text text-danger">{{ $error }}</span>
                                                                 @endforeach
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="año">Año</label>
+                                                                <label for="anoSel">Año</label>
                                                                 <input
                                                                     class="form-control"
                                                                     maxlength="12"
                                                                     type="text"
-                                                                    name="año"
-                                                                    id="año"
-                                                                    value="{{ old('año') }}"
-                                                                    placeholder="Año">
-                                                                @foreach ($errors->get('año') as $error)
+                                                                    name="anoSel"
+                                                                    id="anoSel"
+                                                                    value="{{ old('anoSel') }}"
+                                                                    placeholder="Año"
+                                                                    wire:model="anoSel"
+                                                                >
+                                                                @foreach ($errors->get('anoSel') as $error)
                                                                     <span class="text text-danger">{{ $error }}</span>
                                                                 @endforeach
                                                             </div>
@@ -916,9 +950,9 @@
                                                         <div class="card-footer">
                                                             <button
                                                                 type="submit"
-                                                                class="btn bg-maroon">Grabar
+                                                                class="btn bg-maroon"><i class="fa fa-plus"></i> Agregar
                                                             </button>
-                                                            <a href="{{ route('vehiculo.index') }}"
+                                                            <a  wire:click="changeOption(0)"
                                                                class="btn btn-secondary btn-close">Cancelar</a>
                                                         </div>
                                                     </form>

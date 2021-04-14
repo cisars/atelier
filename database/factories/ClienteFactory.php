@@ -13,6 +13,7 @@ $factory->define(Cliente::class, function (Faker $faker) {
         'direccion' => $faker->address,
         'localidad_id'  => \App\Models\Localidad::inRandomOrder()->first()->id,
         'telefono' => '(+59521)'. $faker->numberBetween(333333,999999),
+        'email' => $faker->email,
         'movil' => '(+595981)'.$faker->numberBetween(333333,999999),
         'fecha_nacimiento' => $faker->dateTimeBetween('-50 years', '-20 years' ),
         'personeria' => Str::random(1),

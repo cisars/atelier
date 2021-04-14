@@ -19,6 +19,7 @@ class CreateClientesTable extends Migration
             $table->string('documento',12)->nullable();
             $table->string('direccion',80)->nullable();
             $table->smallInteger('localidad_id')->nullable();
+            $table->string('email',80)->nullable();
             $table->string('telefono',20)->nullable();
             $table->string('movil',20)->nullable();
             $table->date('fecha_nacimiento')->nullable();
@@ -30,6 +31,9 @@ class CreateClientesTable extends Migration
 
             $table->timestamps();
         });
+        DB::statement(
+            'ALTER TABLE clientes ADD FULLTEXT fulltext_index(razon_social, documento, email)'
+        );
     }
 
     /**

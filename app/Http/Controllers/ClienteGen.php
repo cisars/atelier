@@ -27,6 +27,7 @@ class ClienteGen extends Controller
                         $genisa->parametros('direccion',        'Direccion',            'varchar',  '80',   'notnull','','','','','','',''),
                         $genisa->parametros('localidad_id',     'Localidad',            'smallint',  '',   'notnull','fk','',
                             'Localidad','localidades','localidad','descripcion',''),
+                        $genisa->parametros('email',            'Email',                'varchar',  '80',   'notnull','','','','','','',''),
                         $genisa->parametros('telefono',        'Teléfono',              'varchar',  '20',   'notnull','','','','','','',''),
                         $genisa->parametros('movil',           'Móvil',                 'varchar',  '20',   'notnull','','','','','','',''),
                         $genisa->parametros('fecha_nacimiento', 'Fecha de Nacimiento',  'date',     '20',   'null','','','','','','',''),

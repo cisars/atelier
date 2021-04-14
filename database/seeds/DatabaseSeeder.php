@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'direccion'     => 'Eusebio Ayala 692 Esq. Kutbicheck',
             'telefono'      => '+5956846975',
         ]);
-        factory('App\Models\Cliente', 5)->create();
+        factory('App\Models\Cliente', 50)->create();
 
         factory('App\Models\Cargo',4)->create();
         factory('App\Models\Localidad',4)->create();

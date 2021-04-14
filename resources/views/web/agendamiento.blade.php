@@ -60,13 +60,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="inicio">Inicio
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="agendamiento">Reservas</a>
+                    <a class="nav-link" href="inicio"><i class="fa fa-home"></i> Inicio </a>
+                </li>
+                @if( Auth::user())
+                    <li class="nav-item ">
+                        <a class="nav-link" href="home"><i class="fa fa-car"></i> MiPanel </a>
+                    </li>
+                @endif
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="agendamiento"><i class="fa fa-calendar"></i> Reservas </a>
                 </li>
 
             </ul>
@@ -135,12 +139,29 @@
 
 @livewireScripts
 <script type="text/javascript">
-    window.livewire.on('triggerCupo', (cupo) => {
-        //alert(variable);
-    console.log('turno: ' + cupo.turno);
-    console.log('sector: ' + cupo.sector);
-    console.log('ticket: ' + cupo.ticket);
-        // $('#turnoSel').val(cupo.turno);
+    window.livewire.on('triggerCupo', (val) => {
+        console.log('ticket: ' + val.ticket);
+        console.log('editarCupo: ' + val.editarCupo);
+        $('#ticketSel').html("# "+ val.ticket);
+        $('#botonAccion').removeClass();
+        $('#colorTituloCupo').removeClass();
+        $('#iconoCupo').removeClass();
+        var f = new Date(val.fechaSeleccionada);
+        $('#laFecha').html( (f.getDate()+1) + "/" + (f.getMonth()+1) + "/" +f.getFullYear() );
+    if( val.editarCupo == true){
+        $('#botonAccion').addClass('btn bg-warning');
+        $('#colorTituloCupo').addClass('modal-header bg-warning');
+        $('#tituloCupo').html('Ticket de Reserva');
+        $('#iconoCupo').addClass('fa fa-trash');
+        $('#accionCupo').html('Cancelar Ticket');
+    }else{
+        $('#colorTituloCupo').addClass('modal-header bg-maroon');
+        $('#tituloCupo').html('Solicitud de Reserva via Online');
+        $('#botonAccion').addClass('btn bg-maroon');
+        $('#iconoCupo').addClass('fa fa-clock');
+        $('#accionCupo').html( 'Solicitar Ticket');
+    }
+
         // $('#sectorSel').val(cupo.sector);
         // $('#ticketSel').html('#'+cupo.ticket);
         $('#modalReserva').modal({

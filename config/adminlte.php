@@ -541,9 +541,9 @@ return [
             //'label'         => '1/8',
             'label_color' => 'info',
             'submenu' => [
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_reservanormal', 'text' => 'Reserva',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'reserva', 'text' => 'Reservas',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Síntomas de Vehiculos',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_recepcionvehiculo', 'text' => 'Recepción de Vehiculos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'recepcion', 'text' => 'Recepción de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_confirmacionot', 'text' => 'Confirmacion de OTs',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_realizacionot', 'text' => 'Servicios Realizados',],
 
@@ -633,6 +633,8 @@ return [
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'productoserviciogen', 'text' => 'ProductoServicioGen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'parametrogen', 'text' => 'Parametrogen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'descansogen', 'text' => 'Descansogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'reservagen', 'text' => 'Reservagen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'recepciongen', 'text' => 'Recepciongen',],
 
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservanormal', 'text' => 'reservanormal ',],
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservalinea', 'text' => 'reservalinea',],

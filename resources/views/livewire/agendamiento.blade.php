@@ -140,8 +140,12 @@
 
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header bg-maroon">
-                        <h5 class="modal-title">Solicitud de Reserva via Online
+                    <div
+{{--                        class="modal-header" --}}
+                        id="colorTituloCupo">
+                        <h5  class="modal-title"
+                            id="tituloCupo">
+{{--                            Solicitud de Reserva via Online--}}
                             {{ $cupo['sector'] ?? '' }}
                             {{ $cupo['turno'] ?? '' }}
                             {{ $cupo['ticket'] ?? '' }}</h5>
@@ -160,12 +164,12 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="cliente">Cliente {{ $client->id }}</label>
+                                                <label for="cliente">Cliente  </label>
                                             </div>
                                             <div class="col-md-6 text-right">
                                                 Para el dia
-                                                <label class="text-maroon">
-                                                    {{ date('d/m/Y', strtotime($fechaSeleccionada)) }}
+                                                <label class="text-maroon" id="laFecha">
+{{--                                                    {{ date('d/m/Y', strtotime($fechaSeleccionada)) }}--}}
                                                 </label>
                                             </div>
                                         </div>
@@ -226,13 +230,13 @@
                                             name="vehiculoSel"
                                             id="vehiculoSel"
                                             wire:model="vehiculoSel">
-                                            @if ($vehiculoSel)
-                                                <option selected
-                                                    value="{{ $vehiculoSel }}"
-                                                > {{ $vehiculo::where('id',$vehiculoSel)->modelo->marca->descripcion }}
+{{--                                            @if ($vehiculoSel)--}}
+{{--                                                <option selected--}}
+{{--                                                    value="{{ $vehiculoSel }}"--}}
+{{--                                                > {{ $vehiculoSelDescripcion }}--}}
 
-                                                </option>
-                                            @endif
+{{--                                                </option>--}}
+{{--                                            @endif--}}
                                             <option value="">Seleccione vehiculo</option>
                                             @foreach($misvehiculos as $key => $vehiculo)
                                                 <option
@@ -272,10 +276,11 @@
 
                     </div>
                     <div class="modal-footer">
-                        <div class="text-maroon pull-left"><i class="fa fa-ticket"></i><span id="ticketSel"
-                                                                                             wire:model="ticketSel"></span>
+                        <div class="text-maroon pull-left"><i class="fa fa-ticket"></i>
+                            <span id="ticketSel" wire:model="ticketSel"></span>
                         </div>
-                        <button type="submit" class="btn bg-maroon"><i class="fa fa-clock"></i> Solicitar Ticket
+                        <button type="submit" class="" id="botonAccion">
+                            <i id="iconoCupo" ></i> <span id="accionCupo" ></span>
                         </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
                         {{--                <a href="{{ route('reserva.index') }}" class="btn btn-secondary btn-close">Cancelar</a>--}}

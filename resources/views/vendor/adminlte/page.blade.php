@@ -173,7 +173,9 @@
     Route::current()->getName() == 'parametrogen' ||
     Route::current()->getName() == 'descansogen' ||
     Route::current()->getName() == 'vehiculogen' ||
-    Route::current()->getName() == 'clientegen'
+    Route::current()->getName() == 'clientegen' ||
+    Route::current()->getName() == 'reservagen' ||
+    Route::current()->getName() == 'recepciongen'
 )
 
                 <link href="{{ asset('/codemirror/lib/codemirror.css') }}"       rel="stylesheet">

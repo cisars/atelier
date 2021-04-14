@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/productoserviciogen', 'ProductoServicioGen@index')->name('productoserviciogen');
     Route::get('/parametrogen', 'ParametroGen@index')->name('parametrogen');
     Route::get('/descansogen', 'DescansoGen@index')->name('descansogen');
+    Route::get('/reservagen', 'ReservaGen@index')->name('reservagen');
+    Route::get('/recepciongen', 'RecepcionGen@index')->name('recepciongen');
 
 
     //Factorys
@@ -74,6 +76,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/productoservicio/factory', 'ProductoServicio@factory')->name('productoservicio.factory');
     Route::get('/parametro/factory', 'Parametro@factory')->name('parametro.factory');
     Route::get('/descanso/factory', 'Descanso@factory')->name('descanso.factory');
+    Route::get('/recepcion/factory', 'Recepcion@factory')->name('recepcion.factory');
 
     //Validaciones request
     Route::resource('localidad', 'LocalidadController');
@@ -99,6 +102,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('productoservicio', 'ProductoServicioController');
     Route::resource('parametro', 'ParametroController');
     Route::resource('descanso', 'DescansoController');
+    Route::resource('recepcion', 'RecepcionController');
 
 });
 

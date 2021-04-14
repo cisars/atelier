@@ -109,6 +109,10 @@ class UsuarioSeeder extends Seeder
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'isaias',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
 
         // ISAIAS cliente //
         DB::table('usuarios')->insert([
@@ -219,6 +223,10 @@ class UsuarioSeeder extends Seeder
             'tipo'          => Usuario::USUARIO_T_CLIENTE,
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'cliente',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
         ]);
 
 

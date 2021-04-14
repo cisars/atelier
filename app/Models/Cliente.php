@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
+    use Search; // Use the search trait we created earlier
+    protected $searchable = [
+        'razon_social',
+        'documento',
+        'email',
+    ];
+
     protected $table = 'clientes';
     //protected $primaryKey = 'cliente';
     //protected $fillable = [];

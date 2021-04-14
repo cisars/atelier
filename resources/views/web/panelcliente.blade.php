@@ -296,13 +296,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="inicio"><i class="fa fa-home"></i> Inicio  </a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="inicio">Inicio
+                    <a class="nav-link" href="home"><i class="fa fa-car"></i> MiPanel
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="agendamiento">Reservas</a>
+                    <a class="nav-link" href="agendamiento"><i class="fa fa-calendar"></i> Reservas</a>
                 </li>
 
             </ul>
@@ -311,6 +314,7 @@
 </nav>
 
 <!-- Content section -->
+{{--  CUIDADO AL CAMBIAR LOS VIEW/LIVEWIRE--}}
 @livewire('panel-cliente', ['vehiculos' => $vehiculos])
 
 <!-- Footer -->
