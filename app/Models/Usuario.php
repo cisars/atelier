@@ -108,6 +108,10 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     {
         return    \Auth::user()->talleres()->get();
     }
+//    public function getEsteUsuarioAttribute()
+//    {
+//        return    \Auth::user()->usuario ;
+//    }
 
     public function talleres()
     {

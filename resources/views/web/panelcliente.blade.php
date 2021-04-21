@@ -281,14 +281,12 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="btn btn-default"
-           href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-fw fa-power-off"></i>
-           Cerrar sesión
+        <a href="home" class="brand-link text-white">
+            <img src="{{asset('img/atelier1.png')}}" alt="Taller de Concesionario"
+                 class="brand-image img-circle elevation-3" >
+            <span class="brand-text font-weight-light ">
+                <b>Atelier </b> </span>
         </a>
-        <form id="logout-form" action="{{ 'logout' }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -299,14 +297,33 @@
                 <li class="nav-item">
                     <a class="nav-link" href="inicio"><i class="fa fa-home"></i> Inicio  </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="home"><i class="fa fa-car"></i> MiPanel
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
+                @if( Auth::user())
+                    <li class="nav-item active">
+                        <a class="nav-link" href="home"><i class="fa fa-car"></i> MiPanel
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                @endif
+
                 <li class="nav-item">
                     <a class="nav-link" href="agendamiento"><i class="fa fa-calendar"></i> Reservas</a>
                 </li>
+
+                @if( Auth::user())
+                    <a class="btn btn-default"
+                       href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fa fa-fw fa-power-off"></i>
+                        Cerrar sesión
+                    </a>
+                    <form id="logout-form" action="{{ 'logout' }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @else
+                    <li class="nav-item ">
+                        <a class="nav-link" href="login">Iniciar Sesion</a>
+                        {{--                <a class="navbar-brand" href="login">Iniciar Sesion</a>--}}
+                    </li>
+                @endif
 
             </ul>
         </div>

@@ -34,6 +34,7 @@
                         :reserva="$reserva"
                         :empleados="$empleados"
                         :usuarios="$usuarios"
+                        :formas="$formas"
                     />
 
 {{--                    @livewire('reserva',   ['talleres' => $talleres ])--}}
@@ -46,6 +47,7 @@
 
         @section('js')
             @livewireScripts
+
             <script>
             </script>
 @endsection

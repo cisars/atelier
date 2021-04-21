@@ -39,23 +39,20 @@ class Agendamiento extends Component
 
     public function mount()
     {
-        $this->banderaEditarCupo = false;
         $this->parametro = Parametro::where('activo', '1')->first();
-        $this->client = Cliente::find(\Auth::user()->cliente_id);
-        $this->misvehiculos = $this->client->vehiculos;
+        $this->banderaEditarCupo = false;
         $this->fechaSeleccionada = date('Y-m-d');
-        //$this->descanso = Descanso::where('id',$this->parametro->id )->first();
-
-        //dd($this->parametro->descansos);
-
-        $this->grillaReservas = Reserva::where([
+        $this->grillaReservas = Reserva::with('cliente')->where([
             'para_fecha' => $this->fechaSeleccionada
-        ]
+        ])->get();
 
-        )->get();
-//dd($this->grillaReservas);
-        //dd($this->grillaReservas);
 
+        if (Auth::check() && \Auth::user()->isAdmin()) {
+            $this->client = Cliente::find('1');
+        } else {
+            $this->client = Cliente::find(\Auth::user()->cliente_id);
+        }
+        $this->misvehiculos = $this->client->vehiculos;
     }
 
 
@@ -69,8 +66,8 @@ class Agendamiento extends Component
         if ($this->banderaEditarCupo == true) {
             $matchThese = [
                 'para_fecha' => $this->para_fechaSel,
-                'ticket' => $this->ticketSel ,
-                'usuario' => Auth::user()->usuario,
+                'ticket' => $this->ticketSel
+//                'usuario' => Auth::user()->usuario,
             ];
             Reserva::where($matchThese)->delete();
             redirect()->to('/agendamiento');
@@ -138,7 +135,7 @@ class Agendamiento extends Component
         $this->para_fechaSel = $this->fechaSeleccionada;
         $this->parametroSel = '1';
 
-        $this->variable = ['ticket' => $ticket, 'editarCupo' => false ,  'fechaSeleccionada' => $this->fechaSeleccionada];
+        $this->variable = ['ticket' => $ticket, 'editarCupo' => false, 'fechaSeleccionada' => $this->fechaSeleccionada];
         $this->emit('triggerCupo', $this->variable);
     }
 
@@ -168,7 +165,39 @@ class Agendamiento extends Component
         $this->parametroSel = $miquery[0]->parametro_id;
         $this->observacionSel = $miquery[0]->observacion;
 
-        $this->variable = ['ticket' => $ticket, 'editarCupo' => true,  'fechaSeleccionada' => $this->fechaSeleccionada];
+        $this->variable = ['ticket' => $ticket, 'editarCupo' => true, 'fechaSeleccionada' => $this->fechaSeleccionada];
+        $this->emit('triggerCupo', $this->variable);
+    }
+
+    public function empleadoEditarCupo($ticket, $idcliente)
+    {
+        $this->banderaEditarCupo = true;
+        $miquery = Reserva::where([
+            'para_fecha' => $this->fechaSeleccionada,
+            'ticket' => $ticket
+        ])->get();
+
+        // traer descripcion del vehiculo seleccionado
+        $elVehiculo = Vehiculo::with('modelo')->where('id', $miquery[0]->vehiculo_id)->first();
+        $elmodelo = $elVehiculo->modelo->descripcion;
+        $lamarca = $elVehiculo->modelo::with('marca')->first()->marca->descripcion;
+        $this->vehiculoSelDescripcion = $lamarca . ', ' . $elmodelo;
+
+        //dd($miquery[0]->ticket);
+        $this->turnoSel = $miquery[0]->para_hora;
+        $this->sectorSel = $miquery[0]->sector;
+        $this->ticketSel = $miquery[0]->ticket;
+        $this->para_horaSel = $miquery[0]->para_hora;
+        $this->vehiculoSel = $miquery[0]->vehiculo_id;
+        $this->para_fechaSel = $this->fechaSeleccionada;
+        $this->parametroSel = $miquery[0]->parametro_id;
+        $this->observacionSel = $miquery[0]->observacion;
+
+        $this->variable = [
+            'ticket' => $ticket,
+            'editarCupo' => true,
+            'fechaSeleccionada' => $this->fechaSeleccionada
+        ];
         $this->emit('triggerCupo', $this->variable);
     }
 

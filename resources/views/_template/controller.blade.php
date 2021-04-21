@@ -28,9 +28,16 @@ class {{$NOMBRE}}Controller extends Controller
         ${{$nombres}} = {{$NOMBRE}}::all();
         ${{$nombres}}->each(function (${{$nombre}}) {
 
-        @foreach ($gen->tabla['constantes'] as $dataCons)
-        ${{$nombre}}->{{$dataCons['nombres']}} === {{$NOMBRE}}::{{$dataCons['clave']}}   ? ${{$nombre}}->{{$dataCons['nombres']}} = '{{$dataCons['clave']}}' : "" ;
-        @endforeach
+@foreach ($gen->tabla['constantes'] as $dataCons)
+        foreach ((new {{$NOMBRE}}())->get{{ucfirst($dataCons['nombres'])}}() as $clave=>$valor)
+        trim(${{$nombre}}->{{$dataCons['nombre']}}) == trim($valor) ? ${{$nombre}}->{{$dataCons['nombre']}} = $clave : NULL ;
+
+@endforeach
+
+        //OPCION 2
+@foreach ($gen->tabla['constantes'] as $dataCons)
+        // ${{$nombre}}->{{$dataCons['nombre']}} === {{$NOMBRE}}::{{$dataCons['clave']}}   ? ${{$nombre}}->{{$dataCons['nombre']}} = '{{$dataCons['clave']}}' : "" ;
+@endforeach
 
         });
         return view('{{$nombre}}.index', compact('{{$nombres}}', ${{$nombres}}));

@@ -92,20 +92,33 @@
                             @if( $grillaReservas->contains( function($val, $key)use($iticket, $cid ){
                                     return $val->ticket == $iticket && $val->cliente_id == $cid ;
                                 }) )
-                                <div class="col p-3 m-1 justify-content-center align-items-center btn  {{$colorMiReserva}}"
-                                     style="cursor:pointer"
-                                     title="Sector {{$isector}} Turno {{$turnoCalculado}} hs."
-                                     wire:click.prevent="editarCupo( {{$iticket}})">
+                                <div
+                                    class="col p-3 m-1 justify-content-center align-items-center btn  {{$colorMiReserva}}"
+                                    style="cursor:pointer"
+                                    title="Sector {{$isector}} Turno {{$turnoCalculado}} hs."
+                                    wire:click.prevent="editarCupo( {{$iticket}})">
                                     {{-- OCUPADO--}}
                                     <i class="fa fa-ticket-alt"></i> {{$iticket}} Ticket
                                 </div>
                             @else
+
                                 <div class="col p-3 m-1 justify-content-center align-items-center btn {{$colorOcupado}}"
-                                     style="cursor:not-allowed"
+
+                                     @if (\Auth::user()->isAdmin())
+                                     title="{{$grillaReservas[0]->cliente->razon_social}} "
+                                     wire:click.prevent="empleadoEditarCupo({{$iticket}}, {{$grillaReservas[0]->cliente->id}})"
+                                     @else
                                      title="Sector {{$isector}} Turno {{$turnoCalculado}} hs."
+                                     style="cursor:not-allowed"
+                                    @endif
                                 >
                                     {{-- OCUPADO--}}
-                                    <i class="fa fa-lock"></i> Ocup.
+                                    @if (\Auth::user()->isAdmin())
+                                        #{{$iticket}}
+                                    @else
+                                        <i class="fa fa-lock"></i> Ocup.
+                                    @endif
+
                                 </div>
                             @endif
                         @else
@@ -114,7 +127,12 @@
                                  title="Sector {{$isector}} Turno {{$turnoCalculado}} hs."
                                  wire:click.prevent="seleccionarCupo({{$isector}},'{{$turnoCalculado}}',{{$iticket}})">
                                 {{-- LIBRE--}}
-                                <i class="fa fa-car"></i> Libre
+
+                                @if (\Auth::user()->isAdmin())
+                                    #{{$iticket}}
+                                @else
+                                    <i class="fa fa-car"></i> Libre
+                                @endif
                             </div>
 
                         @endif
@@ -126,7 +144,6 @@
         @endfor
         {{-- FIN CUPOS-----------------------------------------------------------------------------------------------------}}
     </div>
-
 
 
     <div class="modal " tabindex="-1" role="dialog" id="modalReserva" wire:ignore>
@@ -141,11 +158,11 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div
-{{--                        class="modal-header" --}}
+                        {{--                        class="modal-header" --}}
                         id="colorTituloCupo">
-                        <h5  class="modal-title"
+                        <h5 class="modal-title"
                             id="tituloCupo">
-{{--                            Solicitud de Reserva via Online--}}
+                            {{--                            Solicitud de Reserva via Online--}}
                             {{ $cupo['sector'] ?? '' }}
                             {{ $cupo['turno'] ?? '' }}
                             {{ $cupo['ticket'] ?? '' }}</h5>
@@ -160,98 +177,101 @@
 
                             {{-- FK2 Select--}}
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="cliente">Cliente  </label>
+                                @if (!\Auth::user()->isAdmin())
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="cliente">Cliente </label>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    Para el dia
+                                                    <label class="text-maroon" id="laFecha">
+                                                        {{--                                                    {{ date('d/m/Y', strtotime($fechaSeleccionada)) }}--}}
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6 text-right">
-                                                Para el dia
-                                                <label class="text-maroon" id="laFecha">
-{{--                                                    {{ date('d/m/Y', strtotime($fechaSeleccionada)) }}--}}
-                                                </label>
-                                            </div>
+                                            <select readonly class="form-control input-sm"
+                                            >
+                                                <option value="{{ $client->id }}" selected
+                                                >{{ $client->razon_social }}</option>
+                                            </select>
                                         </div>
-                                        <select readonly class="form-control input-sm">
-                                            <option value="{{ $client->id }}" selected
-                                            >{{ $client->razon_social }}</option>
-                                        </select>
                                     </div>
-                                </div>
 
 
-                                {{--CONST Estado2--}}
+                                    {{--CONST Estado2--}}
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="forma_reserva">Forma Reserva</label>
-                                        <select disabled
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="forma_reserva">Forma Reserva</label>
+                                            <select disabled
+                                                    class="form-control input-sm"
+                                                    name="forma_reserva"
+                                                    id="forma_reserva"
+                                            >
+                                                <option value="">Online</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="forma_reserva">Sector</label>
+                                            <input disabled
+                                                   class="form-control input-sm"
+                                                   name="sectorSel"
+                                                   value="{{ $sectorSel ?? '' }}"
+                                                   id="sectorSel"
+                                                   wire:model="sectorSel">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="forma_reserva">Turno</label>
+                                            <input disabled
+                                                   class="form-control input-sm"
+                                                   name="turnoSel"
+                                                   value="{{ $turnoSel ?? '' }}"
+                                                   id="turnoSel"
+                                                   wire:model="turnoSel">
+
+                                        </div>
+                                    </div>
+
+
+                                    {{-- FK3 Select--}}
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="vehiculoSel">Vehículo</label>
+                                            <select
                                                 class="form-control input-sm"
-                                                name="forma_reserva"
-                                                id="forma_reserva"
-                                        >
-                                            <option value="">Online</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="forma_reserva">Sector</label>
-                                        <input disabled
-                                               class="form-control input-sm"
-                                               name="sectorSel"
-                                               value="{{ $sectorSel ?? '' }}"
-                                               id="sectorSel"
-                                               wire:model="sectorSel">
+                                                name="vehiculoSel"
+                                                id="vehiculoSel"
+                                                wire:model="vehiculoSel">
+                                                {{--                                            @if ($vehiculoSel)--}}
+                                                {{--                                                <option selected--}}
+                                                {{--                                                    value="{{ $vehiculoSel }}"--}}
+                                                {{--                                                > {{ $vehiculoSelDescripcion }}--}}
 
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="forma_reserva">Turno</label>
-                                        <input disabled
-                                               class="form-control input-sm"
-                                               name="turnoSel"
-                                               value="{{ $turnoSel ?? '' }}"
-                                               id="turnoSel"
-                                               wire:model="turnoSel">
-
-                                    </div>
-                                </div>
-
-
-                                {{-- FK3 Select--}}
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="vehiculoSel">Vehículo</label>
-                                        <select
-                                            class="form-control input-sm"
-                                            name="vehiculoSel"
-                                            id="vehiculoSel"
-                                            wire:model="vehiculoSel">
-{{--                                            @if ($vehiculoSel)--}}
-{{--                                                <option selected--}}
-{{--                                                    value="{{ $vehiculoSel }}"--}}
-{{--                                                > {{ $vehiculoSelDescripcion }}--}}
-
-{{--                                                </option>--}}
-{{--                                            @endif--}}
-                                            <option value="">Seleccione vehiculo</option>
-                                            @foreach($misvehiculos as $key => $vehiculo)
-                                                <option
-                                                    value="{{ $vehiculo->id }}"
-                                                    {{ old('vehiculoSel') == $vehiculo->id ? 'selected' : '' }}
-                                                > {{ $vehiculo->modelo->marca->descripcion }}
-                                                    , {{ $vehiculo->modelo->descripcion }}
-                                                </option>
+                                                {{--                                                </option>--}}
+                                                {{--                                            @endif--}}
+                                                <option value="">Seleccione vehiculo</option>
+                                                @foreach($misvehiculos as $key => $vehiculo)
+                                                    <option
+                                                        value="{{ $vehiculo->id }}"
+                                                        {{ old('vehiculoSel') == $vehiculo->id ? 'selected' : '' }}
+                                                    > {{ $vehiculo->modelo->marca->descripcion }}
+                                                        , {{ $vehiculo->modelo->descripcion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @foreach ($errors->get('vehiculoSel') as $error)
+                                                <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
-                                        </select>
-                                        @foreach ($errors->get('vehiculoSel') as $error)
-                                            <span class="text text-danger">{{ $error }}</span>
-                                        @endforeach
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="vehiculo">Descripción del problema</label>
@@ -280,7 +300,7 @@
                             <span id="ticketSel" wire:model="ticketSel"></span>
                         </div>
                         <button type="submit" class="" id="botonAccion">
-                            <i id="iconoCupo" ></i> <span id="accionCupo" ></span>
+                            <i id="iconoCupo"></i> <span id="accionCupo"></span>
                         </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
                         {{--                <a href="{{ route('reserva.index') }}" class="btn btn-secondary btn-close">Cancelar</a>--}}

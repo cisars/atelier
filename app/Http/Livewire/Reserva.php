@@ -21,13 +21,54 @@ class Reserva extends Component
     public $reserva;
     public $empleados;
     public $usuarios;
+    public $formas;
     public $test;
     public $data;
 
-    public function selectedClient()
+    public $ticket;
+    public $sector;
+    public $para_fecha;
+    public $para_hora;
+
+    public $viralSongs = '';
+
+    public $songs = [
+        'Say So',
+        'The Box',
+        'Laxed',
+        'Savage',
+        'Dance Monkey',
+        'Viral',
+        'Hotline Billing',
+    ];
+
+
+    public function mount()
     {
 
-        if (!empty($this->term)) {
+    }
+
+    public function onChangeClient()
+    {
+        if (strlen(trim($this->term)) > 0) {
+            $aux = explode("|", $this->term);
+            if (count($aux) > 1) {
+                $this->term = $aux[0];
+                $this->termId = $aux[1];
+                $cliente = Cliente::find($this->termId);
+                $this->vehiculos = $cliente->vehiculos->pluck('full_desc', 'id');
+            }
+            $clients = Cliente::Search(trim($this->term))->paginate(100);
+            $this->data = [
+                'users' => $clients,
+            ];
+        }
+    }
+
+    public function selectedClient()
+    {
+        dd('no debe entrar nunca');
+        if (strlen(trim($this->term)) > 0) {
             $aux = explode("|", $this->term);
 
             if (count($aux) > 1) {
@@ -36,15 +77,11 @@ class Reserva extends Component
                 $cliente = Cliente::find($this->termId);
                 $this->vehiculos = $cliente->vehiculos->pluck('full_desc', 'id');
 
-            } else {
-                //$this->term = '';
-                $this->termId = "";
-                $this->vehiculos = "";
+
             }
         }
-        $this->validate([
-            'termId' => 'required'
-        ]);
+
+
 
     }
 
@@ -56,29 +93,19 @@ class Reserva extends Component
 
     }
 
+    public function traeHoraSector()
+    {
+
+        if (isset($this->para_fecha)) {
+            $res = \App\Models\Reserva::retornaHoraSector($this->para_fecha, $this->ticket);
+            $this->para_hora = $res['hora'];
+            $this->sector = $res['sector'];
+        }
+    }
+
     public function render()
     {
 
-        //sleep(1);
-//        if (isset($this->term)) {
-//            $clients = Cliente::Search($this->term)->paginate(100);
-//
-//            if (count($clients) == 0) {
-//                $this->data['users']  = new stdClass();
-//                $this->data['users']->razon_social="Sin Resultados";
-//                $this->data['users']->documento="Sin Resultados";
-//                $this->data['users']->email="Sin Resultados";
-//
-//            } else {
-//                $this->data = [
-//                    'users' => $clients,
-//                ];
-//            }
-//            //  dd($this->data);
-//        }
-
-        $clients = Cliente::Search($this->term)->paginate(100);
-        $this->data = [ 'users' => $clients ];
 
         return view('livewire.reserva');
     }

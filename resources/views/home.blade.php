@@ -157,7 +157,7 @@
         }
 
         {{--        {{ asset('/vendor/adminlte/dist/css/adminlte.css.map') }}--}}
-               /*        #progressbar #account:before {*/
+                 /*        #progressbar #account:before {*/
         /*            font-family: "Font Awesome 5 Free"; font-weight: 900;*/
         /*            content: "\f023"*/
         /*        }*/
@@ -503,177 +503,213 @@
     </div>
 
     <div class="col-12">
-    <div class="row">
+        <div class="row">
 
 
-        <div class="col-lg-6 ">
-            <div class="row ">
-                {{-- Reservar--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3 ">
-                        <div class="card-body text-center">
+            <div class="col-lg-6 ">
+                <div class="row ">
+                    {{-- Reservar--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3 ">
+                            <div class="card-body text-center m-0 p-0 " style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-danger p-5 ">
-                                    <i class="fa fa-calendar p-4"></i>
-                                    <br>
-                                      Reservar
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                <div class="form-group">
+                                    <button class="btn btn-lg bg-maroon p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("reserva/create") }}'"
+                                    >
+                                        <div class="info-box bg-maroon shadow-none  ">
+                                            <div class="info-box-icon col-12  ">
+                                                <i class="fa fa-calendar "></i>
+                                            </div>
+                                        </div>
+
+                                        Reservar
+                                    </button>
+                                </div>
+                                <div class="form-group">
                                 <span class="text-sm">
                                 Crear nuevas reservas necesaria para
                                   recepcionar un vehículo
                                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Recepcionar--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3  ">
-                        <div class="card-body text-center">
+                    {{-- Recepcionar--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3  ">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-danger p-5 ">
-                                    <i class="fa fa-inbox p-4  "></i>
-                                    <br>
-                                    Recepcionar
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                <div class="form-group">
+                                    <button class="btn btn-lg bg-maroon p-xl-4  col-12"
+                                            onclick="window.location='{{ url("recepcion") }}'"
+                                    >
+                                        <div class="info-box bg-maroon shadow-none">
+                                            <div class="info-box-icon pl-3 col-12 ">
+                                                <i class="fa fa-clipboard-check "></i>
+                                            </div>
+                                        </div>
+                                     Recepcionar
+                                    </button>
+                                </div>
+                                <div class="form-group">
                                 <span class="text-sm">
                               Listado basado en las reservas pendientes de HOY
                                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Confirmar OT--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3  ">
-                        <div class="card-body text-center">
+                    {{-- Confirmar OT--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3  ">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-danger p-5 ">
-                                    <i class="fa fa-tasks p-4  "></i>
-                                    <br>
-                                    Confirmar OT
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                <div class="form-group">
+                                    <button class="btn btn-lg   bg-maroon p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("confirmarot") }}'"
+                                    >
+                                        <div class="info-box bg-maroon shadow-none">
+                                            <div class="info-box-icon pl-3  col-12">
+                                                <i class="fa fa-tasks "></i>
+                                            </div>
+                                        </div>
+
+                                        ConfirmaOT
+                                    </button>
+                                </div>
+                                <div class="form-group">
                                 <span class="text-sm">
-                              Aprobación del cliente para realizar servicios
+                              Aprobación por parte del cliente para realizar servicios
                                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Servicios--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3">
-                        <div class="card-body text-center">
+                    {{-- Servicios--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-danger p-5 ">
-                                    <i class="fa fa-briefcase-medical p-4  "></i>
-                                    <br>
-                                    Servicios
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                <div class="form-group">
+                                    <button class="btn btn-lg bg-maroon p-xl-4  col-12"
+                                            onclick="window.location='{{ url("servicio") }}'"
+                                    >
+                                        <div class="info-box bg-maroon shadow-none">
+                                            <div class="info-box-icon  col-12 ">
+                                                <i class="fa fa-briefcase-medical "></i>
+                                            </div>
+                                        </div>
+
+                                        Servicios
+                                    </button>
+                                </div>
+                                <div class="form-group">
                                 <span class="text-sm">
-                              Resumen de servicios realizados al rodado
+                              Resumen de servicios y/o productos utilizados en las tareas
                                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Verifica OT--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3">
-                        <div class="card-body text-center">
+                    {{-- Verifica OT--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3">
+                            <div class="card-body text-center m-0 p-0"  style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-dark p-5 disabled ">
-                                    <i class="fa fa-clipboard-list p-4  "></i>
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-outline-dark disabled  p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("verificaot") }}'"
+                                    >
+                                        <div class="info-box shadow-none">
+                                            <div class="info-box-icon  col-12 ">
+                                                <i class="fa fa-clipboard-list   "></i>
+                                            </div>
+                                        </div>
 
-                                    <br>
-                                    Verifica OT
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                        Verifica OT
+                                    </button>
+                                </div>
+                                <div class="form-group">
                                 <span class="text-sm">
                               Revisión y certificación del correcto servicio realizado
                                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Finaliza OT--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3">
-                        <div class="card-body text-center">
+                    {{-- Finaliza OT--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-dark p-5 disabled ">
-                                    <i class="fa fa-clipboard-check p-4  "></i>
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-outline-dark   disabled  p-xl-4 col-12 ">
 
-                                    <br>
-                                    Finaliza OT
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                        <div class="info-box shadow-none">
+                                            <div class="info-box-icon  col-12 ">
+                                                <i class="fa fa-clipboard-check  "></i>
+                                            </div>
+                                        </div>
+
+                                        Finaliza OT
+                                    </button>
+                                </div>
+                                <div class="form-group">
                                 <span class="text-sm">
                               Listado basado en las reservas pendientes de HOY
                                     </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Entrega--}}
-                <div class="col-lg-4   ">
-                    <div class="card p-3">
-                        <div class="card-body text-center">
+                    {{-- Entrega--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
-                            <div class="form-group">
-                                <button class="btn btn-lg btn-outline-dark p-5 disabled ">
-                                    <i class="fa fa-car p-4  "></i>
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-outline-dark col-12  disabled  p-xl-4 col-12 ">
 
-                                    <br>
-                                    Entrega
-                                </button>
-                            </div>
-                            <div class="form-group">
+                                        <div class="info-box shadow-none">
+                                            <div class="info-box-icon col-12  ">
+                                                <i class="fa fa-car  "></i>
+                                            </div>
+                                        </div>
+
+                                        Entrega
+                                    </button>
+                                </div>
+                                <div class="form-group">
                             <span class="text-sm">
                           Listado basado en las reservas pendientes de HOY
                                 </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
 
-        <div class="col-lg-6 ">
-            <div class="card card-maroon  ">
-                <div class="card-header">
-                    <div class="card-title">
-                        MiCargo
+            <div class="col-lg-6 ">
+                <div class="card card-maroon  ">
+                    <div class="card-header">
+                        <div class="card-title">
+                            MiCargo
+                        </div>
                     </div>
-                </div>
-                <div class="card-body  ">
+                    <div class="card-body  ">
 
-                    <div class="form-group">
+                        <div class="form-group">
                             <span class="text-sm">
                             Listado de mis tareas principales pendientes
                                 </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 

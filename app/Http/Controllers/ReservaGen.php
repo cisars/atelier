@@ -76,7 +76,9 @@ class ReservaGen extends Controller
                 'constantes'  =>
                     [
 
-//                        $genisa->constantes('personeria',     'PERSONERIA_SOCIEDADES',    	's' , 'personerias',    'Personeria', 	'Sociedades'),
+                        $genisa->constantes('forma_reserva',     'FORMA_ONLINE',    	'O' , 'formas',    'Reserva Online', 	'Reserva Online'),
+                        $genisa->constantes('forma_reserva',     'FORMA_PRESENCIAL',   'P' , 'formas',    'Reserva Presencial', 	'Reserva Presencial'),
+                        $genisa->constantes('forma_reserva',     'FORMA_TELEFONO',    	'T' , 'formas',    'Reserva Telefónica', 	'Reserva Telefónica'),
 //                        $genisa->constantes('personeria',     'PERSONERIA_CIVILES',    		'c' , 'personerias',    'Personeria', 		'Civiles'	),
 //                        $genisa->constantes('personeria',     'PERSONERIA_SIMPLES ',    	'i' , 'personerias',    'Personeria ', 	'Simples '	),
 //                        $genisa->constantes('personeria',     'PERSONERIA_FUNDACIONES',    	'f' , 'personerias',    'Personeria', 	'Fundaciones'),

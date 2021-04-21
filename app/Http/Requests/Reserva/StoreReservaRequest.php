@@ -25,20 +25,15 @@ class StoreReservaRequest extends FormRequest
     public function rules()
     {
         return [
-            'taller'           =>'required',
-            'cliente'           =>'required',
-            'vehiculo'           =>'required',
-            'empleado'           =>'required',
+            'taller_id'           =>'required',
+            'cliente_id'           =>'required',
+            'vehiculo_id'           =>'required',
+            'empleado_id'           =>'required',
             'usuario'           =>'required',
-            'ZZfk6ZZ'           =>'required',
-            'descripcion'       =>['required',
-                'max:40',
-                Rule::unique('reservas', 'descripcion')
-                    ->ignore($this->reserva, 'reserva')
-                    ->where(function ($query) {
-                        return $query->where('taller', $this->taller);
-                    })
-            ],
+            'ticket'           =>'required',
+            'para_fecha'           =>'required',
+
+
         ];
     }
     /**
@@ -49,15 +44,14 @@ class StoreReservaRequest extends FormRequest
     public function messages()
     {
         return [
-            'taller.required'       => 'Debe seleccionar  taller',
-            'cliente.required'       => 'Debe seleccionar  cliente',
-            'vehiculo.required'       => 'Debe seleccionar  vehiculo',
-            'empleado.required'       => 'Debe seleccionar  empleado',
+            'taller_id.required'       => 'Debe seleccionar  taller',
+            'cliente_id.required'       => 'Debe seleccionar  cliente',
+            'vehiculo_id.required'       => 'Debe seleccionar  vehiculo',
+            'empleado_id.required'       => 'Debe seleccionar  empleado',
             'usuario.required'       => 'Debe seleccionar  usuario',
-            'ZZfk6ZZ.required'       => 'Debe seleccionar  ZZfk6ZZ',
-            'descripcion.required'  => 'Debe introducir una descripcion',
-            'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
-            'descripcion.unique'    => 'El registro ya existe',
+            'para_fecha.required'       => 'Debe ingresar una fecha futura',
+            'ticket.required'       => 'Debe ingresar un ticket disponible',
+
         ];
     }
 }

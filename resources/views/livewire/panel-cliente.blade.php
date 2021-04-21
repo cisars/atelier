@@ -203,8 +203,8 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <!-- MultiStep Form -->
-                                                            <div class=" col-sm-12 btn btn-outline-danger  p-5 " wire:click="newCar()">
-                                                                 <button class="form-control text-maroon  "  > <i class=" fa fa-plus-circle"></i> Agregar Vehículo </button>
+                                                            <div class=" col-sm-12 btn btn-outline-danger bg-maroon p-5 " wire:click="newCar()">
+                                                                 <button class="form-control bg-maroon text-white border-0  "  > <i class="fa fa-plus-circle"></i> Agregar Vehículo </button>
                                                             </div>
                                                         </div>
                                                     </div>
