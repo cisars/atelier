@@ -87,100 +87,159 @@
                 </div>
                 {{--SELECT FK Taller ------------------------------------ --}}
 
-                {{--                <div class="form-group col">--}}
-                {{--                    --}}{{--SELECT FK Cliente --}}
-                {{--                    {!! Form::label('cliente_id', 'Cliente') !!}--}}
-                {{--                    {!! Form::select('cliente_id', $clientes->pluck('razon_social', 'id')  ,--}}
-                {{--                        old('cliente_id') ,--}}
-                {{--                        [--}}
-                {{--                            'class' => 'form-control',--}}
-                {{--                            'placeholder' => 'Seleccione Cliente']--}}
-                {{--                    ) !!}--}}
-                {{--                    @error("cliente_id")--}}
-                {{--                    <span class="text text-danger">{{ $message }}</span>--}}
-                {{--                    @enderror--}}
-                {{--                </div>--}}
-                {{--SELECT FK Cliente ------------------------------------ --}}
-                {{--<input wire:change="test()" wire:model="test" type="text" class="form-control @error('test') is-invalid @enderror">--}}
-                <div class="form-group col">
-                    <div class="row">
+                {{--                SELECT FK Cliente ------------------------------------ --}}
+                {{--                <input wire:change="test()" wire:model="test" type="text" class="form-control @error('test') is-invalid @enderror">--}}
 
-                        <div class="  col-md-10">
-                            {!! Form::label('cliente_desc', 'Cliente') !!}
+                @isset($reserva->id)
+                        <input type="hidden" name="term" value="0">
+                    <div class="form-group col">
+                        <div class="row">
+                            <div class="col-10">
 
-                            <input
-                                list="browsers"
-                                class="form-control  "
-                                wire:model="term"
-                                wire:keyup="onChangeClient()"
-                            >
-                            <div wire:loading>Buscando clientes...</div>
-                            <div wire:loading.remove>
-                                @if ($term == "")
-                                    <div class="text-gray-500 text-sm">
-                                        Ingrese términos para buscar clientes.
-                                    </div>
-                                @else
-                                    {{-- @if(isset($data['users']) && (isset($data['users'][0]->razon_social ) || isset($data['users']->razon_social )) )--}}
-                                    <datalist id="browsers">
-                                        @if(isset($data['users'][0]->razon_social)   )
-                                            @foreach($data['users'] as $client)
-                                                <option value="{{$client->razon_social }}|{{$client->id }}"></option>
-                                            @endforeach
-                                            {{-- Si refrezca la pagina convierte en array $data['users']  --}}
-                                        @elseif ( isset($data['users']['data'][0]) )
-                                            @for ($i = 0; $i < count($data['users']['data']); $i++)
-                                                <option value="{{$data['users']['data'][$i]['razon_social'] }}|{{$data['users']['data'][$i]['id'] }}"></option>
-                                            @endfor
-                                        @endif
-                                    </datalist>
+                                {!! Form::label('term', 'Cliente') !!}
+                                {!! Form::select('term', $clientes->pluck('razon_social', 'id')  ,
+                                    old('term') ,
+                                    [
+                                        'name'=>'term',
+                                        'class' => 'form-control',
+                                        'disabled']
+                                ) !!}
+                                @error("term")
+                                <span class="text text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                                    @if( count($data['users']) == 0 )
-                                    <div class="text-gray text-sm">
-                                        Sin resultados para <b>{{$term}} </b>.
-                                    </div>
-
-                                @endif
-                                @endif
-
+                            <div class="form-group col-2">
+                                {{--                            SELECT FK Cliente--}}
+                                {!! Form::label('termId', 'Id') !!}
+                                {!! Form::text('termId',
+                                    old('termId', $reserva->cliente_id)  ,
+                                    [
+                                        'name' => 'cliente_id',
+                                        'class' => 'form-control',
+                                        'readonly'
+                                        ]
+                                ) !!}
+                                @error("cliente_id")
+                                <span class="text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
+                    </div>
+                @else
+                    <div class="form-group col">
+                        <div class="row">
+                            <div class="  col-md-10">
+                                {!! Form::label('cliente_desc', 'Cliente') !!}
 
-                        <div class=" col-md-2">
-                            <label for="termId">Id</label>
-                            <input
-                                readonly
-                                wire:model.defer="termId"
-                                id="cliente_id"
-                                name="cliente_id"
-                                {{ old("cliente_id", $reserva->cliente_id )  }}
-                                class="form-control  @error('termId') is-invalid @enderror"
-                            >
-                            @error("cliente_id")
-                            <span class="text text-danger">{{ $message }}</span>
-                            @enderror
+                                <input
+                                    list="browsers"
+                                    class="form-control  "
+                                    name="cliente_desc"
+                                    wire:model="term"
+                                    wire:keyup="onChangeClient()"
+                                    value="{{ old("cliente_desc", $reserva->cliente_id )  }}"
+                                >
+                                <div wire:loading>Buscando clientes...</div>
+                                <div wire:loading.remove>
+                                    @if ($term == "")
+                                        <div class="text-gray-500 text-sm">
+                                            Ingrese términos para buscar clientes.
+                                        </div>
+                                    @else
+                                        {{-- @if(isset($data['users']) && (isset($data['users'][0]->razon_social ) || isset($data['users']->razon_social )) )--}}
+                                        <datalist id="browsers">
+                                            @if(isset($data['users'][0]->razon_social)   )
+                                                @foreach($data['users'] as $client)
+                                                    <option
+                                                        value="{{$client->razon_social }}|{{$client->id }}"></option>
+                                                @endforeach
+                                                {{-- Si refrezca la pagina convierte en array $data['users']  --}}
+                                            @elseif ( isset($data['users']['data'][0]) )
+                                                @for ($i = 0; $i < count($data['users']['data']); $i++)
+                                                    <option
+                                                        value="{{$data['users']['data'][$i]['razon_social'] }}|{{$data['users']['data'][$i]['id'] }}"></option>
+                                                @endfor
+                                            @endif
+                                        </datalist>
+
+                                        @if( count($data['users']) == 0 )
+                                            <div class="text-gray text-sm">
+                                                Sin resultados para <b>{{$term}} </b>.
+                                            </div>
+
+                                        @endif
+                                    @endif
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-2">
+                                <label for="termId">Id</label>
+                                <input
+                                    readonly
+                                    wire:model.defer="termId"
+                                    id="cliente_id"
+                                    name="cliente_id"
+                                    value="{{ old("cliente_id", $reserva->cliente_id )  }}"
+                                    class="form-control  @error('termId') is-invalid @enderror"
+                                >
+                                @error("cliente_id")
+                                <span class="text text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endisset
 
-                <div class="form-group col">
-                    {{--SELECT FK Vehículo --}}
-                    {!! Form::label('vehiculo_id', 'Vehículo') !!}
-                    {!! Form::select('vehiculo_id', $vehiculos  ,
-                        old('vehiculo_id') ,
-                        [
-                            'class' => 'form-control',
-                            'placeholder' => 'Seleccione el cliente y luego el vehículo']
-                    ) !!}
-                    @error("vehiculo_id")
-                    <span class="text text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
+
+                @isset($reserva->id)
+
+                    <div class="form-group col">
+                        {{--EDITAR --}}
+                        {!! Form::label('vehiculo_id', 'Vehículo') !!}
+                        {!! Form::select('vehiculo_id', $vehiculos->pluck('full_desc', 'id')   ,
+                            old('vehiculo_id') ,
+                            [
+                                'class' => 'form-control',
+                                'placeholder' => 'Seleccione el cliente y luego el vehículo']
+                        ) !!}
+                        @error("vehiculo_id")
+                        <span class="text text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                @else
+
+                    <div class="form-group col">
+                    <div class="row overflow-hidden">
+                        <div class="col-md-11">
+                        {{--SELECT FK Vehículo --}}
+                        {!! Form::label('vehiculo_id', 'Vehículo') !!}
+                        {!! Form::select('vehiculo_id', $vehiculos  ,
+                            old('vehiculo_id') ,
+                            [
+                                'class' => 'form-control',
+                                'placeholder' => 'Seleccione el cliente y luego el vehículo']
+                        ) !!}
+                        @error("vehiculo_id")
+                        <span class="text text-danger">{{ $message }}</span>
+                        @enderror
+
+                    </div>
+
+                        <div class="col-md-1">
+                            {!! Form::label('   ', ' Agregar ') !!}
+                            <a href="{{ route('vehiculo.create') }}  " class="btn-lg bg-yellow "><i class="fa fa-plus pt-2"   ></i></a>
+                    </div>
+                    </div>
+                    </div>
+                @endisset
+
                 {{--SELECT FK Vehículo ------------------------------------ --}}
 
                 <div class="form-group col">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="fecha">Fecha </label>
                             <input class="form-control"
                                    type="date"
@@ -195,7 +254,7 @@
                         </div>
 
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
 
                             <label for="forma">Forma</label>
                             <select
@@ -217,17 +276,37 @@
                         </div>
 
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="para_fecha">Para Fecha </label>
+
                             <input class="form-control"
                                    type="date"
                                    name="para_fecha"
                                    id="para_fecha"
                                    wire:model="para_fecha"
-                                   value='{{ old('para_fecha',    date('d-m-Y', strtotime($reserva->para_fecha ))  )   }}'
+
                                    placeholder="Introduzca Para Fecha">
                             @foreach ($errors->get('para_fecha') as $error)
                                 <span class="text text-danger">{{ $error }}</span>
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="forma">Estado</label>
+                            <select
+                                class="form-control"
+                                name="estado"
+                                id="estado">
+                                @foreach ($estados as $key => $estado)
+                                    <option value="{{   $estado    }}"
+                                            @if ($reserva->estado == old('estado', $estado) )
+                                            selected="selected"
+                                        @endif
+                                    >{{   $key    }} </option>
+                                @endforeach
+                            </select>
+                            @foreach ($errors->get('estado') as $error)
+                                <span class="text text-danger">{{   $error    }}</span>
                             @endforeach
                         </div>
                     </div>
@@ -238,7 +317,7 @@
 
                 <div class="form-group col">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             {{--DATE TIMESTAMP Para Hora --}}
 
                             <label for="para_hora">Para Hora </label>
@@ -254,7 +333,7 @@
                                 <span class="text text-danger">{{ $error }}</span>
                             @endforeach
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             {{--INPUT NUMERIC Sector --}}
                             {!! Form::label('sector', 'Sector') !!}
                             {!! Form::text(
@@ -273,7 +352,7 @@
                             @enderror
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             {{--INPUT NUMERIC Ticket --}}
                             {!! Form::label('ticket', 'Ticket') !!}
                             {!! Form::text(
@@ -292,6 +371,29 @@
                             <span class="text text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
+
+                        <div class="col-md-3">
+                            <label for="forma">Prioridad</label>
+                            <select
+                                class="form-control"
+                                name="prioridad"
+                                id="prioridad"
+
+                            >
+                                @foreach ($prioridades as $key => $prioridad)
+                                    <option value="{{   $prioridad    }}"
+                                            @if ($reserva->prioridad == old('estado', $prioridad) )
+                                            selected="selected"
+                                        @endif
+                                    >{{   $key    }} </option>
+                                @endforeach
+                            </select>
+                            @foreach ($errors->get('prioridad') as $error)
+                                <span class="text text-danger">{{   $error    }}</span>
+                            @endforeach
+                        </div>
+
                     </div>
                 </div>
 

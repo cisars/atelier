@@ -9,8 +9,9 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@livewireStyles
+
 @section('title', 'Reservas')
+@livewireStyles
 @section('css')
 @stop
 
@@ -35,6 +36,8 @@
                         :empleados="$empleados"
                         :usuarios="$usuarios"
                         :formas="$formas"
+                        :estados="$estados"
+                        :prioridades="$prioridades"
                     />
 
 {{--                    @livewire('reserva',   ['talleres' => $talleres ])--}}

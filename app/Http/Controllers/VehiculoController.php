@@ -36,18 +36,16 @@ class VehiculoController extends Controller
 
     public function create()
     {
-        $vehiculos = Vehiculo::all();
-
+            $vehiculos = Vehiculo::all();
             $vehiculo   = new Vehiculo();
-
             $combustiones    = $vehiculo->getCombustiones();
             $tipos    = $vehiculo->getTipos();
-
             $clientes = Cliente::all();
             $modelos = Modelo::all();
             $colores = Color::all();
-            return view('vehiculo.create')
+            return view('vehiculo.edit')
                 ->with('vehiculos', $vehiculos)
+                ->with('vehiculo', $vehiculo)
                 ->with('clientes', $clientes)
                 ->with('modelos', $modelos)
                 ->with('colores', $colores)
@@ -55,6 +53,25 @@ class VehiculoController extends Controller
                 ->with('tipos', $tipos)
                 ;
 
+    }
+    public function edit(Vehiculo $vehiculo)
+    {
+
+        $vehiculos = Vehiculo::all();
+        $combustiones    = $vehiculo->getCombustiones();
+        $tipos    = $vehiculo->getTipos();
+        $clientes = Cliente::all();
+        $modelos = Modelo::all();
+        $colores = Color::all();
+        return view('vehiculo.edit')
+            ->with('vehiculos',$vehiculos)
+            ->with('vehiculo',$vehiculo)
+            ->with('clientes',$clientes)
+            ->with('modelos',$modelos)
+            ->with('colores',$colores)
+            ->with('combustiones', $combustiones)
+            ->with('tipos', $tipos)
+            ;
     }
 
     public function factory()
@@ -81,22 +98,7 @@ class VehiculoController extends Controller
         //
     }
 
-    public function edit(Vehiculo $vehiculo)
-    {
-        $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
-        $modelos = Modelo::orderBy('descripcion', 'ASC')->get();
-        $colores = Color::orderBy('descripcion', 'ASC')->get();
-        $combustiones = $vehiculo->getCombustiones();
-        $tipos = $vehiculo->getTipos();
-        return view('vehiculo.edit')
-            ->with('vehiculo',$vehiculo)
-            ->with('clientes',$clientes)
-            ->with('modelos',$modelos)
-            ->with('colores',$colores)
-            ->with('combustiones', $combustiones)
-            ->with('tipos', $tipos)
-            ;
-    }
+
 
     public function update(UpdateVehiculoRequest $request, Vehiculo $vehiculo)
     {

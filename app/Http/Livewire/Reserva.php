@@ -22,6 +22,8 @@ class Reserva extends Component
     public $empleados;
     public $usuarios;
     public $formas;
+    public $estados;
+    public $prioridades;
     public $test;
     public $data;
 
@@ -30,21 +32,17 @@ class Reserva extends Component
     public $para_fecha;
     public $para_hora;
 
-    public $viralSongs = '';
-
-    public $songs = [
-        'Say So',
-        'The Box',
-        'Laxed',
-        'Savage',
-        'Dance Monkey',
-        'Viral',
-        'Hotline Billing',
-    ];
-
-
     public function mount()
     {
+        if( isset($this->reserva->id))
+        {
+            $this->fecha = $this->reserva->fecha;
+            $this->para_fecha = $this->reserva->para_fecha;
+            $this->para_hora = $this->reserva->para_hora;
+            $this->ticket = $this->reserva->ticket;
+            $this->sector = $this->reserva->sector;
+
+        }
 
     }
 
@@ -65,25 +63,6 @@ class Reserva extends Component
         }
     }
 
-    public function selectedClient()
-    {
-        dd('no debe entrar nunca');
-        if (strlen(trim($this->term)) > 0) {
-            $aux = explode("|", $this->term);
-
-            if (count($aux) > 1) {
-                // $this->term = $aux[0];
-                $this->termId = $aux[1];
-                $cliente = Cliente::find($this->termId);
-                $this->vehiculos = $cliente->vehiculos->pluck('full_desc', 'id');
-
-
-            }
-        }
-
-
-
-    }
 
     public function test()
     {
@@ -100,6 +79,7 @@ class Reserva extends Component
             $res = \App\Models\Reserva::retornaHoraSector($this->para_fecha, $this->ticket);
             $this->para_hora = $res['hora'];
             $this->sector = $res['sector'];
+
         }
     }
 

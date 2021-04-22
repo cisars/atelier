@@ -57,7 +57,7 @@
                                 <th class="">Para Hora </th>
                                 <th class="">Sector </th>
                                 <th class="">Ticket </th>
-                                <th class="">Parametro ID </th>
+
                                 <th class="">Acciones </th>
                             </tr>
                             </thead>
@@ -70,7 +70,7 @@
                                     <td>{{ $reserva->vehiculo->id      }}</td>
                                     <td>{{ $reserva->fecha      }}</td>
                                     <td>{{ $reserva->para_fecha      }}</td>
-                                    <td>{{ $reserva->empleado->apellidos   ?? ''   }}</td>
+                                    <td>{{ $reserva->empleado->apellidos  ?? ''   }} {{ $reserva->empleado->nombres   ?? ''   }}</td>
                                     <td>{{ $reserva->estado      }}</td>
                                     <td>{{ $reserva->forma_reserva      }}</td>
                                     <td>{{ $reserva->prioridad      }}</td>
@@ -79,7 +79,7 @@
                                     <td>{{ $reserva->para_hora      }}</td>
                                     <td>{{ $reserva->sector      }}</td>
                                     <td>{{ $reserva->ticket      }}</td>
-                                    <td>{{ $reserva->localidad->descripcion   ?? ''     }}</td>
+
                                     <td class="">
                                         <a
                                             href="{{ route('reserva.edit', $reserva->id) }}"

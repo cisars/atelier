@@ -18,21 +18,20 @@ class ReservaController extends Controller
 {
     public function index()
     {
-        $reservas =  new Reserva ;
-        $reservas =  Reserva::with('usuario', 'empleado')->get();
+        $reservas = new Reserva;
+        $reservas = Reserva::with('usuario', 'empleado')->get();
         // $reservas = Reserva::all();
 
-        $reservas->each(function($reserva)
-        {
+        $reservas->each(function ($reserva) {
 
-            foreach ((new Reserva())->getEstados() as $clave=>$valor)
-                trim($reserva->estado) == trim($valor) ? $reserva->estado = $clave : NULL ;
+            foreach ((new Reserva())->getEstados() as $clave => $valor)
+                trim($reserva->estado) == trim($valor) ? $reserva->estado = $clave : NULL;
 
-            foreach ((new Reserva())->getFormas() as $clave=>$valor)
-                trim($reserva->forma_reserva) == trim($valor) ? $reserva->forma_reserva = $clave : NULL ;
+            foreach ((new Reserva())->getFormas() as $clave => $valor)
+                trim($reserva->forma_reserva) == trim($valor) ? $reserva->forma_reserva = $clave : NULL;
 
-            foreach ((new Reserva())->getPrioridades() as $clave=>$valor)
-                trim($reserva->prioridad) == trim($valor) ? $reserva->prioridad = $clave : NULL ;
+            foreach ((new Reserva())->getPrioridades() as $clave => $valor)
+                trim($reserva->prioridad) == trim($valor) ? $reserva->prioridad = $clave : NULL;
         });
 
         return view('reserva.index', compact('reservas', $reservas)); // Lista con BelongsTo
@@ -42,27 +41,27 @@ class ReservaController extends Controller
     {
         $reservas = Reserva::all();
 
-        $reserva   = new Reserva();
-        $estados    = $reserva->getEstados();
-        $formas_reservas    = $reserva->getFormas();
-        $prioridades    = $reserva->getPrioridades();
+        $reserva = new Reserva();
+        $estados = $reserva->getEstados();
+        $formas_reservas = $reserva->getFormas();
+        $prioridades = $reserva->getPrioridades();
 
         $talleres = Taller::all();
         $clientes = Cliente::all();
-        $vehiculos = Vehiculo::where('id', 0)->get() ;
+        $vehiculos = Vehiculo::where('id', 0)->get();
         $empleados = Empleado::all();
-       // $usuarios = Usuario::all();
-        $formas = $reserva->getFormas() ; // forma_reservas
-        $taller_id = 0 ;
-      //  $formas_reservas    = (new Reserva())->getFormas();
+        // $usuarios = Usuario::all();
+        $formas = $reserva->getFormas(); // forma_reservas
+        $taller_id = 0;
+        //  $formas_reservas    = (new Reserva())->getFormas();
 
         if (\Auth::user()->tallerAsignadoExist()) {
-            $empleados = Empleado::where('id', \Auth::user()->empleado->id)->get() ;
-            $usuarios = Usuario::where('usuario', \Auth::user()->usuario)->get() ;
-            $talleres = \Auth::user()->tallerAsignadoColl() ;
-            $taller_id = \Auth::user()->tallerAsignadoId() ;
-            }
-       // dd($talleres);
+            $empleados = Empleado::where('id', \Auth::user()->empleado->id)->get();
+            $usuarios = Usuario::where('usuario', \Auth::user()->usuario)->get();
+            $talleres = \Auth::user()->tallerAsignadoColl();
+            $taller_id = \Auth::user()->tallerAsignadoId();
+        }
+        // dd($talleres);
 
         return view('reserva.edit')
             ->with('reserva', $reserva)
@@ -75,8 +74,7 @@ class ReservaController extends Controller
             ->with('usuarios', $usuarios)
             ->with('estados', $estados)
             ->with('formas', $formas)
-            ->with('prioridades', $prioridades)
-            ;
+            ->with('prioridades', $prioridades);
 
     }
 
@@ -92,9 +90,9 @@ class ReservaController extends Controller
     public function store(StoreReservaRequest $request)
     {
 
-        $res = Reserva::retornaHoraSector($request->get('para_fecha') , $request->get('ticket'));
-        dd($res);
-        dd($request->get('ticket'));
+        // $res = Reserva::retornaHoraSector($request->get('para_fecha') , $request->get('ticket'));
+        // dd($res);
+
         $reserva = new Reserva([
             'observacion' => $request->get('observacion'),
             'taller_id' => $request->get('taller_id'),
@@ -102,12 +100,18 @@ class ReservaController extends Controller
             'vehiculo_id' => $request->get('vehiculo_id'),
             'empleado_id' => $request->get('empleado_id'),
             'usuario' => $request->get('usuario'),
+            'fecha' => $request->get('fecha'),
+            'para_fecha' => $request->get('para_fecha'),
+            'para_hora' => $request->get('para_hora'),
+            'turno' => 0,
             'ticket' => $request->get('ticket'),
+            'sector' => $request->get('sector'),
             'estado' => $request->get('estado'),
+            'prioridad' => $request->get('prioridad'),
             'forma_reserva' => $request->get('forma_reserva'),
         ]);
 
-        $reserva = new Reserva($request->all());
+        // $reserva = new Reserva($request->all());
         $reserva->save();
 
         return redirect()
@@ -127,18 +131,24 @@ class ReservaController extends Controller
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
 
-        $vehiculos = Vehiculo::all();
+        $vehiculos = Vehiculo::where('id', $reserva->vehiculo_id)->get();
+        $vehiculos = Vehiculo::where('cliente_id', $reserva->cliente_id)->get();
 
         $modelos = Modelo::all();
 
         $empleados = Empleado::all();
-        $usuarios = Usuario::whereNotNull('cliente_id' );
+        $usuarios = Usuario::whereNotNull('cliente_id');
 
-        $estados            = (new Reserva())->getEstados();
-        $formas_reservas    = (new Reserva())->getFormas();
-        $prioridades        = (new Reserva())->getPrioridades();
+        $estados = (new Reserva())->getEstados();
+        $formas = (new Reserva())->getFormas();
+        $prioridades = (new Reserva())->getPrioridades();
 
-
+        if (\Auth::user()->tallerAsignadoExist()) {
+            $empleados = Empleado::where('id', \Auth::user()->empleado->id)->get();
+            $usuarios = Usuario::where('usuario', \Auth::user()->usuario)->get();
+            $talleres = \Auth::user()->tallerAsignadoColl();
+            $taller_id = \Auth::user()->tallerAsignadoId();
+        }
         //dd($reserva);
 
         return view('reserva.edit', compact(
@@ -150,25 +160,47 @@ class ReservaController extends Controller
             'empleados',
             'usuarios',
             'estados',
-            'formas_reservas',
+            'formas',
             'prioridades'
         ))
-            ->with('reserva',$reserva)
-            ->with('talleres',$talleres)
-            ->with('clientes',$clientes)
-            ->with('vehiculos',$vehiculos)
-            ->with('modelos',$modelos)
-            ->with('empleados',$empleados)
-            ->with('usuarios',$usuarios)
+            ->with('reserva', $reserva)
+            ->with('talleres', $talleres)
+            ->with('clientes', $clientes)
+            ->with('vehiculos', $vehiculos)
+            ->with('modelos', $modelos)
+            ->with('empleados', $empleados)
+            ->with('usuarios', $usuarios)
             ->with('estados', $estados)
-            ->with('formas_reservas', $formas_reservas)
+            ->with('formas', $formas)
             ->with('prioridades', $prioridades)
-            ;
+            ->with('reserva', $reserva)
+            ->with('taller_id', $taller_id);
+
+
     }
 
     public function update(UpdateReservaRequest $request, Reserva $reserva)
     {
-        $reserva->fill($request->all());
+     $reserva->fill(
+         [
+             'observacion' => $request->get('observacion'),
+             'taller_id' => $request->get('taller_id'),
+             'cliente_id' => $request->get('cliente_id'),
+             'vehiculo_id' => $request->get('vehiculo_id'),
+             'empleado_id' => $request->get('empleado_id'),
+             'usuario' => $request->get('usuario'),
+             'fecha' => $request->get('fecha'),
+             'para_fecha' => $request->get('para_fecha'),
+             'para_hora' => $request->get('para_hora'),
+             'turno' => 0,
+             'ticket' => $request->get('ticket'),
+             'sector' => $request->get('sector'),
+             'estado' => $request->get('estado'),
+             'prioridad' => $request->get('prioridad'),
+             'forma_reserva' => $request->get('forma_reserva'),
+         ]
+     );
+
         $reserva->save();
 
         return redirect()
@@ -179,7 +211,7 @@ class ReservaController extends Controller
 
     public function destroy(Request $request)
     {
-        $reserva = Reserva::findOrFail($request->reserva);
+        $reserva = Reserva::findOrFail($request->id);
         $reserva->delete();
 
         return redirect()
