@@ -74,7 +74,7 @@ public function show(Sintoma $sintoma)
 
     public function destroy(Request $request)
 {
-    $sintoma = Sintoma::findOrFail($request->sintoma);
+    $sintoma = Sintoma::findOrFail($request->id);
         $sintoma->delete();
 
         return redirect()

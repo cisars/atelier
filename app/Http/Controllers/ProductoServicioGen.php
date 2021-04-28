@@ -37,7 +37,7 @@ class ProductoServicioGen extends Controller
                     [
                         $genisa->foreign('clasificacion_id', 'id', 'clasificaciones', 'CASCADE', 'CASCADE',
                             'clasificacion', 'belongsTo', 'Clasificacion::class', 'clasificacion_id', '', ''),
-                        $genisa->foreign('unidad_id', 'unidad', 'unidades', 'CASCADE', 'CASCADE',
+                        $genisa->foreign('unidad_id', 'id', 'unidades', 'CASCADE', 'CASCADE',
                             'unidad', 'belongsTo', 'Unidad::class', 'unidad_id', '', ''),
                         $genisa->foreign('vehiculo_id', 'id', 'vehiculos', 'CASCADE', 'CASCADE',
                             'vehiculos', 'hasMany', 'Cliente::class', 'vehiculo_id', '', ''),

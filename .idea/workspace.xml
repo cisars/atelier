@@ -5,18 +5,144 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Vehiculo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/vehiculo.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vehiculo/editOLD.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addrequest.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmpleadoMaquinaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmpleadoMaquinaGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaDetalleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaDetalleGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntregaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EntregaGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FacturaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FacturaDetalleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FacturaDetalleGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FacturaGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FeriadoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FeriadoGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenMecanicoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenMecanicoGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenRepuestoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenRepuestoGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenServicioController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenServicioGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoGen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/EmpleadoMaquina/StoreEmpleadoMaquinaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/EmpleadoMaquina/UpdateEmpleadoMaquinaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Entrada/StoreEntradaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Entrada/UpdateEntradaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/EntradaDetalle/StoreEntradaDetalleRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/EntradaDetalle/UpdateEntradaDetalleRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Entrega/StoreEntregaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Entrega/UpdateEntregaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Factura/StoreFacturaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Factura/UpdateFacturaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/FacturaDetalle/StoreFacturaDetalleRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/FacturaDetalle/UpdateFacturaDetalleRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Feriado/StoreFeriadoRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Feriado/UpdateFeriadoRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrdenMecanico/StoreOrdenMecanicoRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrdenMecanico/UpdateOrdenMecanicoRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/EmpleadoMaquina.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Entrada.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/EntradaDetalle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Entrega.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Factura.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/FacturaDetalle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Feriado.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/OrdenMecanico.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/OrdenServicio.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/EmpleadoMaquinaFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/EntradaDetalleFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/EntradaFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/EntregaFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FacturaDetalleFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FacturaFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FeriadoFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/OrdenMecanicoFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/OrdenRepuestoFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/OrdenServicioFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/OrdenTrabajoFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_27_004824_create_productos_servicios_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_113539_create_existencias_manejos_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122209_create_feriados_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122252_create_entradas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122300_create_entrada_detalles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122310_create_orden_mecanicos_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122319_create_empleado_maquinas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122332_create_facturas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122341_create_factura_detalles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122351_create_entregas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/Factory/FeriadoFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/StoreFeriadoRequest.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/UpdateFeriadoRequest.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/FeriadoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/FeriadoModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/Mail/Test/aaaa/2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/empleado_maquina/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/empleado_maquina/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entrada/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entrada/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entrada_detalle/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entrada_detalle/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entrega/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entrega/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/factura/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/factura/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/factura_detalle/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/factura_detalle/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/feriado/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/feriado/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/orden_mecanico/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/orden_mecanico/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/atelier.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/atelier.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VehiculoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VehiculoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Reserva.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Reserva.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Reserva/UpdateReservaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Reserva/UpdateReservaRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/reserva.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/reserva.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reserva/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reserva/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reserva/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reserva/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vehiculo/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vehiculo/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioGen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioGen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecepcionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecepcionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SintomaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SintomaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Recepcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Recepcion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductoServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductoServicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/RecepcionesSintomas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/RecepcionesSintomas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProductoServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductoServicioFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/SintomaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/SintomaFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_220458_create_empleados_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_220458_create_empleados_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_220459_create_clientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_220459_create_clientes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_222949_create_usuarios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_222949_create_usuarios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_27_003537_create_clasificaciones_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_27_003537_create_clasificaciones_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_10_223511_create_sectores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_223511_create_sectores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_17_235758_create_vehiculos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_17_235758_create_vehiculos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_21_013726_create_reservas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_013726_create_reservas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_005434_create_recepciones_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_005434_create_recepciones_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_020407_create_recepciones_sintomas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_020407_create_recepciones_sintomas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_27_004824_create_producto_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_24_091116_create_ordenes_trabajos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_template/controller.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/controller.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_template/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_template/fake.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/fake.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_template/matrix.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/matrix.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_template/migration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/migration.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/_templates/mkt/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/_templates/mkt/test.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/recepcion.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/recepcion.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/recepcion/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recepcion/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +304,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
       <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
+      <path value="$PROJECT_DIR$/vendor/sven/artisan-view" />
     </include_path>
   </component>
   <component name="ProjectId" id="1g6KrxrTcsbz202qitY4dXISrBu" />
@@ -296,14 +423,8 @@
       <workItem from="1618468889354" duration="16406000" />
       <workItem from="1618549573799" duration="1785000" />
       <workItem from="1618570260221" duration="1639000" />
-      <workItem from="1618609579475" duration="43949000" />
-    </task>
-    <task id="LOCAL-00018" summary="Procfile+Heroku command line V">
-      <created>1604049396038</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1604049396038</updated>
+      <workItem from="1618609579475" duration="160509000" />
+      <workItem from="1619552924356" duration="7018000" />
     </task>
     <task id="LOCAL-00019" summary="Procfile+Heroku command line VI">
       <created>1604052285134</created>
@@ -641,7 +762,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618982325410</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="livewire para vehiculos">
+      <created>1619071934436</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1619071934436</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +777,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XI recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XII recorrido constantes" />
     <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XIII recorrido constantes" />
     <MESSAGE value="Fix Update Request, no comprobaba campos unicos. Se retiro RULE. Barra de navegacion principal modificada segun interfaces" />
@@ -674,6 +801,7 @@
     <MESSAGE value="Calendario con livewire, dibuja cupos y edita. V1" />
     <MESSAGE value="Reservas y Recepcion 90 porciento. Tablero de inicio para empleados maquetado" />
     <MESSAGE value="Fix para buscador del cliente con input list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix para buscador del cliente con input list" />
+    <MESSAGE value="livewire para vehiculos" />
+    <option name="LAST_COMMIT_MESSAGE" value="livewire para vehiculos" />
   </component>
 </project>

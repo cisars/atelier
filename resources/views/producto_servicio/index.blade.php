@@ -33,37 +33,38 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('productoservicio.create')}}" class="btn bg-cyan">Nuevo Producto/Servicio</a>
-
+                            <a  href="{{route('producto_servicio.create')}}" class="btn bg-cyan">Nuevo ProductoServicio</a>
+                            @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
+                                <a  href="{{route('producto_servicio.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                            @endif
                         </div>
 
                         <table class="table table-sm table-hover nowrap d-table" id="lista">
                             <thead class="">
                             <tr>
-                                <th class="">Producto </th>
-                                <th class="">Código </th>
-                                <th class="">Descripción </th>
+                                <th class="">Id </th>
+                                <th class="">Codigo </th>
+                                <th class="">Descripcion </th>
                                 <th class="">Clasificacion </th>
                                 <th class="">Unidad </th>
                                 <th class="">Impuesto </th>
                                 <th class="">Precio de Venta </th>
-                                <th class="">Acción </th>
+                                <th class="">Acciones </th>
                             </tr>
                             </thead>
                             <tbody>
-
+                            @foreach($productos_servicios as $key => $producto_servicio)
                                 <tr class="">
-                                    <td> 1 </td>
-                                    <td class="">1</td>
-                                    <td class="">Descripción1</td>
-                                    <td class="">Clasificacion1</td>
-                                    <td class="">1</td>
-                                    <td class="">10000</td>
-                                    <td class="">100.000</td>
-
+                                    <td>{{ $producto_servicio->id      }}</td>
+                                    <td>{{ $producto_servicio->codigo      }}</td>
+                                    <td>{{ $producto_servicio->descripcion      }}</td>
+                                    <td>{{ $producto_servicio->clasificacion->descripcion      }}</td>
+                                    <td>{{ $producto_servicio->unidad->descripcion      }}</td>
+                                    <td>{{ $producto_servicio->impuesto      }}</td>
+                                    <td>{{ $producto_servicio->precio_venta      }}</td>
                                     <td class="">
                                         <a
-                                            href=" "
+                                            href="{{ route('producto_servicio.edit', $producto_servicio->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -71,39 +72,23 @@
                                             type        ="button"
                                             class       ="btn btn-danger"
                                             data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
+                                            data-target ="#modal-danger{{ $producto_servicio->id }}"
+                                            data-data   ="{{ $producto_servicio->id }}">
                                             <i class ="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
 
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td>   2 </td>
-                                    <td class="">  2</td>
-                                    <td class="">  Descripción2</td>
-                                    <td class="">  Clasificacion2</td>
-                                    <td class="">  2</td>
-                                    <td class="">  20</td>
-                                    <td class="">200.000</td>
-
-                                    <td class="">
-                                        <a
-                                            href=" "
-                                            class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
+                                        <?php
+                                        $confirmation = [
+                                            'pk'   => 'id',
+                                            'value' => $producto_servicio->id,
+                                            'ruta'  => 'producto_servicio.destroy',
+                                        ]
+                                        ?>
+                                        @include('adminlte::partials.modals.confirmation',  $confirmation)
 
                                     </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <!-- /.card-body -->

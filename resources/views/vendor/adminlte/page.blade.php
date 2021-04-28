@@ -175,9 +175,22 @@
     Route::current()->getName() == 'vehiculogen' ||
     Route::current()->getName() == 'clientegen' ||
     Route::current()->getName() == 'reservagen' ||
-    Route::current()->getName() == 'recepciongen'
-)
+    Route::current()->getName() == 'recepciongen' ||
+    Route::current()->getName() == 'ordenrepuestogen' ||
+    Route::current()->getName() == 'ordenserviciogen' ||
+    Route::current()->getName() == 'ordentrabajogen' ||
 
+    Route::current()->getName() == 'feriadogen' ||
+    Route::current()->getName() == 'entradagen' ||
+    Route::current()->getName() == 'entradadetallegen' ||
+    Route::current()->getName() == 'ordenmecanicogen' ||
+    Route::current()->getName() == 'empleadomaquinagen' ||
+    Route::current()->getName() == 'facturagen' ||
+    Route::current()->getName() == 'facturadetallegen' ||
+    Route::current()->getName() == 'entregagen'
+)
+{{--                <link href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"       rel="stylesheet">--}}
+{{--                <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"               ></script>--}}
                 <link href="{{ asset('/codemirror/lib/codemirror.css') }}"       rel="stylesheet">
                 <link href="{{ asset('/codemirror/theme/monokai.css') }}"        rel="stylesheet">
                 <link href="{{ asset('/codemirror/theme/material.css') }}"        rel="stylesheet">

@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Productos Servicios')
+@section('title', 'ProductosServicios')
 @section('css')
 @stop
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> ABM Productos Servicios </li>
+    <li class="breadcrumb-item active"> Editar ProductosServicios </li>
 @stop
 @section('content')
 
@@ -28,80 +28,149 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
+                                    @isset($producto_servicio->id)
+                                        <h3 class="card-title">Editar ProductoServicio</h3>
+                                    @else
                                         <h3 class="card-title">Crear ProductosServicios</h3>
+                                    @endisset
                                 </div>
 
 
                                 <div class="card-body">
+                                    @isset($producto_servicio->id)
+                                        {!! Form::model($producto_servicio, ['route' => ['producto_servicio.update', $producto_servicio->id], 'method' => 'PATCH']) !!}
+                                        <div class="form-group col">
+                                            {!! Form::label('id', 'Código de ProductoServicio') !!}
+                                            {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
-                                    {!! Form::open() !!}
+                                        </div>
+                                    @else
+                                        {!! Form::open(
+                                            ['route' =>
+                                                ['producto_servicio.store' ],
+                                                    'method'    => 'post',
+                                                    'id'        => 'form',
+                                                ]
+                                        ) !!}
+                                    @endisset
 
                                     {{--<div class="form-row">--}}
 
-                                        <div class="form-group col">
-                                            <label> Código </label>
-                                            <input class    = "form-control"
-                                                   type     = "text"
-                                                   placeholder = "Introduzca codigo">
-                                        </div>
-
-                                        <div class="form-group col">
-                                            <label> Descripción </label>
-                                            <input class    = "form-control"
-                                                   type     = "text"
-                                                   placeholder="Introduzca descripcion">
-                                        </div>
+                                    {{--Set all function cons base model dropdown list char 1--}}
 
 
-                                        <div class="form-row">
-                                            <div class="form-group col">
-                                                <label> Clasificacion </label>
-                                                <select class = "form-control">
-                                                    <option value="" selected > Seleccione clasificacion </option>
-                                                    <option value=""> opcion 1 </option>
-                                                </select>
-                                            </div>
 
-                                            <div class="form-group col">
-                                                <label> Unidad </label>
-                                                <select class = "form-control">
-                                                    <option value="" selected > Seleccione unidad </option>
-                                                    <option value=""> opcion 1 </option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="form-group col">
-                                                <label> Impuesto </label>
-                                                <input class    = "form-control"
-                                                       type     = "number"
-                                                       placeholder="Introduzca impuesto">
-                                            </div>
-
-                                            <div class="form-group col">
-                                                <label> Precio Venta </label>
-                                                <input class    = "form-control"
-                                                       type     = "number"
-                                                       placeholder="Introduzca Precio Venta">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col">
-                                            <label> Estado </label>
-                                            <select class = "form-control">
-                                                <option value="" selected > Seleccione estado </option>
-                                                <option value=""> opcion 1 </option>
-                                            </select>
-                                        </div>
-
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Codigo --}}
+                                        {!! Form::label('codigo', 'Codigo') !!}
+                                        {!! Form::text(
+                                            'codigo',
+                                            old('codigo') ,
+                                            [
+                                                'maxlength'     => '15',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Codigo'
+                                            ]) !!}
+                                        @error("codigo")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
+                                    {{--INPUT TEXT Codigo ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--INPUT TEXT Descripcion --}}
+                                        {!! Form::label('descripcion', 'Descripcion') !!}
+                                        {!! Form::text(
+                                            'descripcion',
+                                            old('descripcion') ,
+                                            [
+                                                'maxlength'     => '80',
+                                                'type'          => 'text',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Descripcion'
+                                            ]) !!}
+                                        @error("descripcion")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT TEXT Descripcion ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--SELECT FK Clasificacion --}}
+                                        {!! Form::label('clasificacion_id', 'Clasificacion') !!}
+                                        {!! Form::select('clasificacion_id', $clasificaciones->pluck('descripcion', 'id')  ,
+                                            old('clasificacion_id') ,
+                                            [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Seleccione Clasificacion']
+                                        ) !!}
+                                        @error("clasificacion_id")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--SELECT FK Clasificacion ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--SELECT FK Unidad --}}
+                                        {!! Form::label('unidad_id', 'Unidad') !!}
+                                        {!! Form::select('unidad_id', $unidades->pluck('descripcion', 'id')  ,
+                                            old('unidad_id') ,
+                                            [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Seleccione Unidad']
+                                        ) !!}
+                                        @error("unidad_id")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--SELECT FK Unidad ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--INPUT NUMERIC Impuesto --}}
+                                        {!! Form::label('impuesto', 'Impuesto') !!}
+                                        {!! Form::text(
+                                            'impuesto',
+                                            old('impuesto') ,
+                                            [
+                                                'maxlength'     => '',
+                                                'type'          => 'numeric',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Impuesto'
+                                        ]) !!}
+                                        @error("impuesto")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT NUMERIC Impuesto ------------------------------------ --}}
+
+                                    <div class="form-group col">
+                                        {{--INPUT NUMERIC Precio de Venta --}}
+                                        {!! Form::label('precio_venta', 'Precio de Venta') !!}
+                                        {!! Form::text(
+                                            'precio_venta',
+                                            old('precio_venta') ,
+                                            [
+                                                'maxlength'     => '12,0',
+                                                'type'          => 'numeric',
+                                                'class'         => 'form-control',
+                                                'placeholder'   => 'Precio de Venta'
+                                        ]) !!}
+                                        @error("precio_venta")
+                                        <span class="text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{--INPUT NUMERIC Precio de Venta ------------------------------------ --}}
+
+
+                                    {{--</div>--}}
+
 
                                     <div class="card-footer  ">
                                         <button
                                             type="submit"
                                             class="btn btn-info">Grabar</button>
-                                        <a href="" class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('producto_servicio.index') }}  " class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
 
                                     {!! Form::close() !!}
@@ -109,13 +178,15 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
             </section>
+
         </div>
-    </div>
-@endsection
+        @endsection
 
-@section('js')
+        @section('js')
 
-    <script>
-    </script>
+            <script>
+            </script>
 @endsection

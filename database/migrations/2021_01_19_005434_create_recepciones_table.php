@@ -17,7 +17,8 @@ class CreateRecepcionesTable extends Migration
             $table->increments('id' );
             $table->unsignedTinyInteger('taller_id')->nullable();
             $table->unsignedInteger('reserva_id')->nullable();
-            $table->unsignedInteger('cliente_id')->nullable();
+            //$table->unsignedInteger('cliente_id')->nullable();
+            $table->smallInteger('cliente_id')->nullable();
             $table->smallInteger('vehiculo_id')->nullable();
             $table->timestamp('fecha_recepcion')->nullable();
             $table->string('usuario', 12)->nullable();
@@ -33,6 +34,7 @@ class CreateRecepcionesTable extends Migration
             $table->foreign('reserva_id')
                 ->references('id')
                 ->on('reservas')
+
             ;
             $table->foreign('cliente_id')
                 ->references('id')

@@ -25,10 +25,16 @@ return [
 //{{ $dataCol['nombre'] }}
 @endif
 @if ($dataCol['cardinalidad'] == 'cons' )
-// {{ $auxcons = '' }} // {{ $coma = '' }}
+@php
+$auxcons = '';
+$coma = '';
+@endphp
 @foreach ($gen->tabla['constantes'] as $dataCons)
 @if( $dataCons['nombre'] == $dataCol['nombre'] )
-// {{ $auxcons = $auxcons.$coma."'".$dataCons['valor']."'"  }} // {{ $coma = ',' }}
+@php
+$auxcons = $auxcons.$coma."'".$dataCons['valor']."'";
+$coma = ',';
+@endphp
 @endif
 @endforeach
     '{{$dataCol['nombre']}}' => $faker->randomElement([{{ $auxcons  }}]),
@@ -36,10 +42,16 @@ return [
 @if($dataCol['cardinalidad'] == 'fk' )
     '{{$dataCol['nombre']}}'  => \App\Models\{{$dataCol['FK']}}::inRandomOrder()->first()->id,
 @endif
-@if( ($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'numeric' || $dataCol['tipo'] == 'smallint') && $dataCol['cardinalidad'] == '')
-//{{ $iniaux = 1 }} // {{ $finaux = 9 }}
+@if( ($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'numeric' || $dataCol['tipo'] == 'smallint' || $dataCol['tipo'] == 'tinyint' ) && $dataCol['cardinalidad'] == '')
+@php
+$iniaux = 1;
+$finaux = 9;
+@endphp
 @for ($i = 1; $i < $dataCol['longitud']; $i++)
-//{{ $iniaux = $iniaux.'0' }} // {{ $finaux = $finaux.'9' }}
+@php
+$iniaux = $iniaux.'0';
+$finaux = $finaux.'9';
+@endphp
 @endfor
 @if( ($dataCol['tipo'] == 'tinyint' ))
     '{{$dataCol['nombre']}}' => $faker->numberBetween({{ 0 }} ,{{ 255 }} ),

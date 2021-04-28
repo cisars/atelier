@@ -47,6 +47,7 @@ class RecepcionController extends Controller
 
         return view('recepcion.edit')
 // Send all fk variables
+            ->with('recepcion', $recepcion)
             ->with('talleres', $talleres)
             ->with('reservas', $reservas)
             ->with('clientes', $clientes)
@@ -96,7 +97,8 @@ class RecepcionController extends Controller
     {
 // Get all data fk tables
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
-        $reservas = Reserva::orderBy('descripcion', 'ASC')->get();
+        $reservas = Reserva::find($recepcion->reserva_id) ;
+     //   dd($reservas);
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
         $vehiculos = Vehiculo::orderBy('chapa', 'ASC')->get();
         $usuarios = Usuario::orderBy('usuario', 'ASC')->get();

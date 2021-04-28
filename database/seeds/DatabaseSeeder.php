@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Localidad',4)->create();
         factory('App\Models\Sucursal', 4)->create();
         factory('App\Models\Taller', 2)->create();
+        factory('App\Models\Sintoma', 10)->create();
      //   factory('App\Models\Turno')->create();
 
         $this->call(EmpleadoSeeder::class);

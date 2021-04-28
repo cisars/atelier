@@ -168,7 +168,7 @@
 
         function copyText( objetoid ){
             /* Get the text field */
-            var copyText = document.getElementById(objetoid);
+            var copyText = document.getElementById(objetoid).html();
             copyText.select();
            // copyText.setSelectionRange(0, 99999999);
             document.execCommand("copy");

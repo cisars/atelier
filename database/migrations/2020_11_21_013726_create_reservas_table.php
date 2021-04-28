@@ -16,11 +16,14 @@ class CreateReservasTable extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedTinyInteger('taller_id')->nullable();
-            $table->unsignedInteger('cliente_id')->nullable();
-            $table->unsignedInteger('vehiculo_id')->nullable();
+            //$table->unsignedInteger('cliente_id')->nullable();
+            $table->smallInteger('cliente_id')->nullable();
+            //$table->unsignedInteger('vehiculo_id')->nullable();
+            $table->smallInteger('vehiculo_id')->nullable();
             $table->date('fecha')->nullable();
             $table->date('para_fecha')->nullable();
-            $table->unsignedInteger('empleado_id')->nullable();
+            //$table->unsignedInteger('empleado_id')->nullable();
+            $table->smallInteger('empleado_id')->nullable();
             $table->char('estado',1)->nullable();
             $table->char('forma_reserva',1)->nullable();
             $table->char('prioridad',1)->nullable();

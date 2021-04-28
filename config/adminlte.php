@@ -635,6 +635,18 @@ return [
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'descansogen', 'text' => 'Descansogen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'reservagen', 'text' => 'Reservagen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'recepciongen', 'text' => 'Recepciongen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordenrepuestogen', 'text' => 'OrdenRepuestogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordenserviciogen', 'text' => 'OrdenServiciogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordentrabajogen', 'text' => 'OrdenTrabajogen',],
+
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'feriadogen', 'text' => 'Feriadogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entradagen', 'text' => 'Entradagen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entradadetallegen', 'text' => 'EntradaDetallegen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordenmecanicogen', 'text' => 'OrdenMecanicogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleadomaquinagen', 'text' => 'EmpleadoMaquinagen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'facturagen', 'text' => 'Facturagen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'facturadetallegen', 'text' => 'FacturaDetallegen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entregagen', 'text' => 'Entregagen',],
 
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservanormal', 'text' => 'reservanormal ',],
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservalinea', 'text' => 'reservalinea',],

@@ -48,6 +48,19 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/reservagen', 'ReservaGen@index')->name('reservagen');
     Route::get('/recepciongen', 'RecepcionGen@index')->name('recepciongen');
 
+    Route::get('/ordenrepuestogen', 'OrdenRepuestoGen@index')->name('ordenrepuestogen');
+    Route::get('/ordenserviciogen', 'OrdenServicioGen@index')->name('ordenserviciogen');
+    Route::get('/ordentrabajogen', 'OrdenTrabajoGen@index')->name('ordentrabajogen');
+
+    Route::get('/feriadogen', 'FeriadoGen@index')->name('feriadogen');
+    Route::get('/entradagen', 'EntradaGen@index')->name('entradagen');
+    Route::get('/entradadetallegen', 'EntradaDetalleGen@index')->name('entradadetallegen');
+    Route::get('/ordenmecanicogen', 'OrdenMecanicoGen@index')->name('ordenmecanicogen');
+    Route::get('/empleadomaquinagen', 'EmpleadoMaquinaGen@index')->name('empleadomaquinagen');
+    Route::get('/facturagen', 'FacturaGen@index')->name('facturagen');
+    Route::get('/facturadetallegen', 'FacturaDetalleGen@index')->name('facturadetallegen');
+    Route::get('/entregagen', 'EntregaGen@index')->name('entregagen');
+
 
     //Factorys
     Route::get('/localidad/factory', 'LocalidadController@factory')->name('localidad.factory');
@@ -78,6 +91,22 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/descanso/factory', 'Descanso@factory')->name('descanso.factory');
     Route::get('/recepcion/factory', 'Recepcion@factory')->name('recepcion.factory');
 
+    Route::get('/feriado/factory', 'Feriado@factory')->name('feriado.factory');
+
+
+    Route::post('/feriadogen/toFile/', 'FeriadoGen@toFile')->name('feriadogen.toFile');
+    Route::post('/feriadogen/inicializar/', 'FeriadoGen@inicializar')->name('feriadogen.inicializar');
+
+
+
+    Route::get('/entrada/factory', 'Entrada@factory')->name('entrada.factory');
+    Route::get('/entrada_detalle/factory', 'EntradaDetalle@factory')->name('entrada_detalle.factory');
+    Route::get('/orden_mecanico/factory', 'OrdenMecanico@factory')->name('orden_mecanico.factory');
+    Route::get('/empleado_maquina/factory', 'EmpleadoMaquina@factory')->name('empleado_maquina.factory');
+    Route::get('/factura/factory', 'Factura@factory')->name('factura.factory');
+    Route::get('/factura_detalle/factory', 'FacturaDetalle@factory')->name('factura_detalle.factory');
+    Route::get('/entrega/factory', 'Entrega@factory')->name('entrega.factory');
+
     //Validaciones request
     Route::resource('localidad', 'LocalidadController');
     Route::resource('clasificacion', 'ClasificacionController');
@@ -103,7 +132,18 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('parametro', 'ParametroController');
     Route::resource('descanso', 'DescansoController');
     Route::resource('recepcion', 'RecepcionController');
+    Route::resource('orden_repuesto', 'OrdenRepuestoController');
+    Route::resource('orden_servicio', 'OrdenServicioController');
+    Route::resource('orden_trabajo', 'OrdenTrabajoController');
 
+    Route::resource('feriado', 'FeriadoController');
+    Route::resource('entrada', 'EntradaController');
+    Route::resource('entrada_detalle', 'EntradaDetalleController');
+    Route::resource('orden_mecanico', 'OrdenMecanicoController');
+    Route::resource('empleado_maquina', 'EmpleadoMaquinaController');
+    Route::resource('factura', 'FacturaController');
+    Route::resource('factura_detalle', 'FacturaDetalleController');
+    Route::resource('entrega', 'EntregaController');
 });
 
 // Rutas de los examples pages bootstrap.

@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Sintoma::class, function (Faker $faker) {
     return [
-        'descripcion' =>  substr( $faker->safeColorName, 0,79),
+        'descripcion' =>  substr( $faker->text(70), 0,79),
     ];
 });

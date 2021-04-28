@@ -69,7 +69,7 @@
                                                 id      ="{{ $auxFix }}">
                                                 {{'@'}}foreach (${{ $dataCon['nombres'] }} as $key => ${{ $auxFix }})
                                                     <option value="{{'{'}}{{'{'}}   ${{ $auxFix }}    {{'}'}}{{'}'}}"
-                                                            {{'@'}}if (${{ $gen->tabla['ZnombreZ'] }}->{{ $auxFix }} == old('{{ $auxFix }}', ${{ $auxFix }}) )
+                                                            {{'@'}}if (isset(${{ $gen->tabla['ZnombreZ'] }}->{{ $auxFix }}) == old('{{ $auxFix }}', ${{ $auxFix }}) )
                                                             selected="selected"
                                                         {{'@'}}endif
                                                     >{{'{'}}{{'{'}}   $key    {{'}'}}{{'}'}} </option>
@@ -112,7 +112,7 @@
                                                    type     = "date"
                                                    name     = "{{ $dataCol['nombre'] }}"
                                                    id       = "{{ $dataCol['nombre'] }}"
-                                                   value    = '{{'{'}}{{'{'}} old('{{ $dataCol['nombre'] }}',    date('Y-m-d', strtotime(${{ $nombre }}->{{ $dataCol['nombre'] }} ))  )   {{'}'}}{{'}'}}'
+                                                   value    = '{{'{'}}{{'{'}} old('{{ $dataCol['nombre'] }}',    date('Y-m-d', strtotime(${{ $nombre }}->{{ $dataCol['nombre'] }} ?? date('Y-m-d') ))  )   {{'}'}}{{'}'}}'
                                                    placeholder="Introduzca {{ $dataCol['visibilidad'] }}">
                                             {{'@'}}foreach ($errors->get('{{ $dataCol['nombre'] }}') as $error)
                                                 <span class="text text-danger">{{'{'}}{{'{'}} $error {{'}'}}{{'}'}}</span>

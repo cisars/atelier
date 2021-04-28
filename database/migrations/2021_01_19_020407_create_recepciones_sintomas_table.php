@@ -20,10 +20,13 @@ class CreateRecepcionesSintomasTable extends Migration
 
             $table->foreign('recepcion_id')
                 ->references('id')
-                ->on('recepciones');
+                ->on('recepciones')
+                ->onDelete('cascade');;
             $table->foreign('sintoma_id')
                 ->references('id')
-                ->on('sintomas');
+                ->on('sintomas')
+                ->onDelete('cascade')
+            ;
 
             $table->timestamps();
         });

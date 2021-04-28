@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\{{$NOMBRE}}\Store{{$NOMBRE}}Request;
 use App\Http\Requests\{{$NOMBRE}}\Update{{$NOMBRE}}Request;
 use App\Models\{{$NOMBRE}};
@@ -26,12 +27,15 @@ class {{$NOMBRE}}Controller extends Controller
     public function index()
     {
         ${{$nombres}} = {{$NOMBRE}}::all();
-        ${{$nombres}}->each(function (${{$nombre}}) {
 
+        ${{$nombres}}->each(function (${{$nombre}}) {
+@php $aux = ""; @endphp
 @foreach ($gen->tabla['constantes'] as $dataCons)
+    @if($aux != $dataCons['nombres'])
         foreach ((new {{$NOMBRE}}())->get{{ucfirst($dataCons['nombres'])}}() as $clave=>$valor)
         trim(${{$nombre}}->{{$dataCons['nombre']}}) == trim($valor) ? ${{$nombre}}->{{$dataCons['nombre']}} = $clave : NULL ;
-
+@php $aux = $dataCons['nombres']; @endphp
+        @endif
 @endforeach
 
         //OPCION 2
@@ -80,7 +84,6 @@ class {{$NOMBRE}}Controller extends Controller
     {
         try {
         DB::beginTransaction();
-
             ${{$nombre}} = new {{$NOMBRE}}($request->all());
             ${{$nombre}}->save();
 
@@ -91,19 +94,26 @@ class {{$NOMBRE}}Controller extends Controller
                $talleresusuarios->{{ $dataCol['foreign'] }}    = $item;
                $talleresusuarios->{{$nombre}}_id      = $usuario->{{$nombre}}_id;
                $talleresusuarios->save();
+                Log::info( 'Detalle #'. $item . ' agregado en {{$NOMBRE}}' ) ;
            }
     @endif
 @endforeach
-
             DB::commit();
 
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
+            Log::error( 'Error en {{$NOMBRE}}Controller@store: '. $e ) ;
+            return redirect()
+                ->route('{{$nombre}}.index')
+                ->with('msg', 'Ocurrio un error')
+                ->with('type', 'danger');
         }
+        Log::info( '{{$NOMBRE}} registro creado' ) ;
         return redirect()
             ->route('{{$nombre}}.index')
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'info');
+
     }
 
     public function destroy(Request $request)
@@ -112,13 +122,17 @@ class {{$NOMBRE}}Controller extends Controller
             ${{$nombre}} = {{$NOMBRE}}::findOrFail($request->id);
             ${{$nombre}}->delete();
 
+            Log::info( '{{$NOMBRE}} registro eliminado' ) ;
             return redirect()
                 ->route('{{$nombre}}.index')
                 ->with('msg', 'Registro Eliminado Correctamente')
                 ->with('type', 'danger');
         } catch (\Illuminate\Database\QueryException $e) {
-            //dd($e);
-            return redirect()->route('{{$nombre}}.index')->with('error', $e->getMessage());
+            Log::error( 'Error en {{$NOMBRE}}Controller@destroy: '. $e ) ;
+            return redirect()
+                ->route('{{$nombre}}.index')
+                ->with('msg', 'Ocurrio un error')
+                ->with('type', 'danger');
         }
     }
 
@@ -163,29 +177,25 @@ class {{$NOMBRE}}Controller extends Controller
             ${{$nombre}}->fill($request->all());
             ${{$nombre}}->save();
             DB::commit();
+            Log::info( '{{$NOMBRE}} registro actualizado ') ;
             return redirect()
                 ->route('{{$nombre}}.index')
                 ->with('msg', 'Registro Actualizado Correctamente')
                 ->with('type', 'info');
         }catch (\Exception $e){
             DB::rollBack();
+            Log::error( 'Error en {{$NOMBRE}}Controller@update: '. $e ) ;
             return redirect()
                 ->route('{{$nombre}}.index')
                 ->with('type', 'danger')
                 ->with('msg', 'Ocurrio un error');
         }
-//
-//        $requestData = $request->all();
-////        $requestData['fecha_ingreso'] = date("Y-m-d H:i:s", strtotime(request('fecha_ingreso')));
-////        $requestData['fecha_egreso'] = date("Y-m-d H:i:s", strtotime(request('fecha_egreso')));
-//        $empleado->fill($requestData);
-//        $empleado->save();
-
 
     }
     public function factory()
     {
         factory('App\Models\{{$NOMBRE}}')->create();
+        Log::warning( 'Factory creado en {{$NOMBRE}} ') ;
         return redirect()
             ->route('{{$nombre}}.index')
             ->with('msg', 'Registro Creado Correctamente')

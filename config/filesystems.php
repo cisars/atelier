@@ -41,7 +41,15 @@ return [
     |
     */
 
+
+
     'disks' => [
+
+        'gensystem' => [
+            'driver' => 'local',
+            'root' => env('LOCAL_STORAGE_PATH'),
+            'url' => env('LOCAL_STORAGE_PATH')  ,
+        ],
 
         'local' => [
             'driver' => 'local',
@@ -51,7 +59,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 

@@ -22,13 +22,18 @@ class ProductoServicioController extends Controller
 
     public function index()
     {
-        $productos_servicios = null;
+        $productos_servicios = ProductoServicio::all();
+        $productos_servicios->each(function ($producto_servicio) {
+
+
+            //OPCION 2
+
+        });
         return view('producto_servicio.index', compact('productos_servicios', $productos_servicios));
     }
 
     public function create()
     {
-      //  dd('entro');
 // Get all data fk tables
         $clasificaciones = Clasificacion::orderBy('descripcion', 'ASC')->get();
         $unidades = Unidad::orderBy('descripcion', 'ASC')->get();
@@ -55,7 +60,7 @@ class ProductoServicioController extends Controller
 
             DB::commit();
 
-        } catch ( Exception $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         }
         return redirect()
@@ -66,13 +71,18 @@ class ProductoServicioController extends Controller
 
     public function destroy(Request $request)
     {
-        $producto_servicio = ProductoServicio::findOrFail($request->producto_servicio);
-        $producto_servicio->delete();
+        try {
+            $producto_servicio = ProductoServicio::findOrFail($request->id);
+            $producto_servicio->delete();
 
-        return redirect()
-            ->route('producto_servicio.index')
-            ->with('msg', 'Registro Eliminado Correctamente')
-            ->with('type', 'danger');
+            return redirect()
+                ->route('producto_servicio.index')
+                ->with('msg', 'Registro Eliminado Correctamente')
+                ->with('type', 'danger');
+        } catch (\Illuminate\Database\QueryException $e) {
+            //dd($e);
+            return redirect()->route('producto_servicio.index')->with('error', $e->getMessage());
+        }
     }
 
     public function edit(ProductoServicio $producto_servicio)
@@ -80,9 +90,11 @@ class ProductoServicioController extends Controller
 // Get all data fk tables
         $clasificaciones = Clasificacion::orderBy('descripcion', 'ASC')->get();
         $unidades = Unidad::orderBy('descripcion', 'ASC')->get();
+
 // Set all function cons base model dropdown list char 1
 
         return view('producto_servicio.edit')
+            ->with('producto_servicio', $producto_servicio)
 // Send all fk variables
             ->with('clasificaciones', $clasificaciones)
             ->with('unidades', $unidades)
@@ -127,5 +139,3 @@ class ProductoServicioController extends Controller
             ->with('type', 'success');
     }
 }
-
-?>

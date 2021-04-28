@@ -13,7 +13,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">GEN </li>
+    <li class="breadcrumb-item active">GEN</li>
 @stop
 
 @section('content')
@@ -22,170 +22,248 @@
     <section class="content">
         <div class="row">
 
-            {{-- Controller|CodeMirror--}}
-            <div class="col-md-12">
-                <div class="card card-outline card-info">
+            {{-- INICIALIZAR--}}
+            <div class="col-md-6">
+                <div class="card card-outline card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">
-                            {{$gen->tabla['ZNOMBREZ']}}Controller.php
-                        </h3>
+                        <h3 class="card-title"> Inicializar Modelo <b>{{$gen->tabla['ZNOMBREZ']}}</b></h3>
                     </div>
-                    <div class="card-body border-primary col-md-12">
-                        <textarea
-                            id="Controller|CodeMirror"
-                            class="col-md-12"
-                            style="font-size: x-small">@include('_template.controller',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Controller|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
+                    <div class="card-body   ">
+                        <form role="form" id="form" method="POST"
+                              action="{{ route('feriadogen.inicializar', $gen->tabla['ZNOMBREZ']) }}">
+                            <input name="capital" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}">
+                            <input name="archivo" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}Controller.php">
+                            <input name="minuscula" type="hidden" value="{{$gen->tabla['ZnombreZ']}}Controller.php">
+                            @csrf
+                            @method('POST')
+                            <button type="button" disabled class="btn btn-danger"> Procesar</button>
+                        </form>
                     </div>
                 </div>
             </div>
-
-            {{-- Model|CodeMirror--}}
-            <div class="col-md-12">
-                <div class="card card-outline card-info">
+            <div class="col-md-6">
+                <div class="card card-outline card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">
-                            Models/{{$gen->tabla['ZNOMBREZ']}}.php
-                        </h3>
+                        <h3 class="card-title"> Sobreescribir todo <b>{{$gen->tabla['ZNOMBREZ']}}</b></h3>
                     </div>
-                    <div class="card-body border-primary col-md-12">
+                    <div class="card-body   ">
+                        <form role="form" id="form" method="POST"
+                              action="{{ route('feriadogen.toFile', $gen->tabla['ZNOMBREZ']) }}">
+                            <input name="capital" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}">
+                            <input name="minuscula" type="hidden" value="{{$gen->tabla['ZnombreZ']}}">
+                            @csrf
+                            @method('POST')
+                            <textarea name="codigocontroller" style="display: none"> @include('_template.controller',['gen'=>$gen]) </textarea>
+                            <textarea name="codigomodel" style="display: none"> @include('_template.model',['gen'=>$gen]) </textarea>
+                            <textarea name="codigoindex" style="display: none"> @include('_template.index',['gen'=>$gen]) </textarea>
+                            <textarea name="codigoedit" style="display: none"> @include('_template.edit',['gen'=>$gen]) </textarea>
+                            <textarea name="codigofake" style="display: none"> @include('_template.fake',['gen'=>$gen]) </textarea>
+                            <textarea name="codigorequeststore" style="display: none"> @include('_template.store',['gen'=>$gen]) </textarea>
+                            <textarea name="codigorequestupdate" style="display: none"> @include('_template.update',['gen'=>$gen]) </textarea>
+                            <textarea name="codigomigration" style="display: none"> @include('_template.migration',['gen'=>$gen]) </textarea>
+                            <button type="submit"   class="btn btn-danger"> Procesar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+            <div class="card card-outline card-info ">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        {{$gen->tabla['ZNOMBREZ']}}Controller.php
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12" id="ControllerToCodeMirror">
+                    {{--                        <a href="{{ route('feriadogen.alarchivo', $contenido) }}" > test</a>--}}
+                    <textarea
+                        id="Controller|CodeMirror"
+                        class="col-md-12"
+                        style="font-size: x-small">@include('_template.controller',['gen'=>$gen])</textarea>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Controller|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                        <form role="form" id="form" method="POST"
+                              action="{{ route('feriadogen.toFile', $gen->tabla['ZNOMBREZ']) }}">
+                            <input name="capital" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}">
+                            <input name="archivo" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}Controller.php">
+                            <input name="minuscula" type="hidden" value="{{$gen->tabla['ZnombreZ']}}Controller.php">
+                            <textarea name="elcodigo" style="display: none"> @include('_template.controller',['gen'=>$gen]) </textarea>
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn "> Crear archivo</button>
+                        </form>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        {{-- Model|CodeMirror--}}
+        <div class="col-md-12">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Models/{{$gen->tabla['ZNOMBREZ']}}.php
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
                         <textarea
                             id="Model|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small">@include('_template.model',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Model|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Model|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
+        </div>
 
-            {{-- Index|CodeMirror--}}
-            <div class="col-md-12">
-                <div class="card card-outline card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Index/{{$gen->tabla['ZNOMBREZ']}}.php (View)
-                        </h3>
-                    </div>
-                    <div class="card-body border-primary col-md-12">
+        {{-- Index|CodeMirror--}}
+        <div class="col-md-12">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Index/{{$gen->tabla['ZNOMBREZ']}}.php (View)
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
                         <textarea
                             id="Index|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small">@include('_template.index',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Index|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Index|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
+        </div>
 
-            {{-- Edit|CodeMirror--}}
-            <div class="col-md-12 " >
-                <div class="card card-outline card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Edit/{{$gen->tabla['ZNOMBREZ']}}.php (View)
-                        </h3>
-                    </div>
-                    <div class="card-body border-primary col-md-12" >
+        {{-- Edit|CodeMirror--}}
+        <div class="col-md-12 ">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Edit/{{$gen->tabla['ZNOMBREZ']}}.php (View)
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
                         <textarea
                             id="Edit|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small"
                         >@include('_template.edit',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Edit|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Edit|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
+        </div>
 
 
-            {{-- Fake|CodeMirror--}}
-            <div class="col-md-12 " >
-                <div class="card card-outline card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Fake/{{$gen->tabla['ZNOMBREZ']}}.php (Fake)
-                        </h3>
-                    </div>
-                    <div class="card-body border-primary col-md-12" >
+        {{-- Fake|CodeMirror--}}
+        <div class="col-md-12 ">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Fake/{{$gen->tabla['ZNOMBREZ']}}.php (Fake)
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
                         <textarea
                             id="Fake|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small"
                         >@include('_template.fake',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Fake|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Fake|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-            (Request)
-            {{-- Store|CodeMirror--}}
-            <div class="col-md-12 " >
-                <div class="card card-outline card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Store/{{$gen->tabla['ZNOMBREZ']}}.php (Request)
-                        </h3>
-                    </div>
-                    <div class="card-body border-primary col-md-12" >
+        </div>
+        (Request)
+        {{-- Store|CodeMirror--}}
+        <div class="col-md-12 ">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Store/{{$gen->tabla['ZNOMBREZ']}}.php (Request)
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
                         <textarea
                             id="Store|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small"
                         >@include('_template.store',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Store|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Store|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-            {{-- Update|CodeMirror--}}
-            <div class="col-md-12 " >
-                <div class="card card-outline card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Update/{{$gen->tabla['ZNOMBREZ']}}.php (Request)
-                        </h3>
-                    </div>
-                    <div class="card-body border-primary col-md-12" >
+        </div>
+        {{-- Update|CodeMirror--}}
+        <div class="col-md-12 ">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Update/{{$gen->tabla['ZNOMBREZ']}}.php (Request)
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
                         <textarea
                             id="Update|CodeMirror"
                             class="col-md-12"
                             style="font-size: x-small"
                         >@include('_template.update',['gen'=>$gen])</textarea>
-                        <button
-                            type        ="button"
-                            class       ="btn btn-success pull-right"
-                            onclick     ="copyText('Update|CodeMirror');" > Copiar
-                            <i class ="fas fa-clipboard" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Update|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
+        </div>
+        {{-- Migration|CodeMirror--}}
+        <div class="col-md-12 ">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Migration/{{$gen->tabla['ZNOMBREZ']}}.php (MIGRATION)
+                    </h3>
+                </div>
+                <div class="card-body border-primary col-md-12">
+                        <textarea
+                            id="Migration|CodeMirror"
+                            class="col-md-12"
+                            style="font-size: x-small"
+                        >@include('_template.migration',['gen'=>$gen])</textarea>
+                    <button
+                        type="button"
+                        class="btn btn-success pull-right"
+                        onclick="copyText('Migration|CodeMirror');"> Copiar
+                        <i class="fas fa-clipboard" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
         </div>
         <!--   .col-->
@@ -194,7 +272,7 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">GEN   </h3>
+                        <h3 class="card-title">GEN </h3>
 
                     </div>
                     <!-- /.card-header -->
@@ -203,13 +281,14 @@
 
                         </div>
 
-                        <table class="table table-sm table-hover nowrap d-table" id="lista">
+                        <table class="table table-sm table-hover nowrap d-table">
                             <thead class="">
                             <tr>
-                                <th > </th>
-                                <th > </th>
+                                <th></th>
+                                <th></th>
                             </tr>
-                            </thead>Agregar rutas
+                            </thead>
+                            Agregar rutas
                             <tbody>
                             {{--                            @dd($reservas)--}}
 
@@ -255,7 +334,7 @@
         $(function () {
             //  https://codemirror.net/demo/theme.html#dracula
             // Controller|CodeMirror
-            CodeMirror.fromTextArea(document.getElementById("Controller|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Controller|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -263,13 +342,13 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true
-            })
+                smartIndent: true
+            }).setSize(1200, 700);
             //.indentLine('smart')
             //.indentAutoShift
             //.setSize('100%','100%')
             ;
-            CodeMirror.fromTextArea(document.getElementById("Model|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Model|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -277,10 +356,10 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true
-            });
+                smartIndent: true
+            }).setSize(1200, 700);
 
-            CodeMirror.fromTextArea(document.getElementById("Index|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Index|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -288,10 +367,10 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true
-            });
+                smartIndent: true
+            }).setSize(1200, 700);
 
-            CodeMirror.fromTextArea(document.getElementById("Edit|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Edit|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -299,11 +378,11 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true,
+                smartIndent: true,
 
-            }).setSize( 1200, 700 );
+            }).setSize(1200, 700);
 
-            CodeMirror.fromTextArea(document.getElementById("Fake|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Fake|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -311,11 +390,11 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true,
+                smartIndent: true,
 
-            }).setSize( 1200, 700 );
+            }).setSize(1200, 700);
 
-            CodeMirror.fromTextArea(document.getElementById("Store|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Store|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -323,11 +402,11 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true,
+                smartIndent: true,
 
-            }).setSize( 1200, 700 );
+            }).setSize(1200, 700);
 
-            CodeMirror.fromTextArea(document.getElementById("Update|CodeMirror"),{
+            CodeMirror.fromTextArea(document.getElementById("Update|CodeMirror"), {
                 theme: "material",
                 readOnly: true,
                 lineNumbers: true,
@@ -335,18 +414,84 @@
                 mode: "application/x-httpd-php",
                 indentUnit: 4,
                 indentWithTabs: true,
-                smartIndent:true,
+                smartIndent: true,
 
-            }).setSize( 1200, 700 );
+            }).setSize(1200, 700);
+            CodeMirror.fromTextArea(document.getElementById("Migration|CodeMirror"), {
+                theme: "material",
+                readOnly: true,
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "application/x-httpd-php",
+                indentUnit: 4,
+                indentWithTabs: true,
+                smartIndent: true,
+
+            }).setSize(1200, 700);
         });
 
-        function copyText( objetoid ){
-            /* Get the text field */
-            var copyText = document.getElementById(objetoid);
-            copyText.select();
-            // copyText.setSelectionRange(0, 99999999);
+        function CopyToClipboard(objetoid) {
+
+            $("#" + objetoid).select();
+            document.execCommand('copy');
+
+        }
+
+
+        function copyText() {
+            var text = document.querySelectorAll('#' + containerid + ' .CodeMirror-code')
+            console.log(text);
+        }
+
+
+        //http://jsfiddle.net/MrPolywhirl/3phdkg66/
+        function copyText4(target) {
+            var _target = target;
+            if (typeof _target === 'string') {
+                _target = document.querySelector(_target);
+            }
+            if (_target === null || !_target.tagName === undefined) {
+                throw new Error('Element does not reference a CodeMirror instance.');
+            }
+
+            if (_target.className.indexOf('CodeMirror') > -1) {
+                return _target.CodeMirror;
+            }
+
+            if (_target.tagName === 'TEXTAREA') {
+                return _target.nextSibling.CodeMirror;
+            }
+
+            return null;
+        };
+
+        function copyText3(containerid) {
+            //alert(document.body.createTextRange().moveToElementText($("#"+containerid+ ' > .CodeMirror-code').select()) );
+            console.log(document.querySelectorAll('#' + containerid + ' .CodeMirror-code'));
+            console.log(document.querySelectorAll('#' + containerid + ' .CodeMirror-code'));
+            //    console.log(document.querySelectorAll('#'+containerid +' .CodeMirror-code').value);
+
+            var doc = document.getElementById(containerid);
+            var notes = null;
+            // for (var i = 0; i < doc.childNodes.length; i++) {
+            for (var i = 0; i < document.querySelectorAll('#' + containerid + ' .CodeMirror-code').length; i++) {
+                //   console.log(doc.childNodes[i].className);
+                // if (doc.childNodes[i].className == "CodeMirror-code") {
+                if (document.querySelectorAll('#' + containerid + ' .CodeMirror-code')[i].className == "CodeMirror-code") {
+                    notes = document.querySelectorAll('#' + containerid + ' .CodeMirror-code')[i];
+                    console.log(document.querySelectorAll('#' + containerid + ' .CodeMirror-code')[i]);
+                    break;
+                }
+            }
+
+            var range = document.createRange();
+            window.getSelection();
+            // range.selectNode(notes);
+            // window.getSelection().removeAllRanges(); // clear current selection
+            // window.getSelection().addRange(range); // to select text
             document.execCommand("copy");
-            alert("Copied the text: " + copyText.value);
+            // window.getSelection().removeAllRanges();// to deselect
+
 
         }
     </script>

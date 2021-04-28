@@ -16,8 +16,10 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
 
             $table->string('usuario', 255)->primary();
-            $table->unsignedInteger('empleado_id')->nullable();
-            $table->unsignedInteger('cliente_id')->nullable();
+            //$table->unsignedInteger('empleado_id')->nullable();
+            $table->smallInteger('empleado_id')->nullable();
+            $table->smallInteger('cliente_id')->nullable();
+            //$table->unsignedInteger('cliente_id')->nullable();
             $table->string('clave')->nullable();
             $table->timestamp('fecha_ingreso')->nullable();
             $table->char('estado')->default('A');

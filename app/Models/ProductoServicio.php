@@ -24,13 +24,20 @@ class ProductoServicio extends Model
 
     public function clasificacion()
     {
-        return $this->belongsTo(Clasificacion::class, 'producto_servicio_id');
+        return $this->belongsTo(Clasificacion::class, 'clasificacion_id');
     }
     public function unidad()
     {
-        return $this->belongsTo(Unidad::class, 'producto_servicio_id');
+        return $this->belongsTo(Unidad::class, 'unidad_id');
+    }
+
+    public function vehiculos()
+    {
+        return $this->hasMany(Cliente::class, 'producto_servicio_id');
+    }
+    public function reservas()
+    {
+        return $this->hasMany(Cliente::class, 'producto_servicio_id');
     }
 
 }
-
-?>

@@ -14,7 +14,7 @@ class CreateSectoresTable extends Migration
     public function up()
     {
         Schema::create('sectores', function (Blueprint $table) {
-            $table->tinyInteger('id',true);
+            $table->tinyInteger('id',true)->unsigned();
             $table->unsignedTinyInteger('sucursal_id')->nullable();
             $table->string('descripcion','80')->nullable();
 

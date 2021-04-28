@@ -546,7 +546,7 @@
                                     >
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon pl-3 col-12 ">
-                                                <i class="fa fa-clipboard-check "></i>
+                                                <i class="fa fa-clipboard "></i>
                                             </div>
                                         </div>
                                      Recepcionar
@@ -555,6 +555,31 @@
                                 <div class="form-group">
                                 <span class="text-sm">
                               Listado basado en las reservas pendientes de HOY
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- OTS--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3  ">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
+
+                                <div class="form-group">
+                                    <button class="btn btn-lg bg-maroon p-xl-4  col-12"
+                                            onclick="window.location='{{ url("ot") }}'"
+                                    >
+                                        <div class="info-box bg-maroon shadow-none">
+                                            <div class="info-box-icon pl-2 col-12 ">
+                                                <i class="fa fa-clipboard-list "></i>
+                                            </div>
+                                        </div>
+                                        OT
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                <span class="text-sm">
+                              Listado de las órdenes de trabajo pendientes
                                     </span>
                                 </div>
                             </div>
@@ -571,7 +596,7 @@
                                     >
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon pl-3  col-12">
-                                                <i class="fa fa-tasks "></i>
+                                                <i class="fa fa-envelope-open-text "></i>
                                             </div>
                                         </div>
 
@@ -618,12 +643,12 @@
                             <div class="card-body text-center m-0 p-0"  style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg btn-outline-dark disabled  p-xl-4 col-12 "
+                                    <button class="btn btn-lg bg-maroon disabled  p-xl-4 col-12 "
                                             onclick="window.location='{{ url("verificaot") }}'"
                                     >
-                                        <div class="info-box shadow-none">
+                                        <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon  col-12 ">
-                                                <i class="fa fa-clipboard-list   "></i>
+                                                <i class="fa fa-tasks"></i>
                                             </div>
                                         </div>
 
@@ -644,9 +669,9 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg btn-outline-dark   disabled  p-xl-4 col-12 ">
+                                    <button class="btn btn-lg bg-maroon   disabled  p-xl-4 col-12 ">
 
-                                        <div class="info-box shadow-none">
+                                        <div class="info-box  bg-maroon shadow-none">
                                             <div class="info-box-icon  col-12 ">
                                                 <i class="fa fa-clipboard-check  "></i>
                                             </div>
@@ -669,9 +694,9 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg btn-outline-dark col-12  disabled  p-xl-4 col-12 ">
+                                    <button class="btn btn-lg bg-maroon col-12  disabled  p-xl-4 col-12 ">
 
-                                        <div class="info-box shadow-none">
+                                        <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon col-12  ">
                                                 <i class="fa fa-car  "></i>
                                             </div>
@@ -683,6 +708,31 @@
                                 <div class="form-group">
                             <span class="text-sm">
                           Listado basado en las reservas pendientes de HOY
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Bitacora--}}
+                    <div class="col-lg-4   ">
+                        <div class="card p-3">
+                            <div class="card-body text-center m-0 p-0" style="overflow: hidden">
+
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-outline-dark col-12  disabled  p-xl-4 col-12 ">
+
+                                        <div class="info-box shadow-none">
+                                            <div class="info-box-icon col-12  ">
+                                                <i class="fa fa-history  "></i>
+                                            </div>
+                                        </div>
+
+                                        Bitácora
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                            <span class="text-sm">
+                          Historial de acciones para una OT de cliente determinado
                                 </span>
                                 </div>
                             </div>

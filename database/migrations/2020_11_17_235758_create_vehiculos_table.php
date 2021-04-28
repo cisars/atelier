@@ -14,8 +14,10 @@ class CreateVehiculosTable extends Migration
     public function up()
     {
         Schema::create('vehiculos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('cliente_id')->nullable();
+            //$table->increments('id');
+            $table->smallInteger('id',true);
+            $table->smallInteger('cliente_id')->nullable();
+          //  $table->unsignedInteger('cliente_id')->nullable();
             $table->unsignedTinyInteger('modelo_id')->nullable();
             $table->string('chapa',12)->nullable();
             $table->string('chasis',12)->nullable();

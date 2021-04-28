@@ -14,7 +14,8 @@ class CreateEmpleadosTable extends Migration
     public function up()
     {
         Schema::create('empleados', function (Blueprint $table) {
-            $table->increments('id' );
+            //$table->increments('id' );
+            $table->smallInteger('id',true);
             $table->string('nombres',40)->nullable();
             $table->string('apellidos',40)->nullable();
             $table->float('ci',12,0)->nullable();
