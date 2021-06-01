@@ -21,16 +21,16 @@ class OrdenServicioGen extends Controller
                 'columnas'  =>
                     [
                         $genisa->parametros('id',               'hidden',               'tinyint', '' ,  'notnull', 'pk', 'autoincrement','','','',''),
-                        $genisa->parametros('ot_id',            'OT',                'int',  '',   'notnull','fk','',
+                        $genisa->parametros('ot_id',            'OT',                   'int',  '',      'notnull','pkfk','',
                             'OrdenTrabajo','ordenes_trabajos','orden_trabajo','descripcion',''),
                         $genisa->parametros('servicio_id',      'Servicio',                'smallint',  '',   'notnull','fk','',
                             'Servicio','servicios','servicio','descripcion',''),
-                        $genisa->parametros('cantidad',         'Cantidad',        'numeric',  '8,2',   'notnull','','','','','','',''),
+                        $genisa->parametros('cantidad',         'Cantidad',             'numeric',  '8,2',   'notnull','','','','','','',''),
                         $genisa->parametros('descripcion',      'Descripción',          'varchar',  '200',   'notnull','','','','','','',''),
-                        $genisa->parametros('realizado',        'Realizado',                 'char',     '1',   'notnull','cons','','','realizados','','',''),
-                        $genisa->parametros('verificado',       'Verificado',                 'char',     '1',   'notnull','cons','','','verificados','','',''),
-                        $genisa->parametros('fecha_registro',   'Fecha de Registro',      'date',      '',   'null','','','','','','',''),
-                        $genisa->parametros('usuario',           'Usuario',              'varchar',  '12',   'notnull','fk','',
+                        $genisa->parametros('realizado',        'Realizado',            'char',     '1',     'notnull','cons','','','realizados','','',''),
+                        $genisa->parametros('verificado',       'Verificado',           'char',     '1',     'notnull','cons','','','verificados','','',''),
+                        $genisa->parametros('fecha_registro',   'Fecha de Registro',    'date',     '',      'null',   '','','','','','',''),
+                        $genisa->parametros('usuario',           'Usuario',             'varchar',  '12',    'notnull','fk','',
                             'Usuario','usuarios','usuario','usuario',''),
                         $genisa->parametros('descripcion_verificacion',       'Descripción',          'varchar',  '200',   'notnull','','','','','','',''),
 

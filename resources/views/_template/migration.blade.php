@@ -1,5 +1,4 @@
 {{'<?php'}}
-
 {{--CONFIGURACION--}}
 @php
     $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
@@ -11,7 +10,13 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+@php
+    $cantidadPK = 0;  // CantidadPK
+        foreach ($gen->tabla['columnas'] as $dataCol){
+        if ($dataCol['cardinalidad'] == 'pk' || $dataCol['cardinalidad'] == 'pkfk'){
+            $cantidadPK++ ;
+        }
+    } @endphp
 
 class Create{{$NOMBRES}}Table extends Migration
 {
@@ -19,6 +24,41 @@ class Create{{$NOMBRES}}Table extends Migration
     {
         Schema::create('{{$nombres}}', function (Blueprint $table) {
 
+@if ($cantidadPK > 1 )
+@foreach ($gen->tabla['columnas'] as $dataCol)
+@php // PK @endphp
+@if ($dataCol['cardinalidad'] == 'pk' )
+@if ($dataCol['tipo'] == 'int')
+            $table->integer('{{$dataCol['nombre']}}') ;
+@endif
+@if ($dataCol['tipo'] == 'smallint')
+            $table->smallInteger('{{$dataCol['nombre']}}');
+@endif
+@if ($dataCol['tipo'] == 'tinyint')
+            $table->tinyInteger('{{$dataCol['nombre']}}');
+@endif
+@if ($dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'char' )
+            $table->string('{{$dataCol['nombre']}}', {{$dataCol['longitud']}}) ;
+@endif
+@endif
+@php // PKFK @endphp
+@if ($dataCol['cardinalidad'] == 'pkfk')
+@if ($dataCol['tipo'] == 'int')
+            $table->unsignedInteger('{{$dataCol['nombre']}}') ;
+@endif
+@if ($dataCol['tipo'] == 'smallint')
+            $table->unsignedSmallInteger('{{$dataCol['nombre']}}') ;
+@endif
+@if ($dataCol['tipo'] == 'tinyint')
+            $table->unsignedTinyInteger('{{$dataCol['nombre']}}') ;
+@endif
+@if ($dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'char' )
+            $table->string('{{$dataCol['nombre']}}')->nullable();
+@endif
+@endif
+@endforeach
+@endif @php // FIN SI $cantidadPK > 1  @endphp
+@if ($cantidadPK == 1 )
 @foreach ($gen->tabla['columnas'] as $dataCol)
 @php // PK @endphp
 @if ($dataCol['cardinalidad'] == 'pk' )
@@ -30,10 +70,10 @@ $predeterminado = 'true';
 }
 @endphp
 @if ($dataCol['tipo'] == 'int')
-            $table->increments('{{$dataCol['nombre']}}') ;
+            $table->integer('{{$dataCol['nombre']}}',{{$predeterminado}})->unsigned();
 @endif
 @if ($dataCol['tipo'] == 'smallint')
-            $table->smallInteger('{{$dataCol['nombre']}}',{{$predeterminado}})->unsigned();;
+            $table->smallInteger('{{$dataCol['nombre']}}',{{$predeterminado}})->unsigned();
 @endif
 @if ($dataCol['tipo'] == 'tinyint')
             $table->tinyInteger('{{$dataCol['nombre']}}',{{$predeterminado}})->unsigned();
@@ -42,8 +82,12 @@ $predeterminado = 'true';
             $table->string('{{$dataCol['nombre']}}', {{$dataCol['longitud']}})->primary();
 @endif
 @endif
+@endforeach
+@endif @php // FIN SI $cantidadPK == 1  @endphp
+
+@foreach ($gen->tabla['columnas'] as $dataCol)
 @php // FK @endphp
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
 @if ($dataCol['tipo'] == 'int')
             $table->unsignedInteger('{{$dataCol['nombre']}}')->nullable();
 @endif
@@ -78,6 +122,9 @@ $predeterminado = 'true';
 @endif
 @endif
 @endforeach
+@if ($cantidadPK > 1 ) @php $coma = ''; @endphp
+           $table->primary([@foreach ($gen->tabla['columnas'] as $dataCol)@if($dataCol['cardinalidad'] == 'pk' || $dataCol['cardinalidad'] == 'pkfk'){{$coma}}'{{$dataCol['nombre']}}'@endif@php $coma = ',';@endphp@endforeach]);
+@endif
 
 @foreach ($gen->tabla['relaciones'] as $dataRel)
 @if($dataRel['eloquent'] == 'belongsTo')
@@ -91,6 +138,71 @@ $predeterminado = 'true';
 @endforeach
             $table->timestamps();
         });
+
+@if ($cantidadPK > 1 )
+@foreach ($gen->tabla['columnas'] as $dataCol)
+@php
+    if($dataCol['predeterminado'] == ''){
+    $predeterminado = 'false';
+    $predeterminadoTXT = '';
+    }else{
+    $predeterminado = 'true';
+    $predeterminadoTXT = 'AUTO_INCREMENT';
+    }
+    if($dataCol['nulo'] == 'notnull'){
+    $ifnull = 'false';
+    $ifnullTXT = 'NOT NULL';
+    }else{
+    $ifnull = 'true';
+    $ifnullTXT = 'NULL';
+    }
+@endphp
+@if ($dataCol['cardinalidad'] == 'pk' || $dataCol['cardinalidad'] == 'pkfk'  )
+@if($dataCol['tipo'] == 'tiniyint')
+        DB::statement('ALTER TABLE {{$nombres}} MODIFY {{$dataCol['nombre']}} TINYINT {{$ifnullTXT}} {{$predeterminadoTXT}}');
+@endif
+@if($dataCol['tipo'] == 'smallint')
+        DB::statement('ALTER TABLE {{$nombres}} MODIFY {{$dataCol['nombre']}} SMALLINT {{$ifnullTXT}} {{$predeterminadoTXT}}');
+@endif
+@endif
+@endforeach
+@if($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'char')
+        Schema::table('{{$nombres}}', function (Blueprint $table) {
+@foreach ($gen->tabla['columnas'] as $dataCol)
+@if($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'char')
+@php
+    if($dataCol['predeterminado'] == ''){
+    $predeterminado = 'false';
+    $predeterminadoTXT = '';
+    }else{
+    $predeterminado = 'true';
+    $predeterminadoTXT = 'AUTO_INCREMENT';
+    }
+    if($dataCol['nulo'] == 'notnull'){
+    $ifnull = 'false';
+    $ifnullTXT = 'NOT NULL';
+    }else{
+    $ifnull = 'true';
+    $ifnullTXT = 'NULL';
+    }
+@endphp
+@php // PK o PKFK @endphp
+@if ($dataCol['cardinalidad'] == 'pk' || $dataCol['cardinalidad'] == 'pkfk'  )
+@if ($dataCol['tipo'] == 'int')
+            $table->integer('{{$dataCol['nombre']}}', {{$predeterminado}}, true)->change();
+@endif
+@if ($dataCol['tipo'] == 'char' || $dataCol['tipo'] == 'char' )
+            $table->string('{{$dataCol['nombre']}}', {{$dataCol['longitud']}}) )->change();
+@endif
+@if ($dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'char' )
+            $table->string('{{$dataCol['nombre']}}', {{$dataCol['longitud']}}) )->change();
+@endif
+@endif
+@endif
+@endforeach
+        });
+@endif
+@endif
     }
 
     public function down()

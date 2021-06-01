@@ -567,7 +567,7 @@
 
                                 <div class="form-group">
                                     <button class="btn btn-lg bg-maroon p-xl-4  col-12"
-                                            onclick="window.location='{{ url("ot") }}'"
+                                            onclick="window.location='{{ url("orden_trabajo") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon pl-2 col-12 ">

@@ -1,10 +1,12 @@
 {{'<?php'}}
 {{--CONFIGURACION--}}
-// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] {{ $NOMBRES  = $gen->tabla['ZNOMBRESZ']}}
-// $NOMBRE   = $gen->tabla['ZNOMBREZ'] {{ $NOMBRE   = $gen->tabla['ZNOMBREZ']}}
-// $nombres  = $gen->tabla['ZnombresZ'] {{ $nombres  = $gen->tabla['ZnombresZ']}}
-// $nombre   = $gen->tabla['ZnombreZ'] {{ $nombre   = $gen->tabla['ZnombreZ']}}
+@php
+    $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
+    $NOMBRE   = $gen->tabla['ZNOMBREZ'] ;
+    $nombres  = $gen->tabla['ZnombresZ'] ;
+    $nombre   = $gen->tabla['ZnombreZ'] ;
 // GENISA Begin
+@endphp
 ?>
 {{'@'}}extends('adminlte::page')
 {{'@'}}section('title', 'Listado de {{ $NOMBRES }}')
@@ -52,7 +54,7 @@
                             {{'@'}}foreach(${{ $nombres }} as $key => ${{ $nombre }})
                                 <tr class="">
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk' )
+@if ($dataCol['cardinalidad'] == 'fk'  || $dataCol['cardinalidad'] == 'pkfk')
                                     <td>{{'{'}}{{'{'}} {{'$'}}{{ $nombre }}->{{ $dataCol['fk'] }}->{{ $dataCol['orderby'] }}      {{'}'}}{{'}'}}</td>
 @else
                                     <td>{{'{'}}{{'{'}} {{'$'}}{{ $nombre }}->{{ $dataCol['nombre'] }}      {{'}'}}{{'}'}}</td>

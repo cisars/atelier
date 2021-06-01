@@ -21,23 +21,27 @@ class EntradaDetalleGen extends Controller
                 'columnas'  =>
                     [
                         $genisa->parametros('item',               'Item',               'tinyint', '' ,  'notnull', 'pk', '','','','',''),
-                        $genisa->parametros('entrada_id',        'Entrada',             'int',  '',   'notnull','fk','',
+                        $genisa->parametros('entrada_id',        'Entrada',             'int',  '',   'notnull','pkfk','',
                             'Entrada','entradas','entrada','id',''),
                         $genisa->parametros('sector_id',      'Sector Id',               'tinyint',  '',   'notnull','fk','',
                             'Sector','sectores','sector','sector_id',''),
                         $genisa->parametros('producto_id',     'Producto Id',            'smallint',  '',   'notnull','fk','',
-                            'Producto','productos','producto','producto_id',''),
+                            'ProductoServicio','productos_servicios','producto_servicio','producto_id',''),
                         $genisa->parametros('cantidad',        'Cantidad',              'numeric',  '8,2',   'notnull','','','','','','',''),
 
                     ],
                 'relaciones'  =>
                     [
                         $genisa->foreign('entrada_id','id','entradas','CASCADE','CASCADE',
-                            'entrada', 'belongsTo', 'Emtrada::class', 'entrada_id','', ''),
-                        $genisa->foreign('sector_id','id','existencias_manejos','CASCADE','CASCADE',
-                            'sector', 'belongsToMany', 'ExistenciaManejo::class', 'ot_id','', ''),
-                        $genisa->foreign('producto_id','id','existencias_manejos','CASCADE','CASCADE',
-                            'producto', 'belongsToMany', 'ExistenciaManejo::class', 'ot_id','', ''),
+                            'entrada', 'belongsTo', 'Entrada::class', 'entrada_id','', ''),
+                        $genisa->foreign('sector_id','id','sectores','CASCADE','CASCADE',
+                            'sector', 'belongsTo', 'Sector::class', 'sector_id','', ''),
+                        $genisa->foreign('producto_id','id','productos_servicios','CASCADE','CASCADE',
+                            'producto_servicio', 'belongsTo', 'ProductoServicio::class', 'producto_id','', ''),
+//                        $genisa->foreign('sector_id','id','existencias_manejos','CASCADE','CASCADE',
+//                            'sector', 'belongsToMany', 'ExistenciaManejo::class', 'ot_id','', ''),
+//                        $genisa->foreign('producto_id','id','existencias_manejos','CASCADE','CASCADE',
+//                            'producto', 'belongsToMany', 'ExistenciaManejo::class', 'ot_id','', ''),
 
                     ],
                 'constantes'  =>

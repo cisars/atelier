@@ -16,6 +16,7 @@ class TalleresUsuarios extends Migration
         Schema::create('talleres_usuarios', function (Blueprint $table) {
             $table->tinyInteger('taller_id')->unsigned();
             $table->string('usuario')->nullable();
+            $table->primary(['taller_id','usuario']);
 
             $table->timestamps();
 

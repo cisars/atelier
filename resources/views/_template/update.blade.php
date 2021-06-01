@@ -1,13 +1,15 @@
 {{'<?php'}}
 {{--CONFIGURACION--}}
-// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] {{ $NOMBRES  = $gen->tabla['ZNOMBRESZ']}}
-// $NOMBRE   = $gen->tabla['ZNOMBREZ'] {{ $NOMBRE   = $gen->tabla['ZNOMBREZ']}}
-// $nombres  = $gen->tabla['ZnombresZ'] {{ $nombres  = $gen->tabla['ZnombresZ']}}
-// $nombre   = $gen->tabla['ZnombreZ'] {{ $nombre   = $gen->tabla['ZnombreZ']}}
+@php
+    $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
+    $NOMBRE   = $gen->tabla['ZNOMBREZ'] ;
+    $nombres  = $gen->tabla['ZnombresZ'] ;
+    $nombre   = $gen->tabla['ZnombreZ'] ;
 // GENISA Begin
-
+@endphp
 namespace App\Http\Requests\{{$NOMBRE}};
 use Illuminate\Foundation\Http\FormRequest;
+
 class Update{{$NOMBRE}}Request extends FormRequest
 {
     /**
@@ -30,9 +32,9 @@ class Update{{$NOMBRE}}Request extends FormRequest
     @if (  $dataCol['cardinalidad'] == '') // {{$slash = ''}} {{$propiedades = ''}} @if ($dataCol['nulo'] == 'notnull' ) {{$propiedades = 'required' . $slash . $propiedades}} {{$slash = '|'}} alfa @endif @if ($dataCol['longitud'] != '' ) {{$propiedades = 'max:'.$dataCol['longitud'] . $slash . $propiedades}}  {{$slash = '|'}} beta @endif
 
             '{{$dataCol['nombre']}}' =>'{{$propiedades}}', @endif
-    @if (  $dataCol['cardinalidad'] == 'pk')
+    @if (  $dataCol['cardinalidad'] == 'pk' || $dataCol['cardinalidad'] == 'pkfk')
 //            '{{$dataCol['nombre']}}' =>'required', @endif
-    @if (  $dataCol['cardinalidad'] == 'fk')
+    @if (  $dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
 
             '{{$dataCol['nombre']}}' =>'required', @endif
     @if (  $dataCol['cardinalidad'] == 'unique') // {{$slash = ''}} {{$propiedades = ''}} @if ($dataCol['nulo'] == 'notnull' ) // {{$propiedades = 'required' . $slash . $propiedades}} // {{$slash = '|'}} @endif @if ($dataCol['longitud'] != '' )// {{$propiedades = 'max:'.$dataCol['longitud'] . $slash . $propiedades}} // {{$slash = '|'}} @endif //{{$propiedades = $propiedades . $slash . 'unique:'.$nombres.','.$dataCol['nombre']}}

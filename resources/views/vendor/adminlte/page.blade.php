@@ -169,24 +169,24 @@
     @if(
     Route::current()->getName() == 'maketemplate' ||
     Route::current()->getName() == 'empleadogen' ||
-    Route::current()->getName() == 'productoserviciogen' ||
+    Route::current()->getName() == 'producto_serviciogen' ||
     Route::current()->getName() == 'parametrogen' ||
     Route::current()->getName() == 'descansogen' ||
     Route::current()->getName() == 'vehiculogen' ||
     Route::current()->getName() == 'clientegen' ||
     Route::current()->getName() == 'reservagen' ||
     Route::current()->getName() == 'recepciongen' ||
-    Route::current()->getName() == 'ordenrepuestogen' ||
-    Route::current()->getName() == 'ordenserviciogen' ||
-    Route::current()->getName() == 'ordentrabajogen' ||
+    Route::current()->getName() == 'orden_repuestogen' ||
+    Route::current()->getName() == 'orden_serviciogen' ||
+    Route::current()->getName() == 'orden_trabajogen' ||
 
     Route::current()->getName() == 'feriadogen' ||
     Route::current()->getName() == 'entradagen' ||
-    Route::current()->getName() == 'entradadetallegen' ||
-    Route::current()->getName() == 'ordenmecanicogen' ||
-    Route::current()->getName() == 'empleadomaquinagen' ||
+    Route::current()->getName() == 'entrada_detallegen' ||
+    Route::current()->getName() == 'orden_mecanicogen' ||
+    Route::current()->getName() == 'empleado_maquinagen' ||
     Route::current()->getName() == 'facturagen' ||
-    Route::current()->getName() == 'facturadetallegen' ||
+    Route::current()->getName() == 'factura_detallegen' ||
     Route::current()->getName() == 'entregagen'
 )
 {{--                <link href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"       rel="stylesheet">--}}

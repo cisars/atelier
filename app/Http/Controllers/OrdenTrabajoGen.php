@@ -68,6 +68,8 @@ class OrdenTrabajoGen extends Controller
                             'ordenes_repuestos', 'hasMany', 'OrdenTrabajo::class', 'orden_repuesto_id','', ''),
                         $genisa->foreign('entrega_id','id','entregas','CASCADE','CASCADE',
                             'entregas', 'hasMany', 'OrdenTrabajo::class', 'entrega_id','', ''),
+                        $genisa->foreign('entrada_id','id','entradas','CASCADE','CASCADE',
+                            'entradas', 'hasMany', 'OrdenTrabajo::class', 'entrada_id','', ''),
                         $genisa->foreign('orden_mecanico_id','id','ordenes_mecanicos','CASCADE','CASCADE',
                             'ordenes_mecanicos', 'hasMany', 'OrdenTrabajo::class', 'orden_mecanico_id','', ''),
                         $genisa->foreign('factura_id','id','facturas','CASCADE','CASCADE',
@@ -78,12 +80,12 @@ class OrdenTrabajoGen extends Controller
                 'constantes'  =>
                     [
 
-                        $genisa->constantes('tipo',         'TIPO_UNO',    	            '0' , 'tipos',         'Tipo', 	    'cero'),
-                        $genisa->constantes('estado',         'ESTADO_PENDIENTE',          'p' , 'estados',       'Estado', 	'Estado Pendiente'),
-                        $genisa->constantes('estado',         'ESTADO_CANCELADO',          'c' , 'estados',       'Estado', 	'Estado Cancelado'),
-                        $genisa->constantes('estado',         'ESTADO_ACEPTADO',           'a' , 'estados',       'Estado', 	'Estado Aceptado'),
-                        $genisa->constantes('prioridad',      'PRIORIDAD_NORMAL',          'n' , 'prioridades',   'Prioridad', 'Prioridad Normal'),
-                        $genisa->constantes('prioridad',      'PRIORIDAD_URGENTE',         'n' , 'prioridades',   'Prioridad', 'Prioridad Urgente'),
+                        $genisa->constantes('tipo',         'TIPO_UNO',    	            '0' , 'tipos',         'Cero', 	    'cero'),
+                        $genisa->constantes('estado',         'ESTADO_PENDIENTE',          'p' , 'estados',       'Estado Pendiente', 	'Estado Pendiente'),
+                        $genisa->constantes('estado',         'ESTADO_CANCELADO',          'c' , 'estados',       'Estado Cancelado', 	'Estado Cancelado'),
+                        $genisa->constantes('estado',         'ESTADO_ACEPTADO',           'a' , 'estados',       'Estado Aceptado', 	'Estado Aceptado'),
+                        $genisa->constantes('prioridad',      'PRIORIDAD_NORMAL',          'n' , 'prioridades',   'Prioridad Normal', 'Prioridad Normal'),
+                        $genisa->constantes('prioridad',      'PRIORIDAD_URGENTE',         'n' , 'prioridades',   'Prioridad Urgente', 'Prioridad Urgente'),
 
                     ]
 

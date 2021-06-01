@@ -1,12 +1,12 @@
 {{'<?php'}}
-
 {{--CONFIGURACION--}}
-// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] {{ $NOMBRES  = $gen->tabla['ZNOMBRESZ']}}
-// $NOMBRE   = $gen->tabla['ZNOMBREZ'] {{ $NOMBRE   = $gen->tabla['ZNOMBREZ']}}
-// $nombres  = $gen->tabla['ZnombresZ'] {{ $nombres  = $gen->tabla['ZnombresZ']}}
-// $nombre   = $gen->tabla['ZnombreZ'] {{ $nombre   = $gen->tabla['ZnombreZ']}}
+@php
+    $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
+    $NOMBRE   = $gen->tabla['ZNOMBREZ'] ;
+    $nombres  = $gen->tabla['ZnombresZ'] ;
+    $nombre   = $gen->tabla['ZnombreZ'] ;
 // GENISA Begin
-
+@endphp
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
@@ -14,7 +14,7 @@ use App\Http\Requests\{{$NOMBRE}}\Store{{$NOMBRE}}Request;
 use App\Http\Requests\{{$NOMBRE}}\Update{{$NOMBRE}}Request;
 use App\Models\{{$NOMBRE}};
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk'  )
 use App\Models\{{$dataCol['FK']}};
 @endif
 @endforeach
@@ -31,11 +31,11 @@ class {{$NOMBRE}}Controller extends Controller
         ${{$nombres}}->each(function (${{$nombre}}) {
 @php $aux = ""; @endphp
 @foreach ($gen->tabla['constantes'] as $dataCons)
-    @if($aux != $dataCons['nombres'])
+@if($aux != $dataCons['nombres'])
         foreach ((new {{$NOMBRE}}())->get{{ucfirst($dataCons['nombres'])}}() as $clave=>$valor)
         trim(${{$nombre}}->{{$dataCons['nombre']}}) == trim($valor) ? ${{$nombre}}->{{$dataCons['nombre']}} = $clave : NULL ;
 @php $aux = $dataCons['nombres']; @endphp
-        @endif
+@endif
 @endforeach
 
         //OPCION 2
@@ -51,7 +51,7 @@ class {{$NOMBRE}}Controller extends Controller
     {
 // Get all data fk tables
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
         ${{$dataCol['fks']}} = {{$dataCol['FK']}}::orderBy('{{$dataCol['orderby']}}', 'ASC')->get();
 @endif
 @endforeach
@@ -67,7 +67,7 @@ class {{$NOMBRE}}Controller extends Controller
         return view('{{$nombre}}.edit')
 // Send all fk variables
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'cons')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'cons' || $dataCol['cardinalidad'] == 'pkfk')
             ->with('{{$dataCol['fks']}}', ${{$dataCol['fks']}})
 @endif
 @endforeach
@@ -87,16 +87,16 @@ class {{$NOMBRE}}Controller extends Controller
             ${{$nombre}} = new {{$NOMBRE}}($request->all());
             ${{$nombre}}->save();
 
-@foreach ($gen->tabla['relaciones'] as $dataCol)
-    @if ($dataCol['eloquent'] == 'belongsToMany' || $dataCol['eloquent'] == 'manyToMany'  )
-           foreach ($request->{{ $dataCol['foreign'] }} as $item) {
-               $talleresusuarios = new {{ $dataCol['related'] }}();
-               $talleresusuarios->{{ $dataCol['foreign'] }}    = $item;
-               $talleresusuarios->{{$nombre}}_id      = $usuario->{{$nombre}}_id;
-               $talleresusuarios->save();
-                Log::info( 'Detalle #'. $item . ' agregado en {{$NOMBRE}}' ) ;
+@foreach ($gen->tabla['relaciones'] as $dataRel)
+@if ($dataRel['eloquent'] == 'belongsToMany' || $dataRel['eloquent'] == 'manyToMany'  )
+           foreach ($request->{{ $dataRel['foreign'] }} as $item) {
+//               ${{ $dataRel['onTable'] }} = new {{ $dataRel['related'] }}();
+//               ${{ $dataRel['onTable'] }}->{{ $dataRel['foreign'] }} = $item;
+//               ${{ $dataRel['onTable'] }}->{{$nombre}}_id  = ${{$nombre}}->id;
+//               ${{ $dataRel['onTable'] }}->save();
+//                Log::info( 'Detalle #{{$dataRel['foreign']}} agregado en {{$dataRel['related']}}' ) ;
            }
-    @endif
+@endif
 @endforeach
             DB::commit();
 
@@ -140,7 +140,7 @@ class {{$NOMBRE}}Controller extends Controller
     {
 // Get all data fk tables
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
         ${{$dataCol['fks']}} = {{$dataCol['FK']}}::orderBy('{{$dataCol['orderby']}}', 'ASC')->get();
 @endif
 @endforeach
@@ -156,7 +156,7 @@ class {{$NOMBRE}}Controller extends Controller
             ->with('{{$nombre}}', ${{$nombre}})
 // Send all fk variables
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
             ->with('{{$dataCol['fks']}}', ${{$dataCol['fks']}})
 @endif
 @endforeach

@@ -47,8 +47,8 @@ return [
 
         'gensystem' => [
             'driver' => 'local',
-            'root' => env('LOCAL_STORAGE_PATH'),
-            'url' => env('LOCAL_STORAGE_PATH')  ,
+            'root' => env('GENISA_STORAGE_PATH'),
+            'url' => env('GENISA_STORAGE_PATH')  ,
         ],
 
         'local' => [

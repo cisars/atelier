@@ -22,15 +22,11 @@ class FeriadoController extends Controller
     public function index()
     {
         $feriados = Feriado::all();
+
         $feriados->each(function ($feriado) {
-
-        foreach ((new Feriado())->getEstados() as $clave=>$valor)
+            foreach ((new Feriado())->getEstados() as $clave=>$valor)
         trim($feriado->estado) == trim($valor) ? $feriado->estado = $clave : NULL ;
-
-        foreach ((new Feriado())->getEstados() as $clave=>$valor)
-        trim($feriado->estado) == trim($valor) ? $feriado->estado = $clave : NULL ;
-
-
+            
         //OPCION 2
         // $feriado->estado === Feriado::ESTADO_ACTIVO   ? $feriado->estado = 'ESTADO_ACTIVO' : "" ;
         // $feriado->estado === Feriado::ESTADO_INACTIVO   ? $feriado->estado = 'ESTADO_INACTIVO' : "" ;

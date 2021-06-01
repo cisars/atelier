@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ProductoServicioGen;
 use Illuminate\Database\Eloquent\Model;
 
 class Sector extends Model
@@ -15,8 +16,11 @@ class Sector extends Model
         return $this->belongsTo(Sucursal::class, 'sucursal_id' );
     }
 
-//    public function existencias_manejos()
-//    {
-//        return $this->hasMany(ExistenciaManejo::class, 'sector', 'sector');
-//    }
+    public function productos_servicios()
+    {
+        return $this->belongsToMany(ProductoServicio::class, 'existencias_manejos',
+            'sector_id', 'producto_id');
+    }
+
+
 }

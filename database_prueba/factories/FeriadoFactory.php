@@ -16,14 +16,9 @@ $factory->define(Feriado::class, function (Faker $faker) {
 
 return [
 //id
-//1 // 9
     'dia' => $faker->numberBetween(0 ,255 ),
-//1 // 9
     'mes' => $faker->numberBetween(0 ,255 ),
     'descripcion' => $faker->text(40),
-//  // 
-// 'a' // ,
-// 'a','i' // ,
     'estado' => $faker->randomElement(['a','i']),
     ];
 });

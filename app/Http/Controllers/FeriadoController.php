@@ -22,18 +22,14 @@ class FeriadoController extends Controller
     public function index()
     {
         $feriados = Feriado::all();
+
         $feriados->each(function ($feriado) {
-
             foreach ((new Feriado())->getEstados() as $clave=>$valor)
-                trim($feriado->estado) == trim($valor) ? $feriado->estado = $clave : NULL ;
-
-            foreach ((new Feriado())->getEstados() as $clave=>$valor)
-                trim($feriado->estado) == trim($valor) ? $feriado->estado = $clave : NULL ;
-
-
-            //OPCION 2
-            // $feriado->estado === Feriado::ESTADO_ACTIVO   ? $feriado->estado = 'ESTADO_ACTIVO' : "" ;
-            // $feriado->estado === Feriado::ESTADO_INACTIVO   ? $feriado->estado = 'ESTADO_INACTIVO' : "" ;
+        trim($feriado->estado) == trim($valor) ? $feriado->estado = $clave : NULL ;
+            
+        //OPCION 2
+        // $feriado->estado === Feriado::ESTADO_ACTIVO   ? $feriado->estado = 'ESTADO_ACTIVO' : "" ;
+        // $feriado->estado === Feriado::ESTADO_INACTIVO   ? $feriado->estado = 'ESTADO_INACTIVO' : "" ;
 
         });
         return view('feriado.index', compact('feriados', $feriados));
@@ -43,7 +39,7 @@ class FeriadoController extends Controller
     {
 // Get all data fk tables
 
-        $feriado   = new Feriado(); //
+        $feriado   = new Feriado(); // 
 // Construct all cons data base model dropdown list char 1
         $estados = $feriado->getEstados() ; // estados
 
@@ -51,13 +47,13 @@ class FeriadoController extends Controller
 // Send all fk variables
             ->with('estados', $estados)
 // Send all cons variables
-            ;
+;
     }
 
     public function store(StoreFeriadoRequest $request )
     {
         try {
-            DB::beginTransaction();
+        DB::beginTransaction();
             $feriado = new Feriado($request->all());
             $feriado->save();
 
@@ -69,7 +65,7 @@ class FeriadoController extends Controller
             return redirect()
                 ->route('feriado.index')
                 ->with('msg', 'Ocurrio un error')
-                ->with('type', 'warning');
+                ->with('type', 'danger');
         }
         Log::info( 'Feriado registro creado' ) ;
         return redirect()
@@ -103,16 +99,16 @@ class FeriadoController extends Controller
     {
 // Get all data fk tables
 
-// Set all function cons base model dropdown list char 1
+// Set all function cons base model dropdown list char 1 
         $estados = $feriado->getEstados() ; // estados
 
         return view('feriado.edit')
             ->with('feriado', $feriado)
 // Send all fk variables
 
-// Send all cons variables
+// Send all cons variables 
             ->with('estados', $estados)  // estados
-            ;
+;
     }
 
     public function update(UpdateFeriadoRequest $request, Feriado $feriado)
@@ -147,3 +143,5 @@ class FeriadoController extends Controller
             ->with('type', 'success');
     }
 }
+
+?>

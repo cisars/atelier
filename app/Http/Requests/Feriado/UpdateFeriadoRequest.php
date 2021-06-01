@@ -8,44 +8,44 @@
 
 namespace App\Http\Requests\Feriado;
 use Illuminate\Foundation\Http\FormRequest;
-class UpdateFeriadoRequest extends FormRequest
+class StoreFeriadoRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     * @return  bool
-     */
+    * Determine if the user is authorized to make this request.
+    * @return  bool
+    */
     public function authorize()
     {
         return true;
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     * @return  array
-     */
+    * Get the validation rules that apply to the request.
+    * @return  array
+    */
     public function rules()
     {
-        return [
-            //            'id' =>'required',                //
-            'dia' =>'required',                    //
-            'mes' =>'required',                    //    required | alfa   max:40|required  | beta
-            'descripcion' =>'max:40|required',                                 //    // required // |   // max:1|required // |
-            'estado' =>'max:1|required',
+    return [
+//           'id' =>'required',    //    
+           'dia' =>'',    //    
+           'mes' =>'',    //    required | alfa   max:40|required  | beta 
+           'descripcion' =>'max:40|required',     //    // required // |   // max:1|required // | 
+           'estado' =>'max:1|required',  
 
         ];
     }
 
     /**
-     * Get the error messages for the defined validation rules.
-     * @return  array
-     */
+    * Get the error messages for the defined validation rules.
+    * @return  array
+    */
     public function messages()
     {
-        return [
-            'descripcion.required' => 'Debe introducir Descripción',
-            'descripcion.max' => 'Descripción no puede exceder 40 de longitud',
-            'estado.required' => 'Debe introducir Estado',
-            'estado.max' => 'Estado no puede exceder 1 de longitud',
+    return [
+        'descripcion.required' => 'Debe introducir Descripción',
+        'descripcion.max' => 'Descripción no puede exceder 40 de longitud',
+        'estado.required' => 'Debe introducir Estado',
+        'estado.max' => 'Estado no puede exceder 1 de longitud',
         ];
     }
 }

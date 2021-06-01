@@ -1,9 +1,12 @@
 {{'<?php'}}
 {{--CONFIGURACION--}}
-// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] {{ $NOMBRES  = $gen->tabla['ZNOMBRESZ']}}
-// $NOMBRE   = $gen->tabla['ZNOMBREZ'] {{ $NOMBRE   = $gen->tabla['ZNOMBREZ']}}
-// $nombres  = $gen->tabla['ZnombresZ'] {{ $nombres  = $gen->tabla['ZnombresZ']}}
-// $nombre   = $gen->tabla['ZnombreZ'] {{ $nombre   = $gen->tabla['ZnombreZ']}}
+@php
+    $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
+    $NOMBRE   = $gen->tabla['ZNOMBREZ'] ;
+    $nombres  = $gen->tabla['ZnombresZ'] ;
+    $nombre   = $gen->tabla['ZnombreZ'] ;
+// GENISA Begin
+@endphp
 // {{$aux = null}}
 // {{$coma = ','}}
 // GENISA Begin
@@ -87,7 +90,7 @@
 @foreach ($gen->tabla['columnas'] as $dataCol)
 @if ($dataCol['visibilidad'] == 'hidden')
 
-@elseif ($dataCol['cardinalidad'] == 'fk')
+@elseif ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--SELECT FK {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
                                             {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}
@@ -103,7 +106,7 @@
                                         </div> {{-- fin form-group col--}}
                                             {{'{'}}{{'{'}}--SELECT FK {{ $dataCol['visibilidad'] }} ------------------------------------ --{{'}'}}{{'}'}}
 
-@elseif ( ($dataCol['tipo'] == 'date' || $dataCol['tipo'] == 'timestamp')  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'   ))
+@elseif ( ($dataCol['tipo'] == 'date' || $dataCol['tipo'] == 'timestamp')  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  && $dataCol['cardinalidad'] != 'pkfk'   ))
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
 
@@ -120,7 +123,7 @@
                                         </div> {{-- fin form-group col--}}
                                         {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }}------------------------------------ --{{'}'}}{{'}'}}
 
-@elseif ( ($dataCol['tipo'] == 'time' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'   ))
+@elseif ( ($dataCol['tipo'] == 'time' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  && $dataCol['cardinalidad'] != 'pkfk'  ))
                                                 <div class="form-group col">
                                                     {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
 
@@ -138,7 +141,7 @@
                                                 {{'{'}}{{'{'}}--DATE TIMESTAMP {{ $dataCol['visibilidad'] }}------------------------------------ --{{'}'}}{{'}'}}
 
 
-@elseif (($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'numeric' || $dataCol['tipo'] == 'smallint' || $dataCol['tipo'] == 'tinyint' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'   ))
+@elseif (($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'numeric' || $dataCol['tipo'] == 'smallint' || $dataCol['tipo'] == 'tinyint' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  && $dataCol['cardinalidad'] != 'pkfk'  ))
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--INPUT NUMERIC {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
                                             {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}
@@ -157,7 +160,7 @@
                                         </div> {{-- fin form-group col--}}
                                         {{'{'}}{{'{'}}--INPUT NUMERIC {{ $dataCol['visibilidad'] }} ------------------------------------ --{{'}'}}{{'}'}}
 
-@elseif (($dataCol['tipo'] == 'char' || $dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'text' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  ))
+@elseif (($dataCol['tipo'] == 'char' || $dataCol['tipo'] == 'varchar' || $dataCol['tipo'] == 'text' )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  && $dataCol['cardinalidad'] != 'pkfk' ))
                                         <div class="form-group col">
                                             {{'{'}}{{'{'}}--INPUT TEXT {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
                                             {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}
@@ -176,7 +179,7 @@
                                         </div> {{-- fin form-group col--}}
                                         {{'{'}}{{'{'}}--INPUT TEXT {{ $dataCol['visibilidad'] }} ------------------------------------ --{{'}'}}{{'}'}}
 
-@elseif (($dataCol['tipo'] == 'boolean'   )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  ))
+@elseif (($dataCol['tipo'] == 'boolean'   )  && ($dataCol['cardinalidad'] != 'fk' && $dataCol['cardinalidad'] != 'cons'  && $dataCol['cardinalidad'] != 'pkfk' ))
                                                 <div class="form-group col">
                                                     {{'{'}}{{'{'}}--INPUT Radio {{ $dataCol['visibilidad'] }} --{{'}'}}{{'}'}}
                                                     {{'{'}}!! Form::label('{{ $dataCol['nombre'] }}', '{{ $dataCol['visibilidad'] }}') !!{{'}'}}

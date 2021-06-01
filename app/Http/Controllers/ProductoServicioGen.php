@@ -29,9 +29,10 @@ class ProductoServicioGen extends Controller
                             'Clasificacion', 'clasificaciones', 'clasificacion', 'descripcion', ''),
                         $genisa->parametros('unidad_id', 'Unidad', 'tinyint', '', 'notnull', 'fk',  '',
                             'Unidad', 'unidades', 'unidad', 'descripcion', ''),
-                        $genisa->parametros('impuesto', 'Impuesto', 'tinyint', '', 'notnull', '',  '',
-                            'Impuesto', 'impuestos', 'impuesto', 'descripcion', ''),
+                        $genisa->parametros('impuesto', 'Impuesto', 'tinyint', '', 'notnull', '',  '', '', '', '', 'descripcion', ''),
                         $genisa->parametros('precio_venta', 'Precio de Venta', 'numeric', '12,0', 'notnull', '',  '', '', '', '', 'descripcion', ''),
+                        $genisa->parametros('estado',            'Estado',               'char',     '1',   'notnull','cons','','','estados','','',''),
+
                     ],
                 'relaciones' =>
                     [
@@ -39,15 +40,20 @@ class ProductoServicioGen extends Controller
                             'clasificacion', 'belongsTo', 'Clasificacion::class', 'clasificacion_id', '', ''),
                         $genisa->foreign('unidad_id', 'id', 'unidades', 'CASCADE', 'CASCADE',
                             'unidad', 'belongsTo', 'Unidad::class', 'unidad_id', '', ''),
+
                         $genisa->foreign('vehiculo_id', 'id', 'vehiculos', 'CASCADE', 'CASCADE',
                             'vehiculos', 'hasMany', 'Cliente::class', 'vehiculo_id', '', ''),
                         $genisa->foreign('reserva_id', 'id', 'reservas', 'CASCADE', 'CASCADE',
                             'reservas', 'hasMany', 'Cliente::class', 'reserva_id', '', ''),
 
+                        $genisa->foreign('sector_id','id','existencias_manejos','CASCADE','CASCADE',
+                            'sectores', 'belongsToMany', 'ExistenciaManejo::class', 'producto_id','sector_id', 'Sector'),
 
                     ],
                 'constantes' =>
                     [
+                        $genisa->constantes('estado',         'ESTADO_ACTIVO',          'a' ,  'estados',       'Estado Activo', 	'Estado Activo'),
+                        $genisa->constantes('estado',         'ESTADO_INACTIVO',         'i' , 'estados',       'Estado Inactivo', 	'Estado Inactivo'),
 
                     ]
 

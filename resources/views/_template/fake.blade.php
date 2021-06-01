@@ -1,11 +1,12 @@
 {{'<?php'}}
 {{--CONFIGURACION--}}
-// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] {{ $NOMBRES  = $gen->tabla['ZNOMBRESZ']}}
-// $NOMBRE   = $gen->tabla['ZNOMBREZ'] {{ $NOMBRE   = $gen->tabla['ZNOMBREZ']}}
-// $nombres  = $gen->tabla['ZnombresZ'] {{ $nombres  = $gen->tabla['ZnombresZ']}}
-// $nombre   = $gen->tabla['ZnombreZ'] {{ $nombre   = $gen->tabla['ZnombreZ']}}
+@php
+    $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
+    $NOMBRE   = $gen->tabla['ZNOMBREZ'] ;
+    $nombres  = $gen->tabla['ZnombresZ'] ;
+    $nombre   = $gen->tabla['ZnombreZ'] ;
 // GENISA Begin
-
+@endphp
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\{{ $NOMBRE }};
@@ -14,7 +15,7 @@ use Faker\Generator as Faker;
 $factory->define({{ $NOMBRE }}::class, function (Faker $faker) {
 // Get all data fk tables
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
     (\App\Models\{{$dataCol['FK']}}::all() !== false ) ?  factory('App\Models\{{$dataCol['FK']}}')->create() : "";
 @endif
 @endforeach
@@ -39,7 +40,7 @@ $coma = ',';
 @endforeach
     '{{$dataCol['nombre']}}' => $faker->randomElement([{{ $auxcons  }}]),
 @endif
-@if($dataCol['cardinalidad'] == 'fk' )
+@if($dataCol['cardinalidad'] == 'fk'  || $dataCol['cardinalidad'] == 'pkfk')
     '{{$dataCol['nombre']}}'  => \App\Models\{{$dataCol['FK']}}::inRandomOrder()->first()->id,
 @endif
 @if( ($dataCol['tipo'] == 'int' || $dataCol['tipo'] == 'numeric' || $dataCol['tipo'] == 'smallint' || $dataCol['tipo'] == 'tinyint' ) && $dataCol['cardinalidad'] == '')

@@ -29,14 +29,14 @@
                         <h3 class="card-title"> Inicializar Modelo <b>{{$gen->tabla['ZNOMBREZ']}}</b></h3>
                     </div>
                     <div class="card-body   ">
-                        <form role="form" id="form" method="POST"
-                              action="{{ route('feriadogen.inicializar', $gen->tabla['ZNOMBREZ']) }}">
+                        <form role="form" id="form1" method="POST"
+                              action="{{ route('maketemplatecontroller.inicializar', $gen->tabla['ZNOMBREZ']) }}">
                             <input name="capital" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}">
                             <input name="archivo" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}Controller.php">
                             <input name="minuscula" type="hidden" value="{{$gen->tabla['ZnombreZ']}}Controller.php">
                             @csrf
                             @method('POST')
-                            <button type="button" disabled class="btn btn-danger"> Procesar</button>
+                            <button type="submit"   class="btn btn-danger"> Procesar</button>
                         </form>
                     </div>
                 </div>
@@ -47,8 +47,8 @@
                         <h3 class="card-title"> Sobreescribir todo <b>{{$gen->tabla['ZNOMBREZ']}}</b></h3>
                     </div>
                     <div class="card-body   ">
-                        <form role="form" id="form" method="POST"
-                              action="{{ route('feriadogen.toFile', $gen->tabla['ZNOMBREZ']) }}">
+                        <form role="form" id="form2" method="POST"
+                              action="{{ route('maketemplatecontroller.toFile', $gen->tabla['ZNOMBREZ']) }}">
                             <input name="capital" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}">
                             <input name="minuscula" type="hidden" value="{{$gen->tabla['ZnombreZ']}}">
                             @csrf
@@ -84,15 +84,15 @@
                         class="btn btn-success pull-right"
                         onclick="copyText('Controller|CodeMirror');"> Copiar
                         <i class="fas fa-clipboard" aria-hidden="true"></i>
-                        <form role="form" id="form" method="POST"
-                              action="{{ route('feriadogen.toFile', $gen->tabla['ZNOMBREZ']) }}">
+                        <form role="form" id="form3" method="POST"
+                              action="{{ route('maketemplatecontroller.toFile', $gen->tabla['ZNOMBREZ']) }}">
                             <input name="capital" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}">
                             <input name="archivo" type="hidden" value="{{$gen->tabla['ZNOMBREZ']}}Controller.php">
                             <input name="minuscula" type="hidden" value="{{$gen->tabla['ZnombreZ']}}Controller.php">
                             <textarea name="elcodigo" style="display: none"> @include('_template.controller',['gen'=>$gen]) </textarea>
                             @csrf
                             @method('POST')
-                            <button type="submit" class="btn "> Crear archivo</button>
+                            <button type="button" disabled class="btn "> Crear archivo</button>
                         </form>
 
                     </button>

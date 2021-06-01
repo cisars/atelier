@@ -16,7 +16,7 @@ class CreateRecepcionesSintomasTable extends Migration
         Schema::create('recepciones_sintomas', function (Blueprint $table) {
             $table->integer('recepcion_id')->unsigned();
             $table->smallInteger('sintoma_id')->nullable();
-
+            $table->primary(['recepcion_id','sintoma_id']);
 
             $table->foreign('recepcion_id')
                 ->references('id')

@@ -544,6 +544,7 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'reserva', 'text' => 'Reservas',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Síntomas de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'recepcion', 'text' => 'Recepción de Vehiculos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'orden_trabajo', 'text' => 'Ordenes de Trabajo', ],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_confirmacionot', 'text' => 'Confirmacion de OTs',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_realizacionot', 'text' => 'Servicios Realizados',],
 
@@ -564,8 +565,8 @@ return [
                     ],
                 ],
 //
-//                [ 'icon_color' => 'gray',   'can' => ['admin', 'doc'], 'url'=> '#',            'text' => 'Ordenes de Trabajo', ],
-//                [ 'icon_color' => 'gray',   'can' => ['admin', 'doc'], 'url'=> '#',            'text' => 'Visualizar Prefacturacion', ],
+
+                [ 'icon_color' => 'gray',   'can' => ['admin', 'doc'], 'url'=> '#',            'text' => 'Visualizar Prefacturacion', ],
             ],
         ],
         [
@@ -577,7 +578,7 @@ return [
             'label_color' => 'info',
             'submenu' => [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_entradarepuesto', 'text' => 'Entrada de Repuestos',],
-//                [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Salida de Repuestos', ],
+                 [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Salida de Repuestos', ],
 
                 [
                     'submenu' => [
@@ -630,22 +631,22 @@ return [
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'maketemplate', 'text' => 'MKT',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleadogen', 'text' => 'EmpleadoGen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'clientegen', 'text' => 'ClienteGen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'productoserviciogen', 'text' => 'ProductoServicioGen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'producto_serviciogen', 'text' => 'ProductoServicioGen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'parametrogen', 'text' => 'Parametrogen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'descansogen', 'text' => 'Descansogen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'reservagen', 'text' => 'Reservagen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'recepciongen', 'text' => 'Recepciongen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordenrepuestogen', 'text' => 'OrdenRepuestogen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordenserviciogen', 'text' => 'OrdenServiciogen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordentrabajogen', 'text' => 'OrdenTrabajogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'orden_repuestogen', 'text' => 'OrdenRepuestogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'orden_serviciogen', 'text' => 'OrdenServiciogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'orden_trabajogen', 'text' => 'OrdenTrabajogen',],
 
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'feriadogen', 'text' => 'Feriadogen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entradagen', 'text' => 'Entradagen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entradadetallegen', 'text' => 'EntradaDetallegen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'ordenmecanicogen', 'text' => 'OrdenMecanicogen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleadomaquinagen', 'text' => 'EmpleadoMaquinagen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entrada_detallegen', 'text' => 'EntradaDetallegen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'orden_mecanicogen', 'text' => 'OrdenMecanicogen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'empleado_maquinagen', 'text' => 'EmpleadoMaquinagen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'facturagen', 'text' => 'Facturagen',],
-                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'facturadetallegen', 'text' => 'FacturaDetallegen',],
+                                            ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'factura_detallegen', 'text' => 'FacturaDetallegen',],
                                             ['icon_color' => 'maroon', 'can' => 'admin', 'url' => 'entregagen', 'text' => 'Entregagen',],
 
 //                                            ['icon_color' => 'yellow', 'can' => 'admin', 'url' => '_reservanormal', 'text' => 'reservanormal ',],

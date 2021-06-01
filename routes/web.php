@@ -37,28 +37,34 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::get('/', 'HomeController@index');
 
+    //GENISA
+    Route::post('/maketemplatecontroller/toFile/', 'MakeTemplateController@toFile')->name('maketemplatecontroller.toFile');
+    Route::post('/maketemplatecontroller/inicializar/', 'MakeTemplateController@inicializar')->name('maketemplatecontroller.inicializar');
+    //------
+
+    //Matriz de Generadores
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/listausuarios', 'UsuarioController@index')->name('listausuarios');
     Route::get('/maketemplate', 'MakeTemplateController@index')->name('maketemplate');
     Route::get('/empleadogen', 'EmpleadoGen@index')->name('empleadogen');
     Route::get('/clientegen', 'ClienteGen@index')->name('clientegen');
-    Route::get('/productoserviciogen', 'ProductoServicioGen@index')->name('productoserviciogen');
+    Route::get('/producto_serviciogen', 'ProductoServicioGen@index')->name('producto_serviciogen');
     Route::get('/parametrogen', 'ParametroGen@index')->name('parametrogen');
     Route::get('/descansogen', 'DescansoGen@index')->name('descansogen');
     Route::get('/reservagen', 'ReservaGen@index')->name('reservagen');
     Route::get('/recepciongen', 'RecepcionGen@index')->name('recepciongen');
 
-    Route::get('/ordenrepuestogen', 'OrdenRepuestoGen@index')->name('ordenrepuestogen');
-    Route::get('/ordenserviciogen', 'OrdenServicioGen@index')->name('ordenserviciogen');
-    Route::get('/ordentrabajogen', 'OrdenTrabajoGen@index')->name('ordentrabajogen');
+    Route::get('/orden_repuestogen', 'OrdenRepuestoGen@index')->name('orden_repuestogen');
+    Route::get('/orden_serviciogen', 'OrdenServicioGen@index')->name('orden_serviciogen');
+    Route::get('/orden_trabajogen', 'OrdenTrabajoGen@index')->name('orden_trabajogen');
 
     Route::get('/feriadogen', 'FeriadoGen@index')->name('feriadogen');
     Route::get('/entradagen', 'EntradaGen@index')->name('entradagen');
-    Route::get('/entradadetallegen', 'EntradaDetalleGen@index')->name('entradadetallegen');
-    Route::get('/ordenmecanicogen', 'OrdenMecanicoGen@index')->name('ordenmecanicogen');
-    Route::get('/empleadomaquinagen', 'EmpleadoMaquinaGen@index')->name('empleadomaquinagen');
+    Route::get('/entrada_detallegen', 'EntradaDetalleGen@index')->name('entrada_detallegen');
+    Route::get('/orden_mecanicogen', 'OrdenMecanicoGen@index')->name('orden_mecanicogen');
+    Route::get('/empleado_maquinagen', 'EmpleadoMaquinaGen@index')->name('empleado_maquinagen');
     Route::get('/facturagen', 'FacturaGen@index')->name('facturagen');
-    Route::get('/facturadetallegen', 'FacturaDetalleGen@index')->name('facturadetallegen');
+    Route::get('/factura_detallegen', 'FacturaDetalleGen@index')->name('factura_detallegen');
     Route::get('/entregagen', 'EntregaGen@index')->name('entregagen');
 
 
@@ -92,12 +98,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/recepcion/factory', 'Recepcion@factory')->name('recepcion.factory');
 
     Route::get('/feriado/factory', 'Feriado@factory')->name('feriado.factory');
-
-
-    Route::post('/feriadogen/toFile/', 'FeriadoGen@toFile')->name('feriadogen.toFile');
-    Route::post('/feriadogen/inicializar/', 'FeriadoGen@inicializar')->name('feriadogen.inicializar');
-
-
+    Route::get('/orden_trabajo/factory', 'OrdenTrabajo@factory')->name('orden_trabajo.factory');
 
     Route::get('/entrada/factory', 'Entrada@factory')->name('entrada.factory');
     Route::get('/entrada_detalle/factory', 'EntradaDetalle@factory')->name('entrada_detalle.factory');

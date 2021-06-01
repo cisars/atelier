@@ -1,12 +1,12 @@
 {{'<?php'}}
-
 {{--CONFIGURACION--}}
-// $NOMBRES  = $gen->tabla['ZNOMBRESZ'] {{ $NOMBRES  = $gen->tabla['ZNOMBRESZ']}}
-// $NOMBRE   = $gen->tabla['ZNOMBREZ'] {{ $NOMBRE   = $gen->tabla['ZNOMBREZ']}}
-// $nombres  = $gen->tabla['ZnombresZ'] {{ $nombres  = $gen->tabla['ZnombresZ']}}
-// $nombre   = $gen->tabla['ZnombreZ'] {{ $nombre   = $gen->tabla['ZnombreZ']}}
+@php
+    $NOMBRES  = $gen->tabla['ZNOMBRESZ'] ;
+    $NOMBRE   = $gen->tabla['ZNOMBREZ'] ;
+    $nombres  = $gen->tabla['ZnombresZ'] ;
+    $nombre   = $gen->tabla['ZnombreZ'] ;
 // GENISA Begin
-
+@endphp
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -44,7 +44,7 @@ class {{$NOMBRE}} extends Model
 @endforeach
 
 @foreach ($gen->tabla['columnas'] as $dataCol)
-@if ($dataCol['cardinalidad'] == 'fk')
+@if ($dataCol['cardinalidad'] == 'fk' || $dataCol['cardinalidad'] == 'pkfk')
     public function {{$dataCol['fk']}}()
     {
         return $this->belongsTo({{$dataCol['FK']}}::class, '{{$dataCol['fk']}}_id');
@@ -57,6 +57,13 @@ class {{$NOMBRE}} extends Model
     public function {{$dataRel['funcion']}}()
     {
         return $this->hasMany({{$dataRel['related']}}, '{{$nombre}}_id');
+    }
+@endif
+@if('belongsToMany' == $dataRel['eloquent'])
+    public function {{$dataRel['funcion']}}()
+    {
+    return $this->belongsToMany({{$dataRel['relation']}}::class, '{{$dataRel['onTable']}}',
+    '{{$dataRel['foreignkey']}}', '{{$dataRel['localownerkey']}}');
     }
 @endif
 @endforeach
