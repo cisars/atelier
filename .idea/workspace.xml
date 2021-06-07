@@ -5,136 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrdenServicio/StoreOrdenServicioRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrdenServicio/UpdateOrdenServicioRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrdenTrabajo/StoreOrdenTrabajoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrdenTrabajo/UpdateOrdenTrabajoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_prueba/Http/Controllers/FeriadoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_prueba/Http/Requests/Feriado/StoreFeriadoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_prueba/Http/Requests/Feriado/UpdateFeriadoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_prueba/Models/Feriado.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122300_create_entradas_detalles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database_prueba/factories/FeriadoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Entrada.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/EntradaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/EntradaDetalle.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/EntradaDetalleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Feriado.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/FeriadoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/OrdenServicio.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/OrdenServicioController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/OrdenTrabajo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/OrdenTrabajoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/ProductoServicio.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/ProductoServicioController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/Entrada/StoreEntradaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/Entrada/UpdateEntradaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/EntradaDetalle/StoreEntradaDetalleRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/EntradaDetalle/UpdateEntradaDetalleRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/Feriado/StoreFeriadoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/Feriado/UpdateFeriadoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/OrdenServicio/StoreOrdenServicioRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/OrdenServicio/UpdateOrdenServicioRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/OrdenTrabajo/StoreOrdenTrabajoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/OrdenTrabajo/UpdateOrdenTrabajoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/ProductoServicio/StoreProductoServicioRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/Requests/ProductoServicio/UpdateProductoServicioRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/EntradaDetalleFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/EntradaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/FeriadoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/OrdenServicioFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/OrdenTrabajoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/ProductoServicioFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/Entrada/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/Entrada/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/EntradaDetalle/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/EntradaDetalle/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/Feriado/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/Feriado/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenServicio/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenServicio/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenTrabajo/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenTrabajo/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/ProductoServicio/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/GenisaFiles/views/ProductoServicio/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/orden_servicio/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/orden_servicio/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/orden_trabajo/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources_prueba/views/Feriado/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources_prueba/views/Feriado/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntradaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntradaDetalleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaDetalleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntradaDetalleGen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntradaDetalleGen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FeriadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FeriadoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FeriadoGen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FeriadoGen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MakeTemplateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MakeTemplateController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenServicioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenServicioGen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenServicioGen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoGen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoGen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioGen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioGen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Entrada/StoreEntradaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Entrada/StoreEntradaRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Entrada/UpdateEntradaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Entrada/UpdateEntradaRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/EntradaDetalle/StoreEntradaDetalleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/EntradaDetalle/StoreEntradaDetalleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/EntradaDetalle/UpdateEntradaDetalleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/EntradaDetalle/UpdateEntradaDetalleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Feriado/StoreFeriadoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Feriado/StoreFeriadoRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Feriado/UpdateFeriadoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Feriado/UpdateFeriadoRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProductoServicio/StoreProductoServicioRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ProductoServicio/StoreProductoServicioRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProductoServicio/UpdateProductoServicioRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ProductoServicio/UpdateProductoServicioRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Entrada.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Entrada.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/EntradaDetalle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EntradaDetalle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Feriado.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Feriado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenServicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductoServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductoServicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sector.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EntradaDetalleFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EntradaDetalleFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EntradaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EntradaFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/FeriadoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/FeriadoFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/OrdenServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/OrdenServicioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/OrdenTrabajoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/OrdenTrabajoFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProductoServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductoServicioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_18_001016_talleres_usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_18_001016_talleres_usuarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_19_020407_create_recepciones_sintomas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_19_020407_create_recepciones_sintomas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_27_004824_create_productos_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_27_004824_create_productos_servicios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_26_122252_create_entradas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122252_create_entradas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_26_122300_create_entrada_detalles_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/Factory/FeriadoFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/StoreFeriadoRequest.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/UpdateFeriadoRequest.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/edit.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/Feriado/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/FeriadoController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/FeriadoModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Mail/Test/aaaa/2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/controller.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/controller.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/edit_backup.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/edit_backup.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/fake.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/fake.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/matrix.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/matrix.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/migration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/migration.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/model.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/model.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/store.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/store.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_template/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_template/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entrada/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entrada/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entrada_detalle/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada_detalle/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entrada_detalle/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada_detalle/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/feriado/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feriado/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/feriado/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feriado/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/adminlte/page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -420,14 +291,7 @@
       <workItem from="1619621816985" duration="7696000" />
       <workItem from="1619716446934" duration="46106000" />
       <workItem from="1621378970377" duration="5140000" />
-      <workItem from="1622554905857" duration="286000" />
-    </task>
-    <task id="LOCAL-00020" summary="Procfile+Heroku command line VII - Procfile fix">
-      <created>1604052534213</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1604052534213</updated>
+      <workItem from="1622554905857" duration="2237000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>
@@ -765,7 +629,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619608809599</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="commit para diego">
+      <created>1622555335537</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1622555335537</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -773,7 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XIII recorrido constantes" />
     <MESSAGE value="Fix Update Request, no comprobaba campos unicos. Se retiro RULE. Barra de navegacion principal modificada segun interfaces" />
     <MESSAGE value="Fix bootstrap columnas MD card para visualizar en dispositivos moviles.&#10;Crud Unidades agregado" />
     <MESSAGE value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
@@ -798,6 +668,7 @@
     <MESSAGE value="Fix para buscador del cliente con input list" />
     <MESSAGE value="livewire para vehiculos" />
     <MESSAGE value="genisa 95 porciento finalizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="genisa 95 porciento finalizado" />
+    <MESSAGE value="commit para diego" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit para diego" />
   </component>
 </project>
