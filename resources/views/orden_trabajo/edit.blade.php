@@ -59,19 +59,27 @@
 
         window.livewire.on('test', () => {
 
-            if ( $.fn.DataTable.isDataTable('#lista') ) {
-                $('#lista').DataTable().destroy();
-            }
 
-            $('#lista').dataTable({
-                "autoWidth":false,
-                "info":false,
-                "JQueryUI":true,
-                "ordering":true,
-                "paging":false,
-                "scrollY":"500px",
-                "scrollCollapse":true
-            });
+        });
+
+        $('#lista1').dataTable({
+            "autoWidth":false,
+            "info":false,
+            "JQueryUI":true,
+            "ordering":true,
+            "paging":false,
+            "scrollY":"500px",
+            "scrollCollapse":true
+        });
+
+        $('#lista2').dataTable({
+            "autoWidth":false,
+            "info":false,
+            "JQueryUI":true,
+            "ordering":true,
+            "paging":false,
+            "scrollY":"500px",
+            "scrollCollapse":true
         });
     </script>
 @endsection

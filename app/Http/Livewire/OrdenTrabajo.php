@@ -5,20 +5,34 @@ namespace App\Http\Livewire;
 use App\Models\Cliente;
 use App\Models\Empleado;
 use App\Models\Grupo;
+use App\Models\OrdenRepuesto;
+use App\Models\OrdenServicio;
 use App\Models\ProductoServicio;
 use App\Models\Recepcion;
 use App\Models\Sintoma;
 use App\Models\Taller;
 use App\Models\Usuario;
 use App\Models\Vehiculo;
+use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
 class OrdenTrabajo extends Component
 {
     public $ordentrabajo;
-    public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades;
 
-    public $repuestos, $servicios, $arrayItems = [];
+    /*
+     * Listas
+     */
+    public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades,$repuestos, $servicios;
+
+    /*
+     * Variables
+     */
+    public $prioridad, $descripcion;
+
+    public $arrayItems = [];
+
+    public $quantities;
 
     public $sintomas;
     public $count = 0;
@@ -42,7 +56,58 @@ class OrdenTrabajo extends Component
 
     public function addItem($id)
     {
-        $this->arrayItems[$id] = ProductoServicio::find($id);
+        if ($this->arrayItems->where('id', $id)->count() == 0) {
+            $this->arrayItems[trim($id)] = ProductoServicio::find($id);
+        }
+    }
+
+    public function delItem($id)
+    {
+        if ($this->arrayItems->where('id', $id)->count() > 0) {
+            unset($this->arrayItems[trim($id)]);
+        }
+    }
+
+    public function changeQuantity($id)
+    {
+        dd($id);
+    }
+
+    public function guardar()
+    {
+
+        try {
+            \DB::beginTransaction();
+
+            $this->ordentrabajo->prioridad = $this->prioridad;
+            $this->ordentrabajo->save();
+
+            foreach ($this->arrayItems as $item) {
+
+                if ($item->clasificacion->descripcion != 'servicio') {
+                    $servicios = new OrdenServicio();
+                    $servicios->ot_id = $this->ordentrabajo->id;
+                    //$servicios->servicio_id =
+                    //$servicios->cantidad =
+                    $servicios->descripcion = $this->description;
+                    $servicios->usuario = \Auth::user()->usuario;
+                    $servicios->save();
+                }else{
+
+                }
+
+
+            }
+
+
+            $repuestos = new OrdenRepuesto();
+
+            \DB::commit();
+        } catch (\Exception $e) {
+            \DB::rollBack();
+
+        }
+
     }
 
     public function mount()

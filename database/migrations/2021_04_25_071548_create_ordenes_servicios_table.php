@@ -13,7 +13,6 @@ class CreateOrdenesServiciosTable extends Migration
 
             $table->unsignedTinyInteger('id'  );
             $table->unsignedInteger('ot_id')->nullable();
-
             $table->unsignedSmallInteger('servicio_id')->nullable();
             $table->float('cantidad',8,2)->nullable();
             $table->string('descripcion',200)->nullable();

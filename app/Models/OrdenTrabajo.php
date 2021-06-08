@@ -18,7 +18,7 @@ class OrdenTrabajo extends Model
     //protected $fillable = [];
     protected $guarded = [];
 
-// Create all cons var with data 
+// Create all cons var with data
     // Tipo
     const TIPO_UNO = '0'; // tipos
     // Estado
@@ -29,7 +29,7 @@ class OrdenTrabajo extends Model
     const PRIORIDAD_NORMAL = 'n'; // prioridades
     const PRIORIDAD_URGENTE = 'n'; // prioridades
 
-// Create all cons FUNCTIONS 
+// Create all cons FUNCTIONS
     // Funcion Tipo // tipos
     public function getTipos()
     {
@@ -108,7 +108,6 @@ class OrdenTrabajo extends Model
     {
         return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
     }
-
 }
 
 ?>
