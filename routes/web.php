@@ -92,7 +92,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/vehiculo/factory', 'VehiculoController@factory')->name('vehiculo.factory');
     Route::get('/reserva/factory', 'ReservaController@factory')->name('reserva.factory');
     Route::get('/cliente/factory', 'ClienteController@factory')->name('cliente.factory');
-    Route::get('/productoservicio/factory', 'ProductoServicio@factory')->name('productoservicio.factory');
+    Route::get('/producto_servicio/factory', 'ProductoServicio@factory')->name('producto_servicio.factory');
     Route::get('/parametro/factory', 'Parametro@factory')->name('parametro.factory');
     Route::get('/descanso/factory', 'Descanso@factory')->name('descanso.factory');
     Route::get('/recepcion/factory', 'Recepcion@factory')->name('recepcion.factory');

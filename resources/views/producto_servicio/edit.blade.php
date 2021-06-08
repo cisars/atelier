@@ -34,7 +34,7 @@
 
                                 <div class="card-body">
                                     @isset($producto_servicio->id)
-                                        {!! Form::model($producto_servicio, ['route' => ['productoservicio.update', $producto_servicio->id], 'method' => 'PATCH']) !!}
+                                        {!! Form::model($producto_servicio, ['route' => ['producto_servicio.update', $producto_servicio->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
                                             {!! Form::label('id', 'Código de ProductoServicio') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}

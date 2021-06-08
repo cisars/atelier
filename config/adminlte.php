@@ -483,12 +483,12 @@ return [
             'submenu' => [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'clasificacion', 'text' => 'Clasificaciones',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'unidad', 'text' => 'Unidades de medidas',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'productoservicio', 'text' => 'Repuestos/Servicios',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'producto_servicio', 'text' => 'Repuestos/Servicios',],
                 [
                     'submenu' => [
                         [ 'url' => 'clasificacion/create'],
                         [ 'url' => 'unidad/create'],
-                        [ 'url' => 'productoservicio/create'],
+                        [ 'url' => 'producto_servicio/create'],
                     ],
                 ],
             ],

@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <a  href="{{route('producto_servicio.create')}}" class="btn bg-cyan">Nuevo ProductoServicio</a>
                             @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
-                                <a  href="{{route('productoservicio.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
+                                <a  href="{{route('producto_servicio.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
 
