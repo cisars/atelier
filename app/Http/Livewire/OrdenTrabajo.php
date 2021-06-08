@@ -18,7 +18,7 @@ class OrdenTrabajo extends Component
     public $ordentrabajo;
     public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades;
 
-    public $serviciosArray = [], $repuestosArray = [];
+    public $repuestos, $servicios, $arrayItems = [];
 
     public $sintomas;
     public $count = 0;
@@ -40,9 +40,9 @@ class OrdenTrabajo extends Component
         unset($this->vector[$idSintoma]);
     }
 
-    public function addServicio(ProductoServicio $id)
+    public function addItem($id)
     {
-        
+        $this->arrayItems[$id] = ProductoServicio::find($id);
     }
 
     public function mount()
@@ -60,6 +60,12 @@ class OrdenTrabajo extends Component
         $this->prioridades = $this->ordentrabajo->getPrioridades(); // prioridades
 
         $this->sintomas = Sintoma::all();
+
+
+        $this->servicios = ProductoServicio::whereClasificacionId(3)->get();
+        $this->repuestos = ProductoServicio::whereClasificacionId(4)->get();
+
+        $this->arrayItems = collect();
     }
 
     public function render()
