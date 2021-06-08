@@ -278,7 +278,7 @@
                                         <h3 class="card-title">Servicios</h3>
                                     </div>
                                     <div class="card-body">
-                                        <div wire:ignore class="col-md-12 " id="divSintomas">
+                                        <div wire:ignore class="col-md-12 " id="divServicios">
                                             <table class="table table-sm table-hover nowrap d-table table-responsive"
                                                    id="lista1">
                                                 <thead class="">
@@ -302,7 +302,7 @@
                                                                     id="btn{{$servicio->id}}"
                                                                     type="button"
                                                                     class="btn btn-warning"
-                                                                    wire:model="btnAdd"
+                                                                    wire:model="btnAdd{{ $servicio->id }}"
                                                                     wire:click="addItem({{$servicio->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "
@@ -317,6 +317,7 @@
                                                                     id="btn{{$servicio->id}}"
                                                                     type="button"
                                                                     class="btn btn-success"
+                                                                    wire:model="btnAdd{{ $servicio->id }}"
                                                                     wire:click="delItem({{$servicio->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "
@@ -349,7 +350,7 @@
                                         <h3 class="card-title">Repuestos</h3>
                                     </div>
                                     <div class="card-body">
-                                        <div wire:ignore class="col-md-12 " id="divSintomas">
+                                        <div wire:ignore class="col-md-12 " id="divRepuestos">
                                             <table class="table table-sm table-hover nowrap d-table table-responsive"
                                                    id="lista2">
                                                 <thead class="">
@@ -373,7 +374,7 @@
                                                                     id="btn{{$repuesto->id}}"
                                                                     type="button"
                                                                     class="btn btn-warning"
-                                                                    wire:model="btnAdd"
+                                                                    wire:model="btnAdd{{ $repuesto->id }}"
                                                                     wire:click="addItem({{$repuesto->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "
@@ -388,6 +389,7 @@
                                                                     id="btn{{$repuesto->id}}"
                                                                     type="button"
                                                                     class="btn btn-success"
+                                                                    wire:model="btnAdd{{ $repuesto->id }}"
                                                                     wire:click="delItem({{$repuesto->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "

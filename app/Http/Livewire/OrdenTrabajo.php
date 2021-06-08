@@ -127,8 +127,8 @@ class OrdenTrabajo extends Component
         $this->sintomas = Sintoma::all();
 
 
-        $this->servicios = ProductoServicio::whereClasificacionId(3)->get();
-        $this->repuestos = ProductoServicio::whereClasificacionId(4)->get();
+        $this->servicios = ProductoServicio::whereClasificacionId(1)->get();
+        $this->repuestos = ProductoServicio::whereClasificacionId(2)->get();
 
         $this->arrayItems = collect();
     }

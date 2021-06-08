@@ -62,6 +62,20 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Marca')->create([ 'descripcion'  => 'Toyota' ]);
         factory('App\Models\Marca')->create([ 'descripcion'  => 'KIA' ]);
 
+        // Clasificacion //
+        factory('App\Models\Clasificacion')->create([ 'descripcion'  => 'Servicio' ]);
+        factory('App\Models\Clasificacion')->create([ 'descripcion'  => 'Repuesto' ]);
+        factory('App\Models\Clasificacion')->create([ 'descripcion'  => 'Producto' ]);
+
+        // Unidad //
+        factory('App\Models\Unidad')->create([ 'descripcion'  => 'Litros', 'sigla'  => 'lt', ]);
+        factory('App\Models\Unidad')->create([ 'descripcion'  => 'Unidades', 'sigla'  => 'uni', ]);
+        factory('App\Models\Unidad')->create([ 'descripcion'  => 'Pack12', 'sigla'  => 'p12', ]);
+        factory('App\Models\Unidad')->create([ 'descripcion'  => 'Pack6', 'sigla'  => 'p6', ]);
+
+        // Clasificacion //
+        factory('App\Models\Unidad')->create([ 'descripcion'  => 'Litros', 'sigla'  => 'lt', ]);
+
         // Modelos //
         DB::table('modelos')->insert([
             'marca_id' =>  Marca::where('descripcion', 'Hyundai')->first()->id,
@@ -108,6 +122,16 @@ class DatabaseSeeder extends Seeder
             'combustion'   => Vehiculo::COMBUSTION_GASOIL,
             'tipo'   => Vehiculo::TIPO_SEDAN,
             'año'   => '2012',
+        ]);
+        DB::table('vehiculos')->insert([
+            'cliente_id' =>  Usuario::where('usuario', 'cliente')->first()->cliente_id ,
+            'modelo_id'  => Modelo::where('descripcion', 'Tucson')->first()->id,
+            'chapa'   => '778948',
+            'chasis'   => 'cha1234',
+            'color_id'   => Color::where('descripcion', 'Rojo')->first()->id,
+            'combustion'   => Vehiculo::COMBUSTION_HIDROGENO,
+            'tipo'   => Vehiculo::TIPO_SUV,
+            'año'   => '2022',
         ]);
 
 
