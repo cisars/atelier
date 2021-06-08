@@ -18,6 +18,7 @@ class CreateProductosServiciosTable extends Migration
             $table->unsignedTinyInteger('unidad_id')->nullable();
             $table->tinyInteger('impuesto')->nullable();
             $table->float('precio_venta',12,0)->nullable();
+            $table->string('estado',1)->nullable();
 
             $table->foreign('clasificacion_id')
                 ->references('id')

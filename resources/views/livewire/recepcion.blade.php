@@ -53,6 +53,7 @@
                 {{--SELECT FK Taller ------------------------------------ --}}
 
                 @php
+                    $sololectura = '';
                     if( isset($recepcion->id)){
                             $sololectura =   "readonly "   ;
                            }
@@ -67,6 +68,7 @@
                             $sololectura  .
                             'wire:model' => 'reserva_id',
                             'wire:change' => 'traeReservaSeleccionada()',
+                            'placeholder' => 'Seleccionar reserva',
                             'class' => 'form-control' ]
                     ) !!}
                     @error("reserva_id")
@@ -299,10 +301,6 @@
                     type="button"
                     wire:click="grabaRecepcion()"
                     class="btn btn-info">Grabar
-                </button>
-                <button
-                    type="submit"
-                    class="btn btn-danger">Submit
                 </button>
                 <a href="{{ route('recepcion.index') }}  " class="btn btn-secondary btn-close">Cancelar</a>
             </div>

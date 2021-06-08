@@ -26,10 +26,7 @@ class RecepcionController extends Controller
     public function index()
     {
         $recepciones = Recepcion::all();
-        $recepciones->each(function ($recepcion) {
 
-
-        });
         return view('recepcion.index', compact('recepciones', $recepciones));
     }
 

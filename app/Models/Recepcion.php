@@ -39,4 +39,9 @@ class Recepcion extends Model
         return $this->belongsTo(Usuario::class, 'usuario', 'usuario');
     }
 
+    public function empleado()
+    {
+        return $this->belongsTo(Usuario::class, 'usuario', 'usuario');
+    }
+
 }

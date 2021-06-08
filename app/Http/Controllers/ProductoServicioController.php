@@ -36,7 +36,7 @@ class ProductoServicioController extends Controller
         $clasificaciones = Clasificacion::orderBy('descripcion', 'ASC')->get();
         $unidades = Unidad::orderBy('descripcion', 'ASC')->get();
 
-        $producto_servicio   = new ProductoServicio(); // 
+        $producto_servicio   = new ProductoServicio(); //
 // Construct all cons data base model dropdown list char 1
         $estados = $producto_servicio->getEstados() ; // estados
 
@@ -56,18 +56,18 @@ class ProductoServicioController extends Controller
             $producto_servicio = new ProductoServicio($request->all());
             $producto_servicio->save();
 
-           foreach ($request->sector_id as $item) {
+          /* foreach ($request->sector_id as $item) {
 //               $existencias_manejos = new ExistenciaManejo::class();
 //               $existencias_manejos->sector_id = $item;
 //               $existencias_manejos->producto_servicio_id  = $producto_servicio->id;
 //               $existencias_manejos->save();
 //                Log::info( 'Detalle #sector_id agregado en ExistenciaManejo::class' ) ;
-           }
+           }*/
             DB::commit();
 
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
-            Log::error( 'Error en ProductoServicioController@store: '. $e ) ;
+            Log::error( 'Error en ProductoServicioController@store: '. $e->getMessage() ) ;
             return redirect()
                 ->route('producto_servicio.index')
                 ->with('msg', 'Ocurrio un error')
@@ -107,7 +107,7 @@ class ProductoServicioController extends Controller
         $clasificaciones = Clasificacion::orderBy('descripcion', 'ASC')->get();
         $unidades = Unidad::orderBy('descripcion', 'ASC')->get();
 
-// Set all function cons base model dropdown list char 1 
+// Set all function cons base model dropdown list char 1
         $estados = $producto_servicio->getEstados() ; // estados
 
         return view('producto_servicio.edit')
@@ -116,7 +116,7 @@ class ProductoServicioController extends Controller
             ->with('clasificaciones', $clasificaciones)
             ->with('unidades', $unidades)
 
-// Send all cons variables 
+// Send all cons variables
             ->with('estados', $estados)  // estados
 ;
     }

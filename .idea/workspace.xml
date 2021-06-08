@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductoServicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecepcionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecepcionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Recepcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Recepcion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductoServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductoServicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Recepcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Recepcion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_27_004824_create_productos_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_27_004824_create_productos_servicios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/ProductoServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/ProductoServicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/ProductoServicio/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/ProductoServicio/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/recepcion.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/recepcion.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orden_trabajo/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orden_trabajo/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,9 +201,14 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/vehiculo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -194,7 +218,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\vehiculo" />
+      <recent name="C:\laragon\www\atelier" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\reserva" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\recepcion" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\partials\modals" />
@@ -282,16 +306,46 @@
       <workItem from="1617925649272" duration="593000" />
       <workItem from="1617943994458" duration="1775000" />
       <workItem from="1618000162669" duration="1182000" />
-      <workItem from="1618060785179" duration="53631000" />
-      <workItem from="1618468889354" duration="16406000" />
-      <workItem from="1618549573799" duration="1785000" />
-      <workItem from="1618570260221" duration="1639000" />
-      <workItem from="1618609579475" duration="160509000" />
-      <workItem from="1619552924356" duration="15314000" />
-      <workItem from="1619621816985" duration="7696000" />
-      <workItem from="1619716446934" duration="46106000" />
-      <workItem from="1621378970377" duration="5140000" />
-      <workItem from="1622554905857" duration="2237000" />
+      <workItem from="1618060785179" duration="42578000" />
+      <workItem from="1622556384200" duration="766000" />
+      <workItem from="1623011662926" duration="14461000" />
+      <workItem from="1623117640367" duration="2232000" />
+      <workItem from="1623119933702" duration="4748000" />
+    </task>
+    <task id="LOCAL-00016" summary="Procfile+Heroku command line III">
+      <created>1604042366581</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1604042366581</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Procfile+Heroku command line IV">
+      <created>1604042763381</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1604042763381</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Procfile+Heroku command line V">
+      <created>1604049396038</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1604049396038</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Procfile+Heroku command line VI">
+      <created>1604052285134</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604052285134</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Procfile+Heroku command line VII - Procfile fix">
+      <created>1604052534213</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1604052534213</updated>
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>
@@ -601,42 +655,7 @@
       <option name="project" value="LOCAL" />
       <updated>1617593254710</updated>
     </task>
-    <task id="LOCAL-00065" summary="Reservas y Recepcion 90 porciento. Tablero de inicio para empleados maquetado">
-      <created>1618365106959</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1618365106960</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Fix para buscador del cliente con input list">
-      <created>1618982325410</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1618982325410</updated>
-    </task>
-    <task id="LOCAL-00067" summary="livewire para vehiculos">
-      <created>1619071934436</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1619071934436</updated>
-    </task>
-    <task id="LOCAL-00068" summary="genisa 95 porciento finalizado">
-      <created>1619608809598</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1619608809599</updated>
-    </task>
-    <task id="LOCAL-00069" summary="commit para diego">
-      <created>1622555335537</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1622555335537</updated>
-    </task>
-    <option name="localTasksCounter" value="70" />
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,6 +663,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php IX recorrido constantes" />
+    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php X recorrido constantes" />
+    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XI recorrido constantes" />
+    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XII recorrido constantes" />
+    <MESSAGE value="LogViewer, test constantes. Log handler to daily mode. Log UsuarioController.php XIII recorrido constantes" />
     <MESSAGE value="Fix Update Request, no comprobaba campos unicos. Se retiro RULE. Barra de navegacion principal modificada segun interfaces" />
     <MESSAGE value="Fix bootstrap columnas MD card para visualizar en dispositivos moviles.&#10;Crud Unidades agregado" />
     <MESSAGE value="Fix menu a desplegables, Agregados CRUD Color, CRUD Maquinarias Tipos, CRUD Sintomas" />
@@ -664,11 +688,6 @@
     <MESSAGE value="PreVerificacion2 fix panelcliente" />
     <MESSAGE value="PreVerificacion3 falta nueva reserva lado cliente" />
     <MESSAGE value="Calendario con livewire, dibuja cupos y edita. V1" />
-    <MESSAGE value="Reservas y Recepcion 90 porciento. Tablero de inicio para empleados maquetado" />
-    <MESSAGE value="Fix para buscador del cliente con input list" />
-    <MESSAGE value="livewire para vehiculos" />
-    <MESSAGE value="genisa 95 porciento finalizado" />
-    <MESSAGE value="commit para diego" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit para diego" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calendario con livewire, dibuja cupos y edita. V1" />
   </component>
 </project>

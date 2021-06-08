@@ -3,12 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cliente;
+use App\Models\OrdenTrabajo;
 use App\Models\RecepcionesSintomas;
 use App\Models\Reserva;
 use App\Models\Sintoma;
 use App\Models\Taller;
 use App\Models\Usuario;
 use App\Models\Vehiculo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -46,7 +48,7 @@ class Recepcion extends Component
 
     public function abc($valor)
     {
-        $this->emit('cambio', ['id' => $valor ]);
+        $this->emit('cambio', ['id' => $valor]);
     }
 
     public function render()
@@ -117,6 +119,13 @@ class Recepcion extends Component
             $this->traeReservas();
         }
 
+        if (!$this->reservasActivas) {
+            session()->flash('msg', 'No existen reservas activas');
+            session()->flash('type', 'info');
+
+            return redirect()->route('recepcion.index');
+        }
+
     }
 
     public function traeSintomasdeRecepcion()
@@ -157,64 +166,93 @@ class Recepcion extends Component
 
     public function grabaRecepcion()
     {
+
         $this->validate([
             'vector' => 'required'
         ]);
 
-        if ($this->recepcion->id) {
-            $this->recepcion->usuario = \Auth::user()->usuario;
-            //borrar todos los sintomas de esa recepcion para volver a asignar
+        try {
+            DB::beginTransaction();
 
-            $recepcionSintomasCollect = RecepcionesSintomas::where('recepcion_id', $this->recepcion->id)->get();
-            // dd($recepcionSintomasCollect);
-            foreach ($recepcionSintomasCollect as $index => $recepcionsintomaItem) {
-                $borrar = RecepcionesSintomas::where(
-                    [
-                        'recepcion_id' => $recepcionsintomaItem->recepcion_id,
-                        'sintoma_id' => $recepcionsintomaItem->sintoma_id
-                    ]
-                )->delete();
-                // dd($borrar);
-                // ->detach($report_id)
-                //   $borrar->delete();
-            }
+            /* Si se edita una recepción */
+            if ($this->recepcion->id) {
+                $this->recepcion->usuario = \Auth::user()->usuario;
+                //borrar todos los sintomas de esa recepcion para volver a asignar
 
-        } else {
-            $recepcion = new \App\Models\Recepcion([
-                'taller_id' => $this->taller_id,
-                'reserva_id' => (int)$this->reserva_id,
-                'cliente_id' => $this->collCliente->id,
-                'vehiculo_id' => $this->vehiculo_id,
-                'fecha_recepcion' => date('Y-m-d'),
-                'usuario' => \Auth::user()->usuario,
-            ]);
-        }
-        $reservaUpdate = Reserva::find($this->reserva_id);
-        $reservaUpdate->estado = Reserva::ESTADO_VERIFICADO;
+                $recepcionSintomasCollect = RecepcionesSintomas::where('recepcion_id', $this->recepcion->id)->get();
 
+                foreach ($recepcionSintomasCollect as $index => $recepcionsintomaItem) {
+                    $borrar = RecepcionesSintomas::where(
+                        [
+                            'recepcion_id' => $recepcionsintomaItem->recepcion_id,
+                            'sintoma_id' => $recepcionsintomaItem->sintoma_id
+                        ]
+                    )->delete();
+                }
 
-        $reservaUpdate->save();
-        if (isset($recepcion)) {
-            //    dd($recepcion);
-            $recepcion->save();
-        }
-        foreach ($this->vector as $index => $item) {
-            $recepcionesintomas = new RecepcionesSintomas();
-            if (isset($recepcion)) {
-
-                $recepcionesintomas->recepcion_id = $recepcion->id;
             } else {
-                $recepcionesintomas->recepcion_id = $this->recepcion->id;
+                /* Si es una recepción */
+                $recepcion = new \App\Models\Recepcion();
+                $recepcion->taller_id = $this->taller_id;
+                $recepcion->reserva_id = (int)$this->reserva_id;
+                $recepcion->cliente_id = $this->collCliente->id;
+                $recepcion->vehiculo_id = $this->vehiculo_id;
+                $recepcion->fecha_recepcion = date('Y-m-d');
+                $recepcion->usuario = \Auth::user()->usuario;
+                $recepcion->save();
+
+                /* Se genera la orden de trabajo */
+                $ordentrabajo = new OrdenTrabajo;
+                $ordentrabajo->taller_id = $this->taller_id;
+                $ordentrabajo->recepcion_id = $recepcion->id;
+                $ordentrabajo->cliente_id = $recepcion->cliente_id;
+                $ordentrabajo->vehiculo_id = $recepcion->vehiculo_id;
+                $ordentrabajo->empleado_id = $recepcion->empleado->empleado_id;
+                $ordentrabajo->grupo_id = Auth::user()->empleado->grupo_id;
+                $ordentrabajo->tipo = 0;
+                $ordentrabajo->prioridad = $recepcion->reserva->prioridad;
+                $ordentrabajo->estado = OrdenTrabajo::ESTADO_PENDIENTE;
+                //$ordentrabajo->descripcion          = null;
+                $ordentrabajo->importe_total = 0;
+                $ordentrabajo->usuario = \Auth::user()->usuario;
+                $ordentrabajo->save();
+
+            }
+            $reservaUpdate = Reserva::find($this->reserva_id);
+            $reservaUpdate->estado = Reserva::ESTADO_VERIFICADO;
+            $reservaUpdate->save();
+            if (isset($recepcion)) {
+                //    dd($recepcion);
+                $recepcion->save();
+            }
+            foreach ($this->vector as $index => $item) {
+                $recepcionesintomas = new RecepcionesSintomas();
+                if (isset($recepcion)) {
+
+                    $recepcionesintomas->recepcion_id = $recepcion->id;
+                } else {
+                    $recepcionesintomas->recepcion_id = $this->recepcion->id;
+                }
+
+                $recepcionesintomas->sintoma_id = $index;
+                $recepcionesintomas->save();
             }
 
-            $recepcionesintomas->sintoma_id = $index;
-            $recepcionesintomas->save();
+            DB::commit();
+
+            session()->flash('msg', 'Reserva recepcionada correctamente');
+            session()->flash('type', 'info');
+
+            return redirect()->route('recepcion.index');
+
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollBack();
+
+            \Log::error('Livewire\Recepcion@grabaRecepcion Line: '.$e->getLine().' - Message: '.$e->getMessage());
+            session()->flash('msg', 'No se pudo recepcionar la reserva');
+            session()->flash('type', 'error');
         }
-
-
-        session()->flash('msg', 'Registro Creado Correctamente');
-        session()->flash('type', 'info');
-        redirect()->to('recepcion');
     }
 
 
@@ -223,7 +261,7 @@ class Recepcion extends Component
 
     public function addSintoma($idSintoma)
     {
-        $this->emit('addCambio', ['id' => $idSintoma ]);
+        $this->emit('addCambio', ['id' => $idSintoma]);
         $this->count++;
         $this->vector[$idSintoma] = Sintoma::find($idSintoma)->descripcion;
 
@@ -231,7 +269,7 @@ class Recepcion extends Component
 
     public function delSintoma($idSintoma)
     {
-        $this->emit('delCambio', ['id' => $idSintoma ]);
+        $this->emit('delCambio', ['id' => $idSintoma]);
         //   dd($idSintoma);
         //unset(array_values($this->vector)[$idSintoma]);
         unset($this->vector[$idSintoma]);

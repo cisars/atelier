@@ -1,6 +1,6 @@
 <?php
 
-// 
+//
 // ,
 // GENISA Begin
 ?>
@@ -92,7 +92,7 @@
                                             @error("codigo")
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div> 
+                                        </div>
                                         {{--INPUT TEXT Codigo ------------------------------------ --}}
 
                                         <div class="form-group col">
@@ -110,7 +110,7 @@
                                             @error("descripcion")
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div> 
+                                        </div>
                                         {{--INPUT TEXT Descripcion ------------------------------------ --}}
 
                                         <div class="form-group col">
@@ -125,7 +125,7 @@
                                             @error("clasificacion_id")
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div> 
+                                        </div>
                                             {{--SELECT FK Clasificacion ------------------------------------ --}}
 
                                         <div class="form-group col">
@@ -140,7 +140,7 @@
                                             @error("unidad_id")
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div> 
+                                        </div>
                                             {{--SELECT FK Unidad ------------------------------------ --}}
 
                                         <div class="form-group col">
@@ -158,7 +158,7 @@
                                             @error("impuesto")
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div> 
+                                        </div>
                                         {{--INPUT NUMERIC Impuesto ------------------------------------ --}}
 
                                         <div class="form-group col">
@@ -176,7 +176,7 @@
                                             @error("precio_venta")
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div> 
+                                        </div>
                                         {{--INPUT NUMERIC Precio de Venta ------------------------------------ --}}
 
 
@@ -189,7 +189,7 @@
                                             class="btn btn-info">Grabar</button>
                                         <a href="{{ route('producto_servicio.index') }}  " class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
-                                    
+
                                     {!! Form::close() !!}
                                 </div>
                             </div>

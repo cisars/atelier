@@ -36,7 +36,7 @@ class ProductoServicioController extends Controller
         $clasificaciones = Clasificacion::orderBy('descripcion', 'ASC')->get();
         $unidades = Unidad::orderBy('descripcion', 'ASC')->get();
 
-        $producto_servicio   = new ProductoServicio(); // 
+        $producto_servicio   = new ProductoServicio(); //
 // Construct all cons data base model dropdown list char 1
         $estados = $producto_servicio->getEstados() ; // estados
 
@@ -107,7 +107,7 @@ class ProductoServicioController extends Controller
         $clasificaciones = Clasificacion::orderBy('descripcion', 'ASC')->get();
         $unidades = Unidad::orderBy('descripcion', 'ASC')->get();
 
-// Set all function cons base model dropdown list char 1 
+// Set all function cons base model dropdown list char 1
         $estados = $producto_servicio->getEstados() ; // estados
 
         return view('producto_servicio.edit')
@@ -116,7 +116,7 @@ class ProductoServicioController extends Controller
             ->with('clasificaciones', $clasificaciones)
             ->with('unidades', $unidades)
 
-// Send all cons variables 
+// Send all cons variables
             ->with('estados', $estados)  // estados
 ;
     }

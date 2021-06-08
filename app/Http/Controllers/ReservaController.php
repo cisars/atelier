@@ -106,7 +106,8 @@ class ReservaController extends Controller
             'turno' => 0,
             'ticket' => $request->get('ticket'),
             'sector' => $request->get('sector'),
-            'estado' => $request->get('estado'),
+            /*'estado' => $request->get('estado'),*/
+            'estado' => Reserva::ESTADO_PENDIENTE,
             'prioridad' => $request->get('prioridad'),
             'forma_reserva' => $request->get('forma_reserva'),
         ]);

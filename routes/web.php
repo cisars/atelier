@@ -129,7 +129,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('vehiculo', 'VehiculoController');
     Route::resource('reserva', 'ReservaController');
     Route::resource('cliente', 'ClienteController');
-    Route::resource('productoservicio', 'ProductoServicioController');
+    Route::resource('producto_servicio', 'ProductoServicioController');
     Route::resource('parametro', 'ParametroController');
     Route::resource('descanso', 'DescansoController');
     Route::resource('recepcion', 'RecepcionController');

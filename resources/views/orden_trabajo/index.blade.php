@@ -71,13 +71,13 @@
                                     <td>{{ $orden_trabajo->cliente->razon_social      }}</td>
                                     <td>{{ $orden_trabajo->vehiculo->id      }}</td>
                                     <td>{{ $orden_trabajo->empleado->apellidos      }}</td>
-                                    <td>{{ $orden_trabajo->grupo->apellidos      }}</td>
+                                    <td>{{ $orden_trabajo->grupo->descripcion      }}</td>
                                     <td>{{ $orden_trabajo->tipo      }}</td>
                                     <td>{{ $orden_trabajo->prioridad      }}</td>
                                     <td>{{ $orden_trabajo->estado      }}</td>
                                     <td>{{ $orden_trabajo->descripcion      }}</td>
                                     <td>{{ $orden_trabajo->importe_total      }}</td>
-                                    <td>{{ $orden_trabajo->usuario->usuario      }}</td>
+                                    <td>{{ $orden_trabajo->empleado->usuario      }}</td>
                                     <td class="">
                                         <a
                                             href="{{ route('orden_trabajo.edit', $orden_trabajo->id) }}"
@@ -101,7 +101,7 @@
                                         ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)
-                                        
+
                                         </td>
                                     </tr>
                                 @endforeach
