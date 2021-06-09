@@ -23,7 +23,7 @@ class OrdenTrabajo extends Component
     /*
      * Listas
      */
-    public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades,$repuestos, $servicios;
+    public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades,$insumos, $servicios;
 
     /*
      * Variables
@@ -32,7 +32,7 @@ class OrdenTrabajo extends Component
 
     public $arrayItems = [];
 
-    public $quantities;
+    public $quantity;
 
     public $sintomas;
     public $count = 0;
@@ -56,56 +56,71 @@ class OrdenTrabajo extends Component
 
     public function addItem($id)
     {
-        if ($this->arrayItems->where('id', $id)->count() == 0) {
-            $this->arrayItems[trim($id)] = ProductoServicio::find($id);
+        if (!array_key_exists($id, $this->arrayItems)) {
+            $this->arrayItems[$id] = ProductoServicio::with('clasificacion')->where('id', $id)->first()->toArray();
+            $this->arrayItems[$id]['quantity'] = 1;
+            $this->arrayItems[$id]['subtotal'] = $this->arrayItems[$id]['precio_venta'];
         }
     }
 
     public function delItem($id)
     {
-        if ($this->arrayItems->where('id', $id)->count() > 0) {
-            unset($this->arrayItems[trim($id)]);
+        if (array_key_exists($id, $this->arrayItems)) {
+            unset($this->arrayItems[$id]);
         }
     }
 
-    public function changeQuantity($id)
+    public function subtotal($id)
     {
-        dd($id);
+        $this->arrayItems[$id]['subtotal'] = $this->arrayItems[$id]['quantity'] * $this->arrayItems[$id]['precio_venta'];
+        //$this->arrayItems[$id]['quantity'] = $this->quantityInput[id];
     }
 
     public function guardar()
     {
-
         try {
             \DB::beginTransaction();
 
             $this->ordentrabajo->prioridad = $this->prioridad;
             $this->ordentrabajo->save();
 
+            $i = 0;
+            $j = 0;
             foreach ($this->arrayItems as $item) {
-
-                if ($item->clasificacion->descripcion != 'servicio') {
-                    $servicios = new OrdenServicio();
+                if (strtolower($item['clasificacion']['descripcion']) != 'servicio') {
+                    $j++;
+                    $servicios = new OrdenRepuesto();
                     $servicios->ot_id = $this->ordentrabajo->id;
-                    //$servicios->servicio_id =
-                    //$servicios->cantidad =
-                    $servicios->descripcion = $this->description;
+                    $servicios->item = $j;
+                    $servicios->cantidad = $item['quantity'];
+                    $servicios->producto_id = $item['id'];
                     $servicios->usuario = \Auth::user()->usuario;
                     $servicios->save();
-                }else{
-
+                }elseif (strtolower($item['clasificacion']['descripcion']) == 'servicio') {
+                    $i++;
+                    $servicios = new OrdenServicio();
+                    $servicios->ot_id = $this->ordentrabajo->id;
+                    $servicios->item = $i;
+                    $servicios->servicio_id = $item['id'];
+                    $servicios->cantidad = $item['quantity'];
+                    //$servicios->descripcion = $this->description;
+                    $servicios->usuario = \Auth::user()->usuario;
+                    $servicios->save();
                 }
-
-
             }
 
-
-            $repuestos = new OrdenRepuesto();
-
             \DB::commit();
+
+            session()->flash('msg', 'Se ha procesado la orden de trabajo');
+            session()->flash('type', 'success');
+
+            return redirect()->route('orden_trabajo.index');
+
         } catch (\Exception $e) {
             \DB::rollBack();
 
+            session()->flash('msg', 'No se pudo procesar la orden de trabajo');
+            session()->flash('type', 'error');
         }
 
     }
@@ -126,11 +141,13 @@ class OrdenTrabajo extends Component
 
         $this->sintomas = Sintoma::all();
 
+        $this->servicios = ProductoServicio::whereHas('clasificacion', function ($c){
+            $c->whereRaw('lower(descripcion) LIKE "servicio"');
+        })->get();
 
-        $this->servicios = ProductoServicio::whereClasificacionId(1)->get();
-        $this->repuestos = ProductoServicio::whereClasificacionId(2)->get();
-
-        $this->arrayItems = collect();
+        $this->insumos = ProductoServicio::whereHas('clasificacion', function ($i){
+            $i->whereRaw("lower(descripcion) NOT LIKE 'servicio'");
+        })->get();
     }
 
     public function render()

@@ -7,9 +7,7 @@
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +53,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="diego" />
-                    <option name="lastUsedInstant" value="1623179023" />
+                    <option name="lastUsedInstant" value="1623185412" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
@@ -215,6 +213,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/vehiculo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -325,6 +325,7 @@
       <workItem from="1622554905857" duration="2297000" />
       <workItem from="1623151835667" duration="2764000" />
       <workItem from="1623182014527" duration="3130000" />
+      <workItem from="1623209256765" duration="3086000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>

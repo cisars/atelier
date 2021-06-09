@@ -176,9 +176,6 @@
 
                                         <div class="form-group col">
                                             <label>Presupuesto</label>
-
-                                            {{--{{ json_encode($arrayItems) }}--}}
-                                            {{--<p>{{ json_encode($arrayItems) }}</p>--}}
                                             <table
                                                 class="table table-sm table-hover nowrap d-table table-responsive">
                                                 <thead class="">
@@ -187,7 +184,8 @@
                                                     <th class="w-auto">ID</th>
                                                     <th class="w-100">Descripción</th>
                                                     <th class="w-100">Cantidad</th>
-                                                    <th class="w-100">Precio</th>
+                                                    <th class="w-100">Precio Uni.</th>
+                                                    <th class="w-100">Total</th>
                                                     <th class="w-100"></th>
                                                 </tr>
                                                 </thead>
@@ -206,14 +204,15 @@
                                                                         wire:key="input_quantity_{{ $item['id'] }}"
                                                                         type="number"
                                                                         class="form-control-sm col-12"
-                                                                        wire:model="quantities[{{ $item['id'] }}]"
-                                                                        wire:change="changeQuantity({{ $item['id'] }})"
+                                                                        wire:model="arrayItems.{{ $item['id'] }}.quantity"
+                                                                        wire:change="subtotal({{ $item['id'] }})"
                                                                     >
                                                                 @else
                                                                     1
                                                                 @endif
                                                             </td>
                                                             <td> {{ number_format($item['precio_venta'], 0, ',','.') }} </td>
+                                                            <td> {{ number_format($item['subtotal'], 0, ',','.') }} </td>
                                                             <td>
                                                                 <button wire:key="pre_btn_{{ $item['id'] }}"
                                                                         type="button"
@@ -224,8 +223,8 @@
                                                         </tr>
                                                     @endforeach
                                                     <tr>
-                                                        <td align="right" colspan="4"><b>Total</b></td>
-                                                        <td>{{ number_format($arrayItems->sum('precio_venta'), 0, ',', '.') }}</td>
+                                                        <td align="right" colspan="5"><b>Total</b></td>
+                                                        <td>{{ number_format(array_sum(array_column($arrayItems, 'subtotal')), 0, ',', '.') }}</td>
                                                     </tr>
                                                 @endif
                                                 </tbody>
@@ -246,6 +245,7 @@
 
                                         <div class="card-footer  ">
                                             <button
+                                                wire:click="guardar"
                                                 type="submit"
                                                 class="btn btn-info">Grabar
                                             </button>
@@ -296,7 +296,7 @@
                                                         <td> {{ $servicio->descripcion }} </td>
                                                         <td> {{ number_format($servicio->precio_venta, 0, ',','.') }} </td>
                                                         <td>
-                                                            @if ($this->arrayItems->where('id', $servicio->id)->count() == 0)
+                                                            @if (!array_key_exists($servicio->id, $arrayItems))
                                                                 <button
                                                                     wire:key="ser_btn_{{ $servicio->id }}"
                                                                     id="btn{{$servicio->id}}"
@@ -318,7 +318,7 @@
                                                                     type="button"
                                                                     class="btn btn-success"
                                                                     wire:model="btnAdd{{ $servicio->id }}"
-                                                                    wire:click="delItem({{$servicio->id}})"
+                                                                    wire:click="addItem({{$servicio->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "
                                                                     data-data="">
@@ -362,40 +362,40 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach ($repuestos as $repuesto)
+                                                @foreach ($insumos as $insumo)
                                                     <tr>
-                                                        <td> {{ $repuesto->id }} </td>
-                                                        <td> {{ $repuesto->descripcion }} </td>
-                                                        <td> {{ number_format($repuesto->precio_venta, 0, ',','.') }} </td>
+                                                        <td> {{ $insumo->id }} </td>
+                                                        <td> {{ $insumo->descripcion }} </td>
+                                                        <td> {{ number_format($insumo->precio_venta, 0, ',','.') }} </td>
                                                         <td>
-                                                            @if ($this->arrayItems->where('id', $repuesto->id)->count() == 0)
+                                                            @if (!array_key_exists($insumo->id, $arrayItems))
                                                                 <button
-                                                                    wire:key="re_btn_{{ $repuesto->id }}"
-                                                                    id="btn{{$repuesto->id}}"
+                                                                    wire:key="re_btn_{{ $insumo->id }}"
+                                                                    id="btn{{$insumo->id}}"
                                                                     type="button"
                                                                     class="btn btn-warning"
-                                                                    wire:model="btnAdd{{ $repuesto->id }}"
-                                                                    wire:click="addItem({{$repuesto->id}})"
+                                                                    wire:model="btnAdd{{ $insumo->id }}"
+                                                                    wire:click="addItem({{$insumo->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "
                                                                     data-data="">
                                                                     <i class="fas fa-plus"
-                                                                       id="icon{{$repuesto->id}}"
+                                                                       id="icon{{$insumo->id}}"
                                                                        aria-hidden="true"></i>
                                                                 </button>
                                                             @else
                                                                 <button
-                                                                    wire:key="re_btn_{{ $repuesto->id }}"
-                                                                    id="btn{{$repuesto->id}}"
+                                                                    wire:key="re_btn_{{ $insumo->id }}"
+                                                                    id="btn{{$insumo->id}}"
                                                                     type="button"
                                                                     class="btn btn-success"
-                                                                    wire:model="btnAdd{{ $repuesto->id }}"
-                                                                    wire:click="delItem({{$repuesto->id}})"
+                                                                    wire:model="btnAdd{{ $insumo->id }}"
+                                                                    wire:click="addItem({{$insumo->id}})"
                                                                     data-toggle="modal"
                                                                     data-target="#modal-danger "
                                                                     data-data="">
                                                                     <i class="fas fa-check"
-                                                                       id="icon{{$repuesto->id}}"
+                                                                       id="icon{{$insumo->id}}"
                                                                        aria-hidden="true"></i>
                                                                 </button>
                                                             @endif
