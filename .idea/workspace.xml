@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/ServiciosRealizados.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/VerificacionOt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/servicios-realizados.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/verificacion-ot.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/realizacionot/edit_bk.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/EnvioPresupuesto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/EnvioPresupuesto.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/OrdenServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenServicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_confirmacionot/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmacionot/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_confirmacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmacionot/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_realizacionot/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/realizacionot/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_realizacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/realizacionot/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/01-correo-enviopresupuesto.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/email/01-correo-enviopresupuesto.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +68,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="diego" />
-                    <option name="lastUsedInstant" value="1623185412" />
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1623212464" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1623171719" />
+                    <option name="branchName" value="diego" />
+                    <option name="lastUsedInstant" value="1623185412" />
                   </RecentBranch>
                 </list>
               </option>
@@ -212,7 +228,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/vehiculo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/realizacionot" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -225,11 +241,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\atelier\resources\views\realizacionot" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\vehiculo" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\reserva" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\recepcion" />
       <recent name="D:\Programas\laragon\www\atelier\resources\views\vendor\adminlte\partials\modals" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Programas\laragon\www\atelier\resources\views\producto_servicio" />
@@ -325,7 +341,9 @@
       <workItem from="1622554905857" duration="2297000" />
       <workItem from="1623151835667" duration="2764000" />
       <workItem from="1623182014527" duration="3130000" />
-      <workItem from="1623209256765" duration="3086000" />
+      <workItem from="1623209256765" duration="3193000" />
+      <workItem from="1623242691535" duration="185000" />
+      <workItem from="1623330634438" duration="14497000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>

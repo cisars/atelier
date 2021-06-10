@@ -49,17 +49,17 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                            @foreach ($ordenestrabajos as $orden)
                                 <tr class=" ">
-                                    <td> 1 </td>
-                                    <td> 23/01/2021 08:30 </td>
-                                    <td class="">Juan Estigarribia</td>
-                                    <td class="">Toyota Platz</td>
-                                    <td class=""> Aprobado  </td>
+                                    <td> {{ $orden->id }} </td>
+                                    <td> {{ $orden->fecha_ }} </td>
+                                    <td class="">{{ $orden->cliente->razon_social }}</td>
+                                    <td class="">{{ $orden->vehiculo->full_desc }}</td>
+                                    <td class=""> {{ $orden->estado }}  </td>
 
                                     <td class="">
                                         <a
-                                            href=" "
+                                            href="{{ route('servicios-realizados.editar', $orden->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -74,31 +74,7 @@
 
                                     </td>
                                 </tr>
-                                <tr class="">
-                                    <td> 2 </td>
-                                    <td> 23/01/2021 08:45 </td>
-                                    <td class="">Edgar Acosta</td>
-                                    <td class="">Kia Picanto</td>
-                                    <td class=""> Aprobado  </td>
-
-                                    <td class="">
-                                        <a
-                                            href=" "
-                                            class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-                                            data-target ="#modal-danger "
-                                            data-data   ="">
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
-
-                                    </td>
-                                </tr>
-
+                            @endforeach
                             </tbody>
                         </table>
                         <!-- /.card-body -->

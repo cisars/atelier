@@ -9,6 +9,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnvioPresupuesto;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\OrdenTrabajo\StoreOrdenTrabajoRequest;
 use App\Http\Requests\OrdenTrabajo\UpdateOrdenTrabajoRequest;
@@ -22,6 +24,7 @@ use App\Models\Grupo;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrdenTrabajoController extends Controller
 {
@@ -134,7 +137,7 @@ class OrdenTrabajoController extends Controller
 
     public function edit(OrdenTrabajo $orden_trabajo)
     {
-// Get all data fk tables
+        // Get all data fk tables
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
         $recepciones = Recepcion::orderBy('id', 'ASC')->get();
         $clientes = Cliente::orderBy('razon_social', 'ASC')->get();
@@ -198,6 +201,114 @@ class OrdenTrabajoController extends Controller
             ->with('msg', 'Registro Creado Correctamente')
             ->with('type', 'success');
     }
+
+    /*
+     * Confirmacion de Orden de Trabajo
+     */
+    public function confirmacionOt()
+    {
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'p')->get();
+
+        $ordenestrabajos->each(function ($orden) {
+            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
+                trim($orden->estado) == trim($valor) ? $orden->estado = $clave : NULL;
+
+        });
+
+        return view('confirmacionot.index', compact('ordenestrabajos'));
+    }
+
+    public function verConfirmacionOt($id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+
+        if ($ordentrabajo->ordenes_servicios) {
+            foreach ($ordentrabajo->ordenes_servicios as $servicio) {
+                $arrayItems[$servicio->servicio_id] = $servicio->servicio()->with('clasificacion')->first()->toArray();
+                $arrayItems[$servicio->servicio_id]['subtotal'] = $servicio->servicio->precio_venta * 1;
+                $arrayItems[$servicio->servicio_id]['quantity'] = 1;
+            }
+        }
+
+        if ($ordentrabajo->ordenes_repuestos) {
+            foreach ($ordentrabajo->ordenes_repuestos as $repuesto) {
+                $arrayItems[$repuesto->producto_id] = $repuesto->repuesto()->with('clasificacion')->first()->toArray();
+                $arrayItems[$repuesto->producto_id]['subtotal'] = $repuesto->repuesto->precio_venta * $repuesto->cantidad;
+                $arrayItems[$repuesto->producto_id]['quantity'] = $repuesto->cantidad;
+            }
+        }
+
+        return view('confirmacionot.edit', compact('ordentrabajo', 'arrayItems'));
+    }
+
+    public function confirmarOt($id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+
+        try {
+
+            $ordentrabajo->estado = OrdenTrabajo::ESTADO_ACEPTADO;
+            $ordentrabajo->save();
+
+            session()->flash('msg', 'Orden confirmada');
+            session()->flash('type', 'success');
+
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            session()->flash('msg', 'No se pudo confirmar la orden');
+            session()->flash('type', 'error');
+
+            return redirect()->back();
+        }
+    }
+
+    public function cancelarOt($id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+
+        try {
+
+            $ordentrabajo->estado = OrdenTrabajo::ESTADO_CANCELADO;
+            $ordentrabajo->save();
+
+            session()->flash('msg', 'Orden cancelada');
+            session()->flash('type', 'success');
+
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            session()->flash('msg', 'No se pudo cancelar la orden');
+            session()->flash('type', 'error');
+
+            return redirect()->back();
+        }
+    }
+
+    /*
+     * SERVICIOS REALIZADOS
+     */
+
+    public function realizadosOt()
+    {
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'a')->get();
+
+        $ordenestrabajos->each(function ($orden) {
+            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
+                trim($orden->estado) == trim($valor) ? $orden->estado = $clave : NULL;
+
+        });
+
+        return view('realizacionot.index', compact('ordenestrabajos'));
+    }
+
+    public function editarServiciosRealizados($id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+
+        return view('realizacionot.edit', compact('ordentrabajo'));
+    }
+
 }
 
 ?>

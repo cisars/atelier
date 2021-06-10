@@ -59,22 +59,8 @@
                                             {{--CONST Prioridad Normal | prioridad | prioridad --}}
                                             <div class="form-group col-4">
                                                 <label for="prioridad">Prioridad Normal</label>
-                                                <select
-                                                    class="form-control"
-                                                    name="prioridad"
-                                                    wire:model="prioridad"
-                                                    id="prioridad">
-                                                    @foreach ($prioridades as $key => $prioridad)
-                                                        <option value="{{   $prioridad    }}"
-                                                                @if (isset($ordentrabajo->prioridad) == old('prioridad', $prioridad) )
-                                                                selected="selected"
-                                                            @endif
-                                                        >{{   $key    }} </option>
-                                                    @endforeach
-                                                </select>
-                                                @foreach ($errors->get('prioridad') as $error)
-                                                    <span class="text text-danger">{{   $error    }}</span>
-                                                @endforeach
+                                                <br>
+                                                {{ $ordentrabajo->prioridad }}
                                             </div>
                                             {{-- FIN CONST Prioridad Normal------------------------------------ --}}
                                         </div>{{--row --}}
@@ -221,8 +207,13 @@
                                                                 <button wire:key="pre_btn_{{ $item['id'] }}"
                                                                         type="button"
                                                                         wire:click="delItem({{ $item['id'] }})"
+                                                                        class="btn btn-success btn-xs"><i
+                                                                        class="fas fa-check"></i></button>
+                                                                <button wire:key="pre_btn_{{ $item['id'] }}"
+                                                                        type="button"
+                                                                        wire:click="delItem({{ $item['id'] }})"
                                                                         class="btn btn-danger btn-xs"><i
-                                                                        class="fas fa-minus"></i></button>
+                                                                        class="fas fa-times"></i></button>
                                                             </td>
                                                         </tr>
                                                     @endforeach

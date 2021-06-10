@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/mailot', function () {
+    return view('email.01-correo-enviopresupuesto');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -172,6 +177,22 @@ Route::get('/chartjs',  'BootstrapExampleController@chartjs')->name('chartjs');
 Route::get('/flot',     'BootstrapExampleController@flot')->name('flot');
 Route::get('/inline',   'BootstrapExampleController@inline')->name('inline');
 Route::get('/data',     'BootstrapExampleController@data')->name('data');
+
+/*
+ * Confirmacion OT
+ */
+Route::get('/confirmacionot', 'OrdenTrabajoController@confirmacionOt')->name('confirmacionot');
+Route::get('/confirmacionot/{id}/ver', 'OrdenTrabajoController@verConfirmacionOt')->name('confirmacionot.ver');
+Route::get('/confirmacionot/{id}/presupuesto', 'OrdenTrabajoController@enviarPresupuesto')->name('confirmacionot.presupuesto');
+Route::get('/confirmacionot/{id}/confirmar', 'OrdenTrabajoController@confirmarOt')->name('confirmacionot.confirmar');
+Route::get('/confirmacionot/{id}/cancelar', 'OrdenTrabajoController@cancelarOt')->name('confirmacionot.cancelar');
+
+/*
+ * Servicios Realizados
+ */
+Route::get('/servicios-realizados', 'OrdenTrabajoController@realizadosOt')->name('servicios-realizados');
+Route::get('/servicios-realizados/{id}/editar', 'OrdenTrabajoController@editarServiciosRealizados')->name('servicios-realizados.editar');
+
 //Route::get('/tuindex',     'BootstrapExampleController@data')->name('tuindex');
 Route::view('/tallerusuario', 'talleres_usuarios/index')->name('tallerusuario');
 Route::view('/tallerusuario/create', 'talleres_usuarios/create')->name('tallerusuario.create');
@@ -181,7 +202,7 @@ Route::view('/tallerusuario/create', 'talleres_usuarios/create')->name('tallerus
  Route::view('/_reservanormalc', '_reservanormal/edit');
 Route::view('/_reservalinea', '_reservalinea/index')->name('_reservalinea');
 Route::view('/_reservalineac', '_reservalinea/edit');
-Route::view('/_confirmacionot', '_confirmacionot/index')->name('_confirmacionot');
+
 Route::view('/_confirmacionotc', '_confirmacionot/edit');
 Route::view('/_sectorrepuesto', '_sectorrepuesto/index')->name('_sectorrepuesto');
 Route::view('/_sectorrepuestoc', '_sectorrepuesto/edit');
@@ -195,7 +216,7 @@ Route::view('/_recepcionvehiculo', '_recepcionvehiculo/index')->name('_recepcion
 Route::view('/_recepcionvehiculoc', '_recepcionvehiculo/edit');
 Route::view('/_calendarioatencion', '_calendarioatencion/index')->name('_calendarioatencion');
 Route::view('/_calendarioatencionc', '_calendarioatencion/edit');
-Route::view('/_realizacionot', '_realizacionot/index')->name('_realizacionot');
+/*Route::view('/_realizacionot', '_realizacionot/index')->name('_realizacionot');*/
 Route::view('/_realizacionotc', '_realizacionot/edit');
 Route::view('/_finalizacionot', '_finalizacionot/index')->name('_finalizacionot');
 Route::view('/_finalizacionotc', '_finalizacionot/edit');

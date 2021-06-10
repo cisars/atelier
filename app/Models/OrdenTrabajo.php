@@ -86,11 +86,11 @@ class OrdenTrabajo extends Model
 
     public function ordenes_servicios()
     {
-        return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
+        return $this->hasMany(OrdenServicio::class, 'ot_id');
     }
     public function ordenes_repuestos()
     {
-        return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
+        return $this->hasMany(OrdenRepuesto::class, 'ot_id');
     }
     public function entregas()
     {

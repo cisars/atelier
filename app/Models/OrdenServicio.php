@@ -11,7 +11,7 @@ class OrdenServicio extends Model
     //protected $fillable = [];
     protected $guarded = [];
 
-// Create all cons var with data 
+// Create all cons var with data
     // Verificado
     const VERIFICADO_SI = 's'; // verificados
     const VERIFICADO_NO = 'n'; // verificados
@@ -19,7 +19,7 @@ class OrdenServicio extends Model
     const REALIZADO_SI = 's'; // realizados
     const REALIZADO_NO = 'n'; // realizados
 
-// Create all cons FUNCTIONS 
+// Create all cons FUNCTIONS
     // Funcion Verificado // verificados
     public function getVerificados()
     {
@@ -39,11 +39,11 @@ class OrdenServicio extends Model
 
     public function orden_trabajo()
     {
-        return $this->belongsTo(OrdenTrabajo::class, 'orden_trabajo_id');
+        return $this->belongsTo(OrdenTrabajo::class, 'ot_id');
     }
     public function servicio()
     {
-        return $this->belongsTo(Servicio::class, 'servicio_id');
+        return $this->belongsTo(ProductoServicio::class, 'servicio_id');
     }
     public function usuario()
     {

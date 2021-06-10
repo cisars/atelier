@@ -47,63 +47,44 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach ($ordenestrabajos as $orden)
 
                                 <tr class="">
-                                    <td> 15 </td>
-                                    <td class="">Pedro Ramirez</td>
-                                    <td class="">Toyota Vitz</td>
-                                    <td class="">AAAX01</td>
-                                    <td class="">04/08/19</td>
-                                    <td class="">2.500.000</td>
-                                    <td class="">Pendiente</td>
+                                    <td> {{ $orden->id }} </td>
+                                    <td class="">{{ $orden->cliente->razon_social }}</td>
+                                    <td class="">{{ $orden->vehiculo->full_desc }}</td>
+                                    <td class="">{{ $orden->vehiculo->chapa }}</td>
+                                    <td class="">{{ date('d-m-Y H:i', strtotime($orden->fecha_recepcion)) }}</td>
+                                    <td class="">{{ $orden->importe_total }}</td>
+                                    <td class="">{{ $orden->estado }}</td>
 
                                     <td class="">
                                         <a
-                                            href=" "
+                                            href="{{ route('confirmacionot.ver', $orden->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a
-                                            href=" "
+                                            onclick="return confirm('¿Estás seguro de confirmar la orden?')"
+                                            href="{{ route('confirmacionot.confirmar', $orden->id) }}"
                                             class= "btn btn-success">
                                             <i class="fas fa-check"></i>
                                         </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger" >
-                                            <i class ="fas fa-file-pdf" aria-hidden="true"></i>
-                                        </button>
-
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td> 29 </td>
-                                    <td class="">Anselma Britez</td>
-                                    <td class="">Chevrolet-sail</td>
-                                    <td class="">BBBX02</td>
-                                    <td class="">10/08/19</td>
-                                    <td class="">3.500.000</td>
-                                    <td class="">Pendiente</td>
-
-                                    <td class="">
                                         <a
-                                            href=" "
-                                            class= "btn btn-info">
-                                            <i class="fas fa-eye"></i>
+                                            onclick="return confirm('¿Estás seguro de enviar el presupuesto?')"
+                                            href="{{ route('confirmacionot.presupuesto', $orden->id) }}"
+                                            class= "btn btn-danger">
+                                            <i class="fas fa-file-pdf"></i>
                                         </a>
                                         <a
-                                            href=" "
-                                            class= "btn btn-success">
-                                            <i class="fas fa-check"></i>
+                                            onclick="return confirm('¿Estás seguro de cancelar la orden?')"
+                                            href="{{ route('confirmacionot.cancelar', $orden->id) }}"
+                                            class= "btn btn-danger">
+                                            <i class="fas fa-times"></i>
                                         </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger" >
-                                            <i class ="fas fa-file-pdf" aria-hidden="true"></i>
-                                        </button>
-
                                     </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <!-- /.card-body -->

@@ -545,8 +545,8 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sintoma', 'text' => 'Síntomas de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'recepcion', 'text' => 'Recepción de Vehiculos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'orden_trabajo', 'text' => 'Ordenes de Trabajo', ],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_confirmacionot', 'text' => 'Confirmacion de OTs',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_realizacionot', 'text' => 'Servicios Realizados',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'confirmacionot', 'text' => 'Confirmacion de OTs',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'servicios-realizados', 'text' => 'Servicios Realizados',],
 
                 ['icon_color' => 'info', 'can' => 'admin', 'url' => '_verificacionot ', 'text' => 'Verificacion de OT ',],
                 ['icon_color' => 'info', 'can' => 'admin', 'url' => '_finalizacionot ', 'text' => 'Finalizacion de OT ',],
@@ -554,7 +554,7 @@ return [
                 [
                     'submenu' => [
                         [ 'url' => 'reserva/create'],
-                        [ 'url' => '_realizacionotc'],
+                        [ 'url' => 'servicios-realizados'],
                         [ 'url' => '_reservanormalc'],
                         [ 'url' => 'sintoma/create'],
                         [ 'url' => '_recepcionvehiculoc'],
