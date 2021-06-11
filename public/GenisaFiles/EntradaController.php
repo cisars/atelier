@@ -43,10 +43,10 @@ class EntradaController extends Controller
         $empleados = Empleado::orderBy('apellidos', 'ASC')->get();
         $usuarios = Usuario::orderBy('usuario', 'ASC')->get();
 
-        $entrada   = new Entrada(); // 
+        $entrada   = new Entrada(); //
 // Construct all cons data base model dropdown list char 1
 
-        return view('entrada.edit')
+        return view('entrada.create')
 // Send all fk variables
             ->with('talleres', $talleres)
             ->with('ordenes_trabajos', $ordenes_trabajos)
@@ -109,9 +109,9 @@ class EntradaController extends Controller
         $empleados = Empleado::orderBy('apellidos', 'ASC')->get();
         $usuarios = Usuario::orderBy('usuario', 'ASC')->get();
 
-// Set all function cons base model dropdown list char 1 
+// Set all function cons base model dropdown list char 1
 
-        return view('entrada.edit')
+        return view('entrada.create')
             ->with('entrada', $entrada)
 // Send all fk variables
             ->with('talleres', $talleres)
@@ -119,7 +119,7 @@ class EntradaController extends Controller
             ->with('empleados', $empleados)
             ->with('usuarios', $usuarios)
 
-// Send all cons variables 
+// Send all cons variables
 ;
     }
 

@@ -33,7 +33,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('entrada.create')}}" class="btn bg-cyan">Nuevo Entrada</a>
+                            <a  href="{{route('stock.entradas.crear')}}" class="btn bg-cyan">Nuevo Entrada</a>
                             @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a  href="{{route('entrada.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
@@ -45,10 +45,7 @@
                                     <th class="">Id </th>
                                     <th class="">Taller </th>
                                     <th class="">OT </th>
-                                    <th class="">Nro Documento </th>
-                                    <th class="">Fecha </th>
                                     <th class="">Empleado </th>
-                                    <th class="">Usuario </th>
                                     <th class="">Acciones </th>
                                 </tr>
                             </thead>
@@ -57,14 +54,11 @@
                                 <tr class="">
                                     <td>{{ $entrada->id      }}</td>
                                     <td>{{ $entrada->taller->descripcion      }}</td>
-                                    <td>{{ $entrada->orden_trabajo->descripcion      }}</td>
-                                    <td>{{ $entrada->numero_documento      }}</td>
-                                    <td>{{ $entrada->fecha      }}</td>
-                                    <td>{{ $entrada->empleado->apellidos      }}</td>
-                                    <td>{{ $entrada->usuario->usuario      }}</td>
+                                    <td>#{{ $entrada->ordentrabajo->id }} - {{ $entrada->ordentrabajo->cliente->razon_social }}</td>
+                                    <td>{{ $entrada->empleado->nombres . ' ' . $entrada->empleado->apellidos}}</td>
                                     <td class="">
                                         <a
-                                            href="{{ route('entrada.edit', $entrada->id) }}"
+                                            href="{{ route('stock.entradas.editar', $entrada->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -85,7 +79,7 @@
                                         ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)
-                                        
+
                                         </td>
                                     </tr>
                                 @endforeach

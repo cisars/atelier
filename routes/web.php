@@ -188,6 +188,15 @@ Route::get('/confirmacionot/{id}/confirmar', 'OrdenTrabajoController@confirmarOt
 Route::get('/confirmacionot/{id}/cancelar', 'OrdenTrabajoController@cancelarOt')->name('confirmacionot.cancelar');
 
 /*
+ * Stock: Entrada de Repuestos
+ */
+Route::get('/stock/entradas', 'StockController@entradas')->name('stock.entradas');
+Route::get('/stock/entradas/crear', 'StockController@crearEntrada')->name('stock.entradas.crear');
+Route::post('/stock/entradas/guardar', 'StockController@guardarEntrada')->name('stock.entradas.guardar');
+Route::get('/stock/entradas/{id}/editar', 'StockController@editarEntrada')->name('stock.entradas.editar');
+/*Route::get('/servicios-realizados/{id}/editar', 'OrdenTrabajoController@editarServiciosRealizados')->name('servicios-realizados.editar');*/
+
+/*
  * Servicios Realizados
  */
 Route::get('/servicios-realizados', 'OrdenTrabajoController@realizadosOt')->name('servicios-realizados');

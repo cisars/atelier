@@ -9,13 +9,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Entrada extends Model
 {
     protected $table = 'entradas';
-    //protected $primaryKey = 'empleado';
-    //protected $fillable = [];
+
     protected $guarded = [];
 
 // Create all cons var with data
@@ -26,24 +26,21 @@ class Entrada extends Model
     {
         return $this->belongsTo(Taller::class, 'taller_id');
     }
-    public function orden_trabajo()
+
+    public function ordentrabajo()
     {
-        return $this->belongsTo(OrdenTrabajo::class, 'orden_trabajo_id');
+        return $this->belongsTo(OrdenTrabajo::class, 'ot_id');
     }
+
     public function empleado()
     {
         return $this->belongsTo(Empleado::class, 'empleado_id');
-    }
-    public function usuario()
-    {
-        return $this->belongsTo(Usuario::class, 'usuario_id');
     }
 
     public function entradas_detalles()
     {
         return $this->hasMany(EntradaDetalle::class, 'entrada_id');
     }
-
 }
 
 ?>
