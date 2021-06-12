@@ -39,9 +39,7 @@
                                                 {{--SELECT FK Recepción ------------------------------------ --}}
 
                                             </div> {{--row --}}
-
                                             {{--Set all function cons base model dropdown list char 1--}}
-
                                             <div class="row">
                                                 {{--CONST   | tipo | tipo --}}
                                                 <div class="form-group col-4 bg-gray-light">
@@ -59,8 +57,6 @@
                                                 {{-- FIN CONST Estado Pendiente------------------------------------ --}}
 
                                             </div>{{--row --}}
-
-
                                             <div class="row">
                                                 <div class="form-group col-5 bg-gray-light">
                                                     {{--DATE TIMESTAMP Fecha de Recepcion --}}
@@ -81,8 +77,6 @@
                                                 </div>
                                                 {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
                                             </div>{{--row --}}
-
-
                                             <div class="row">
                                                 <div class="form-group col-5 bg-gray-light">
                                                     {{--SELECT FK Cliente --}}
@@ -101,7 +95,6 @@
                                                 </div>
                                                 {{--SELECT FK Vehículo ------------------------------------ --}}
                                             </div>{{--row --}}
-
                                             <div class="row">
                                                 <div class="form-group col-5 bg-gray-light">
                                                     {{--SELECT FK Empleado --}}
@@ -118,7 +111,6 @@
                                                 </div>
                                                 {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
                                             </div>{{--row --}}
-
                                             <div class="row">
                                                 {{--CONST Prioridad Normal | prioridad | prioridad --}}
                                                 <div class="form-group col-4">

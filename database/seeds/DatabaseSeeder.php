@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         ]);
         factory('App\Models\Cliente', 50)->create();
 
-        factory('App\Models\Cargo',4)->create();
+     //   factory('App\Models\Cargo',4)->create();
         factory('App\Models\Localidad',4)->create();
         factory('App\Models\Sucursal', 4)->create();
         factory('App\Models\Taller', 2)->create();
@@ -57,6 +57,62 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Color')->create([ 'descripcion'  => 'Plateado' ]);
         factory('App\Models\Color')->create([ 'descripcion'  => 'Gris' ]);
 
+        // Grupos //
+        factory('App\Models\Grupo')->create([ 'descripcion'  => 'Naranjal' ]);
+        factory('App\Models\Grupo')->create([ 'descripcion'  => 'Mbocaya' ]);
+        factory('App\Models\Grupo')->create([ 'descripcion'  => 'Arasunu' ]);
+        factory('App\Models\Grupo')->create([ 'descripcion'  => 'Yvate' ]);
+        factory('App\Models\Grupo')->create([ 'descripcion'  => 'Cerroi' ]);
+
+        // Cargos //
+        factory('App\Models\Cargo')->create([ 'descripcion'  => 'Recepcionista' ]);
+        factory('App\Models\Cargo')->create([ 'descripcion'  => 'Administrador' ]);
+        factory('App\Models\Cargo')->create([ 'descripcion'  => 'Mecanico' ]);
+        factory('App\Models\Cargo')->create([ 'descripcion'  => 'Jefe de Mecanicos' ]);
+        factory('App\Models\Cargo')->create([ 'descripcion'  => 'Operador' ]);
+
+        // Sectores //
+        DB::table('sectores')->insert([
+                'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+                'descripcion'  => 'AI'
+            ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'AII'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'AIII'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'AIV'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'AV'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'BI'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'BII'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'BIII'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'BIV'
+        ]);
+        DB::table('sectores')->insert([
+            'taller_id' =>  \App\Models\Taller::where('descripcion', 'Atelier')->first()->id,
+            'descripcion'  => 'BV'
+        ]);
+
         // Marcas //
         factory('App\Models\Marca')->create([ 'descripcion'  => 'Hyundai' ]);
         factory('App\Models\Marca')->create([ 'descripcion'  => 'Toyota' ]);
@@ -73,8 +129,6 @@ class DatabaseSeeder extends Seeder
         factory('App\Models\Unidad')->create([ 'descripcion'  => 'Pack12', 'sigla'  => 'p12', ]);
         factory('App\Models\Unidad')->create([ 'descripcion'  => 'Pack6', 'sigla'  => 'p6', ]);
 
-        // Clasificacion //
-        factory('App\Models\Unidad')->create([ 'descripcion'  => 'Litros', 'sigla'  => 'lt', ]);
 
         // Modelos //
         DB::table('modelos')->insert([
@@ -158,27 +212,27 @@ class DatabaseSeeder extends Seeder
          */
         DB::table('productos_servicios')->insert([
             'codigo' =>  'P01',
-            'descripcion'  => 'Producto 1',
+            'descripcion'  => 'RJK BATERIAS',
             'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Producto')->first()->id,
-            'unidad_id'   => \App\Models\Unidad::where('sigla', 'lt')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
             'impuesto'   => 10,
-            'precio_venta'   => 150000,
+            'precio_venta'   => 560000,
             'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
         ]);
 
         DB::table('productos_servicios')->insert([
             'codigo' =>  'S01',
-            'descripcion'  => 'Servicio 1',
+            'descripcion'  => 'Mantenimiento programado',
             'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Servicio')->first()->id,
             'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
             'impuesto'   => 10,
-            'precio_venta'   => 180000,
+            'precio_venta'   => 450000,
             'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
         ]);
 
         DB::table('productos_servicios')->insert([
             'codigo' =>  'R01',
-            'descripcion'  => 'Repuesto 1',
+            'descripcion'  => 'Buje Kit Embrague G20',
             'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Repuesto')->first()->id,
             'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
             'impuesto'   => 10,
@@ -188,7 +242,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('productos_servicios')->insert([
             'codigo' =>  'P02',
-            'descripcion'  => 'Producto 2',
+            'descripcion'  => 'Aceite Castrol Edge 5w30',
             'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Producto')->first()->id,
             'unidad_id'   => \App\Models\Unidad::where('sigla', 'lt')->first()->id,
             'impuesto'   => 10,
@@ -198,7 +252,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table('productos_servicios')->insert([
             'codigo' =>  'S02',
-            'descripcion'  => 'Servicio 2',
+            'descripcion'  => 'Limpieza profunda de tapizado',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Servicio')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 135000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'S03',
+            'descripcion'  => 'Cambio de Aceite',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Servicio')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 135000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'S04',
+            'descripcion'  => 'Pegado de cinchos y pastillas de freno',
             'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Servicio')->first()->id,
             'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
             'impuesto'   => 10,
@@ -208,11 +282,11 @@ class DatabaseSeeder extends Seeder
 
         DB::table('productos_servicios')->insert([
             'codigo' =>  'R02',
-            'descripcion'  => 'Repuesto 2',
+            'descripcion'  => 'Alternador KIA TW',
             'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Repuesto')->first()->id,
             'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
             'impuesto'   => 10,
-            'precio_venta'   => 160000,
+            'precio_venta'   => 360000,
             'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
         ]);
     }

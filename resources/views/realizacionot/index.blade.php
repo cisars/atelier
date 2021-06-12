@@ -33,7 +33,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="_realizacionotc" class="btn bg-cyan">Nueva Realizacion OT</a>
+{{--                            <a  href="_realizacionotc" class="btn bg-cyan">Nueva Realizacion OT</a>--}}
 
                         </div>
 

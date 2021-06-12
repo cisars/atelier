@@ -49,13 +49,14 @@
                             <tbody>
                             @foreach ($ordenestrabajos as $orden)
 
+                                @if ($orden->importe_total > 0)
                                 <tr class="">
                                     <td> {{ $orden->id }} </td>
                                     <td class="">{{ $orden->cliente->razon_social }}</td>
                                     <td class="">{{ $orden->vehiculo->full_desc }}</td>
                                     <td class="">{{ $orden->vehiculo->chapa }}</td>
                                     <td class="">{{ date('d-m-Y H:i', strtotime($orden->fecha_recepcion)) }}</td>
-                                    <td class="">{{ $orden->importe_total }}</td>
+                                    <td class="">{{ number_format($orden->importe_total, 0, ',','.') }} Gs.</td>
                                     <td class="">{{ $orden->estado }}</td>
 
                                     <td class="">
@@ -64,20 +65,21 @@
                                             class= "btn btn-info">
                                             <i class="fas fa-eye"></i>
                                         </a>
+{{--                                        @if ($orden->importe_total > 0)--}}
+                                            <a
+                                                onclick="return confirm('¿Estás seguro de enviar el presupuesto?')"
+                                                href="{{ route('confirmacionot.presupuesto', $orden->id) }}"
+                                                class= "btn bg-maroon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </a>
+{{--                                        @endif--}}
                                         <a
                                             onclick="return confirm('¿Estás seguro de confirmar la orden?')"
                                             href="{{ route('confirmacionot.confirmar', $orden->id) }}"
                                             class= "btn btn-success">
                                             <i class="fas fa-check"></i>
                                         </a>
-                                        @if ($orden->importe_total > 0)
-                                        <a
-                                            onclick="return confirm('¿Estás seguro de enviar el presupuesto?')"
-                                            href="{{ route('confirmacionot.presupuesto', $orden->id) }}"
-                                            class= "btn btn-danger">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </a>
-                                        @endif
+
                                         <a
                                             onclick="return confirm('¿Estás seguro de cancelar la orden?')"
                                             href="{{ route('confirmacionot.cancelar', $orden->id) }}"
@@ -86,6 +88,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

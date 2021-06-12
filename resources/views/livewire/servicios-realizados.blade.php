@@ -16,115 +16,116 @@
                                     </div>
 
 
-                                    <div class="card-body">
+                                    <div class="card-body" style=" background-image:url('/img/bg-ot.gif')" >
+                                        <div class="jumbotron m-0 p-4" style="background:rgba(225,239,245,0.7); ">
+                                            <div class="row">
 
-                                        <div class="row">
+                                                {{--<div class="form-row">--}}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    {{--SELECT FK Taller --}}
+                                                    {!! Form::label('taller_id', 'Taller') !!}
+                                                    {{ $ordentrabajo->taller->descripcion }}
+                                                </div>
+                                                <div class="form-group col-4">
+                                                </div>
+                                                {{--SELECT FK Taller ------------------------------------ --}}
+                                                <div class=" col-4   ">
 
-                                            {{--<div class="form-row">--}}
-                                            <div class="form-group col-4">
-                                                {{--SELECT FK Taller --}}
-                                                {!! Form::label('taller_id', 'Taller') !!}
-                                                <br>
-                                                {{ $ordentrabajo->taller_id }}
-                                            </div>
-                                            {{--SELECT FK Taller ------------------------------------ --}}
-                                            <div class="form-group col">
-                                                {{--SELECT FK Recepción --}}
-                                                {!! Form::label('recepcion_id', 'Recepción') !!}
-                                                <br>
-                                                {{ $ordentrabajo->recepcion_id }}
-                                            </div>
-                                            {{--SELECT FK Recepción ------------------------------------ --}}
-                                        </div> {{--row --}}
+                                                    {{--SELECT FK Recepción --}}
+                                                    {!! Form::label('recepcion_id', 'Recepción Nro  ' ) !!}
+                                                    <span class="h3" >#{{ $ordentrabajo->recepcion_id }}
+                                                </span>
+                                                </div>
+                                                {{--SELECT FK Recepción ------------------------------------ --}}
 
-                                        {{--Set all function cons base model dropdown list char 1--}}
+                                            </div> {{--row --}}
+                                            {{--Set all function cons base model dropdown list char 1--}}
+                                            <div class="row">
+                                                {{--CONST   | tipo | tipo --}}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    <label for="tipo">Tipo</label>
+                                                    {{ $ordentrabajo->tipo }}
+                                                </div>
+                                                {{-- FIN CONST cero------------------------------------ --}}
+                                                <div class="form-group col-4">
+                                                </div>
+                                                {{--CONST Estado Pendiente | estado | estado --}}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    <label for="estado">Estado</label>
+                                                    {{ $ordentrabajo->estado }}
+                                                </div>
+                                                {{-- FIN CONST Estado Pendiente------------------------------------ --}}
 
-                                        <div class="row">
-                                            {{--CONST   | tipo | tipo --}}
-                                            <div class="form-group col-4">
-                                                <label for="tipo">Tipo</label>
-                                                <br>
-                                                {{ $ordentrabajo->tipo }}
-                                            </div>
-                                            {{-- FIN CONST cero------------------------------------ --}}
+                                            </div>{{--row --}}
+                                            <div class="row">
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--DATE TIMESTAMP Fecha de Recepcion --}}
 
-                                            {{--CONST Estado Pendiente | estado | estado --}}
-                                            <div class="form-group col-4">
-                                                <label for="estado">Estado Pendiente</label>
-                                                <br>
-                                                {{ $ordentrabajo->estado }}
-                                            </div>
-                                            {{-- FIN CONST Estado Pendiente------------------------------------ --}}
+                                                    <label for="fecha_recepcion">Fecha Recepción </label>
 
-                                            {{--CONST Prioridad Normal | prioridad | prioridad --}}
-                                            <div class="form-group col-4">
-                                                <label for="prioridad">Prioridad Normal</label>
-                                                <br>
-                                                {{ $ordentrabajo->prioridad }}
-                                            </div>
-                                            {{-- FIN CONST Prioridad Normal------------------------------------ --}}
-                                        </div>{{--row --}}
+                                                    {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_recepcion)) }}
+                                                </div>
+                                                {{--DATE TIMESTAMP Fecha de Recepcion------------------------------------ --}}
+                                                <div class="form-group col-2  ">
+                                                </div>
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--DATE TIMESTAMP Fecha de Finalización --}}
 
+                                                    <label for="fecha_fin">Fecha Finalización </label>
 
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                {{--DATE TIMESTAMP Fecha de Recepcion --}}
+                                                    {{--                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}--}}
+                                                </div>
+                                                {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
+                                            </div>{{--row --}}
+                                            <div class="row">
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Cliente --}}
+                                                    {!! Form::label('cliente_id', 'Cliente') !!}
 
-                                                <label for="fecha_recepcion">Fecha de Recepcion </label>
-                                                <br>
-                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_recepcion)) }}
-                                            </div>
-                                            {{--DATE TIMESTAMP Fecha de Recepcion------------------------------------ --}}
+                                                    {{ $ordentrabajo->cliente->razon_social }}
+                                                </div>
+                                                {{--SELECT FK Cliente ------------------------------------ --}}
+                                                <div class="form-group col-2  ">
+                                                </div>
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Vehículo --}}
+                                                    {!! Form::label('vehiculo_id', 'Vehículo') !!}
 
-                                            <div class="form-group col-6">
-                                                {{--DATE TIMESTAMP Fecha de Finalización --}}
+                                                    {{ $ordentrabajo->vehiculo->full_desc }}
+                                                </div>
+                                                {{--SELECT FK Vehículo ------------------------------------ --}}
+                                            </div>{{--row --}}
+                                            <div class="row">
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Empleado --}}
+                                                    {!! Form::label('empleado_id', 'Recepcionista') !!}
 
-                                                <label for="fecha_fin">Fecha de Finalización </label>
-                                                <br>
-                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}
-                                            </div>
-                                            {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
-                                        </div>{{--row --}}
+                                                    {{ $ordentrabajo->empleado->apellidos . ', ' . $ordentrabajo->empleado->nombres }}
+                                                </div>
+                                                {{--SELECT FK Empleado ------------------------------------ --}}
+                                                <div class="form-group col-2  ">
+                                                </div>
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Grupo de Trabajo --}}
+                                                    {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
+                                                </div>
+                                                {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
+                                            </div>{{--row --}}
+                                            <div class="row">
+                                                {{--CONST Prioridad Normal | prioridad | prioridad --}}
+                                                <div class="form-group col-4">
+                                                    <label for="prioridad">Prioridad </label>
 
-
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Cliente --}}
-                                                {!! Form::label('cliente_id', 'Cliente') !!}
-                                                <br>
-                                                {{ $ordentrabajo->cliente->razon_social }}
-                                            </div>
-                                            {{--SELECT FK Cliente ------------------------------------ --}}
-
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Vehículo --}}
-                                                {!! Form::label('vehiculo_id', 'Vehículo') !!}
-                                                <br>
-                                                {{ $ordentrabajo->vehiculo->full_desc }}
-                                            </div>
-                                            {{--SELECT FK Vehículo ------------------------------------ --}}
-                                        </div>{{--row --}}
-
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Empleado --}}
-                                                {!! Form::label('empleado_id', 'Empleado') !!}
-                                                <br>
-                                                {{ $ordentrabajo->empleado->nombres . ' ' . $ordentrabajo->empleado->apellidos }}
-                                            </div>
-                                            {{--SELECT FK Empleado ------------------------------------ --}}
-
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Grupo de Trabajo --}}
-                                                {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
-                                            </div>
-                                            {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
-                                        </div>{{--row --}}
+                                                    {{ $ordentrabajo->prioridad }}
+                                                </div>
+                                                {{-- FIN CONST Prioridad Normal------------------------------------ --}}
+                                            </div>{{--row --}}
+                                        </div>{{--  jumbotron  --}}
                                         <hr>
                                         <div class="form-group col">
                                             <label>Síntomas de ingreso</label>
                                             <table
-                                                class="table table-sm table-hover nowrap d-table table-responsive">
+                                                class="table table-sm table-hover nowrap d-table table-responsive" style="background:rgba(225,239,245,0.7); ">
                                                 <thead class="">
                                                 <tr>
                                                     <th class="w-auto">Item</th>
@@ -163,7 +164,7 @@
                                         <div class="form-group col">
                                             <label>Presupuesto</label>
                                             <table
-                                                class="table table-sm table-hover nowrap d-table table-responsive">
+                                                class="table table-sm table-hover nowrap d-table table-responsive" style="background:rgba(255,255,255,0.7); ">
                                                 <thead class="">
                                                 <tr>
                                                     <th class="w-auto">#</th>

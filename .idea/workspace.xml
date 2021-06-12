@@ -5,47 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/StockSalida.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Entradas.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/OrdenServicio_bk.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Salida.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/SalidaDetalle.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_12_153802_create_salidas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_12_153831_create_salidas_detalles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_12_162504_add_column_to_entradas_detalles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/RepuestoSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/bg-ot.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/stock-salida.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/salida/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/salida/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/salida/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/ServiciosRealizados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/ServiciosRealizados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/StockEntrada.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/StockEntrada.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/EntradaDetalle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EntradaDetalle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenServicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductoServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductoServicio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Reserva.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reserva.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sector.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Taller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Taller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_10_223511_create_sectores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_223511_create_sectores_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_24_091116_create_ordenes_trabajos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_24_091116_create_ordenes_trabajos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/confirmacionot/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmacionot/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/confirmacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmacionot/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entrada/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entrada/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/servicios-realizados.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/servicios-realizados.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/stock-entrada.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/stock-entrada.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/realizacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/realizacionot/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/taller/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/taller/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,6 +215,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
@@ -367,6 +336,7 @@
       <workItem from="1623330634438" duration="14880000" />
       <workItem from="1623382608771" duration="10195000" />
       <workItem from="1623442089452" duration="28079000" />
+      <workItem from="1623526996696" duration="4769000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>

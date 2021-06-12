@@ -42,7 +42,7 @@
                                 </th>
                                 <th class="w-80">Descripción</th>
                                 <th class="">direccion</th>
-                                <th class="">localidad</th>
+{{--                                <th class="">localidad</th>--}}
                                 <th class="">telefono</th>
                                 <th class="w-10">Acción</th>
                             </tr>
@@ -53,7 +53,7 @@
                                     <td>{{ $taller->id }}</td>
                                     <td>{{ $taller->descripcion }}</td>
                                     <td>{{ $taller->direccion }}</td>
-                                    <td> {{ $taller->localidad->descripcion }}</td>
+{{--                                    <td> {{ $taller->localidad->descripcion }}</td>--}}
                                     <td>{{ $taller->telefono }}</td>
                                     <td class=" ">
                                         <a
