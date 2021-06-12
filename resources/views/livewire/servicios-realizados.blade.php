@@ -170,9 +170,10 @@
                                                     <th class="w-auto">ID</th>
                                                     <th class="w-100">Descripción</th>
                                                     <th class="w-100">Cantidad</th>
-                                                    <th class="w-100">Precio Uni.</th>
-                                                    <th class="w-100">Total</th>
-                                                    <th class="w-100"></th>
+                                                    <th class="w-100">Utilizado</th>
+                                                    {{--<th class="w-100">Precio Uni.</th>
+                                                    <th class="w-100">Total</th>--}}
+                                                    {{--<th class="w-100"></th>--}}
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -185,42 +186,39 @@
                                                             <td> {{ $item['id'] }} </td>
                                                             <td> {{ $item['descripcion'] }} </td>
                                                             <td>
+                                                                {{ $item['quantity'] }}
+                                                            </td>
+                                                            <td>
                                                                 @if (strtolower($item['clasificacion']['descripcion']) != 'servicio')
                                                                     <input
                                                                         wire:key="input_quantity_{{ $item['id'] }}"
                                                                         type="number"
                                                                         class="form-control-sm col-12"
                                                                         min="1"
-                                                                        wire:model="arrayItems.{{ $item['id'] }}.quantity"
-                                                                        wire:keyup="subtotal({{ $item['id'] }})"
-                                                                        wire:change="subtotal({{ $item['id'] }})"
+                                                                        wire:model="arrayItems.{{ $item['id'] }}.usado"
+                                                                        {{--wire:keyup="subtotal({{ $item['id'] }})"
+                                                                        wire:change="subtotal({{ $item['id'] }})"--}}
                                                                         wire:loading.attr="disabled"
-                                                                        wire:target="subtotal({{ $item['id'] }})"
+                                                                        wire:target="arrayItems.{{ $item['id'] }}.usado"
                                                                     >
                                                                 @else
-                                                                    1
+                                                                    <input
+                                                                        wire:key="input_usado_{{ $item['id'] }}"
+                                                                        type="checkbox"
+                                                                        class="form-control-sm col-12"
+                                                                        min="1"
+                                                                        wire:model="arrayItems.{{ $item['id'] }}.realizado"
+                                                                        {{--wire:keyup="subtotal({{ $item['id'] }})"
+                                                                        wire:change="subtotal({{ $item['id'] }})"--}}
+                                                                        wire:loading.attr="disabled"
+                                                                        wire:target="arrayItems.{{ $item['id'] }}.realizado"
+                                                                    >
                                                                 @endif
                                                             </td>
-                                                            <td> {{ number_format($item['precio_venta'], 0, ',','.') }} </td>
-                                                            <td> {{ number_format($item['subtotal'], 0, ',','.') }} </td>
-                                                            <td>
-                                                                <button wire:key="pre_btn_{{ $item['id'] }}"
-                                                                        type="button"
-                                                                        wire:click="delItem({{ $item['id'] }})"
-                                                                        class="btn btn-success btn-xs"><i
-                                                                        class="fas fa-check"></i></button>
-                                                                <button wire:key="pre_btn_{{ $item['id'] }}"
-                                                                        type="button"
-                                                                        wire:click="delItem({{ $item['id'] }})"
-                                                                        class="btn btn-danger btn-xs"><i
-                                                                        class="fas fa-times"></i></button>
-                                                            </td>
+                                                            {{--<td> {{ number_format($item['precio_venta'], 0, ',','.') }} </td>
+                                                            <td> {{ number_format($item['subtotal'], 0, ',','.') }} </td>--}}
                                                         </tr>
                                                     @endforeach
-                                                    <tr>
-                                                        <td align="right" colspan="5"><b>Total</b></td>
-                                                        <td>{{ number_format(array_sum(array_column($arrayItems, 'subtotal')), 0, ',', '.') }}</td>
-                                                    </tr>
                                                 @endif
                                                 </tbody>
                                             </table>
@@ -244,12 +242,8 @@
                                                 type="submit"
                                                 class="btn btn-info">Grabar
                                             </button>
-                                            <a href="{{ route('orden_trabajo.index') }}  "
+                                            <a href="{{ route('servicios-realizados') }}  "
                                                class="btn btn-secondary btn-close">Volver</a>
-                                            <button @if (!$enviarMail && $ordentrabajo->importe_total > 0) disabled @endif type="button" wire:click="enviarPresupuesto" class="btn btn-danger btn-close"><i
-                                                    class="fa fa-file-pdf"></i> Enviar
-                                                presupuesto
-                                            </button>
                                         </div>
 
                                         {!! Form::close() !!}
@@ -261,7 +255,7 @@
                 </section>
             </div>
         </div>
-        <div class="col-6">
+        {{--<div class="col-6">
             <div class="col-lg-12">
                 <section class="content">
                     <div class="container-fluid">
@@ -376,6 +370,6 @@
                     </div>
                 </section>
             </div>
-        </div>
+        </div>--}}
     </div>
 </div>

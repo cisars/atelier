@@ -578,14 +578,7 @@ return [
             'label_color' => 'info',
             'submenu' => [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'stock/entradas', 'text' => 'Entrada de Repuestos',],
-                 [ 'icon_color' => 'gray',  'can' => ['admin', 'doc'], 'url'=> '#',              'text' => 'Salida de Repuestos', ],
-
-                [
-                    'submenu' => [
-                        [ 'url' => 'stock/entradas'],
-
-                    ],
-                ],
+                 [ 'icon_color' => 'info',  'can' => ['admin', 'doc'], 'url'=> 'stock/salidas', 'text' => 'Salida de Repuestos', ],
             ],
         ],
         [

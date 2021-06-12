@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class OrdenServicio extends Pivot
+class OrdenServicio_bk extends Model
 {
     protected $table = 'ordenes_servicios';
     protected $primaryKey = ['item', 'ot_id'];

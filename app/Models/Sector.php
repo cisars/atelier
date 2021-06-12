@@ -19,7 +19,7 @@ class Sector extends Model
     public function productos_servicios()
     {
         return $this->belongsToMany(ProductoServicio::class, 'existencias_manejos',
-            'sector_id', 'producto_id');
+            'sector_id', 'producto_id')->withPivot('cantidad');
     }
 
 

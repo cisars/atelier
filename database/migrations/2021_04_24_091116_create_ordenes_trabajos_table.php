@@ -25,6 +25,8 @@ class CreateOrdenesTrabajosTable extends Migration
             $table->string('descripcion',200)->nullable();
             $table->float('importe_total',12,0)->nullable();
             $table->string('usuario')->nullable();
+            $table->dateTime('fecha_recepcion')->nullable();
+            $table->dateTime('para_fecha')->nullable();
 
             $table->foreign('taller_id')
                 ->references('id')

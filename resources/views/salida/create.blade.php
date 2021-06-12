@@ -9,13 +9,13 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Entradas')
+@section('title', 'Salidas')
 @section('css')
 @stop
 
 @section('menu-header')
 <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-<li class="breadcrumb-item active"> Editar Entradas </li>
+<li class="breadcrumb-item active"> Crear Salidas </li>
 @stop
 @section('content')
 
@@ -28,26 +28,26 @@
                         <div class="col-md-6">
                             <div class="card card-cyan">
                                 <div class="card-header">
-                                    @isset($entrada->id)
-                                        <h3 class="card-title">Editar Entrada</h3>
+                                    @isset($salida->id)
+                                        <h3 class="card-title">Editar Salida</h3>
                                     @else
-                                        <h3 class="card-title">Crear Entradas</h3>
+                                        <h3 class="card-title">Crear Salida</h3>
                                     @endisset
                                 </div>
 
 
                                 <div class="card-body">
-                                    @isset($entrada->id)
-                                        {!! Form::model($entrada, ['route' => ['entrada.update', $entrada->id], 'method' => 'PATCH']) !!}
+                                    @isset($salida->id)
+                                        {!! Form::model($salida, ['route' => ['salidas.update', $salida->id], 'method' => 'PATCH']) !!}
                                         <div class="form-group col">
-                                            {!! Form::label('id', 'Código de Entrada') !!}
+                                            {!! Form::label('id', 'Código de Salida') !!}
                                             {!! Form::text('id', old('id'), ['class' => 'form-control', 'readonly' ,'id' => 'id']) !!}
 
                                         </div>
                                     @else
                                         {!! Form::open(
                                             ['route' =>
-                                                ['stock.entradas.guardar' ],
+                                                ['stock.salidas.guardar' ],
                                                     'method'    => 'post',
                                                     'id'        => 'form',
                                                 ]
@@ -86,19 +86,6 @@
                                             ) !!}
                                             @error("ot_id")
                                                 <span class="text text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col">
-                                            {{--SELECT FK OT --}}
-                                            {!! Form::label('sector_id', 'Sector') !!}
-                                            {!! Form::select('sector_id', $sectores  ,
-                                                old('sector_id') ,
-                                                [
-                                                    'class' => 'form-control',
-                                                    'placeholder' => 'Seleccione el sector']
-                                            ) !!}
-                                            @error("sector_id")
-                                            <span class="text text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                             {{--SELECT FK OT ------------------------------------ --}}
@@ -168,7 +155,7 @@
                                         <button
                                             type="submit"
                                             class="btn btn-info">Grabar</button>
-                                        <a href="{{ route('entrada.index') }}  " class="btn btn-secondary btn-close">Cancelar</a>
+                                        <a href="{{ route('stock.salidas') }}  " class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
 
                                     {!! Form::close() !!}

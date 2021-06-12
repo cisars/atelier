@@ -136,6 +136,16 @@ class Reserva extends Model
         return $this->belongsTo(Vehiculo::class, 'vehiculo_id');
     }
 
+    public function sector()
+    {
+        return $this->belongsTo(Sector::class, 'sector_id');
+    }
+
+    public function sector_d()
+    {
+        return $this->belongsTo(Sector::class, 'sector');
+    }
+
 //    public function recepciones()
 //    {
 //        return $this->hasMany(Recepcion::class, 'reserva', 'reserva');

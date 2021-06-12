@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Entradas')
+@section('title', 'Listado de Salidas')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Entradas</li>
+    <li class="breadcrumb-item active">ABM Salidas</li>
 @stop
 
 @section('content')
@@ -27,13 +27,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Entradas </h3>
+                        <h3 class="card-title">Salidas </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a href="{{route('stock.entradas.crear')}}" class="btn bg-cyan">Nuevo Entrada</a>
+                            <a href="{{route('stock.salidas.crear')}}" class="btn bg-cyan">Nuevo Salida</a>
                             @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a href="{{route('entrada.factory')}}" class="btn bg-teal float-right ">Generar Registro
                                     dummy</a>
@@ -47,25 +47,25 @@
                                 <th class="">Taller</th>
                                 <th class="">OT</th>
                                 <th class="">Empleado</th>
-                                <th class="">Entradas</th>
-                                <th class="">Acciones</th>
+                                <th class="">Salidas</th>
+                                {{--<th class="">Acciones</th>--}}
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($entradas as $key => $entrada)
+                            @foreach($salidas as $key => $salida)
                                 <tr class="">
-                                    <td>{{ $entrada->id      }}</td>
-                                    <td>{{ $entrada->taller->descripcion      }}</td>
-                                    <td>#{{ $entrada->ordentrabajo->id }}
-                                        - {{ $entrada->ordentrabajo->cliente->razon_social }}</td>
-                                    <td>{{ $entrada->empleado->nombres . ' ' . $entrada->empleado->apellidos}}</td>
+                                    <td>{{ $salida->id      }}</td>
+                                    <td>{{ $salida->taller->descripcion      }}</td>
+                                    <td>#{{ $salida->ordentrabajo->id }}
+                                        - {{ $salida->ordentrabajo->cliente->razon_social }}</td>
+                                    <td>{{ $salida->empleado->nombres . ' ' . $salida->empleado->apellidos}}</td>
                                     <td>
                                         <table>
                                             <tr>
                                                 <th>Producto/Repuesto</th>
                                                 <th>Cantidad</th>
                                             </tr>
-                                            @foreach($entrada->entradas_detalles as $detalle)
+                                            @foreach($salida->salidas_detalles as $detalle)
                                                 <tr>
                                                     <td>{{ $detalle->producto_servicio->descripcion }}</td>
                                                     <td>{{ $detalle->cantidad }}</td>
@@ -73,31 +73,31 @@
                                             @endforeach
                                         </table>
                                     </td>
-                                    <td class="">
-                                        {{--<a
+                                    {{--<td class="">
+                                        --}}{{--<a
                                             href="{{ route('stock.entradas.editar', $entrada->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
-                                        </a>--}}
-                                        <button
+                                        </a>--}}{{--
+                                       --}}{{-- <button
                                             type="button"
                                             class="btn btn-danger"
                                             data-toggle="modal"
-                                            data-target="#modal-danger{{ $entrada->id }}"
-                                            data-data="{{ $entrada->id }}">
+                                            data-target="#modal-danger{{ $salida->id }}"
+                                            data-data="{{ $salida->id }}">
                                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
+                                        </button>--}}{{--
 
                                         <?php
-                                        $confirmation = [
+/*                                        $confirmation = [
                                             'pk' => 'id',
-                                            'value' => $entrada->id,
-                                            'ruta' => 'entrada.destroy',
+                                            'value' => $salida->id,
+                                            'ruta' => 'salida.destroy',
                                         ]
-                                        ?>
-                                        @include('adminlte::partials.modals.confirmation',  $confirmation)
+                                        */?>
+                                        --}}{{--@include('adminlte::partials.modals.confirmation',  $confirmation)--}}{{--
 
-                                    </td>
+                                    </td>--}}
                                 </tr>
                             @endforeach
                             </tbody>

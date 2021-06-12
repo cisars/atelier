@@ -153,6 +153,68 @@ class DatabaseSeeder extends Seeder
             'hasta'         => '13:00',
         ]);
 
+        /*
+         * Productos
+         */
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'P01',
+            'descripcion'  => 'Producto 1',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Producto')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'lt')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 150000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'S01',
+            'descripcion'  => 'Servicio 1',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Servicio')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 180000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'R01',
+            'descripcion'  => 'Repuesto 1',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Repuesto')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 75000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'P02',
+            'descripcion'  => 'Producto 2',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Producto')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'lt')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 65000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'S02',
+            'descripcion'  => 'Servicio 2',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Servicio')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 135000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
+
+        DB::table('productos_servicios')->insert([
+            'codigo' =>  'R02',
+            'descripcion'  => 'Repuesto 2',
+            'clasificacion_id'   => \App\Models\Clasificacion::where('descripcion', 'Repuesto')->first()->id,
+            'unidad_id'   => \App\Models\Unidad::where('sigla', 'uni')->first()->id,
+            'impuesto'   => 10,
+            'precio_venta'   => 160000,
+            'estado'   => \App\Models\ProductoServicio::ESTADO_ACTIVO,
+        ]);
     }
 }
 

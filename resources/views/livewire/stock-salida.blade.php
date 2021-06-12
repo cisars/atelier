@@ -8,7 +8,7 @@
                             <div class="col-md-12">
                                 <div class="card card-cyan">
                                     <div class="card-header">
-                                        <h3 class="card-title">Editar Entrada</h3>
+                                        <h3 class="card-title">Editar Salida</h3>
                                     </div>
 
 
@@ -21,14 +21,14 @@
                                                 {{--SELECT FK Taller --}}
                                                 {!! Form::label('taller_id', 'Taller') !!}
                                                 <br>
-                                                {{ $entrada->taller->descripcion }}
+                                                {{ $salida->taller->descripcion }}
                                             </div>
                                             {{--SELECT FK Taller ------------------------------------ --}}
                                             <div class="form-group col">
                                                 {{--SELECT FK Recepción --}}
                                                 {!! Form::label('recepcion_id', 'Vehículo') !!}
                                                 <br>
-                                                {{ $entrada->ordentrabajo->vehiculo->full_desc }}
+                                                {{ $salida->ordentrabajo->vehiculo->full_desc }}
                                             </div>
                                             {{--SELECT FK Recepción ------------------------------------ --}}
                                         </div> {{--row --}}
@@ -38,13 +38,13 @@
                                                 {{--SELECT FK Cliente --}}
                                                 {!! Form::label('cliente_id', 'Cliente') !!}
                                                 <br>
-                                                {{ $entrada->ordentrabajo->cliente->razon_social }}
+                                                {{ $salida->ordentrabajo->cliente->razon_social }}
                                             </div>
                                             <div class="form-group col">
                                                 {{--SELECT FK Cliente --}}
                                                 {!! Form::label('ot_id', 'Orden Trabajo') !!}
                                                 <br>
-                                                #{{ $entrada->ordentrabajo->id }}
+                                                #{{ $salida->ordentrabajo->id }}
                                             </div>
                                         </div>{{--row --}}
 
@@ -64,7 +64,7 @@
                                                 </thead>
                                                 <tbody>
                                                 @php $ii=0 @endphp
-                                                @foreach ($entrada->ordentrabajo->ordenes_repuestos as $repuesto)
+                                                @foreach ($salida->ordentrabajo->ordenes_repuestos as $repuesto)
                                                     @php $ii++ @endphp
                                                     <tr>
                                                         <td> {{ $ii }} </td>
@@ -80,7 +80,7 @@
                                         </div>
 
                                         <div class="form-group col">
-                                            <label>Alta de productos/repuestos</label>
+                                            <label>Baja de productos/repuestos</label>
                                             <table
                                                 class="table table-sm table-hover nowrap d-table table-responsive">
                                                 <thead class="">
@@ -90,7 +90,7 @@
                                                     <th class="w-75">Descripción</th>
                                                     {{--<th class="w-25">Sector</th>--}}
                                                     <th class="w-auto">Cantidad</th>
-                                                    <th class="w-100"></th>
+                                                    {{--<th class="w-100"></th>--}}
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -115,19 +115,19 @@
                                                                     class="form-control-sm col-12"
                                                                     min="1"
                                                                     wire:model="arrayItems.{{ $item['id'] }}.quantity"
-                                                                    {{--wire:keyup="adicionar({{ $item['id'] }})"--}}
-                                                                    {{--wire:change="subtotal({{ $item['id'] }})"--}}
+                                                                    wire:keyup="adicionar({{ $item['id'] }})"
+                                                                    wire:change="subtotal({{ $item['id'] }})"
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="arrayItems.{{ $item['id'] }}.quantity"
                                                                 >
                                                             </td>
-                                                            <td>
+                                                            {{--<td>
                                                                 <button wire:key="pre_btn_{{ $item['id'] }}"
                                                                         type="button"
                                                                         wire:click="delItem({{ $item['id'] }})"
                                                                         class="btn btn-danger btn-xs"><i
                                                                         class="fas fa-minus"></i></button>
-                                                            </td>
+                                                            </td>--}}
                                                         </tr>
                                                     @endforeach
                                                 @endif
@@ -153,7 +153,7 @@
                                                 type="submit"
                                                 class="btn btn-info">Grabar
                                             </button>
-                                            <a href="{{ route('stock.entradas') }}  "
+                                            <a href="{{ route('stock.salidas') }}  "
                                                class="btn btn-secondary btn-close">Volver</a>
                                         </div>
 
@@ -167,61 +167,6 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="col-lg-12">
-                <section class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card card-cyan">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Repuestos</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div wire:ignore class="col-md-12 " id="divRepuestos">
-                                            <table class="table table-sm table-hover nowrap d-table table-responsive"
-                                                   id="lista1">
-                                                <thead class="">
-                                                <tr>
-                                                    <th class="w-auto">Item</th>
-                                                    <th class="w-100">Descripción</th>
-                                                    <th class="w-100">Acción</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach ($insumos as $insumo)
-                                                    <tr>
-                                                        <td> {{ $insumo->id }} </td>
-                                                        <td> {{ $insumo->descripcion }} </td>
-                                                        <td>
-                                                            <button
-                                                                wire:key="re_btn_{{ $insumo->id }}"
-                                                                id="btn{{$insumo->id}}"
-                                                                type="button"
-                                                                class="btn btn-warning"
-                                                                wire:model="btnAdd{{ $insumo->id }}"
-                                                                wire:click="addItem({{$insumo->id}})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="addItem"
-                                                                data-toggle="modal"
-                                                                data-target="#modal-danger "
-                                                                data-data="">
-                                                                <i class="fas fa-plus"
-                                                                   id="icon{{$insumo->id}}"
-                                                                   aria-hidden="true"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
             <div class="col-lg-12">
                 <section class="content">
                     <div class="container-fluid">

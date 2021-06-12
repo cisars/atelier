@@ -16,129 +16,139 @@
                                     </div>
 
 
-                                    <div class="card-body">
+                                    <div class="card-body" style=" background-image:url('/img/bg-ot.gif')" >
+                                        <div class="jumbotron m-0 p-4" style="background:rgba(225,239,245,0.7); ">
+                                            <div class="row">
 
-                                        <div class="row">
+                                                {{--<div class="form-row">--}}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    {{--SELECT FK Taller --}}
+                                                    {!! Form::label('taller_id', 'Taller') !!}
+                                                    {{ $ordentrabajo->taller->descripcion }}
+                                                </div>
+                                                <div class="form-group col-4">
+                                                </div>
+                                                {{--SELECT FK Taller ------------------------------------ --}}
+                                                <div class=" col-4   ">
 
-                                            {{--<div class="form-row">--}}
-                                            <div class="form-group col-4">
-                                                {{--SELECT FK Taller --}}
-                                                {!! Form::label('taller_id', 'Taller') !!}
-                                                <br>
-                                                {{ $ordentrabajo->taller_id }}
-                                            </div>
-                                            {{--SELECT FK Taller ------------------------------------ --}}
-                                            <div class="form-group col">
-                                                {{--SELECT FK Recepción --}}
-                                                {!! Form::label('recepcion_id', 'Recepción') !!}
-                                                <br>
-                                                {{ $ordentrabajo->recepcion_id }}
-                                            </div>
-                                            {{--SELECT FK Recepción ------------------------------------ --}}
-                                        </div> {{--row --}}
+                                                    {{--SELECT FK Recepción --}}
+                                                    {!! Form::label('recepcion_id', 'Recepción Nro  ' ) !!}
+                                                    <span class="h3" >#{{ $ordentrabajo->recepcion_id }}
+                                                </span>
+                                                </div>
+                                                {{--SELECT FK Recepción ------------------------------------ --}}
 
-                                        {{--Set all function cons base model dropdown list char 1--}}
+                                            </div> {{--row --}}
 
-                                        <div class="row">
-                                            {{--CONST   | tipo | tipo --}}
-                                            <div class="form-group col-4">
-                                                <label for="tipo">Tipo</label>
-                                                <br>
-                                                {{ $ordentrabajo->tipo }}
-                                            </div>
-                                            {{-- FIN CONST cero------------------------------------ --}}
+                                            {{--Set all function cons base model dropdown list char 1--}}
 
-                                            {{--CONST Estado Pendiente | estado | estado --}}
-                                            <div class="form-group col-4">
-                                                <label for="estado">Estado Pendiente</label>
-                                                <br>
-                                                {{ $ordentrabajo->estado }}
-                                            </div>
-                                            {{-- FIN CONST Estado Pendiente------------------------------------ --}}
+                                            <div class="row">
+                                                {{--CONST   | tipo | tipo --}}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    <label for="tipo">Tipo</label>
+                                                    {{ $ordentrabajo->tipo }}
+                                                </div>
+                                                {{-- FIN CONST cero------------------------------------ --}}
+                                                <div class="form-group col-4">
+                                                </div>
+                                                {{--CONST Estado Pendiente | estado | estado --}}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    <label for="estado">Estado</label>
+                                                    {{ $ordentrabajo->estado }}
+                                                </div>
+                                                {{-- FIN CONST Estado Pendiente------------------------------------ --}}
 
-                                            {{--CONST Prioridad Normal | prioridad | prioridad --}}
-                                            <div class="form-group col-4">
-                                                <label for="prioridad">Prioridad Normal</label>
-                                                <select
-                                                    class="form-control"
-                                                    name="prioridad"
-                                                    wire:model="prioridad"
-                                                    id="prioridad">
-                                                    @foreach ($prioridades as $key => $prioridad)
-                                                        <option value="{{   $prioridad    }}"
-                                                                @if (isset($ordentrabajo->prioridad) == old('prioridad', $prioridad) )
-                                                                selected="selected"
-                                                            @endif
-                                                        >{{   $key    }} </option>
+                                            </div>{{--row --}}
+
+
+                                            <div class="row">
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--DATE TIMESTAMP Fecha de Recepcion --}}
+
+                                                    <label for="fecha_recepcion">Fecha Recepción </label>
+
+                                                    {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_recepcion)) }}
+                                                </div>
+                                                {{--DATE TIMESTAMP Fecha de Recepcion------------------------------------ --}}
+                                                <div class="form-group col-2  ">
+                                                </div>
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--DATE TIMESTAMP Fecha de Finalización --}}
+
+                                                    <label for="fecha_fin">Fecha Finalización </label>
+
+                                                    {{--                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}--}}
+                                                </div>
+                                                {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
+                                            </div>{{--row --}}
+
+
+                                            <div class="row">
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Cliente --}}
+                                                    {!! Form::label('cliente_id', 'Cliente') !!}
+
+                                                    {{ $ordentrabajo->cliente->razon_social }}
+                                                </div>
+                                                {{--SELECT FK Cliente ------------------------------------ --}}
+                                                <div class="form-group col-2  ">
+                                                </div>
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Vehículo --}}
+                                                    {!! Form::label('vehiculo_id', 'Vehículo') !!}
+
+                                                    {{ $ordentrabajo->vehiculo->full_desc }}
+                                                </div>
+                                                {{--SELECT FK Vehículo ------------------------------------ --}}
+                                            </div>{{--row --}}
+
+                                            <div class="row">
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Empleado --}}
+                                                    {!! Form::label('empleado_id', 'Recepcionista') !!}
+
+                                                    {{ $ordentrabajo->empleado->apellidos . ', ' . $ordentrabajo->empleado->nombres }}
+                                                </div>
+                                                {{--SELECT FK Empleado ------------------------------------ --}}
+                                                <div class="form-group col-2  ">
+                                                </div>
+                                                <div class="form-group col-5 bg-gray-light">
+                                                    {{--SELECT FK Grupo de Trabajo --}}
+                                                    {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
+                                                </div>
+                                                {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
+                                            </div>{{--row --}}
+
+                                            <div class="row">
+                                                {{--CONST Prioridad Normal | prioridad | prioridad --}}
+                                                <div class="form-group col-4">
+                                                    <label for="prioridad">Prioridad </label>
+                                                    <select
+                                                        class="form-control"
+                                                        name="prioridad"
+                                                        wire:model="prioridad"
+                                                        id="prioridad">
+                                                        @foreach ($prioridades as $key => $prioridad)
+                                                            <option value="{{   $prioridad    }}"
+                                                                    @if (isset($ordentrabajo->prioridad) == old('prioridad', $prioridad) )
+                                                                    selected="selected"
+                                                                @endif
+                                                            >{{   $key    }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @foreach ($errors->get('prioridad') as $error)
+                                                        <span class="text text-danger">{{   $error    }}</span>
                                                     @endforeach
-                                                </select>
-                                                @foreach ($errors->get('prioridad') as $error)
-                                                    <span class="text text-danger">{{   $error    }}</span>
-                                                @endforeach
-                                            </div>
-                                            {{-- FIN CONST Prioridad Normal------------------------------------ --}}
-                                        </div>{{--row --}}
 
-
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                {{--DATE TIMESTAMP Fecha de Recepcion --}}
-
-                                                <label for="fecha_recepcion">Fecha de Recepcion </label>
-                                                <br>
-                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_recepcion)) }}
-                                            </div>
-                                            {{--DATE TIMESTAMP Fecha de Recepcion------------------------------------ --}}
-
-                                            <div class="form-group col-6">
-                                                {{--DATE TIMESTAMP Fecha de Finalización --}}
-
-                                                <label for="fecha_fin">Fecha de Finalización </label>
-                                                <br>
-                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}
-                                            </div>
-                                            {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
-                                        </div>{{--row --}}
-
-
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Cliente --}}
-                                                {!! Form::label('cliente_id', 'Cliente') !!}
-                                                <br>
-                                                {{ $ordentrabajo->cliente->razon_social }}
-                                            </div>
-                                            {{--SELECT FK Cliente ------------------------------------ --}}
-
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Vehículo --}}
-                                                {!! Form::label('vehiculo_id', 'Vehículo') !!}
-                                                <br>
-                                                {{ $ordentrabajo->vehiculo->full_desc }}
-                                            </div>
-                                            {{--SELECT FK Vehículo ------------------------------------ --}}
-                                        </div>{{--row --}}
-
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Empleado --}}
-                                                {!! Form::label('empleado_id', 'Empleado') !!}
-                                                <br>
-                                                {{ $ordentrabajo->empleado->nombres . ' ' . $ordentrabajo->empleado->apellidos }}
-                                            </div>
-                                            {{--SELECT FK Empleado ------------------------------------ --}}
-
-                                            <div class="form-group col-6">
-                                                {{--SELECT FK Grupo de Trabajo --}}
-                                                {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
-                                            </div>
-                                            {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
-                                        </div>{{--row --}}
+                                                </div>
+                                                {{-- FIN CONST Prioridad Normal------------------------------------ --}}
+                                            </div>{{--row --}}
+                                        </div>
                                         <hr>
-                                        <div class="form-group col">
+                                        <div class="form-group col " >
                                             <label>Síntomas de ingreso</label>
                                             <table
-                                                class="table table-sm table-hover nowrap d-table table-responsive">
+                                                class="table table-sm table-hover nowrap d-table table-responsive " style="background:rgba(225,239,245,0.7); ">
                                                 <thead class="">
                                                 <tr>
                                                     <th class="w-auto">Item</th>
@@ -155,37 +165,20 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="form-group col">
-                                            {{--INPUT TEXT Descripción --}}
-                                            {!! Form::label('descripcion', 'Descripción') !!}
-                                            {!! Form::text(
-                                                'descripcion',
-                                                old('descripcion') ,
-                                                [
-                                                    'wire:model'    => 'descripcion',
-                                                    'maxlength'     => '200',
-                                                    'type'          => 'text',
-                                                    'class'         => 'form-control',
-                                                    'placeholder'   => 'Descripción'
-                                                ]) !!}
-                                            @error("descripcion")
-                                            <span class="text text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        {{--INPUT TEXT Descripción ------------------------------------ --}}
+
 
                                         <div class="form-group col">
                                             <label>Presupuesto</label>
                                             <table
-                                                class="table table-sm table-hover nowrap d-table table-responsive">
+                                                class="table table-sm table-hover nowrap d-table table-responsive" style="background:rgba(255,255,255,0.7); ">
                                                 <thead class="">
                                                 <tr>
                                                     <th class="w-auto">#</th>
                                                     <th class="w-auto">ID</th>
                                                     <th class="w-100">Descripción</th>
                                                     <th class="w-100">Cantidad</th>
-                                                    <th class="w-100">Precio Uni.</th>
-                                                    <th class="w-100">Total</th>
+                                                    <th class="w-100">Precio</th>
+                                                    <th class="w-100">Subtotal</th>
                                                     <th class="w-100"></th>
                                                 </tr>
                                                 </thead>
@@ -226,23 +219,50 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
-                                                    <tr>
-                                                        <td align="right" colspan="5"><b>Total</b></td>
-                                                        <td>{{ number_format(array_sum(array_column($arrayItems, 'subtotal')), 0, ',', '.') }}</td>
-                                                    </tr>
+
                                                 @endif
+                                                <tr>
+                                                    <td align="right" colspan="5"><b>Total</b></td>
+                                                    <td>{{ number_format(array_sum(array_column($arrayItems, 'subtotal')), 0, ',', '.') }}</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
 
                                         <div class="form-group col">
-                                            {{--SELECT FK Usuario --}}
-                                            {!! Form::label('usuario', 'Usuario') !!}
-                                            <br>
-                                            {{ Auth::user()->usuario }}
+                                            {{--INPUT TEXT Descripción --}}
+                                            {!! Form::label('descripcion', 'Descripción adicional') !!}
+                                            {!! Form::text(
+                                                'descripcion',
+                                                old('descripcion') ,
+                                                [
+                                                    'wire:model'    => 'descripcion',
+                                                    'maxlength'     => '200',
+                                                    'type'          => 'text',
+                                                    'class'         => 'form-control',
+                                                    'placeholder'   => 'Descripción'
+                                                ]) !!}
+                                            @error("descripcion")
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        {{--SELECT FK Usuario ------------------------------------ --}}
+                                        {{--INPUT TEXT Descripción ------------------------------------ --}}
+                                        <hr>
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                {{--SELECT FK Usuario --}}
+                                                {!! Form::label('usuario', 'Usuario') !!}
 
+                                                {{ Auth::user()->usuario }}
+                                            </div>
+                                            <div class="form-group col-8">
+                                                {{--SELECT FK Usuario --}}
+                                                {!! Form::label('mecanico', 'Mecánico Responsable') !!}
+
+                                                {{ Auth::user()->empleado->apellidos }}, {{ Auth::user()->empleado->nombres }}
+                                            </div>
+                                            {{--SELECT FK Usuario ------------------------------------ --}}
+                                        </div>
 
                                         {{--</div>--}}
 
@@ -255,10 +275,12 @@
                                             </button>
                                             <a href="{{ route('orden_trabajo.index') }}  "
                                                class="btn btn-secondary btn-close">Volver</a>
-                                            <button @if (!$enviarMail && $ordentrabajo->importe_total > 0) disabled @endif type="button" wire:click="enviarPresupuesto" class="btn btn-danger btn-close"><i
+                                            {{--<button @if (!$enviarMail || $ordentrabajo->importe_total == 0) disabled
+                                                    @endif type="button" wire:click="enviarPresupuesto"
+                                                    class="btn btn-danger btn-close"><i
                                                     class="fa fa-file-pdf"></i> Enviar
                                                 presupuesto
-                                            </button>
+                                            </button>--}}
                                         </div>
 
                                         {!! Form::close() !!}

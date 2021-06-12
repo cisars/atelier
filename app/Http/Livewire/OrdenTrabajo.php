@@ -146,7 +146,7 @@ class OrdenTrabajo extends Component
             session()->flash('msg', 'Se ha procesado la orden de trabajo');
             session()->flash('type', 'success');
 
-            $this->enviarMail = true;
+            return redirect()->route('orden_trabajo.index');
 
             return;
 

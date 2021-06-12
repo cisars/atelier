@@ -70,12 +70,14 @@
                                             class= "btn btn-success">
                                             <i class="fas fa-check"></i>
                                         </a>
+                                        @if ($orden->importe_total > 0)
                                         <a
                                             onclick="return confirm('¿Estás seguro de enviar el presupuesto?')"
                                             href="{{ route('confirmacionot.presupuesto', $orden->id) }}"
                                             class= "btn btn-danger">
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
+                                        @endif
                                         <a
                                             onclick="return confirm('¿Estás seguro de cancelar la orden?')"
                                             href="{{ route('confirmacionot.cancelar', $orden->id) }}"

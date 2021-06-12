@@ -52,10 +52,6 @@ class EntradaDetalle extends Model
 
     protected $guarded = [];
 
-// Create all cons var with data
-
-// Create all cons FUNCTIONS
-
     public function entrada()
     {
         return $this->belongsTo(Entrada::class, 'entrada_id');
@@ -68,8 +64,6 @@ class EntradaDetalle extends Model
     {
         return $this->belongsTo(ProductoServicio::class, 'producto_id');
     }
-
-
 }
 
 ?>

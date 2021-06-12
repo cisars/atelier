@@ -19,6 +19,7 @@ class CreateOrdenesRepuestosTable extends Migration
             $table->unsignedTinyInteger('sector_id')->nullable();
             $table->string('usuario')->nullable();
             $table->string('observacion',200)->nullable();
+            $table->integer('usado')->nullable();
             $table->primary(['item','ot_id']);
 
             $table->foreign('ot_id')

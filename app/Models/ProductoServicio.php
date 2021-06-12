@@ -49,11 +49,14 @@ class ProductoServicio extends Model
     public function sectores()
     {
         return $this->belongsToMany(Sector::class, 'existencias_manejos',
-            'producto_id', 'sector_id');
-        /*sectores*/
-        /*return $this->belongsToMany(Sector::class, 'sector_producto',
-            'producto_id', 'sector_id');*/
+            'producto_id', 'sector_id')->withPivot('cantidad');
     }
+
+    /*public function sectores()
+    {
+        return $this->belongsToMany(Sector::class, 'talleres_usuarios',
+            'taller_id', 'usuario');
+    }*/
 
 }
 

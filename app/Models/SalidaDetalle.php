@@ -5,26 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class OrdenRepuesto extends Model
+class SalidaDetalle extends Model
 {
-    protected $table = 'ordenes_repuestos';
-    protected $primaryKey = ['item', 'ot_id'];
+    protected $table = 'salidas_detalles';
+    protected $primaryKey = ['item', 'salida_id'];
     public $incrementing = false;
 
     /**
      * Set the keys for a save update query.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     protected function setKeysForSaveQuery(Builder $query)
     {
         $keys = $this->getKeyName();
-        if(!is_array($keys)){
+        if (!is_array($keys)) {
             return parent::setKeysForSaveQuery($query);
         }
 
-        foreach($keys as $keyName){
+        foreach ($keys as $keyName) {
             $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
         }
 
@@ -50,17 +50,18 @@ class OrdenRepuesto extends Model
         return $this->getAttribute($keyName);
     }
 
-    public function orden_trabajo()
-    {
-        return $this->belongsTo(OrdenTrabajo::class, 'ot_id');
-    }
-    public function repuesto()
-    {
-        return $this->belongsTo(ProductoServicio::class, 'producto_id');
-    }
+    protected $guarded = [];
 
+    public function salida()
+    {
+        return $this->belongsTo(Salida::class, 'salida_id');
+    }
     public function sector()
     {
         return $this->belongsTo(Sector::class, 'sector_id');
+    }
+    public function producto_servicio()
+    {
+        return $this->belongsTo(ProductoServicio::class, 'producto_id');
     }
 }

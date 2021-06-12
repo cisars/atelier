@@ -25,6 +25,9 @@ class OrdenTrabajo extends Model
     const ESTADO_PENDIENTE = 'p'; // estados
     const ESTADO_CANCELADO = 'c'; // estados
     const ESTADO_ACEPTADO = 'a'; // estados
+    const ESTADO_REALIZADO = 'r'; // estados
+    const ESTADO_VERIFICADO = 'v'; // estados
+    const ESTADO_FINALIZADO = 'f'; // estados
     // Prioridad
     const PRIORIDAD_NORMAL = 'n'; // prioridades
     const PRIORIDAD_URGENTE = 'n'; // prioridades
@@ -44,6 +47,9 @@ class OrdenTrabajo extends Model
         'Estado Pendiente' => OrdenTrabajo::ESTADO_PENDIENTE,
         'Estado Cancelado' => OrdenTrabajo::ESTADO_CANCELADO,
         'Estado Aceptado' => OrdenTrabajo::ESTADO_ACEPTADO,
+        'Estado Realizado' => OrdenTrabajo::ESTADO_REALIZADO,
+        'Estado Verificado' => OrdenTrabajo::ESTADO_VERIFICADO,
+        'Estado Finalizado' => OrdenTrabajo::ESTADO_FINALIZADO,
         ];
     }
     // Funcion Prioridad // prioridades
@@ -98,7 +104,7 @@ class OrdenTrabajo extends Model
     }
     public function entradas()
     {
-        return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
+        return $this->hasMany(Entrada::class, 'ot_id');
     }
     public function ordenes_mecanicos()
     {

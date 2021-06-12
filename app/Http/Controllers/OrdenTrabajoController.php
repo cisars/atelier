@@ -285,13 +285,41 @@ class OrdenTrabajoController extends Controller
         }
     }
 
+    public function enviarPresupuesto($orden)
+    {
+        $orden = OrdenTrabajo::find($orden);
+
+        try {
+            Mail::to($orden->cliente->email)->send(new EnvioPresupuesto($orden));
+
+            $this->enviarMail = false;
+
+            session()->flash('msg', 'Presupuesto enviado');
+            session()->flash('type', 'success');
+
+            return redirect()->back();
+
+        }catch (\Exception $e){
+            session()->flash('msg', 'No se pudo enviar el presupuesto');
+            session()->flash('type', 'error');
+
+            return redirect()->back();
+        }
+    }
+
     /*
      * SERVICIOS REALIZADOS
      */
 
     public function realizadosOt()
     {
-        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'a')->get();
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'a')->where(function ($w){
+            $w->whereDoesntHave('ordenes_repuestos', function ($q) {
+                $q->where('usado','>', 0);
+            })->orWhereDoesntHave('ordenes_servicios', function ($q) {
+                $q->where('realizado','=', 's');
+            });
+        })->get();
 
         $ordenestrabajos->each(function ($orden) {
             foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
