@@ -20,7 +20,7 @@ class CreateOrdenesServiciosTable extends Migration
             $table->char('verificado',1)->nullable();
             $table->string('usuario')->nullable();
             $table->string('descripcion_verificacion',200)->nullable();
-            $table->primary(['item','ot_id']);
+            $table->primary(['servicio_id','ot_id']);
 
             $table->foreign('ot_id')
                 ->references('id')
@@ -35,14 +35,7 @@ class CreateOrdenesServiciosTable extends Migration
             $table->timestamps();
 
         });
-        DB::statement('ALTER TABLE ordenes_servicios MODIFY `item` TINYINT NOT NULL  ');
-       // DB::statement('ALTER TABLE ordenes_servicios MODIFY item TINYINT NOT NULL AUTO_INCREMENT');
-      //  DB::statement('ALTER TABLE ordenes_servicios ADD PRIMARY KEY (`item`) TINYINT NOT NULL AUTO_INCREMENT');
-
-//        Schema::table('ordenes_servicios', function (Blueprint $table) {
-//
-//            $table->Integer('id', true,true )->change();
-//        });
+        //DB::statement('ALTER TABLE ordenes_servicios MODIFY `item` TINYINT NOT NULL  ');
     }
 
     public function down()

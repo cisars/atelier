@@ -207,6 +207,12 @@ Route::get('/stock/salidas/{id}/editar', 'StockController@editarSalida')->name('
 Route::get('/servicios-realizados', 'OrdenTrabajoController@realizadosOt')->name('servicios-realizados');
 Route::get('/servicios-realizados/{id}/editar', 'OrdenTrabajoController@editarServiciosRealizados')->name('servicios-realizados.editar');
 
+/*
+ * Verificacion
+ */
+Route::get('/verificaciones', 'OrdenTrabajoController@verificadosOt')->name('verificados');
+Route::get('/verificaciones/{id}/editar', 'OrdenTrabajoController@editarVerificados')->name('verificados.editar');
+
 //Route::get('/tuindex',     'BootstrapExampleController@data')->name('tuindex');
 Route::view('/tallerusuario', 'talleres_usuarios/index')->name('tallerusuario');
 Route::view('/tallerusuario/create', 'talleres_usuarios/create')->name('tallerusuario.create');

@@ -15,6 +15,7 @@ use App\Models\Taller;
 use App\Models\Usuario;
 use App\Models\Vehiculo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
@@ -25,7 +26,7 @@ class OrdenTrabajo extends Component
     /*
      * Listas
      */
-    public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades,$insumos, $servicios;
+    public $talleres, $recepciones, $clientes, $vehiculos, $empleados, $grupos, $usuarios, $tipos, $estados, $prioridades, $insumos, $servicios;
 
     /*
      * Variables
@@ -58,10 +59,12 @@ class OrdenTrabajo extends Component
 
     public function addItem($id)
     {
+
         if (!array_key_exists($id, $this->arrayItems)) {
             $this->arrayItems[$id] = ProductoServicio::with('clasificacion')->where('id', $id)->first()->toArray();
             $this->arrayItems[$id]['quantity'] = 1;
             $this->arrayItems[$id]['subtotal'] = $this->arrayItems[$id]['precio_venta'];
+            $this->arrayItems[$id]['clasificacion'] = ProductoServicio::with('clasificacion')->where('id', $id)->first()->clasificacion->descripcion;
         }
     }
 
@@ -74,6 +77,7 @@ class OrdenTrabajo extends Component
 
     public function subtotal($id)
     {
+        //dd(111);
         $this->arrayItems[$id]['subtotal'] = ($this->arrayItems[$id]['quantity'] ?: 0) * $this->arrayItems[$id]['precio_venta'];
     }
 
@@ -87,7 +91,7 @@ class OrdenTrabajo extends Component
             session()->flash('msg', 'Presupuesto enviado');
             session()->flash('type', 'success');
 
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             session()->flash('msg', 'No se pudo enviar el presupuesto');
             session()->flash('type', 'error');
         }
@@ -98,43 +102,47 @@ class OrdenTrabajo extends Component
         try {
             \DB::beginTransaction();
 
+            $this->ordentrabajo->ordenes_servicios()->detach();
+            $this->ordentrabajo->ordenes_repuestos()->detach();
+
             $importe_total = 0;
-            $i = 0;
-            $j = 0;
+            $r = 0;
+            $s = 0;
             foreach ($this->arrayItems as $item) {
-                //dd($this->ordentrabajo->ordenes_repuestos->where('producto_id', $item['id'])->first());
-                if (strtolower($item['clasificacion']['descripcion']) != 'servicio') {
-                    if (!$repuesto = $this->ordentrabajo->ordenes_repuestos->where('producto_id', $item['id'])->first()) {
-                        $repuesto = new OrdenRepuesto();
-                        $repuesto->ot_id = $this->ordentrabajo->id;
-                    }
-                    $j++;
-                    $repuesto->item = $j;
-                    $repuesto->cantidad = $item['quantity'];
-                    $repuesto->producto_id = $item['id'];
-                    $repuesto->usuario = \Auth::user()->usuario;
-                    $repuesto->save();
+                if (strtolower($item['clasificacion']) != 'servicio') {
+                    $r++;
 
-                    $importe_total += $repuesto->repuesto->precio_venta * $repuesto->cantidad;
+                    $this->ordentrabajo
+                        ->ordenes_repuestos()
+                        ->syncWithoutDetaching(
+                            [
+                                $item['id'] => [
+                                    'item' => $r,
+                                    'cantidad' => $item['quantity'],
+                                    'usuario' => \Auth::user()->usuario,
+                                ]
+                            ]);
 
-                }elseif (strtolower($item['clasificacion']['descripcion']) == 'servicio') {
+                    $importe_total += $item['precio_venta'] * $item['quantity'];
 
-                    if (!$servicio = $this->ordentrabajo->ordenes_servicios->where('servicio_id', $item['id'])->first()) {
-                        $servicio = new OrdenServicio();
-                        $servicio->ot_id = $this->ordentrabajo->id;
-                    }
 
-                    $i++;
-                    $servicio->item = $i;
-                    $servicio->servicio_id = $item['id'];
-                    $servicio->cantidad = $item['quantity'];
-                    $servicio->usuario = \Auth::user()->usuario;
-                    $servicio->save();
+                } elseif (strtolower($item['clasificacion']) == 'servicio') {
+                    $s++;
 
-                    $importe_total += $servicio->servicio->precio_venta * 1;
+                    $this->ordentrabajo
+                        ->ordenes_servicios()
+                        ->syncWithoutDetaching(
+                            [
+                                $item['id'] => [
+                                    'item' => $s,
+                                    'cantidad' => 1,
+                                    'usuario' => \Auth::user()->usuario,
+                                ]
+                            ]);
+
+                    $importe_total += $item['precio_venta'] * 1;
+
                 }
-
-
             }
 
             $this->ordentrabajo->prioridad = $this->prioridad;
@@ -148,11 +156,9 @@ class OrdenTrabajo extends Component
 
             return redirect()->route('orden_trabajo.index');
 
-            return;
-
         } catch (\Exception $e) {
             \DB::rollBack();
-            dd($e->getLine().' - '.$e->getMessage());
+            dd($e->getLine() . ' - ' . $e->getMessage());
 
             session()->flash('msg', 'No se pudo procesar la orden de trabajo');
             session()->flash('type', 'error');
@@ -176,27 +182,31 @@ class OrdenTrabajo extends Component
 
         $this->sintomas = Sintoma::all();
 
-        $this->servicios = ProductoServicio::whereHas('clasificacion', function ($c){
+        $this->servicios = ProductoServicio::whereHas('clasificacion', function ($c) {
             $c->whereRaw('lower(descripcion) LIKE "servicio"');
         })->get();
 
-        $this->insumos = ProductoServicio::whereHas('clasificacion', function ($i){
+        $this->insumos = ProductoServicio::whereHas('clasificacion', function ($i) {
             $i->whereRaw("lower(descripcion) NOT LIKE 'servicio'");
         })->get();
 
         if ($this->ordentrabajo->ordenes_servicios) {
             foreach ($this->ordentrabajo->ordenes_servicios as $servicio) {
-                $this->arrayItems[$servicio->servicio_id] = $servicio->servicio()->with('clasificacion')->first()->toArray();
-                $this->arrayItems[$servicio->servicio_id]['subtotal'] = $servicio->servicio->precio_venta * 1;
-                $this->arrayItems[$servicio->servicio_id]['quantity'] = 1;
+                //dd($servicio);
+
+                $this->arrayItems[$servicio->id] = $servicio->toArray();
+                $this->arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
+                $this->arrayItems[$servicio->id]['quantity'] = 1;
+                $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
             }
         }
 
         if ($this->ordentrabajo->ordenes_repuestos) {
             foreach ($this->ordentrabajo->ordenes_repuestos as $repuesto) {
-                $this->arrayItems[$repuesto->producto_id] = $repuesto->repuesto()->with('clasificacion')->first()->toArray();
-                $this->arrayItems[$repuesto->producto_id]['subtotal'] = $repuesto->repuesto->precio_venta * $repuesto->cantidad;
-                $this->arrayItems[$repuesto->producto_id]['quantity'] = $repuesto->cantidad;
+                $this->arrayItems[$repuesto->id] = $repuesto->toArray();
+                $this->arrayItems[$repuesto->id]['subtotal'] = $repuesto->precio_venta * $repuesto->pivot->cantidad;
+                $this->arrayItems[$repuesto->id]['quantity'] = $repuesto->pivot->cantidad;
+                $this->arrayItems[$repuesto->id]['clasificacion'] = $repuesto->clasificacion->descripcion;
             }
         }
     }

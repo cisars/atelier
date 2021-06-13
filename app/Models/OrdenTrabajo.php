@@ -37,27 +37,29 @@ class OrdenTrabajo extends Model
     public function getTipos()
     {
         return $tipos = [
-        'Cero' => OrdenTrabajo::TIPO_UNO,
+            'Cero' => OrdenTrabajo::TIPO_UNO,
         ];
     }
+
     // Funcion Estado // estados
     public function getEstados()
     {
         return $estados = [
-        'Estado Pendiente' => OrdenTrabajo::ESTADO_PENDIENTE,
-        'Estado Cancelado' => OrdenTrabajo::ESTADO_CANCELADO,
-        'Estado Aceptado' => OrdenTrabajo::ESTADO_ACEPTADO,
-        'Estado Realizado' => OrdenTrabajo::ESTADO_REALIZADO,
-        'Estado Verificado' => OrdenTrabajo::ESTADO_VERIFICADO,
-        'Estado Finalizado' => OrdenTrabajo::ESTADO_FINALIZADO,
+            'Estado Pendiente' => OrdenTrabajo::ESTADO_PENDIENTE,
+            'Estado Cancelado' => OrdenTrabajo::ESTADO_CANCELADO,
+            'Estado Aceptado' => OrdenTrabajo::ESTADO_ACEPTADO,
+            'Estado Realizado' => OrdenTrabajo::ESTADO_REALIZADO,
+            'Estado Verificado' => OrdenTrabajo::ESTADO_VERIFICADO,
+            'Estado Finalizado' => OrdenTrabajo::ESTADO_FINALIZADO,
         ];
     }
+
     // Funcion Prioridad // prioridades
     public function getPrioridades()
     {
         return $prioridades = [
-        'Prioridad Normal' => OrdenTrabajo::PRIORIDAD_NORMAL,
-        'Prioridad Urgente' => OrdenTrabajo::PRIORIDAD_URGENTE,
+            'Prioridad Normal' => OrdenTrabajo::PRIORIDAD_NORMAL,
+            'Prioridad Urgente' => OrdenTrabajo::PRIORIDAD_URGENTE,
         ];
     }
 
@@ -65,54 +67,92 @@ class OrdenTrabajo extends Model
     {
         return $this->belongsTo(Taller::class, 'taller_id');
     }
+
     public function recepcion()
     {
         return $this->belongsTo(Recepcion::class, 'recepcion_id');
     }
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'cliente_id');
     }
+
     public function vehiculo()
     {
         return $this->belongsTo(Vehiculo::class, 'vehiculo_id');
     }
+
     public function empleado()
     {
         return $this->belongsTo(Empleado::class, 'empleado_id');
     }
+
     public function grupo()
     {
         return $this->belongsTo(Grupo::class, 'grupo_id');
     }
+
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'usuario_id');
     }
 
-    public function ordenes_servicios()
+    /*public function ordenes_servicios()
     {
         return $this->hasMany(OrdenServicio::class, 'ot_id');
+    }*/
+
+    public function ordenes_servicios()
+    {
+        return $this->belongsToMany(ProductoServicio::class, 'ordenes_servicios',
+            'ot_id', 'servicio_id')
+            ->withPivot('cantidad', 'descripcion', 'realizado', 'verificado', 'usuario', 'descripcion_verificacion');
     }
-    public function ordenes_repuestos()
+
+    /*public function ordenes_repuestos()
     {
         return $this->hasMany(OrdenRepuesto::class, 'ot_id');
+    }*/
+
+    public function ordenes_repuestos()
+    {
+        /*return $this->belongsToMany(ProductoServicio::class, 'ordenes_repuestos',
+            'ot_id', 'producto_id')
+            ->withPivot(['item', 'cantidad', 'sector_id', 'usuario', 'observacion', 'usado', 'ot_id']);*/
+
+        return $this->belongsToMany(ProductoServicio::class, 'ordenes_repuestos',
+            'ot_id', 'producto_id')
+            ->withPivot(['item', 'cantidad', 'sector_id', 'usuario', 'observacion', 'usado', 'ot_id']);
+
+
+
+        //return $this->belongsToMany(ProductoServicio::class)->using(OrdenRepuesto::class)->withPivot('sector_id');
     }
+
     public function entregas()
     {
         return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
     }
+
     public function entradas()
     {
         return $this->hasMany(Entrada::class, 'ot_id');
     }
+
     public function ordenes_mecanicos()
     {
         return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
     }
+
     public function facturas()
     {
         return $this->hasMany(OrdenTrabajo::class, 'orden_trabajo_id');
+    }
+
+    public function sector()
+    {
+        return $this->belongsTo(Sector::class, 'sector_id');
     }
 }
 

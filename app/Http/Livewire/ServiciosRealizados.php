@@ -7,6 +7,7 @@ use App\Models\OrdenRepuesto;
 use App\Models\OrdenServicio;
 use App\Models\ProductoServicio;
 use App\Models\SalidaDetalle;
+use App\Models\Sector;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
@@ -30,7 +31,7 @@ class ServiciosRealizados extends Component
 
     public function guardar()
     {
-       // dd(11);
+        // dd(11);
         try {
             \DB::beginTransaction();
 
@@ -38,36 +39,40 @@ class ServiciosRealizados extends Component
             foreach ($this->arrayItems as $item) {
                 $i++;
 
-                if (strtolower($item['clasificacion']['descripcion']) == 'servicio') {
-                    $orden_detalle = OrdenServicio::where('ot_id', $this->ordentrabajo->id)->where('servicio_id',$item['id'])->first();
+                if (strtolower($item['clasificacion']) == 'servicio') {
 
-                    $orden_detalle->realizado = $item['realizado'] ? OrdenServicio::REALIZADO_SI : OrdenServicio::REALIZADO_NO;
-                    $orden_detalle->save();
+                    $this->ordentrabajo
+                        ->ordenes_servicios()
+                        ->updateExistingPivot($item['id'], array('realizado' => $item['realizado'] ? OrdenServicio::REALIZADO_SI : OrdenServicio::REALIZADO_NO), false);
 
                 } else {
-                    $orden_detalle = OrdenRepuesto::where('ot_id', $this->ordentrabajo->id)->where('producto_id',$item['id'])->first();
-                    //$orden_detalle = OrdenRepuesto::find($item['id']);
-                    $orden_detalle->usado = $item['quantity'];
-                    $orden_detalle->save();
 
-                    //dd($orden_detalle->orden_trabajo->recepcion->reserva->sector_d);
+                    $this->ordentrabajo
+                        ->ordenes_repuestos()
+                        ->updateExistingPivot($item['id'], array('usado' => $item['quantity']), false);
+
                     /*
                      * Actualizacion en existencia manejo
                      */
-                    if ($orden_detalle->orden_trabajo->ordenes_repuestos->first()->sector->productos_servicios()->where('producto_id', $orden_detalle->producto_id)->exists()) {
-                        $sum = $orden_detalle
-                            ->orden_trabajo
-                            ->ordenes_repuestos
-                            ->first()
-                            ->sector->productos_servicios()->where('producto_id', $orden_detalle->producto_id)->sum('cantidad');
+                    if ($this->ordentrabajo->sector->productos_servicios()->where('producto_id', $item['id'])->exists()) {
+                        $sum = $this->ordentrabajo->sector->productos_servicios()->where('producto_id', $item['id'])->sum('cantidad');
 
-                        $orden_detalle
-                            ->orden_trabajo
-                            ->ordenes_repuestos
-                            ->first()
-                            ->sector->productos_servicios()->updateExistingPivot($orden_detalle->producto_id, array('cantidad' => $sum - $orden_detalle->usado), false);
+                        $this->ordentrabajo->sector->productos_servicios()->updateExistingPivot($item['id'], array('cantidad' => $sum - $item['usado']), false);
                     }
                 }
+            }
+
+            $ordenestrabajos = \App\Models\OrdenTrabajo::where('id', $this->ordentrabajo)->where(function ($w){
+                $w->whereDoesntHave('ordenes_repuestos', function ($q) {
+                    $q->where('usado','>', 0);
+                })->orWhereDoesntHave('ordenes_servicios', function ($q) {
+                    $q->where('realizado','=', 's');
+                });
+            })->get();
+
+            if ($ordenestrabajos->count() == 0) {
+                $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_REALIZADO;
+                $this->ordentrabajo->save();
             }
 
             \DB::commit();
@@ -75,6 +80,7 @@ class ServiciosRealizados extends Component
             session()->flash('msg', 'Se han realizado los servicios');
             session()->flash('type', 'success');
 
+            return;
             return redirect()->route('servicios-realizados');
 
         } catch (\Exception $e) {
@@ -97,19 +103,33 @@ class ServiciosRealizados extends Component
             $i->whereRaw("lower(descripcion) NOT LIKE 'servicio'");
         })->get();
 
-        if ($this->ordentrabajo->ordenes_servicios) {
-            foreach ($this->ordentrabajo->ordenes_servicios as $servicio) {
-                $this->arrayItems[$servicio->servicio_id] = $servicio->servicio()->with('clasificacion')->first()->toArray();
-                $this->arrayItems[$servicio->servicio_id]['subtotal'] = $servicio->servicio->precio_venta * 1;
-                $this->arrayItems[$servicio->servicio_id]['quantity'] = 1;
+        if (!$this->ordentrabajo->ordenes_servicios()->where('verificado', 'n')->exists()) {
+            if ($this->ordentrabajo->ordenes_repuestos) {
+                foreach ($this->ordentrabajo->ordenes_repuestos as $repuesto) {
+                    $this->arrayItems[$repuesto->id] = $repuesto->toArray();
+                    $this->arrayItems[$repuesto->id]['subtotal'] = $repuesto->precio_venta * $repuesto->pivot->cantidad;
+                    $this->arrayItems[$repuesto->id]['quantity'] = $repuesto->pivot->cantidad;
+                    $this->arrayItems[$repuesto->id]['clasificacion'] = $repuesto->clasificacion->descripcion;
+                }
             }
-        }
 
-        if ($this->ordentrabajo->ordenes_repuestos) {
-            foreach ($this->ordentrabajo->ordenes_repuestos as $repuesto) {
-                $this->arrayItems[$repuesto->producto_id] = $repuesto->repuesto()->with('clasificacion')->first()->toArray();
-                $this->arrayItems[$repuesto->producto_id]['subtotal'] = $repuesto->repuesto->precio_venta * $repuesto->cantidad;
-                $this->arrayItems[$repuesto->producto_id]['quantity'] = $repuesto->cantidad;
+            if ($this->ordentrabajo->ordenes_servicios) {
+                foreach ($this->ordentrabajo->ordenes_servicios as $servicio) {
+                    $this->arrayItems[$servicio->id] = $servicio->toArray();
+                    $this->arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
+                    $this->arrayItems[$servicio->id]['quantity'] = 1;
+                    $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
+                }
+            }
+        }else {
+            if ($this->ordentrabajo->ordenes_servicios) {
+                foreach ($this->ordentrabajo->ordenes_servicios()->where('verificado', 'n')->get() as $servicio) {
+                    $this->arrayItems[$servicio->id] = $servicio->toArray();
+                    $this->arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
+                    $this->arrayItems[$servicio->id]['quantity'] = 1;
+                    $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
+                    $this->arrayItems[$servicio->id]['descripcion_verificacion'] = $servicio->pivot->descripcion_verificacion;
+                }
             }
         }
     }

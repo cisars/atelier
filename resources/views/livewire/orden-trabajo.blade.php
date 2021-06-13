@@ -184,7 +184,7 @@
                                                             <td> {{ $item['id'] }} </td>
                                                             <td> {{ $item['descripcion'] }} </td>
                                                             <td>
-                                                                @if (strtolower($item['clasificacion']['descripcion']) != 'servicio')
+                                                                @if (strtolower($item['clasificacion']) != 'servicio')
                                                                     <input
                                                                         wire:key="input_quantity_{{ $item['id'] }}"
                                                                         type="number"

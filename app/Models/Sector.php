@@ -11,6 +11,7 @@ class Sector extends Model
     //protected $primaryKey = 'sector';
     //protected $fillable = [];
     protected $guarded = [];
+
     public function sucursal()
     {
         return $this->belongsTo(Sucursal::class, 'sucursal_id' );
@@ -19,8 +20,9 @@ class Sector extends Model
     public function productos_servicios()
     {
         return $this->belongsToMany(ProductoServicio::class, 'existencias_manejos',
-            'sector_id', 'producto_id')->withPivot('cantidad');
+            'sector_id', 'producto_id')->withPivot('cantidad', 'sector_id');
     }
+
 
 
 }

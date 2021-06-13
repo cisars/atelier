@@ -39,7 +39,7 @@
                             @endif
                         </div>
 
-                        <table class="table table-sm table-hover nowrap d-table" id="lista">
+                        <table class="table table-sm table-hover nowrap d-table" id="listaR">
                             <thead class="">
                             <tr>
                                 <th class="">Id </th>
@@ -128,6 +128,17 @@
         // $("#modals-alerts").fadeTo(1500, 500).slideUp(500, function(){
         //     $("#modals-alerts").slideUp(500);
         // });
+
+        $('#listaR').dataTable({
+            "autoWidth": false,
+            "info": false,
+            "JQueryUI": true,
+            "ordering": true,
+            "paging": false,
+            "scrollY": "500px",
+            "scrollCollapse": true,
+            order: [[7, 'asc']]
+        });
     </script>
 
 

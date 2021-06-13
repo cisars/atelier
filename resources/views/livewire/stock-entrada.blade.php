@@ -68,10 +68,10 @@
                                                     @php $ii++ @endphp
                                                     <tr>
                                                         <td> {{ $ii }} </td>
-                                                        <td> {{ $repuesto->producto_id }} </td>
-                                                        <td> {{ $repuesto->repuesto->descripcion }} </td>
+                                                        <td> {{ $repuesto->id }} </td>
+                                                        <td> {{ $repuesto->descripcion }} </td>
                                                         <td>
-                                                            {{ $repuesto->cantidad }}
+                                                            {{ $repuesto->pivot->cantidad }}
                                                         </td>
                                                     </tr>
                                                 @endforeach

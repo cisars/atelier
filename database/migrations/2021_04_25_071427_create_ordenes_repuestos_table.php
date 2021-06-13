@@ -20,7 +20,7 @@ class CreateOrdenesRepuestosTable extends Migration
             $table->string('usuario')->nullable();
             $table->string('observacion',200)->nullable();
             $table->integer('usado')->nullable();
-            $table->primary(['item','ot_id']);
+            $table->primary(['producto_id','ot_id']);
 
             $table->foreign('ot_id')
                 ->references('id')
@@ -33,9 +33,7 @@ class CreateOrdenesRepuestosTable extends Migration
             ;
 
         });
-        DB::statement('ALTER TABLE ordenes_repuestos MODIFY `item` TINYINT NOT NULL ');
-     //   DB::statement('ALTER TABLE ordenes_repuestos MODIFY item TINYINT NOT NULL AUTO_INCREMENT');
-       // DB::statement('ALTER TABLE ordenes_repuestos ADD PRIMARY KEY (`item`) TINYINT NOT NULL AUTO_INCREMENT');
+        //DB::statement('ALTER TABLE ordenes_repuestos MODIFY `item` TINYINT NOT NULL ');
     }
 
     public function down()

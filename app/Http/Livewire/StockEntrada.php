@@ -59,7 +59,7 @@ class StockEntrada extends Component
                     $repuesto = new EntradaDetalle();
                     $repuesto->item = $i;
                     $repuesto->entrada_id = $this->entrada->id;
-                    $repuesto->sector_id = $this->entrada->ordentrabajo->recepcion->reserva->sector;
+                    $repuesto->sector_id = $this->entrada->ordentrabajo->sector_id;
                     $repuesto->producto_id = $item['id'];
                 }
 

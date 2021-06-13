@@ -224,17 +224,19 @@ class OrdenTrabajoController extends Controller
 
         if ($ordentrabajo->ordenes_servicios) {
             foreach ($ordentrabajo->ordenes_servicios as $servicio) {
-                $arrayItems[$servicio->servicio_id] = $servicio->servicio()->with('clasificacion')->first()->toArray();
-                $arrayItems[$servicio->servicio_id]['subtotal'] = $servicio->servicio->precio_venta * 1;
-                $arrayItems[$servicio->servicio_id]['quantity'] = 1;
+                $arrayItems[$servicio->id] = $servicio->toArray();
+                $arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
+                $arrayItems[$servicio->id]['quantity'] = 1;
+                $arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
             }
         }
 
         if ($ordentrabajo->ordenes_repuestos) {
             foreach ($ordentrabajo->ordenes_repuestos as $repuesto) {
-                $arrayItems[$repuesto->producto_id] = $repuesto->repuesto()->with('clasificacion')->first()->toArray();
-                $arrayItems[$repuesto->producto_id]['subtotal'] = $repuesto->repuesto->precio_venta * $repuesto->cantidad;
-                $arrayItems[$repuesto->producto_id]['quantity'] = $repuesto->cantidad;
+                $arrayItems[$repuesto->id] = $repuesto->toArray();
+                $arrayItems[$repuesto->id]['subtotal'] = $repuesto->precio_venta * $repuesto->pivot->cantidad;
+                $arrayItems[$repuesto->id]['quantity'] = $repuesto->pivot->cantidad;
+                $arrayItems[$repuesto->id]['clasificacion'] = $repuesto->clasificacion->descripcion;
             }
         }
 
@@ -310,16 +312,9 @@ class OrdenTrabajoController extends Controller
     /*
      * SERVICIOS REALIZADOS
      */
-
     public function realizadosOt()
     {
-        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'a')->where(function ($w){
-            $w->whereDoesntHave('ordenes_repuestos', function ($q) {
-                $q->where('usado','>', 0);
-            })->orWhereDoesntHave('ordenes_servicios', function ($q) {
-                $q->where('realizado','=', 's');
-            });
-        })->get();
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'a')->get();
 
         $ordenestrabajos->each(function ($orden) {
             foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
@@ -337,6 +332,28 @@ class OrdenTrabajoController extends Controller
         return view('realizacionot.edit', compact('ordentrabajo'));
     }
 
+    /*
+     * Verificaciones OT
+     */
+    public function verificadosOt()
+    {
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'r')->get();
+
+        $ordenestrabajos->each(function ($orden) {
+            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
+                trim($orden->estado) == trim($valor) ? $orden->estado = $clave : NULL;
+
+        });
+
+        return view('realizacionot.index', compact('ordenestrabajos'));
+    }
+
+    public function editarVerificados($id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+
+        return view('verificacionot.edit', compact('ordentrabajo'));
+    }
 }
 
 ?>

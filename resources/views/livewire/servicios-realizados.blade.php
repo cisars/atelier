@@ -170,6 +170,11 @@
                                                     <th class="w-auto">#</th>
                                                     <th class="w-auto">ID</th>
                                                     <th class="w-100">Descripción</th>
+                                                    @foreach ($arrayItems as $key => $item)
+                                                        @if ($item['descripcion_verificacion'])
+                                                            <th class="w-100">Observación</th>
+                                                        @endif
+                                                    @endforeach
                                                     <th class="w-100">Cantidad</th>
                                                     <th class="w-100">Utilizado</th>
                                                     {{--<th class="w-100">Precio Uni.</th>
@@ -186,19 +191,20 @@
                                                             <td> {{ $ii }} </td>
                                                             <td> {{ $item['id'] }} </td>
                                                             <td> {{ $item['descripcion'] }} </td>
+                                                            @if ($item['descripcion_verificacion'])
+                                                            <td> {{ $item['descripcion_verificacion'] }} </td>
+                                                            @endif
                                                             <td>
                                                                 {{ $item['quantity'] }}
                                                             </td>
                                                             <td>
-                                                                @if (strtolower($item['clasificacion']['descripcion']) != 'servicio')
+                                                                @if (strtolower($item['clasificacion']) != 'servicio')
                                                                     <input
                                                                         wire:key="input_quantity_{{ $item['id'] }}"
                                                                         type="number"
                                                                         class="form-control-sm col-12"
                                                                         min="1"
                                                                         wire:model="arrayItems.{{ $item['id'] }}.usado"
-                                                                        {{--wire:keyup="subtotal({{ $item['id'] }})"
-                                                                        wire:change="subtotal({{ $item['id'] }})"--}}
                                                                         wire:loading.attr="disabled"
                                                                         wire:target="arrayItems.{{ $item['id'] }}.usado"
                                                                     >
@@ -209,8 +215,6 @@
                                                                         class="form-control-sm col-12"
                                                                         min="1"
                                                                         wire:model="arrayItems.{{ $item['id'] }}.realizado"
-                                                                        {{--wire:keyup="subtotal({{ $item['id'] }})"
-                                                                        wire:change="subtotal({{ $item['id'] }})"--}}
                                                                         wire:loading.attr="disabled"
                                                                         wire:target="arrayItems.{{ $item['id'] }}.realizado"
                                                                     >
@@ -231,11 +235,6 @@
                                             <br>
                                             {{ Auth::user()->usuario }}
                                         </div>
-                                        {{--SELECT FK Usuario ------------------------------------ --}}
-
-
-                                        {{--</div>--}}
-
 
                                         <div class="card-footer  ">
                                             <button

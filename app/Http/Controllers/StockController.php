@@ -54,6 +54,7 @@ class StockController extends Controller
             $entrada->save();
 
             $entrada->ordentrabajo->ordenes_repuestos()->update(['sector_id' => $request->sector_id]);
+            $entrada->ordentrabajo()->update(['sector_id' => $request->sector_id]);
 
             \DB::commit();
 
