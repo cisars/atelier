@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\BitacoraController;
 use App\Models\OrdenServicio;
 use App\Models\ProductoServicio;
 use Livewire\Component;
@@ -52,6 +53,16 @@ class VerificacionOt extends Component
             if ($revertirOt) {
                 $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_ACEPTADO;
                 $this->ordentrabajo->save();
+            }else{
+                $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_VERIFICADO;
+                $this->ordentrabajo->save();
+            }
+
+            /*
+             * Insercion en Bitacora
+             */
+            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Verificación de servicios')) {
+                throw new \Exception('No se pudo crear la bitacora');
             }
 
 

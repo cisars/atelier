@@ -27,7 +27,7 @@ class StoreMaquinariaRequest extends FormRequest
                 Rule::unique('maquinarias', 'descripcion')
                     ->ignore($this->maquinaria, 'maquinaria')
                     ->where(function ($query) {
-                        return $query->where('maquinaria_tipo', $this->maquinaria_tipo);
+                        return $query->where('maquinaria_tipo_id', $this->maquinaria_tipo);
                     })
             ],
         ];

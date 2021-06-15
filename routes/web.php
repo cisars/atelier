@@ -146,7 +146,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('entrada', 'EntradaController');
     Route::resource('entrada_detalle', 'EntradaDetalleController');
     Route::resource('orden_mecanico', 'OrdenMecanicoController');
+
     Route::resource('empleado_maquina', 'EmpleadoMaquinaController');
+    Route::get('empleado_maquina/{empleado}/{maquinaria}/desasignar', 'EmpleadoMaquinaController@desasignarMaquinaria')->name('empleado_maquina.desasignar');
+
     Route::resource('factura', 'FacturaController');
     Route::resource('factura_detalle', 'FacturaDetalleController');
     Route::resource('entrega', 'EntregaController');
@@ -212,6 +215,23 @@ Route::get('/servicios-realizados/{id}/editar', 'OrdenTrabajoController@editarSe
  */
 Route::get('/verificaciones', 'OrdenTrabajoController@verificadosOt')->name('verificados');
 Route::get('/verificaciones/{id}/editar', 'OrdenTrabajoController@editarVerificados')->name('verificados.editar');
+
+/*
+ * Finalizacion
+ */
+Route::get('/finalizaciones', 'OrdenTrabajoController@finalizadosOt')->name('finalizados');
+Route::get('/finalizaciones/{id}/editar', 'OrdenTrabajoController@editarFinalizados')->name('finalizados.editar');
+
+/*
+ * Entrega vehiculos
+ */
+Route::get('/entregas', 'OrdenTrabajoController@entregas')->name('entregas');
+Route::get('/entregas/crear', 'OrdenTrabajoController@crearEntrega')->name('entregas.crear');
+//Route::get('/entregas/{id}/editar', 'OrdenTrabajoController@editarFinalizados')->name('finalizados.editar');
+
+
+
+
 
 //Route::get('/tuindex',     'BootstrapExampleController@data')->name('tuindex');
 Route::view('/tallerusuario', 'talleres_usuarios/index')->name('tallerusuario');

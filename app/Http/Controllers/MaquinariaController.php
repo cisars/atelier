@@ -30,7 +30,7 @@ class MaquinariaController extends Controller
         $estados        = $maquinaria->getEstados();
 
         $maquinarias = Maquinaria::orderBy('descripcion', 'ASC')->get();
-        $maquinarias_tipos = MaquinariaTipo::all();
+        $maquinarias_tipos = MaquinariaTipo::pluck('descripcion', 'id');
         return view('maquinaria.create')
             ->with('maquinarias', $maquinarias)
             ->with('estados', $estados)
@@ -52,7 +52,7 @@ class MaquinariaController extends Controller
         $maquinaria = new Maquinaria([
             'descripcion'       => $request->get('descripcion'),
             'estado'            => $request->get('estado'),
-            'maquinaria_tipo'   => $request->get('maquinaria_tipo'),
+            'maquinaria_tipo_id'   => $request->get('maquinaria_tipo'),
         ]);
         $maquinaria->save();
         return redirect()

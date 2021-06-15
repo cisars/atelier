@@ -120,7 +120,7 @@
                                                 <p class="text-right text-white h1 pt-5"
                                                    style="text-shadow: 1px 1px #000;">
                                                     @if($options != 0)
-{{--                                                        <span x-data="{show: false}" x-show.transition.duration.1000ms="show" x-init="setTimeout(() => { show = true })"  >{{ $mimarca . ', '. $mimodelo }}</span>--}}
+                                                        {{--                                                        <span x-data="{show: false}" x-show.transition.duration.1000ms="show" x-init="setTimeout(() => { show = true })"  >{{ $mimarca . ', '. $mimodelo }}</span>--}}
                                                         {{ $mimarca . ', '. $mimodelo }}
                                                     @else
                                                         Resumen de Servicios
@@ -128,8 +128,7 @@
                                                 </p>
                                                 @if($options != 0)
                                                     <div class="text-sm text-maroon float-right right align-right">
-                                                        <i class="fa fa-clock"></i> Servicio del
-                                                        21 de Junio del 2020
+                                                        <i class="fa fa-clock"></i> {{ strftime('%a, %d de %B, %Y', strtotime($mivehiculo->ordenes_trabajos->last()->created_at))  }}
                                                     </div>
                                                 @else
                                                     <div class="text-sm text-maroon float-right right align-right">
@@ -163,34 +162,36 @@
 
                                                                         <tr>
                                                                             <td class="text-maroon">
-                                                                                <i class="fa fa-ticket-alt"></i> Ticket # {{$res->ticket}} | {{ date('d/m/Y', strtotime($res->para_fecha)) }}
+                                                                                <i class="fa fa-ticket-alt"></i> Ticket
+                                                                                # {{$res->ticket}}
+                                                                                | {{ date('d/m/Y', strtotime($res->para_fecha)) }}
                                                                             </td>
                                                                         </tr>
-                                                                        @endforeach
-                                                                        <tr>
-                                                                            <td class="text-maroon">
-                                                                                <i class="fa fa-clock"></i> -
-                                                                            </td>
-                                                                        </tr>
-{{--                                                                    <tr>--}}
-{{--                                                                        <td class="text-maroon">--}}
-{{--                                                                            <i class="fa fa-clock"></i> 15 de Marzo del--}}
-{{--                                                                            2019--}}
-{{--                                                                        </td>--}}
-{{--                                                                    </tr>--}}
-{{--                                                                    <tr>--}}
-{{--                                                                        <td class="text-maroon">--}}
-{{--                                                                            <i class="fa fa-clock"></i> 19 de Diciembre--}}
-{{--                                                                            del 2019--}}
-{{--                                                                        </td>--}}
-{{--                                                                    </tr>--}}
-{{--                                                                    <tr>--}}
-{{--                                                                        <td class="text-maroon bg-maroon">--}}
-{{--                                                                            <i class="fa fa-clock"></i> 21 de Junio del--}}
-{{--                                                                            2020 <i class="fa fa-hand-point-left"></i>--}}
-{{--                                                                            (ACTUAL)--}}
-{{--                                                                        </td>--}}
-{{--                                                                    </tr>--}}
+                                                                    @endforeach
+                                                                    <tr>
+                                                                        <td class="text-maroon">
+                                                                            <i class="fa fa-clock"></i> -
+                                                                        </td>
+                                                                    </tr>
+                                                                    {{--                                                                    <tr>--}}
+                                                                    {{--                                                                        <td class="text-maroon">--}}
+                                                                    {{--                                                                            <i class="fa fa-clock"></i> 15 de Marzo del--}}
+                                                                    {{--                                                                            2019--}}
+                                                                    {{--                                                                        </td>--}}
+                                                                    {{--                                                                    </tr>--}}
+                                                                    {{--                                                                    <tr>--}}
+                                                                    {{--                                                                        <td class="text-maroon">--}}
+                                                                    {{--                                                                            <i class="fa fa-clock"></i> 19 de Diciembre--}}
+                                                                    {{--                                                                            del 2019--}}
+                                                                    {{--                                                                        </td>--}}
+                                                                    {{--                                                                    </tr>--}}
+                                                                    {{--                                                                    <tr>--}}
+                                                                    {{--                                                                        <td class="text-maroon bg-maroon">--}}
+                                                                    {{--                                                                            <i class="fa fa-clock"></i> 21 de Junio del--}}
+                                                                    {{--                                                                            2020 <i class="fa fa-hand-point-left"></i>--}}
+                                                                    {{--                                                                            (ACTUAL)--}}
+                                                                    {{--                                                                        </td>--}}
+                                                                    {{--                                                                    </tr>--}}
                                                                 </table>
                                                             </div>
                                                         </div>
@@ -198,35 +199,38 @@
                                                 </div>
 
                                             @endforeach
-                                                <div class="card col-sm-4 ">
+                                            <div class="card col-sm-4 ">
 
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <!-- MultiStep Form -->
-                                                            <div class=" col-sm-12 btn btn-outline-danger bg-maroon p-5 " wire:click="newCar()">
-                                                                 <button class="form-control bg-maroon text-white border-0  "  > <i class="fa fa-plus-circle"></i> Agregar Vehículo </button>
-                                                            </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <!-- MultiStep Form -->
+                                                        <div class=" col-sm-12 btn btn-outline-danger bg-maroon p-5 "
+                                                             wire:click="newCar()">
+                                                            <button
+                                                                class="form-control bg-maroon text-white border-0  "><i
+                                                                    class="fa fa-plus-circle"></i> Agregar Vehículo
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="card  col-sm-12">
-                                                    <div class="card-body">
-                                                        <div class="   text-maroon text-center  "
-                                                             style="background-color: #efe9ec">
-                                                            <br>
-                                                            Por favor selecciona un vehículo. <br> Ante
-                                                            cualquier duda comunícate con nosotros en la línea directa
-                                                            <br><br>
-                                                        </div>
+                                            <div class="card  col-sm-12">
+                                                <div class="card-body">
+                                                    <div class="   text-maroon text-center  "
+                                                         style="background-color: #efe9ec">
+                                                        <br>
+                                                        Por favor selecciona un vehículo. <br> Ante
+                                                        cualquier duda comunícate con nosotros en la línea directa
+                                                        <br><br>
                                                     </div>
                                                 </div>
+                                            </div>
 
 
                                         @endif
                                         @if($options == 1)
                                             <div class="col-md-4">
-{{$mivehiculo}}
 
                                                 <div class="col-md-12">
                                                     <div class="card card-maroon card-outline">
@@ -244,23 +248,15 @@
                                                                         class="table table-hover text-nowrap table-sm text-sm">
 
                                                                         <tbody>
-                                                                        <tr>
-                                                                            <td>
-                                                                                <i class="fa fa-check text-maroon"></i>
-                                                                                Sin
-                                                                                datos
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                -
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                -
-                                                                            </td>
-                                                                        </tr>
+                                                                        @foreach ($mivehiculo->ordenes_trabajos->last()->recepcion->sintomas as $sintoma)
+                                                                            {{--@dd($sintoma)--}}
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <i class="fa fa-check text-maroon"></i>
+                                                                                    {{ $sintoma->descripcion }}
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endforeach
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -277,7 +273,7 @@
                                                                 <div class="card-title  text-maroon">
                                                                     <img src="{{ asset('/img/icono2.png') }}"
                                                                          class="figure-img">
-                                                                    Diagnóstico del Taller
+                                                                    Servicios a realizar
                                                                 </div>
                                                                 <!-- MultiStep Form -->
                                                                 <div class=" col-sm-12  ">
@@ -285,23 +281,15 @@
                                                                         class="table table-hover text-nowrap table-sm text-sm">
 
                                                                         <tbody>
-                                                                        <tr>
-                                                                            <td>
-                                                                                <i class="fa fa-check text-maroon"></i>
-                                                                                Sin
-                                                                                datos
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                -
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                -
-                                                                            </td>
-                                                                        </tr>
+                                                                        @foreach ($mivehiculo->ordenes_trabajos->last()->ordenes_servicios as $servicio)
+                                                                            {{--@dd($servicio)--}}
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <i class="fa fa-check text-maroon"></i>
+                                                                                    {{ $servicio->descripcion }}
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endforeach
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -325,7 +313,7 @@
                                                             <div class=" col-sm-12  ">
                                                                 {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
                                                                 <div class=" col-12  pull-right align-right">
-                                                                    <h5>Miguel Pozo</h5>
+                                                                    <h5>{{ $mivehiculo->ordenes_trabajos->last()->recepcion->empleado->empleado->apellidos.', '.$mivehiculo->ordenes_trabajos->last()->recepcion->empleado->empleado->nombres }}</h5>
                                                                 </div>
                                                                 <table
                                                                     class="table table-hover text-nowrap table-sm  text-sm">
@@ -335,7 +323,7 @@
                                                                             Correo
                                                                         </td>
                                                                         <td>
-                                                                            mpozo@atelier.com
+                                                                            {{ $mivehiculo->ordenes_trabajos->last()->recepcion->empleado->email }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -343,15 +331,8 @@
                                                                             Hora recepción
                                                                         </td>
                                                                         <td>
-                                                                            00:00 hs
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-maroon">
-                                                                            Observaciones
-                                                                        </td>
-                                                                        <td>
-                                                                            -
+                                                                            {{ date('H:i', strtotime($mivehiculo->ordenes_trabajos->last()->recepcion->fecha_recepcion)) }}
+                                                                            hs
                                                                         </td>
                                                                     </tr>
                                                                     </tbody>
@@ -372,15 +353,34 @@
                                                                 <table
                                                                     class="table table-hover table-striped text-nowrap table-sm  text-sm">
 
-                                                                        @php setlocale(LC_TIME,"es_ES"); @endphp
-                                                                    @foreach($mivehiculo->reservas as $key => $res)
-                                                                        <tr>
+                                                                    @php setlocale(LC_TIME,"es_ES"); @endphp
+                                                                    @foreach($mivehiculo->ordenes_trabajos->sortBy('created_at') as $key => $res)
+                                                                        {{--<tr>
                                                                             <td class="text-maroon">
-                                                                                <i class="fa fa-ticket-alt"></i> Ticket  {{ $res->ticket }} {{ date('H:i', strtotime($res->para_hora)) }} {{ date('d/m/Y', strtotime($res->para_fecha)) }}
+                                                                                <i class="fa fa-ticket-alt"></i>
+                                                                                OT {{ $res->id }} {{ date('H:i', strtotime($res->created_at)) }} {{ date('d/m/Y', strtotime($res->created_at)) }}
                                                                             </td>
-                                                                        </tr>
+                                                                        </tr>--}}
+                                                                        @if (!$loop->last)
+                                                                            <tr>
+                                                                                <td class="text-maroon">
+                                                                                    <i class="fa fa-clock"></i>
+                                                                                    OT {{ $res->id }} {{ date('H:i', strtotime($res->created_at)) }} {{ date('d/m/Y', strtotime($res->created_at)) }}
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endif
+                                                                        @if ($loop->last)
+                                                                            <tr>
+                                                                                <td class="text-maroon bg-maroon">
+                                                                                    <i class="fa fa-clock"></i>
+                                                                                    OT {{ $res->id }} {{ date('H:i', strtotime($res->created_at)) }} {{ date('d/m/Y', strtotime($res->created_at)) }}
+                                                                                    <i class="fa fa-hand-point-left"></i>
+                                                                                    (ACTUAL)
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endif
                                                                     @endforeach
-                                                                    <tr>
+                                                                    {{--<tr>
                                                                         <td class="text-maroon">
                                                                             <i class="fa fa-clock"></i> 15 de Marzo del
                                                                             2019
@@ -391,14 +391,8 @@
                                                                             <i class="fa fa-clock"></i> 19 de Diciembre
                                                                             del 2019
                                                                         </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-maroon bg-maroon">
-                                                                            <i class="fa fa-clock"></i> 21 de Junio del
-                                                                            2020 <i class="fa fa-hand-point-left"></i>
-                                                                            (ACTUAL)
-                                                                        </td>
-                                                                    </tr>
+                                                                    </tr>--}}
+
                                                                 </table>
                                                             </div>
                                                         </div>
@@ -500,7 +494,7 @@
                                                 <div class="card card-maroon">
                                                     <div class="card-header   ">
                                                         <i class="fa fa-clipboard-check"></i>
-                                                        Diagnostico del taller
+                                                        Síntomas de ingreso
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="row">
@@ -509,31 +503,13 @@
                                                                 {{--                                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
                                                                 <table class="table table-hover text-nowrap  ">
                                                                     <tbody>
-                                                                    <tr>
-                                                                        <td class="text-maroon">
-                                                                            <i class="fa fa-arrow-right"></i> Item
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-maroon">
-                                                                            <i class="fa fa-arrow-right"></i> Item
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-maroon">
-                                                                            <i class="fa fa-arrow-right"></i> Item
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-maroon">
-                                                                            <i class="fa fa-arrow-right"></i> Item
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-maroon">
-                                                                            <i class="fa fa-arrow-right"></i> Item
-                                                                        </td>
-                                                                    </tr>
+                                                                    @foreach ($mivehiculo->ordenes_trabajos->last()->recepcion->sintomas as $sintoma)
+                                                                        <tr>
+                                                                            <td class="text-maroon">
+                                                                                <i class="fa fa-arrow-right"></i> {{ $sintoma->descripcion }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -545,7 +521,8 @@
                                                 <div class="card card-maroon">
                                                     <div class="card-header   ">
                                                         <i class="fa fa-car"></i>
-                                                        Presupuesto segun O.T. Nro #352
+                                                        Presupuesto segun O.T. Nro
+                                                        #{{ $mivehiculo->ordenes_trabajos->last()->id }}
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="row">
@@ -562,51 +539,39 @@
                                                                     <th class="w-25">Monto</th>
                                                                     </thead>
                                                                     <tbody>
+                                                                    @foreach ($mivehiculo->ordenes_trabajos->last()->ordenes_repuestos as $repuesto)
+                                                                        <tr>
+                                                                            <td>
+                                                                                <i class="fa fa-check-square text-maroon"></i>
+                                                                                {{ $repuesto->descripcion }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ number_format($repuesto->precio_venta, 0, ',', '.') }}
+                                                                                Gs.
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                    @foreach ($mivehiculo->ordenes_trabajos->last()->ordenes_servicios as $servicio)
+                                                                        <tr>
+                                                                            <td>
+                                                                                <i class="fa fa-check-square text-maroon"></i>
+                                                                                {{ $servicio->descripcion }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ number_format($servicio->precio_venta, 0, ',', '.') }}
+                                                                                Gs.
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
                                                                     <tr>
                                                                         <td>
-                                                                            <i class="fa fa-check-square text-maroon"></i>
-                                                                            Item
+                                                                            <b>TOTAL</b>
                                                                         </td>
                                                                         <td>
-                                                                            0 Gs.
+                                                                            <b>{{ number_format($mivehiculo->ordenes_trabajos->last()->importe_total , 0, ',', '.') }}
+                                                                                Gs.</b>
                                                                         </td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <i class="fa fa-check-square  text-maroon"></i>
-                                                                            Item
-                                                                        </td>
-                                                                        <td>
-                                                                            0 Gs.
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <i class="fa fa-check-square  text-maroon"></i>
-                                                                            Item
-                                                                        </td>
-                                                                        <td>
-                                                                            0 Gs.
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <i class="fa fa-check-square  text-maroon"></i>
-                                                                            Item
-                                                                        </td>
-                                                                        <td>
-                                                                            0 Gs.
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <i class="text-bold"></i> Total
-                                                                        </td>
-                                                                        <td>
-                                                                            <i class="text-bold"></i> 0 Gs.
-                                                                        </td>
-                                                                    </tr>
-
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -620,6 +585,126 @@
                                                 <!-- The time line -->
                                                 <div class="timeline">
                                                     <!-- timeline time label -->
+
+                                                    @php($lastBitacora = false)
+                                                    @php($count = 1)
+                                                    @foreach ($mivehiculo->ordenes_trabajos->last()->bitacora->sortBy('created_at') as $bitacora)
+                                                        @if ($lastBitacora && (date('Y-m-d', strtotime($bitacora->created_at)) != date('Y-m-d', strtotime($lastBitacora->created_at))) || $loop->first)
+                                                            <div class="time-label">
+                                                                <span
+                                                                    class="bg-maroon">{{ date('d-m-Y', strtotime($bitacora->created_at)) }}</span>
+                                                            </div>
+                                                        @endif
+                                                        @if ($loop->first)
+                                                            <div>
+                                                                <i class="fas fa-envelope bg-maroon"></i>
+                                                                <i class="fas fa-key bg-maroon"></i>
+                                                                <div class="timeline-item "
+                                                                     style="background-color: #efe9ec">
+                                                                    <span class="time"><i class="fas fa-clock"></i> {{ date('H:i', strtotime($bitacora->created_at)) }}</span>
+                                                                    <h3 class="timeline-header"><a
+                                                                            href="#">Recepción</a> del
+                                                                        vehículo
+                                                                    </h3>
+
+                                                                    <div class="timeline-body">
+                                                                        - Hora de
+                                                                        entrada {{ date('H:i', strtotime($bitacora->created_at)) }}
+                                                                        hs <br>
+                                                                        - Recepcionista encargado fue <a href="#">
+                                                                            {{ $bitacora->ordentrabajo->recepcion->empleado->empleado->nombres.' '.$bitacora->ordentrabajo->recepcion->empleado->empleado->apellidos }}</a>
+                                                                        <br>
+                                                                        - Síntomas de entrada:
+                                                                        @foreach ($bitacora->ordentrabajo->recepcion->sintomas as $sintoma)
+                                                                            {{ $sintoma->descripcion }}
+                                                                            @if (!$loop->last)
+                                                                                -
+                                                                            @endif
+                                                                        @endforeach
+                                                                        {{--Síntoma 1, Síntoma 2, Síntoma 3--}}
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            @php($count++)
+                                                        @elseif ($bitacora->estado == 'p')
+                                                            @if ($count == 2)
+                                                                <div>
+                                                                    <i class="fas fa-heart bg-maroon"></i>
+                                                                    <div class="timeline-item"
+                                                                         style="background-color: #efe9ec">
+                                                                        <span class="time"><i class="fas fa-clock"></i>
+                                                                            {{ date('H:i', strtotime($bitacora->created_at)) }}</span>
+                                                                        <h3 class="timeline-header no-border"><a
+                                                                                href="#">Diagnóstico</a>
+                                                                            del taller realizado </h3>
+                                                                        <div class="timeline-body">
+                                                                            @foreach ($bitacora->ordentrabajo->ordenes_servicios as $servicio)
+                                                                                - {{ $servicio->descripcion }}
+                                                                                @if (!$loop->last)
+                                                                                    <br>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @php($count++)
+                                                            @elseif ($bitacora->estado == 'p' && $count == 3)
+                                                                <div>
+                                                                    <i class="fas fa-envelope bg-maroon"></i>
+                                                                    <div class="timeline-item"
+                                                                         style="background-color: #efe9ec">
+                                                                        <span class="time"><i class="fas fa-clock"></i>
+                                                                            {{ date('H:i', strtotime($bitacora->created_at)) }}</span>
+                                                                        <h3 class="timeline-header no-border">Se le
+                                                                            envio un <a
+                                                                                href="#">Presupuesto</a></h3>
+                                                                        <div class="timeline-body">
+                                                                            - Clic aqui para acceder al <a href="#">
+                                                                                Presupuesto</a>
+                                                                            {{--<br>
+                                                                            - Estado de la OT: <B>PENDIENTE</B>--}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        @elseif ($bitacora->estado == 'a')
+                                                            <div>
+                                                                <i class="fas fa-business-time bg-maroon"></i>
+                                                                <div class="timeline-item">
+                                                                    <span class="time"><i class="fas fa-clock"></i> {{ date('H:i', strtotime($bitacora->created_at)) }}</span>
+                                                                    <h3 class="timeline-header"> Inicio del servicio
+                                                                    </h3>
+                                                                    <div class="timeline-body">
+                                                                        <em>Durante el servicio, si se encuentra alguna
+                                                                            falla
+                                                                            adicional será consultado antes de tomar
+                                                                            cualquier
+                                                                            acción</em>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @elseif ($bitacora->estado == 'r')
+                                                            <div>
+                                                                <i class="fas fa-envelope bg-maroon"></i>
+                                                                <div class="timeline-item">
+                                                                    <span class="time"><i class="fas fa-clock"></i> {{ date('H:i', strtotime($bitacora->created_at)) }}</span>
+                                                                    <h3 class="timeline-header"><a href="#"> Realización
+                                                                            de
+                                                                            Servicios </a> . Correo de notificación
+                                                                    </h3>
+                                                                    <div class="timeline-body">
+                                                                        Concluyeron los trabajos de
+                                                                        reparación/mantenimiento. Se
+                                                                        aguarda la verificación de las tareas por parte
+                                                                        del
+                                                                        jefe de mecánicos
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @php($lastBitacora = $bitacora)
+                                                    @endforeach
                                                     <div class="time-label">
                                                         <span class="bg-maroon">10 Feb. 2021</span>
                                                     </div>
@@ -807,7 +892,7 @@
                                                         <h3 class="card-title"><i class="fa fa-pen-alt"></i> Nuevo
                                                             Vehículo</h3>
                                                     </div>
-                                                    <form wire:submit.prevent="submitVehiculo"  >
+                                                    <form wire:submit.prevent="submitVehiculo">
                                                         @csrf
                                                         <div class="card-body">
 
@@ -879,7 +964,8 @@
                                                                 >
                                                                     <option value="-1">Seleccione color</option>
                                                                     @foreach($losColores as $key => $color)
-                                                                        <option value="{{ $color->id }}" >{{ $color->descripcion }}</option>
+                                                                        <option
+                                                                            value="{{ $color->id }}">{{ $color->descripcion }}</option>
                                                                     @endforeach
                                                                 </select>
 
@@ -952,7 +1038,7 @@
                                                                 type="submit"
                                                                 class="btn bg-maroon"><i class="fa fa-plus"></i> Agregar
                                                             </button>
-                                                            <a  wire:click="changeOption(0)"
+                                                            <a wire:click="changeOption(0)"
                                                                class="btn btn-secondary btn-close">Cancelar</a>
                                                         </div>
                                                     </form>

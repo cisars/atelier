@@ -91,7 +91,7 @@
                 {{--                <input wire:change="test()" wire:model="test" type="text" class="form-control @error('test') is-invalid @enderror">--}}
 
                 @isset($reserva->id)
-                        <input type="hidden" name="term" value="0">
+                    <input type="hidden" name="term" value="0">
                     <div class="form-group col">
                         <div class="row">
                             <div class="col-10">
@@ -211,27 +211,28 @@
                 @else
 
                     <div class="form-group col">
-                    <div class="row overflow-hidden">
-                        <div class="col-md-11">
-                        {{--SELECT FK Vehículo --}}
-                        {!! Form::label('vehiculo_id', 'Vehículo') !!}
-                        {!! Form::select('vehiculo_id', $vehiculos  ,
-                            old('vehiculo_id') ,
-                            [
-                                'class' => 'form-control',
-                                'placeholder' => 'Seleccione el cliente y luego el vehículo']
-                        ) !!}
-                        @error("vehiculo_id")
-                        <span class="text text-danger">{{ $message }}</span>
-                        @enderror
+                        <div class="row overflow-hidden">
+                            <div class="col-md-11">
+                                {{--SELECT FK Vehículo --}}
+                                {!! Form::label('vehiculo_id', 'Vehículo') !!}
+                                {!! Form::select('vehiculo_id', $vehiculos  ,
+                                    old('vehiculo_id') ,
+                                    [
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Seleccione el cliente y luego el vehículo']
+                                ) !!}
+                                @error("vehiculo_id")
+                                <span class="text text-danger">{{ $message }}</span>
+                                @enderror
 
-                    </div>
+                            </div>
 
-                        <div class="col-md-1">
-                            {!! Form::label('   ', ' Agregar ') !!}
-                            <a href="{{ route('vehiculo.create') }}  " class="btn-lg bg-yellow "><i class="fa fa-plus pt-2"   ></i></a>
-                    </div>
-                    </div>
+                            <div class="col-md-1">
+                                {!! Form::label('   ', ' Agregar ') !!}
+                                <a href="{{ route('vehiculo.create') }}  " class="btn-lg bg-yellow "><i
+                                        class="fa fa-plus pt-2"></i></a>
+                            </div>
+                        </div>
                     </div>
                 @endisset
 

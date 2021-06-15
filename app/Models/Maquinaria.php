@@ -28,6 +28,11 @@ class Maquinaria extends Model
         return $this->belongsTo(MaquinariaTipo::class, 'maquinaria_tipo_id' );
     }
 
+    public function empleados_maquinas()
+    {
+        return $this->belongsToMany(Empleado::class, 'empleados_maquinas', 'maquinaria_id', 'empleado_id');
+    }
+
 //    public function empleados_maquinas()
 //    {
 //        return $this->hasMany(EmpleadoMaquina::class, 'maquinaria', 'maquinaria');

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
-class OrdenTrabajo extends Component
+class FinalizacionOt extends Component
 {
     public $ordentrabajo;
 
@@ -150,13 +150,6 @@ class OrdenTrabajo extends Component
             $this->ordentrabajo->importe_total = $importe_total;
             $this->ordentrabajo->save();
 
-            /*
-             * Insercion en Bitacora
-             */
-            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Confección de presupuesto')) {
-                throw new \Exception('No se pudo crear la bitacora');
-            }
-
             \DB::commit();
 
             session()->flash('msg', 'Se ha procesado la orden de trabajo');
@@ -187,7 +180,6 @@ class OrdenTrabajo extends Component
         $this->tipos = $this->ordentrabajo->getTipos(); // tipos
         $this->estados = $this->ordentrabajo->getEstados(); // estados
         $this->prioridades = $this->ordentrabajo->getPrioridades(); // prioridades
-        $this->prioridad = $this->ordentrabajo->prioridad_desc; // prioridades
 
         $this->sintomas = Sintoma::all();
 
@@ -201,6 +193,8 @@ class OrdenTrabajo extends Component
 
         if ($this->ordentrabajo->ordenes_servicios) {
             foreach ($this->ordentrabajo->ordenes_servicios as $servicio) {
+                //dd($servicio);
+
                 $this->arrayItems[$servicio->id] = $servicio->toArray();
                 $this->arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
                 $this->arrayItems[$servicio->id]['quantity'] = 1;
@@ -218,8 +212,37 @@ class OrdenTrabajo extends Component
         }
     }
 
+    public function finalizar()
+    {
+        $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_FINALIZADO;
+        $this->ordentrabajo->save();
+
+        /*
+         * Insercion en Bitacora
+         */
+        if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Finalización de trabajo')) {
+            throw new \Exception('No se pudo crear la bitacora');
+        }
+
+        session()->flash('msg', 'Orden finalizada correctamente');
+        session()->flash('type', 'success');
+
+        return redirect()->route('finalizados');
+    }
+
+    public function rechazar()
+    {
+        $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_REALIZADO;
+        $this->ordentrabajo->save();
+
+        session()->flash('msg', 'Orden rechazada correctamente');
+        session()->flash('type', 'success');
+
+        return redirect()->route('finalizados');
+    }
+
     public function render()
     {
-        return view('livewire.orden-trabajo');
+        return view('livewire.finalizacion-ot');
     }
 }

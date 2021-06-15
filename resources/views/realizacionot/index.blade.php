@@ -55,7 +55,7 @@
                                     <td> {{ $orden->fecha_ }} </td>
                                     <td class="">{{ $orden->cliente->razon_social }}</td>
                                     <td class="">{{ $orden->vehiculo->full_desc }}</td>
-                                    <td class=""> {{ $orden->estado }}  </td>
+                                    <td class=""> {{ $orden->estado_desc }}  </td>
 
                                     <td class="">
                                         <a

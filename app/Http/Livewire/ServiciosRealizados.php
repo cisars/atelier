@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\BitacoraController;
 use App\Models\EntradaDetalle;
 use App\Models\OrdenRepuesto;
 use App\Models\OrdenServicio;
@@ -54,11 +55,12 @@ class ServiciosRealizados extends Component
                     /*
                      * Actualizacion en existencia manejo
                      */
+                    /*dd($this->ordentrabajo->sector);
                     if ($this->ordentrabajo->sector->productos_servicios()->where('producto_id', $item['id'])->exists()) {
                         $sum = $this->ordentrabajo->sector->productos_servicios()->where('producto_id', $item['id'])->sum('cantidad');
 
                         $this->ordentrabajo->sector->productos_servicios()->updateExistingPivot($item['id'], array('cantidad' => $sum - $item['usado']), false);
-                    }
+                    }*/
                 }
             }
 
@@ -75,12 +77,18 @@ class ServiciosRealizados extends Component
                 $this->ordentrabajo->save();
             }
 
+            /*
+             * Insercion en Bitacora
+             */
+            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Verificación de trabajo')) {
+                throw new \Exception('No se pudo crear la bitacora');
+            }
+
             \DB::commit();
 
             session()->flash('msg', 'Se han realizado los servicios');
             session()->flash('type', 'success');
 
-            return;
             return redirect()->route('servicios-realizados');
 
         } catch (\Exception $e) {
@@ -110,6 +118,7 @@ class ServiciosRealizados extends Component
                     $this->arrayItems[$repuesto->id]['subtotal'] = $repuesto->precio_venta * $repuesto->pivot->cantidad;
                     $this->arrayItems[$repuesto->id]['quantity'] = $repuesto->pivot->cantidad;
                     $this->arrayItems[$repuesto->id]['clasificacion'] = $repuesto->clasificacion->descripcion;
+                    $this->arrayItems[$repuesto->id]['descripcion_verificacion'] = false;
                 }
             }
 
@@ -119,6 +128,7 @@ class ServiciosRealizados extends Component
                     $this->arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
                     $this->arrayItems[$servicio->id]['quantity'] = 1;
                     $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
+                    $this->arrayItems[$servicio->id]['descripcion_verificacion'] = false;
                 }
             }
         }else {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\BitacoraController;
 use App\Models\Cliente;
 use App\Models\OrdenTrabajo;
 use App\Models\RecepcionesSintomas;
@@ -90,24 +91,6 @@ class Recepcion extends Component
         // Traer todas las reservas para el taller que corresponde
         if (isset($this->recepcion->id)) {
 
-
-//borratodo
-//            $recepcionSintomasCollect = RecepcionesSintomas::where('recepcion_id', $this->recepcion->id)->get();
-//            foreach ($recepcionSintomasCollect as $index => $recepcionsintomaItem) {
-//                $borrar = RecepcionesSintomas::where(
-//                    [
-//                        'recepcion_id' => $recepcionsintomaItem->recepcion_id,
-//                        'sintoma_id' => $recepcionsintomaItem->sintoma_id
-//                    ]
-//                )->delete();
-//
-//            }
-//            \App\Models\Recepcion::find($this->recepcion->id)->delete();
-//
-
-
-            //   dd(  $this->recepcion->reserva_id) ;
-            //   dd(Reserva::find($this->recepcion->reserva_id));
             $this->reservasActivas[$this->recepcion->reserva_id] = '#Ticket' . Reserva::find($this->recepcion->reserva_id)->ticket . '| Reserva: ' . $this->recepcion->reserva_id;
             $this->reserva_id = $this->recepcion->reserva_id;
             $this->traeReservaSeleccionada();
@@ -197,7 +180,7 @@ class Recepcion extends Component
                 $recepcion->reserva_id = (int)$this->reserva_id;
                 $recepcion->cliente_id = $this->collCliente->id;
                 $recepcion->vehiculo_id = $this->vehiculo_id;
-                $recepcion->fecha_recepcion = date('Y-m-d');
+                $recepcion->fecha_recepcion = date('Y-m-d H:i');
                 $recepcion->usuario = \Auth::user()->usuario;
                 $recepcion->save();
 
@@ -238,18 +221,26 @@ class Recepcion extends Component
                 $recepcionesintomas->save();
             }
 
+            /*
+             * Insercion en Bitacora
+             */
+            if (!(new BitacoraController())->create($ordentrabajo->id, $ordentrabajo->created_at, $ordentrabajo->estado, 'Recepción de vehículo')) {
+                throw new \Exception('No se pudo crear la bitacora');
+            }
+
             DB::commit();
 
             session()->flash('msg', 'Reserva recepcionada correctamente');
             session()->flash('type', 'info');
 
+
             return redirect()->route('recepcion.index');
 
         } catch (\Exception $e) {
-            dd($e->getMessage());
             DB::rollBack();
+            dd($e->getMessage());
 
-            \Log::error('Livewire\Recepcion@grabaRecepcion Line: '.$e->getLine().' - Message: '.$e->getMessage());
+            \Log::error('Livewire\Recepcion@grabaRecepcion Line: ' . $e->getLine() . ' - Message: ' . $e->getMessage());
             session()->flash('msg', 'No se pudo recepcionar la reserva');
             session()->flash('type', 'error');
         }

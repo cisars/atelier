@@ -45,9 +45,12 @@ class Vehiculo extends Model
 
     public function getFullDescAttribute()
     {
-
        return $this->modelo->marca->descripcion .', '. $this->modelo->descripcion;
+    }
 
+    public function getFullMetaVehiculoAttribute()
+    {
+        return 'Color: '.$this->color->descripcion .' - Chapa: '. $this->chapa;
     }
 
     public function getFuelAttribute()
@@ -132,6 +135,11 @@ class Vehiculo extends Model
         //return $this->marca->descripcion . ", " . $this->modelo->marca->descripcion;
         //return $this->marca ? $this->marca->descripcion . ", " . $this->modelo->marca->descripcion : '';
         return $this->modelo->marca->descripcion . ", " . $this->modelo->descripcion;
+    }
+
+    public function ordenes_trabajos()
+    {
+        return $this->hasMany(OrdenTrabajo::class, 'vehiculo_id');
     }
 
     public function cliente()

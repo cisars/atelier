@@ -450,7 +450,7 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'grupo', 'text' => 'Grupos de trabajos',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria_tipo', 'text' => 'Tipo de Maquinaria',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria', 'text' => 'Maquinarias',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_asignacionamaquinaria', 'text' => 'Asignación a Maquinarias',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'empleado_maquina', 'text' => 'Asignación a Maquinarias',],
 //                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Feriados Laborales',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_calendarioatencionc', 'text' => 'Calendarios Reservas',],
 
@@ -549,8 +549,8 @@ return [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'servicios-realizados', 'text' => 'Servicios Realizados',],
 
                 ['icon_color' => 'info', 'can' => 'admin', 'url' => 'verificaciones', 'text' => 'Verificacion de OT ',],
-                ['icon_color' => 'info', 'can' => 'admin', 'url' => '_finalizacionot ', 'text' => 'Finalizacion de OT ',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_entregavehiculo', 'text' => 'Entregas de Vehiculos',],
+                ['icon_color' => 'info', 'can' => 'admin', 'url' => 'finalizaciones ', 'text' => 'Finalizacion de OT ',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'entregas', 'text' => 'Entregas de Vehiculos',],
                 [
                     'submenu' => [
                         ['url' => 'reserva/create'],

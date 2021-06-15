@@ -10,6 +10,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EnvioPresupuesto;
+use App\Models\Entrega;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\OrdenTrabajo\StoreOrdenTrabajoRequest;
@@ -37,11 +38,6 @@ class OrdenTrabajoController extends Controller
         $ordenes_trabajos->each(function ($orden_trabajo) {
             foreach ((new OrdenTrabajo())->getTipos() as $clave => $valor)
                 trim($orden_trabajo->tipo) == trim($valor) ? $orden_trabajo->tipo = $clave : NULL;
-            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
-                trim($orden_trabajo->estado) == trim($valor) ? $orden_trabajo->estado = $clave : NULL;
-            foreach ((new OrdenTrabajo())->getPrioridades() as $clave => $valor)
-                trim($orden_trabajo->prioridad) == trim($valor) ? $orden_trabajo->prioridad = $clave : NULL;
-
             //OPCION 2
             // $orden_trabajo->tipo === OrdenTrabajo::TIPO_UNO   ? $orden_trabajo->tipo = 'TIPO_UNO' : "" ;
             // $orden_trabajo->estado === OrdenTrabajo::ESTADO_PENDIENTE   ? $orden_trabajo->estado = 'ESTADO_PENDIENTE' : "" ;
@@ -151,6 +147,10 @@ class OrdenTrabajoController extends Controller
         $estados = $orden_trabajo->getEstados(); // estados
         $prioridades = $orden_trabajo->getPrioridades(); // prioridades
 
+        /*foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
+            trim($orden_trabajo->estado) == trim($valor) ? $orden_trabajo->estado = $clave : NULL;*/
+
+
         return view('orden_trabajo.edit')
             ->with('orden_trabajo', $orden_trabajo)
             // Send all fk variables
@@ -209,12 +209,6 @@ class OrdenTrabajoController extends Controller
     {
         $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'p')->get();
 
-        $ordenestrabajos->each(function ($orden) {
-            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
-                trim($orden->estado) == trim($valor) ? $orden->estado = $clave : NULL;
-
-        });
-
         return view('confirmacionot.index', compact('ordenestrabajos'));
     }
 
@@ -252,6 +246,13 @@ class OrdenTrabajoController extends Controller
             $ordentrabajo->estado = OrdenTrabajo::ESTADO_ACEPTADO;
             $ordentrabajo->save();
 
+            /*
+             * Insercion en Bitacora
+             */
+            if (!(new BitacoraController())->create($ordentrabajo->id, $ordentrabajo->created_at, $ordentrabajo->estado, 'Confirmación de presupuesto')) {
+                throw new \Exception('No se pudo crear la bitacora');
+            }
+
             session()->flash('msg', 'Orden confirmada');
             session()->flash('type', 'success');
 
@@ -274,6 +275,13 @@ class OrdenTrabajoController extends Controller
             $ordentrabajo->estado = OrdenTrabajo::ESTADO_CANCELADO;
             $ordentrabajo->save();
 
+            /*
+             * Insercion en Bitacora
+             */
+            if (!(new BitacoraController())->create($ordentrabajo->id, $ordentrabajo->created_at, $ordentrabajo->estado, 'Cancelación de presupuesto')) {
+                throw new \Exception('No se pudo crear la bitacora');
+            }
+
             session()->flash('msg', 'Orden cancelada');
             session()->flash('type', 'success');
 
@@ -294,7 +302,12 @@ class OrdenTrabajoController extends Controller
         try {
             Mail::to($orden->cliente->email)->send(new EnvioPresupuesto($orden));
 
-            $this->enviarMail = false;
+            /*
+             * Insercion en Bitacora
+             */
+            if (!(new BitacoraController())->create($orden->id, $orden->created_at, $orden->estado, 'Presupuesto enviado')) {
+                throw new \Exception('No se pudo crear la bitacora');
+            }
 
             session()->flash('msg', 'Presupuesto enviado');
             session()->flash('type', 'success');
@@ -304,6 +317,8 @@ class OrdenTrabajoController extends Controller
         }catch (\Exception $e){
             session()->flash('msg', 'No se pudo enviar el presupuesto');
             session()->flash('type', 'error');
+
+            \Log::error('OrdenTrabajoController@enviarPresupuesto Line: ' . $e->getLine() . ' - Message: ' . $e->getMessage());
 
             return redirect()->back();
         }
@@ -315,12 +330,6 @@ class OrdenTrabajoController extends Controller
     public function realizadosOt()
     {
         $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'a')->get();
-
-        $ordenestrabajos->each(function ($orden) {
-            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
-                trim($orden->estado) == trim($valor) ? $orden->estado = $clave : NULL;
-
-        });
 
         return view('realizacionot.index', compact('ordenestrabajos'));
     }
@@ -339,13 +348,7 @@ class OrdenTrabajoController extends Controller
     {
         $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'r')->get();
 
-        $ordenestrabajos->each(function ($orden) {
-            foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
-                trim($orden->estado) == trim($valor) ? $orden->estado = $clave : NULL;
-
-        });
-
-        return view('realizacionot.index', compact('ordenestrabajos'));
+        return view('verificacionot.index', compact('ordenestrabajos'));
     }
 
     public function editarVerificados($id)
@@ -353,6 +356,42 @@ class OrdenTrabajoController extends Controller
         $ordentrabajo = OrdenTrabajo::find($id);
 
         return view('verificacionot.edit', compact('ordentrabajo'));
+    }
+
+    /*
+     * Finalizacion OT
+     */
+    public function finalizadosOt()
+    {
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'v')->get();
+
+        return view('finalizacionot.index', compact('ordenestrabajos'));
+    }
+
+    public function editarFinalizados($id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+        foreach ((new OrdenTrabajo())->getEstados() as $clave => $valor)
+            trim($ordentrabajo->estado) == trim($valor) ? $ordentrabajo->estado = $clave : NULL;
+
+        return view('finalizacionot.edit', compact('ordentrabajo'));
+    }
+
+    /*
+     * Entregas
+     */
+    public function entregas()
+    {
+        $entregas = Entrega::all();
+
+        return view('entregavehiculo.index', compact('entregas'));
+    }
+
+    public function crearEntrega()
+    {
+        //$entrega = Entrega::find($id);
+
+        return view('entregavehiculo.create');
     }
 }
 

@@ -30,6 +30,7 @@ class Empleado extends Model
             'Femenino' => Empleado::EMPLEADO_FEMENINO,
         ];
     }
+
     public function getEstados()
     {
         return $estados = [
@@ -37,6 +38,7 @@ class Empleado extends Model
             'Inactivo' => Empleado::EMPLEADO_INACTIVO,
         ];
     }
+
     public function getEstadosCiviles()
     {
         return $estadosciviles = [
@@ -54,23 +56,32 @@ class Empleado extends Model
 
     public function usuarios()
     {
-        return $this->hasMany(Usuario::class, 'empleado_id' );
+        return $this->hasMany(Usuario::class, 'empleado_id');
     }
+
     public function turno()
     {
-        return $this->belongsTo(Turno::class,'turno_id' );
+        return $this->belongsTo(Turno::class, 'turno_id');
     }
+
     public function cargo()
     {
-        return $this->belongsTo(Cargo::class, 'cargo_id' );
+        return $this->belongsTo(Cargo::class, 'cargo_id');
     }
+
     public function grupo()
     {
         return $this->belongsTo(Grupo::class);
     }
+
     public function localidad()
     {
         return $this->belongsTo(Localidad::class, 'localidad_id');
+    }
+
+    public function empleados_maquinas()
+    {
+        return $this->belongsToMany(Maquinaria::class, 'empleados_maquinas', 'empleado_id', 'maquinaria_id');
     }
 
 

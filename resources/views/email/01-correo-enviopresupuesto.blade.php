@@ -108,25 +108,25 @@
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ $servicio->servicio->descripcion }}
+                                                    {{ $servicio->descripcion }}
                                                 </td>
                                                 <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ $servicio->cantidad }}
+                                                    {{ $servicio->pivot->cantidad }}
                                                 </td>
                                                 <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ number_format(($servicio->servicio->precio_venta), 0, ',', '.') }}
+                                                    {{ number_format(($servicio->precio_venta), 0, ',', '.') }}
                                                 </td>
                                                 <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ number_format(($servicio->servicio->precio_venta * $servicio->cantidad), 0, ',', '.') }}
+                                                    {{ number_format(($servicio->precio_venta * $servicio->pivot->cantidad), 0, ',', '.') }}
                                                 </td>
                                                 {{--<td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
@@ -142,25 +142,25 @@
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ $repuesto->repuesto->descripcion }}
+                                                    {{ $repuesto->descripcion }}
                                                 </td>
                                                 <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ $repuesto->cantidad }}
+                                                    {{ $repuesto->pivot->cantidad }}
                                                 </td>
                                                 <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ number_format($repuesto->repuesto->precio_venta, 0, ',', '.') }}
+                                                    {{ number_format($repuesto->precio_venta, 0, ',', '.') }}
                                                 </td>
                                                 <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                    {{ number_format(($repuesto->repuesto->precio_venta * $repuesto->cantidad), 0, ',', '.') }}
+                                                    {{ number_format(($repuesto->precio_venta * $repuesto->pivot->cantidad), 0, ',', '.') }}
                                                 </td>
                                             </tr>
                                         @endforeach

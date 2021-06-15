@@ -50,6 +50,7 @@ class ClienteController extends Controller
 // Send all fk variables
             ->with('localidades', $localidades)
             ->with('personerias', $personerias)
+            ->with('cliente', $cliente)
 // Send all cons variables
             ;
     }

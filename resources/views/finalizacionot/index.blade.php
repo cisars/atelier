@@ -7,12 +7,12 @@
 // GENISA Begin
 ?>
 @extends('adminlte::page')
-@section('title', 'Listado de Verificación OT')
+@section('title', 'Listado de Finalización OT')
 @section('css')
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Verificación OT </li>
+    <li class="breadcrumb-item active">ABM Finalización OT </li>
 @stop
 
 @section('content')
@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Verificación OT   </h3>
+                        <h3 class="card-title">Finalización OT   </h3>
 
                     </div>
                     <!-- /.card-header -->
@@ -59,7 +59,7 @@
 
                                     <td class="">
                                         <a
-                                            href="{{ route('verificados.editar', $orden->id) }}"
+                                            href="{{ route('finalizados.editar', $orden->id) }}"
                                             class= "btn btn-info">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>

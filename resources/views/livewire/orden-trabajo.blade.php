@@ -52,7 +52,7 @@
                                                 {{--CONST Estado Pendiente | estado | estado --}}
                                                 <div class="form-group col-4 bg-gray-light">
                                                     <label for="estado">Estado</label>
-                                                    {{ $ordentrabajo->estado }}
+                                                    {{ $ordentrabajo->estado_desc }}
                                                 </div>
                                                 {{-- FIN CONST Estado Pendiente------------------------------------ --}}
 

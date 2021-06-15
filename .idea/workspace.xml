@@ -5,32 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_13_024646_add_column_to_ordenes_trabajos_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/verificacionot/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/verificacionot/edit_bk.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/verificacionot/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BitacoraController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/FinalizacionOt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Bitacora.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122319_create_empleados_maquinas_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entregavehiculo/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entregavehiculo/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/entregavehiculo/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/finalizacionot/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/finalizacionot/edit_bk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/finalizacionot/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/finalizacion-ot.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClienteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmpleadoMaquinaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmpleadoMaquinaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntregaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntregaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaquinariaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaquinariaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/OrdenTrabajo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Recepcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Recepcion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/ServiciosRealizados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/ServiciosRealizados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/StockEntrada.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/StockEntrada.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/VerificacionOt.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/VerificacionOt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExistenciaManejo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenRepuesto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrdenServicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenServicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/EmpleadoMaquina/StoreEmpleadoMaquinaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/EmpleadoMaquina/StoreEmpleadoMaquinaRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/EmpleadoMaquina/UpdateEmpleadoMaquinaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/EmpleadoMaquina/UpdateEmpleadoMaquinaRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/StoreMaquinariaRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Maquinaria/StoreMaquinariaRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Empleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Empleado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/EmpleadoMaquina.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EmpleadoMaquina.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Entrega.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Entrega.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Maquinaria.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Maquinaria.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrdenTrabajo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Sector.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Sector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Recepcion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Recepcion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Vehiculo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Vehiculo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071427_create_ordenes_repuestos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_25_071548_create_ordenes_servicios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_09_201915_create_maquinarias_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_09_201915_create_maquinarias_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_26_122319_create_empleado_maquinas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_06_15_014745_create_bitacoras_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_26_122351_create_entregas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122351_create_entregas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cliente/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cliente/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/confirmacionot/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmacionot/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/confirmacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/confirmacionot/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/01-correo-enviopresupuesto.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/email/01-correo-enviopresupuesto.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/empleado_maquina/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/empleado_maquina/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/empleado_maquina/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/empleado_maquina/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/orden-trabajo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/panel-cliente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/panel-cliente.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/reserva.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/reserva.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/servicios-realizados.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/servicios-realizados.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/stock-entrada.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/stock-entrada.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/verificacion-ot.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/verificacion-ot.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/maquinaria/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/maquinaria/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orden_trabajo/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/realizacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/realizacionot/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reserva/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reserva/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/verificacionot/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/verificacionot/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,12 +99,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="diego" />
-                    <option name="lastUsedInstant" value="1623392530" />
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1623558055" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1623392281" />
+                    <option name="branchName" value="diego" />
+                    <option name="lastUsedInstant" value="1623392530" />
                   </RecentBranch>
                 </list>
               </option>
@@ -236,7 +260,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/entregavehiculo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -249,11 +273,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\atelier\resources\views\entregavehiculo" />
       <recent name="C:\laragon\www\atelier\resources\views" />
       <recent name="C:\laragon\www\atelier\app\Models" />
       <recent name="C:\laragon\www\atelier\resources\views\entrada" />
       <recent name="C:\laragon\www\atelier\resources\views\realizacionot" />
-      <recent name="D:\Programas\laragon\www\atelier\resources\views\vehiculo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\atelier\app\Models" />
@@ -355,6 +379,7 @@
       <workItem from="1623382608771" duration="10195000" />
       <workItem from="1623442089452" duration="28079000" />
       <workItem from="1623526996696" duration="4769000" />
+      <workItem from="1623676445529" duration="30637000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>

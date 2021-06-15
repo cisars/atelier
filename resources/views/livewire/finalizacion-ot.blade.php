@@ -16,7 +16,7 @@
                                     </div>
 
 
-                                    <div class="card-body" style=" background-image:url('/img/bg-ot.gif')">
+                                    <div class="card-body" style=" background-image:url('/img/bg-ot.gif')" >
                                         <div class="jumbotron m-0 p-4" style="background:rgba(225,239,245,0.7); ">
                                             <div class="row">
 
@@ -33,7 +33,7 @@
 
                                                     {{--SELECT FK Recepción --}}
                                                     {!! Form::label('recepcion_id', 'Recepción Nro  ' ) !!}
-                                                    <span class="h3">#{{ $ordentrabajo->recepcion_id }}
+                                                    <span class="h3" >#{{ $ordentrabajo->recepcion_id }}
                                                 </span>
                                                 </div>
                                                 {{--SELECT FK Recepción ------------------------------------ --}}
@@ -51,7 +51,7 @@
                                                 </div>
                                                 {{--CONST Estado Pendiente | estado | estado --}}
                                                 <div class="form-group col-4 bg-gray-light">
-                                                    {{ $ordentrabajo->estado_desc }}
+                                                    {{ $ordentrabajo->estado }}
                                                 </div>
                                                 {{-- FIN CONST Estado Pendiente------------------------------------ --}}
 
@@ -111,69 +111,26 @@
                                                 {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
                                             </div>{{--row --}}
                                             <div class="row">
-                                                {{--CONST Prioridad Normal | prioridad | prioridad --}}
-                                                <div class="form-group col-4 bg-gray-light">
+                                                <div class="form-group col-5 bg-gray-light">
                                                     {{ $ordentrabajo->prioridad_desc }}
                                                 </div>
-                                                {{-- FIN CONST Prioridad Normal------------------------------------ --}}
-                                            </div>{{--row --}}
-                                        </div>{{--  jumbotron  --}}
+                                            </div>
+                                        </div>
                                         <hr>
-                                        <div class="form-group col">
-                                            <label>Síntomas de ingreso</label>
-                                            <table
-                                                class="table table-sm table-hover nowrap d-table table-responsive"
-                                                style="background:rgba(225,239,245,0.7); ">
-                                                <thead class="">
-                                                <tr>
-                                                    <th class="w-auto">Item</th>
-                                                    <th class="w-100">Descripción</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach ($ordentrabajo->recepcion->sintomas as $sintoma)
-                                                    <tr>
-                                                        <td> {{ $sintoma->id }} </td>
-                                                        <td> {{ $sintoma->descripcion }} </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="form-group col">
-                                            {{--INPUT TEXT Descripción --}}
-                                            {!! Form::label('descripcion', 'Descripción') !!}
-                                            {!! Form::text(
-                                                'descripcion',
-                                                old('descripcion') ,
-                                                [
-                                                    'wire:model'    => 'descripcion',
-                                                    'maxlength'     => '200',
-                                                    'type'          => 'text',
-                                                    'class'         => 'form-control',
-                                                    'placeholder'   => 'Descripción'
-                                                ]) !!}
-                                            @error("descripcion")
-                                            <span class="text text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        {{--INPUT TEXT Descripción ------------------------------------ --}}
+
 
                                         <div class="form-group col">
                                             <label>Presupuesto</label>
-                                            <br>
-                                            {{--{{ json_encode($arrayItems) }}--}}
                                             <table
-                                                class="table table-sm table-hover nowrap d-table table-responsive"
-                                                style="background:rgba(255,255,255,0.7); ">
+                                                class="table table-sm table-hover nowrap d-table table-responsive" style="background:rgba(255,255,255,0.7); ">
                                                 <thead class="">
                                                 <tr>
                                                     <th class="w-auto">#</th>
                                                     <th class="w-auto">ID</th>
-                                                    <th class="w-50">Descripción</th>
-                                                    <th class="w-50">Observacion</th>
-                                                    <th class="w-100">Aprobado</th>
-                                                    <th class="w-100">Revisar</th>
+                                                    <th class="w-100">Descripción</th>
+                                                    <th class="w-100">Cantidad</th>
+                                                    <th class="w-100">Precio</th>
+                                                    <th class="w-100">Subtotal</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -186,61 +143,60 @@
                                                             <td> {{ $item['id'] }} </td>
                                                             <td> {{ $item['descripcion'] }} </td>
                                                             <td>
-                                                                <input
-                                                                    wire:key="input_obs_{{ $item['id'] }}"
-                                                                    type="text"
-                                                                    class="form-control-sm col-12"
-                                                                    wire:model="arrayItems.{{ $item['id'] }}.descripcion_verificacion"
-                                                                >
+                                                                {{ $item['quantity'] }}
                                                             </td>
-                                                            <td>
-                                                                <input
-                                                                    name="check_{{ $item['id'] }}"
-                                                                    value="v"
-                                                                    wire:key="input_check_{{ $item['id'] }}"
-                                                                    type="radio"
-                                                                    class="form-control-sm col-12"
-                                                                    min="1"
-                                                                    wire:model="arrayItems.{{ $item['id'] }}.verificado"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="arrayItems.{{ $item['id'] }}.verificado"
-                                                                >
-                                                            </td>
-                                                            <td>
-                                                                <input
-                                                                    name="check_{{ $item['id'] }}"
-                                                                    value="r"
-                                                                    wire:key="input_check_{{ $item['id'] }}"
-                                                                    type="radio"
-                                                                    class="form-control-sm col-12"
-                                                                    min="1"
-                                                                    wire:model="arrayItems.{{ $item['id'] }}.verificado"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="arrayItems.{{ $item['id'] }}.verificado"
-                                                                >
-                                                            </td>
+                                                            <td> {{ number_format($item['precio_venta'], 0, ',','.') }} </td>
+                                                            <td> {{ number_format($item['subtotal'], 0, ',','.') }} </td>
                                                         </tr>
                                                     @endforeach
+
                                                 @endif
+                                                <tr>
+                                                    <td align="right" colspan="5"><b>Total</b></td>
+                                                    <td>{{ number_format(array_sum(array_column($arrayItems, 'subtotal')), 0, ',', '.') }}</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                {{--SELECT FK Usuario --}}
+                                                {!! Form::label('usuario', 'Usuario') !!}
 
-                                        <div class="form-group col">
-                                            {{--SELECT FK Usuario --}}
-                                            {!! Form::label('usuario', 'Usuario') !!}
-                                            <br>
-                                            {{ Auth::user()->usuario }}
+                                                {{ Auth::user()->usuario }}
+                                            </div>
+                                            <div class="form-group col-8">
+                                                {{--SELECT FK Usuario --}}
+                                                {!! Form::label('mecanico', 'Mecánico Responsable') !!}
+
+                                                {{ Auth::user()->empleado->apellidos }}, {{ Auth::user()->empleado->nombres }}
+                                            </div>
+                                            {{--SELECT FK Usuario ------------------------------------ --}}
                                         </div>
+
+                                        {{--</div>--}}
+
 
                                         <div class="card-footer  ">
                                             <button
-                                                wire:click="guardar"
+                                                wire:click="finalizar"
                                                 type="submit"
-                                                class="btn btn-info">Grabar
+                                                class="btn btn-info">Finalizar
                                             </button>
-                                            <a href="{{ route('servicios-realizados') }}  "
+                                            <button
+                                                wire:click="rechazar"
+                                                type="submit"
+                                                class="btn btn-warning">Rechazar
+                                            </button>
+                                            <a href="{{ route('orden_trabajo.index') }}  "
                                                class="btn btn-secondary btn-close">Volver</a>
+                                            {{--<button @if (!$enviarMail || $ordentrabajo->importe_total == 0) disabled
+                                                    @endif type="button" wire:click="enviarPresupuesto"
+                                                    class="btn btn-danger btn-close"><i
+                                                    class="fa fa-file-pdf"></i> Enviar
+                                                presupuesto
+                                            </button>--}}
                                         </div>
 
                                         {!! Form::close() !!}

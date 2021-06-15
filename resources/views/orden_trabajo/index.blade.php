@@ -97,8 +97,8 @@
                                         , {{ $orden_trabajo->empleado->nombres      }}</td>
                                     <td>{{ $orden_trabajo->grupo->descripcion      }}</td>
                                     <td>{{ $orden_trabajo->tipo      }}</td>
-                                    <td>{{ $orden_trabajo->prioridad      }}</td>
-                                    <td>{{ $orden_trabajo->estado      }}</td>
+                                    <td>{{ $orden_trabajo->prioridad_desc      }}</td>
+                                    <td>{{ $orden_trabajo->estado_desc      }}</td>
                                     {{--                                    <td>{{ $orden_trabajo->descripcion      }}</td>--}}
                                     <td>{{ number_format($orden_trabajo->importe_total, 0, ',','.') }} Gs.</td>
                                     <td>{{ $orden_trabajo->empleado->usuario      }}</td>

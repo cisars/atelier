@@ -57,7 +57,7 @@
                                     <td class="">{{ $orden->vehiculo->chapa }}</td>
                                     <td class="">{{ date('d-m-Y H:i', strtotime($orden->fecha_recepcion)) }}</td>
                                     <td class="">{{ number_format($orden->importe_total, 0, ',','.') }} Gs.</td>
-                                    <td class="">{{ $orden->estado }}</td>
+                                    <td class="">{{ $orden->estado_desc }}</td>
 
                                     <td class="">
                                         <a

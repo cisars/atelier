@@ -51,8 +51,7 @@
                                                 </div>
                                                 {{--CONST Estado Pendiente | estado | estado --}}
                                                 <div class="form-group col-4 bg-gray-light">
-                                                    <label for="estado">Estado</label>
-                                                    {{ $ordentrabajo->estado }}
+                                                    {{ $ordentrabajo->estado_desc }}
                                                 </div>
                                                 {{-- FIN CONST Estado Pendiente------------------------------------ --}}
 
@@ -113,10 +112,8 @@
                                             </div>{{--row --}}
                                             <div class="row">
                                                 {{--CONST Prioridad Normal | prioridad | prioridad --}}
-                                                <div class="form-group col-4">
-                                                    <label for="prioridad">Prioridad </label>
-
-                                                    {{ $ordentrabajo->prioridad }}
+                                                <div class="form-group col-4 bg-gray-light">
+                                                    {{ $ordentrabajo->prioridad_desc }}
                                                 </div>
                                                 {{-- FIN CONST Prioridad Normal------------------------------------ --}}
                                             </div>{{--row --}}

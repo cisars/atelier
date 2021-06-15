@@ -28,6 +28,7 @@ class OrdenTrabajo extends Model
     const ESTADO_REALIZADO = 'r'; // estados
     const ESTADO_VERIFICADO = 'v'; // estados
     const ESTADO_FINALIZADO = 'f'; // estados
+    const ESTADO_ENTREGADO = 'e'; // estados
     // Prioridad
     const PRIORIDAD_NORMAL = 'n'; // prioridades
     const PRIORIDAD_URGENTE = 'n'; // prioridades
@@ -51,6 +52,7 @@ class OrdenTrabajo extends Model
             'Estado Realizado' => OrdenTrabajo::ESTADO_REALIZADO,
             'Estado Verificado' => OrdenTrabajo::ESTADO_VERIFICADO,
             'Estado Finalizado' => OrdenTrabajo::ESTADO_FINALIZADO,
+            'Estado Entregado' => OrdenTrabajo::ESTADO_ENTREGADO,
         ];
     }
 
@@ -61,6 +63,28 @@ class OrdenTrabajo extends Model
             'Prioridad Normal' => OrdenTrabajo::PRIORIDAD_NORMAL,
             'Prioridad Urgente' => OrdenTrabajo::PRIORIDAD_URGENTE,
         ];
+    }
+
+    public function getEstadoDescAttribute()
+    {
+        foreach ($this->getEstados() as $clave => $valor)
+            if (trim($this->estado) == trim($valor)) {
+                return $clave;
+            }
+
+        return null;
+
+    }
+
+    public function getPrioridadDescAttribute()
+    {
+        foreach ($this->getPrioridades() as $clave => $valor)
+            if (trim($this->prioridad) == trim($valor)) {
+                return $clave;
+            }
+
+        return null;
+
     }
 
     public function taller()
@@ -126,7 +150,6 @@ class OrdenTrabajo extends Model
             ->withPivot(['item', 'cantidad', 'sector_id', 'usuario', 'observacion', 'usado', 'ot_id']);
 
 
-
         //return $this->belongsToMany(ProductoServicio::class)->using(OrdenRepuesto::class)->withPivot('sector_id');
     }
 
@@ -153,6 +176,11 @@ class OrdenTrabajo extends Model
     public function sector()
     {
         return $this->belongsTo(Sector::class, 'sector_id');
+    }
+
+    public function bitacora()
+    {
+        return $this->hasMany(Bitacora::class, 'ot_id');
     }
 }
 

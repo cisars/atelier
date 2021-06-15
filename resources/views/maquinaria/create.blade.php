@@ -44,18 +44,7 @@
 
                                         <div class="form-group">
                                             <label for="maquinaria_tipo">Maquinarias Tipos</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="maquinaria_tipo"
-                                                id      ="maquinaria_tipo">
-                                                <option value="">Seleccione Tipo de Maquinaria</option>
-                                                @foreach($maquinarias_tipos as $key => $maquinaria_tipo)
-                                                    <option
-                                                        value   ="{{ $maquinaria_tipo->maquinaria_tipo }}"
-                                                        {{ old('maquinaria_tipo') == $maquinaria_tipo->maquinaria_tipo ? 'selected' : '' }}
-                                                    >{{ $maquinaria_tipo->descripcion }}</option>
-                                                @endforeach
-                                            </select>
+                                            {!! Form::select('maquinaria_tipo', $maquinarias_tipos , null , ['class' => 'form-control']) !!}
                                             @foreach ($errors->get('maquinaria_tipo') as $error)
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
