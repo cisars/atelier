@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Taller\StoreTallerRequest;
 use App\Http\Requests\Taller\UpdateTallerRequest;
+use App\Models\Empleado;
 use App\Models\Localidad;
 use App\Models\Taller;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class TallerController extends Controller
@@ -89,5 +92,62 @@ class TallerController extends Controller
         //       return redirect()->route('taller.index')->with('error', $e->getMessage());
         //   }
 
+    }
+
+    public function usuarios()
+    {
+        $usuarios = Usuario::whereHas('talleres')->get();
+
+        return \view('talleres_usuarios.index', compact('usuarios'));
+    }
+    public function crearAsignacion()
+    {
+        $usuarios = Usuario::pluck('usuario', 'usuario');
+        $talleres = Taller::pluck('descripcion', 'id');
+        return \view('talleres_usuarios.create', compact('usuarios', 'talleres'));
+    }
+
+    public function asignarUsuarioTaller(Request $request)
+    {
+        try {
+
+            Usuario::find($request->usuario)->talleres()->attach($request->taller);
+
+            session()->flash('msg', 'Asignación realizada exitósamente');
+            session()->flash('type', 'success');
+
+            return redirect()->route('taller.usuarios');
+        }catch (\Exception $e){
+            dd($e->getMessage());
+            session()->flash('msg', 'No se pudo asignar el usuario al taller');
+            session()->flash('type', 'error');
+
+            return redirect()->route('taller.usuarios');
+        }
+    }
+
+    public function desasignarUsuario($usuario, $taller)
+    {
+        try {
+            DB::beginTransaction();
+
+            Usuario::find($usuario)->talleres()->detach($taller);
+
+            DB::commit();
+
+            session()->flash('msg', 'Asignación eliminada');
+            session()->flash('type', 'success');
+
+            return redirect()->back();
+        }catch (\Exception $e){
+            DB::rollBack();
+
+            dd($e->getMessage());
+
+            session()->flash('msg', 'No se pudo eliminar la asignación');
+            session()->flash('type', 'error');
+
+            return redirect()->back();
+        }
     }
 }

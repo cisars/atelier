@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Http\Controllers\BitacoraController;
 use App\Mail\EnvioPresupuesto;
+use App\Models\Bitacora;
 use App\Models\Cliente;
 use App\Models\Empleado;
 use App\Models\Grupo;
@@ -153,8 +154,12 @@ class OrdenTrabajo extends Component
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Confección de presupuesto')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($this->ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_A_REALIZAR)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($this->ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_A_REALIZAR,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_A_REALIZAR))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             \DB::commit();
@@ -187,7 +192,8 @@ class OrdenTrabajo extends Component
         $this->tipos = $this->ordentrabajo->getTipos(); // tipos
         $this->estados = $this->ordentrabajo->getEstados(); // estados
         $this->prioridades = $this->ordentrabajo->getPrioridades(); // prioridades
-        $this->prioridad = $this->ordentrabajo->prioridad_desc; // prioridades
+        $this->prioridades = array_flip($this->prioridades); // prioridades
+        $this->prioridad = $this->ordentrabajo->prioridad; // prioridades
 
         $this->sintomas = Sintoma::all();
 

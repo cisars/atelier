@@ -16,7 +16,7 @@
 
 @section('menu-header')
     <li class="breadcrumb-item"><a href="/{{  Request::segment(1) }} "> {{ Request::segment(1) }}</a></li>
-    <li class="breadcrumb-item active"> Ver Orden de Trabajo </li>
+    <li class="breadcrumb-item active"> Ver Orden de Trabajo</li>
 @stop
 @section('content')
 
@@ -39,8 +39,8 @@
                                             <h3 class="card-title">Ver OrdenTrabajo</h3>
                                         </div>
 
-
-                                        <div class="card-body" style=" background-image:url('/img/bg-ot.gif')" >
+                                        {!! Form::model($ordentrabajo, ['route' => ['confirmacionot.actualizar', $ordentrabajo->id], 'method' => 'post']) !!}
+                                        <div class="card-body" style=" background-image:url('/img/bg-ot.gif')">
                                             <div class="jumbotron m-0 p-4" style="background:rgba(225,239,245,0.7); ">
                                                 <div class="row">
 
@@ -57,18 +57,18 @@
 
                                                         {{--SELECT FK Recepción --}}
                                                         {!! Form::label('recepcion_id', 'Recepción Nro  ' ) !!}
-                                                        <span class="h3" >#{{ $ordentrabajo->recepcion_id }}
+                                                        <span class="h3">#{{ $ordentrabajo->recepcion_id }}
                                                 </span>
                                                     </div>
                                                     {{--SELECT FK Recepción ------------------------------------ --}}
 
                                                 </div> {{--row --}}
-                                            {{--Set all function cons base model dropdown list char 1--}}
+                                                {{--Set all function cons base model dropdown list char 1--}}
                                                 <div class="row">
                                                     {{--CONST   | tipo | tipo --}}
                                                     <div class="form-group col-4 bg-gray-light">
-                                                        <label for="tipo">Tipo</label>
-                                                        {{ $ordentrabajo->tipo }}
+                                                        <label for="sector_id">Sector</label>
+                                                        {!! Form::select('sector_id', $sectores , null , ['class' => 'form-control', 'placeholder' => 'Selecciona el sector']) !!}
                                                     </div>
                                                     {{-- FIN CONST cero------------------------------------ --}}
                                                     <div class="form-group col-4">
@@ -131,16 +131,17 @@
                                                     <div class="form-group col-5 bg-gray-light">
                                                         {{--SELECT FK Grupo de Trabajo --}}
                                                         {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
+                                                        {!! Form::select('grupo_id', $grupos , null , ['class' => 'form-control', 'placeholder' => 'Selecciona el grupo']) !!}
                                                     </div>
                                                     {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
                                                 </div>{{--row --}}
                                                 <div class="row">
-                                                {{--CONST Prioridad Normal | prioridad | prioridad --}}
-                                                <div class="form-group col-4">
-                                                    {{ $ordentrabajo->prioridad_desc }}
-                                                </div>
-                                                {{-- FIN CONST Prioridad Normal------------------------------------ --}}
-                                            </div>{{--row --}}
+                                                    {{--CONST Prioridad Normal | prioridad | prioridad --}}
+                                                    <div class="form-group col-4">
+                                                        {{ $ordentrabajo->prioridad_desc }}
+                                                    </div>
+                                                    {{-- FIN CONST Prioridad Normal------------------------------------ --}}
+                                                </div>{{--row --}}
                                             </div>{{--  jumbotron  --}}
                                             <hr>
                                             <div class="form-group col">
@@ -213,12 +214,14 @@
                                                     {{--SELECT FK Usuario --}}
                                                     {!! Form::label('mecanico', 'Mecánico Responsable') !!}
 
-                                                    {{ Auth::user()->empleado->apellidos }}, {{ Auth::user()->empleado->nombres }}
+                                                    {{ Auth::user()->empleado->apellidos }}
+                                                    , {{ Auth::user()->empleado->nombres }}
                                                 </div>
                                                 {{--SELECT FK Usuario ------------------------------------ --}}
                                             </div>
 
                                             <div class="card-footer  ">
+                                                <button type="submit" class="btn btn-info">Grabar</button>
                                                 <a href="{{ route('confirmacionot') }}  "
                                                    class="btn btn-secondary btn-close">Volver</a>
                                             </div>
@@ -250,18 +253,18 @@
     <script>
         window.livewire.on('delCambio', (variable) => {
 
-            $('#btn'+variable.id).removeClass();
-            $('#icon'+variable.id).removeClass();
-            $('#btn'+variable.id).addClass('btn btn-warning');
-            $('#icon'+variable.id).addClass('fas fa-plus');
+            $('#btn' + variable.id).removeClass();
+            $('#icon' + variable.id).removeClass();
+            $('#btn' + variable.id).addClass('btn btn-warning');
+            $('#icon' + variable.id).addClass('fas fa-plus');
 
         });
         window.livewire.on('addCambio', (variable) => {
 
-            $('#btn'+variable.id).removeClass();
-            $('#icon'+variable.id).removeClass();
-            $('#btn'+variable.id).addClass('btn btn-success');
-            $('#icon'+variable.id).addClass('fas fa-check');
+            $('#btn' + variable.id).removeClass();
+            $('#icon' + variable.id).removeClass();
+            $('#btn' + variable.id).addClass('btn btn-success');
+            $('#icon' + variable.id).addClass('fas fa-check');
 
         });
 
@@ -271,23 +274,23 @@
         });
 
         $('#lista1').dataTable({
-            "autoWidth":false,
-            "info":false,
-            "JQueryUI":true,
-            "ordering":true,
-            "paging":false,
-            "scrollY":"500px",
-            "scrollCollapse":true
+            "autoWidth": false,
+            "info": false,
+            "JQueryUI": true,
+            "ordering": true,
+            "paging": false,
+            "scrollY": "500px",
+            "scrollCollapse": true
         });
 
         $('#lista2').dataTable({
-            "autoWidth":false,
-            "info":false,
-            "JQueryUI":true,
-            "ordering":true,
-            "paging":false,
-            "scrollY":"500px",
-            "scrollCollapse":true
+            "autoWidth": false,
+            "info": false,
+            "JQueryUI": true,
+            "ordering": true,
+            "paging": false,
+            "scrollY": "500px",
+            "scrollCollapse": true
         });
     </script>
 @endsection

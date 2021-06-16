@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\BitacoraController;
 use App\Models\Cliente;
 use App\Models\Descanso;
 use App\Models\Parametro;
@@ -9,6 +10,8 @@ use App\Models\Reserva;
 use App\Models\Usuario;
 use App\Models\Vehiculo;
 use Auth;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 
@@ -58,49 +61,56 @@ class Agendamiento extends Component
 
     public function submitReserva()
     {
+        try {
+            DB::beginTransaction();
 
-        //  $b = Usuario::find(Auth::user()->usuario)->talleres[0]->id ;
-        //     dd( $this->client->id );
-        //  dd(Auth::user()->usuario );
-
-        if ($this->banderaEditarCupo == true) {
-            $matchThese = [
-                'para_fecha' => $this->para_fechaSel,
-                'ticket' => $this->ticketSel
+            if ($this->banderaEditarCupo == true) {
+                $matchThese = [
+                    'para_fecha' => $this->para_fechaSel,
+                    'ticket' => $this->ticketSel
 //                'usuario' => Auth::user()->usuario,
-            ];
-            Reserva::where($matchThese)->delete();
-            redirect()->to('/agendamiento');
-        } else {
+                ];
+                Reserva::where($matchThese)->delete();
+                redirect()->to('/agendamiento');
+            } else {
 
-            $reserva = new Reserva([
-                'taller_id' => Usuario::find(Auth::user()->usuario)->talleres[0]->id,
-                'cliente_id' => $this->client->id,
-                'vehiculo_id' => $this->vehiculoSel,
-                'fecha' => date('Y-m-d'),
-                'para_fecha' => $this->para_fechaSel,
+                $reserva = new Reserva([
+                    'taller_id' => Usuario::find(Auth::user()->usuario)->talleres[0]->id,
+                    'cliente_id' => $this->client->id,
+                    'vehiculo_id' => $this->vehiculoSel,
+                    'fecha' => date('Y-m-d'),
+                    'para_fecha' => $this->para_fechaSel,
 //            'empleado_id'   => '',
-                'estado' => Reserva::ESTADO_PENDIENTE,
-                'forma_reserva' => Reserva::FORMA_ONLINE,
-                'prioridad' => Reserva::PRIORIDAD_NORMAL,
-                'observacion' => $this->observacionSel,
-                'usuario' => Auth::user()->usuario,
-                'para_hora' => $this->para_horaSel,
-                'turno' => 0,
-                'sector' => $this->sectorSel,
-                'ticket' => $this->ticketSel,
-                'parametro_id' => $this->parametroSel,
-            ]);
+                    'estado' => Reserva::ESTADO_PENDIENTE,
+                    'forma_reserva' => Reserva::FORMA_ONLINE,
+                    'prioridad' => Reserva::PRIORIDAD_NORMAL,
+                    'observacion' => $this->observacionSel,
+                    'usuario' => Auth::user()->usuario,
+                    'para_hora' => $this->para_horaSel,
+                    'turno' => 0,
+                    'sector' => $this->sectorSel,
+                    'ticket' => $this->ticketSel,
+                    'parametro_id' => $this->parametroSel,
+                ]);
 
+                $reserva->save();
+            }
 
-//        $reserva = new Reserva($request->all());
-
-            $reserva->save();
+            DB::commit();
 
             session()->flash('msg', 'Registro Creado Correctamente');
             session()->flash('type', 'info');
             redirect()->to('/');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            dd($e->getLine(). ' ' .$e->getMessage());
+            session()->flash('msg', 'Registro Creado Correctamente');
+            session()->flash('type', 'info');
+            redirect()->to('/');
         }
+
     }
 
 

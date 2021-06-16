@@ -52,7 +52,7 @@
                             @foreach ($ordenestrabajos as $orden)
                                 <tr class=" ">
                                     <td> {{ $orden->id }} </td>
-                                    <td> {{ $orden->fecha_ }} </td>
+                                    <td> {{ $orden->fecha_recepcion }} </td>
                                     <td class="">{{ $orden->cliente->razon_social }}</td>
                                     <td class="">{{ $orden->vehiculo->full_desc }}</td>
                                     <td class=""> {{ $orden->estado_desc }}  </td>

@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\BitacoraController;
+use App\Mail\CierreOt;
 use App\Mail\EnvioPresupuesto;
+use App\Models\Bitacora;
 use App\Models\Cliente;
 use App\Models\Empleado;
 use App\Models\Grupo;
@@ -217,11 +219,17 @@ class FinalizacionOt extends Component
         $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_FINALIZADO;
         $this->ordentrabajo->save();
 
+        Mail::to($this->ordentrabajo->cliente->email)->send(new CierreOt());
+
         /*
          * Insercion en Bitacora
          */
-        if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Finalización de trabajo')) {
-            throw new \Exception('No se pudo crear la bitacora');
+        if ($this->ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_TRABAJO_FINALIZADO)->count() == 0) {
+            if (!(new BitacoraController())
+                ->create($this->ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_TRABAJO_FINALIZADO,
+                    (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_TRABAJO_FINALIZADO))) {
+                throw new \Exception('No se pudo crear la bitacora');
+            }
         }
 
         session()->flash('msg', 'Orden finalizada correctamente');
@@ -234,6 +242,7 @@ class FinalizacionOt extends Component
     {
         $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_REALIZADO;
         $this->ordentrabajo->save();
+
 
         session()->flash('msg', 'Orden rechazada correctamente');
         session()->flash('type', 'success');

@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Taller </li>
+    <li class="breadcrumb-item active">ABM Taller</li>
 @stop
 
 @section('content')
@@ -23,40 +23,27 @@
                                     <h3 class="card-title">Crear Taller</h3>
                                 </div>
 
-                                    {!! Form::open(  ) !!}
-
-
-                                    @csrf
-                                    <div class="card-body">
-                                        <div class="form-group col">
-                                            <label for="Usuario" >Usuario</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="Usuario"
-                                                id      ="Usuario">
-                                                <option value=" " selected > Seleccione Usuario   </option>
-                                            </select>
-
-                                        </div>
-
-                                        <div class="form-group col">
-                                            <label for="taller" >Taller</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="taller"
-                                                id      ="taller">
-                                                <option value=" " selected > Seleccione Taller   </option>
-                                            </select>
-
-                                        </div>
+                                {!! Form::open(['route' => 'taller.usuarios.asignar', 'method' => 'post']) !!}
+                                <div class="card-body">
+                                    <div class="form-group col">
+                                        <label for="Usuario">Usuario</label>
+                                        {!! Form::select('usuario', $usuarios , null , ['class' => 'form-control', 'placeholder' => 'Selecciona el usuario']) !!}
                                     </div>
-                                    <div class="card-footer">
-                                        <button
-                                            type    ="submit"
-                                            class   ="btn btn-info">Grabar</button>
-                                        <a href=" " class="btn btn-secondary btn-close">Cancelar</a>
+
+                                    <div class="form-group col">
+                                        <label for="taller">Taller</label>
+                                        {!! Form::select('taller', $talleres , null , ['class' => 'form-control', 'placeholder' => 'Selecciona el taller']) !!}
+
                                     </div>
-                                </form>
+                                </div>
+                                <div class="card-footer">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-info">Grabar
+                                    </button>
+                                    <a href=" " class="btn btn-secondary btn-close">Cancelar</a>
+                                </div>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

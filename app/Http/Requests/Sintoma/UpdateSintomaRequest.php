@@ -25,7 +25,7 @@ class UpdateSintomaRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>'required|max:80|unique:sintomas,descripcion,' . $this->sintoma . ',sintoma',
+            'descripcion'   =>'required|max:80|unique:sintomas,descripcion,' . $this->descripcion,
         ];
     }
 

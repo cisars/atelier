@@ -39,7 +39,7 @@
                             <tr>
                                 <th class="w-10">Código </th>
                                 <th class="">Descripción</th>
-                                <th class="">Sucursal</th>
+                                <th class="">Taller</th>
                                 <th class="w-10">Acción</th>
                             </tr>
                             </thead>
@@ -48,7 +48,7 @@
                                 <tr>
                                     <td>{{ $sector->id }}</td>
                                     <td>{{ $sector->descripcion }}</td>
-                                    <td>{{ $sector->sucursal->descripcion }}</td>
+                                    <td>{{ $sector->taller->descripcion }}</td>
                                     <td class=" ">
                                         <a
                                             href="{{ route('sector.edit', $sector->id) }}"

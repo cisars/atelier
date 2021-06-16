@@ -235,11 +235,6 @@
                                 <td> {{$sintoma->id}}</td>
                                 <td> {{$sintoma->descripcion}}</td>
                                 <td class="">
-                                    <a
-                                        href=" "
-                                        class="btn btn-info">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
                                     @isset($vector )
 
                                         @if (array_key_exists ($sintoma->id, $vector ))

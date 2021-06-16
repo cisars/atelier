@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Usuario;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationController extends Controller
 {
@@ -26,7 +32,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/inicio';
 
     /**
      * Create a new controller instance.
@@ -38,5 +44,47 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    public function verify(Request $request)
+    {
+        if (! hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
+            throw new AuthorizationException;
+        }
+
+        if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
+            throw new AuthorizationException;
+        }
+
+        if ($request->user()->hasVerifiedEmail()) {
+            return $request->wantsJson()
+                ? new JsonResponse([], 204)
+                : redirect($this->redirectPath());
+        }
+
+        if ($request->user()->markEmailAsVerified()) {
+            Auth::user()->update(['estado' => Usuario::USUARIO_ACTIVO]);
+
+            event(new Verified($request->user()));
+
+            session()->flash('title', 'Excelente');
+            session()->flash('msg', 'Tu correo se ha verificado correctamente');
+
+            //Auth::logout();
+
+
+            //return redirect()->route('inicio');
+            //Auth::logout();
+        }
+
+        if ($response = $this->verified($request)) {
+            return $response;
+        }
+
+
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect($this->redirectPath())->with('verified', true);
     }
 }

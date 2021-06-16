@@ -6,6 +6,7 @@ use App\Http\Requests\Sector\StoreSectorRequest;
 use App\Http\Requests\Sector\UpdateSectorRequest;
 use App\Models\Sector;
 use App\Models\Sucursal;
+use App\Models\Taller;
 use Illuminate\Http\Request;
 
 class SectorController extends Controller
@@ -22,10 +23,10 @@ class SectorController extends Controller
     {
         if($sectores = Sector::orderBy('descripcion', 'ASC')->get())
         {
-            $sucursales = Sucursal::all();
+            $talleres = Taller::pluck('descripcion', 'id');
             return view('sector.create')
                 ->with('sectores', $sectores)
-                ->with('sucursales', $sucursales);
+                ->with('talleres', $talleres);
         } else {
             return view('sector.create') ;
         }
@@ -43,7 +44,7 @@ class SectorController extends Controller
     public function store(StoreSectorRequest $request)
     {
         $sector = new Sector([
-            'sucursal' => $request->get('sucursal'),
+            'taller_id' => $request->get('taller'),
             'descripcion' => $request->get('descripcion'),
         ]);
         $sector->save();
@@ -60,15 +61,15 @@ class SectorController extends Controller
 
     public function edit(Sector $sector)
     {
-        $sucursales = Sucursal::orderBy('descripcion', 'ASC')->get();
+        $talleres = Taller::orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
         return view('sector.edit')
             ->with('sector',$sector)
-            ->with('sucursales',$sucursales);
+            ->with('talleres',$talleres);
     }
 
     public function update(UpdateSectorRequest $request, Sector $sector)
     {
-        $sector->fill($request->all());
+        $sector->fill($request->only(['descripcion', 'taller_id']));
         $sector->save();
 
         return redirect()
@@ -79,7 +80,7 @@ class SectorController extends Controller
 
     public function destroy(Request $request)
     {
-        $sector = Sector::findOrFail($request->sector);
+        $sector = Sector::findOrFail($request->id);
         $sector->delete();
 
         return redirect()

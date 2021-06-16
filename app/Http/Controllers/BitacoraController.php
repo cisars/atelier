@@ -17,7 +17,7 @@ class BitacoraController extends Controller
             $bitacora = new Bitacora();
             $bitacora->ot_id = $ot;
             $bitacora->estado = $estado;
-            $bitacora->fechahora = date('Y-m-d H:s', strtotime($fechahora));
+            $bitacora->fechahora = $fechahora;
 
             if ($estado) {
                 $bitacora->estado = $estado;

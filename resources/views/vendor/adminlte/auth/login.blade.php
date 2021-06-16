@@ -67,14 +67,10 @@
 
         {{-- Login field --}}
         <div class="row">
-            <div class="col-7 d-none">
-                <div class="icheck-primary">
-                    <input
-                        type="checkbox"
-                        name="remember"
-                        id="remember">
-                    <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
-                </div>
+            <div class="col-7">
+                <a href="register">
+                               Registrarme
+                            </a>
             </div>
             <div class="col-5">
                 <button
@@ -86,6 +82,11 @@
                 </button>
             </div>
         </div>
+{{--        <p class="my-0">--}}
+{{--            <a href="{{ $login_url }}">--}}
+{{--                {{ __('adminlte::adminlte.i_already_have_a_membership') }}--}}
+{{--            </a>--}}
+{{--        </p>--}}
 
     </form>
 @stop

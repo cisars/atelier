@@ -44,4 +44,9 @@ class Recepcion extends Model
         return $this->belongsTo(Usuario::class, 'usuario', 'usuario');
     }
 
+    public function ordentrabajo()
+    {
+        return $this->hasOne(OrdenTrabajo::class, 'recepcion_id');
+    }
+
 }

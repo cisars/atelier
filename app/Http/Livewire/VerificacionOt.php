@@ -3,8 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\BitacoraController;
+use App\Models\Bitacora;
 use App\Models\OrdenServicio;
 use App\Models\ProductoServicio;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class VerificacionOt extends Component
@@ -32,6 +35,7 @@ class VerificacionOt extends Component
             \DB::beginTransaction();
 
             $revertirOt = false;
+            $guardaParcialOt = false;
 
             $i = 0;
             foreach ($this->arrayItems as $item) {
@@ -45,24 +49,34 @@ class VerificacionOt extends Component
                             'verificado' => $item['verificado'] == 'v' ? OrdenServicio::VERIFICADO_SI : OrdenServicio::VERIFICADO_NO,
                             'descripcion_verificacion' => $item['descripcion_verificacion']
                         ), false);
-                if ($item['verificado'] != 'v') {
+                if ($item['verificado'] == 'r') {
                     $revertirOt = true;
+                }elseif ($item['verificado'] == null) {
+                    $guardaParcialOt = true;
                 }
             }
 
             if ($revertirOt) {
                 $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_ACEPTADO;
                 $this->ordentrabajo->save();
+            }elseif ($guardaParcialOt) {
+                $this->ordentrabajo->save();
             }else{
                 $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_VERIFICADO;
                 $this->ordentrabajo->save();
+
+                Mail::to($this->ordentrabajo->cliente->email)->send(new \App\Mail\VerificacionOt());
             }
 
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Verificación de servicios')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($this->ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_TRABAJO_VERIFICADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($this->ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_TRABAJO_VERIFICADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_TRABAJO_VERIFICADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
 
@@ -101,6 +115,8 @@ class VerificacionOt extends Component
                 $this->arrayItems[$servicio->id]['subtotal'] = $servicio->precio_venta * 1;
                 $this->arrayItems[$servicio->id]['quantity'] = 1;
                 $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
+                $this->arrayItems[$servicio->id]['descripcion_verificacion'] = $servicio->pivot->descripcion_verificacion;
+                $this->arrayItems[$servicio->id]['verificado'] = $servicio->pivot->verificado == 'n' ? null : 'v';
             }
         }
 

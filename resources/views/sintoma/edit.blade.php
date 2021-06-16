@@ -51,9 +51,9 @@
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="sintoma"
-                                                id      ="sintoma" readonly
-                                                value   ="{{ old('sintoma', $sintoma->id) }}"
+                                                name    ="id"
+                                                id      ="id" readonly
+                                                value   ="{{ old('id', $sintoma->id) }}"
                                                  >
                                         </div>
                                     </div>

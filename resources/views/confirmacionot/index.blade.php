@@ -76,10 +76,9 @@
                                         <a
                                             onclick="return confirm('¿Estás seguro de confirmar la orden?')"
                                             href="{{ route('confirmacionot.confirmar', $orden->id) }}"
-                                            class= "btn btn-success">
+                                            class= "btn btn-success @if ($orden->grupo_id == null || $orden->sector_id == null) disabled @endif">
                                             <i class="fas fa-check"></i>
                                         </a>
-
                                         <a
                                             onclick="return confirm('¿Estás seguro de cancelar la orden?')"
                                             href="{{ route('confirmacionot.cancelar', $orden->id) }}"

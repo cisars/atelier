@@ -31,7 +31,7 @@ class OrdenTrabajo extends Model
     const ESTADO_ENTREGADO = 'e'; // estados
     // Prioridad
     const PRIORIDAD_NORMAL = 'n'; // prioridades
-    const PRIORIDAD_URGENTE = 'n'; // prioridades
+    const PRIORIDAD_URGENTE = 'u'; // prioridades
 
 // Create all cons FUNCTIONS
     // Funcion Tipo // tipos
@@ -84,7 +84,16 @@ class OrdenTrabajo extends Model
             }
 
         return null;
+    }
 
+    public function getTipoDescAttribute()
+    {
+        foreach ($this->getTipos() as $clave => $valor)
+            if (trim($this->tipo) == trim($valor)) {
+                return $clave;
+            }
+
+        return null;
     }
 
     public function taller()

@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Talleres Usuarios </li>
+    <li class="breadcrumb-item active">ABM Talleres Usuarios</li>
 @stop
 
 @section('content')
@@ -19,13 +19,13 @@
             <div class="col-md-12">
                 <div class="card card-cyan">
                     <div class="card-header">
-                        <h3 class="card-title">Talleres   </h3>
+                        <h3 class="card-title">Talleres </h3>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="form-group">
-                            <a  href="{{route('tallerusuario.create')}}" class="btn bg-cyan">Nuevo Taller</a>
+                            <a href="{{route('taller.usuarios.crear')}}" class="btn bg-cyan">Nuevo Taller</a>
 
                         </div>
 
@@ -38,58 +38,30 @@
                             </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
-                                    <td>Kreiger Inc</td>
-                                    <td>Juan Pérez</td>
-                                    <td class=" ">
-                                        <a
-                                            href=""
-                                            class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-
-                                            >
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
-
-{{--                                    <x-alertas :confirmation="$confirmation" ></x-alertas>--}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Marvin, Inc</td>
-                                    <td>Kub, Letha</td>
-                                    <td class=" ">
-                                        <a
-                                            href=""
-                                            class= "btn btn-info">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <button
-                                            type        ="button"
-                                            class       ="btn btn-danger"
-                                            data-toggle ="modal"
-
-                                        >
-                                            <i class ="fas fa-trash-alt" aria-hidden="true"></i>
-                                        </button>
-
-                                        {{--                                    <x-alertas :confirmation="$confirmation" ></x-alertas>--}}
-                                    </td>
-                                </tr>
+                            @foreach ($usuarios as $usuario)
+                                @foreach ($usuario->talleres as $taller)
+                                    <tr>
+                                        <td>{{ $taller->descripcion }}</td>
+                                        <td>{{ $usuario->usuario }}</td>
+                                        <td class=" ">
+                                            <a
+                                                href="{{ route('taller.usuarios.desasignar', [$usuario->usuario, $taller->id]) }}"
+                                                class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
 
-                    <!-- /.card-body -->
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
+                <!-- /.col -->
             </div>
-            <!-- /.col -->
-        </div>
         </div>
         <!-- /.row -->
     </section>
@@ -102,12 +74,12 @@
 @endsection
 
 @section('js')
-<script>
-    // $('#modal-success').modal();
-    // $("#modals-alerts").fadeTo(1500, 500).slideUp(500, function(){
-    //     $("#modals-alerts").slideUp(500);
-    // });
-</script>
+    <script>
+        // $('#modal-success').modal();
+        // $("#modals-alerts").fadeTo(1500, 500).slideUp(500, function(){
+        //     $("#modals-alerts").slideUp(500);
+        // });
+    </script>
 
 
 @endsection

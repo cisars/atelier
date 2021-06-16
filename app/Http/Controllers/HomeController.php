@@ -64,6 +64,7 @@ class HomeController extends Controller
             //dd($cliente->vehiculos->pluck('marca_modelo', 'id'));
 
             $vehiculos = $cliente->vehiculos->pluck('marca_modelo', 'id');
+            //$vehiculos = Vehiculo::first();
 
             return View::make('web.panelcliente')
                 ->with('vehiculos', $vehiculos) ;

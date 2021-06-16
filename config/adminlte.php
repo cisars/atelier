@@ -418,7 +418,7 @@ return [
             'label_color' => 'info',
             'submenu' => [
                 ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'usuario', 'text' => 'Usuarios',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'tallerusuario', 'text' => 'Usuarios de Talleres',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'talleres/usuarios', 'text' => 'Usuarios de Talleres',],
                 [
                     'text' => 'Configuraciones',
                     'url' => '#',
@@ -589,10 +589,10 @@ return [
             // 'label'         => '0/9',
             'label_color' => 'info',
             'submenu' => [
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informestock.pdf', 'text' => 'Stock de Manejo', 'target' => '_blank'],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informeentregas.pdf', 'text' => 'Entregas de Vehiculos', 'target' => '_blank'],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informereservas.pdf', 'text' => 'Reservas', 'target' => '_blank'],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'storage/informeordenes.pdf', 'text' => 'Ordenes de Trabajo', 'target' => '_blank'],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'exports/stock', 'text' => 'Stock de Manejo', 'target' => '_blank'],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'exports/entregas', 'text' => 'Entregas de Vehiculos', 'target' => '_blank'],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'exports/reservas', 'text' => 'Reservas', 'target' => '_blank'],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'exports/ots', 'text' => 'Ordenes de Trabajo', 'target' => '_blank'],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Usuarios del Sistema',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Accesos de Usuarios',],
 //                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Auditorias del Sistema',],

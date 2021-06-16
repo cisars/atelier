@@ -364,6 +364,7 @@
                                     'wire:change'    => "traeHoraSector()",
                                     'wire:model'    => "ticket",
                                     'maxlength'     => '',
+                                    (!$para_fecha ? 'disabled' : ''),
                                     'type'          => 'numeric',
                                     'class'         => 'form-control',
                                     'placeholder'   => 'Ticket'

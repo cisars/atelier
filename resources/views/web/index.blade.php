@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Full Width Pics - Start Bootstrap Template</title>
+    <title>Atelier</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('web/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -20,6 +20,9 @@
 
 
     <link href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 
 </head>
 
@@ -113,6 +116,16 @@
 {{--test--}}
 
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    $(document).ready(function (){
+        @if (session()->has('msg'))
+            alertify.alert('{{ session()->get('title') }}', '{{ session()->get('msg') }}');
+        @endif
+    })
+</script>
 
 </body>
 

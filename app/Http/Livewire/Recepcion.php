@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\BitacoraController;
+use App\Models\Bitacora;
 use App\Models\Cliente;
 use App\Models\OrdenTrabajo;
 use App\Models\RecepcionesSintomas;
@@ -149,7 +150,6 @@ class Recepcion extends Component
 
     public function grabaRecepcion()
     {
-
         $this->validate([
             'vector' => 'required'
         ]);
@@ -187,6 +187,7 @@ class Recepcion extends Component
                 /* Se genera la orden de trabajo */
                 $ordentrabajo = new OrdenTrabajo;
                 $ordentrabajo->taller_id = $this->taller_id;
+                $ordentrabajo->fecha_recepcion = date('Y-m-d H:i');
                 $ordentrabajo->recepcion_id = $recepcion->id;
                 $ordentrabajo->cliente_id = $recepcion->cliente_id;
                 $ordentrabajo->vehiculo_id = $recepcion->vehiculo_id;
@@ -221,11 +222,17 @@ class Recepcion extends Component
                 $recepcionesintomas->save();
             }
 
+            $this->recepcion = $recepcion;
+
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($ordentrabajo->id, $ordentrabajo->created_at, $ordentrabajo->estado, 'Recepción de vehículo')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_RECEPCIONADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($this->recepcion->ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_RECEPCIONADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_RECEPCIONADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             DB::commit();
@@ -238,7 +245,7 @@ class Recepcion extends Component
 
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
+            dd($e->getLine() . ' - ' . $e->getMessage());
 
             \Log::error('Livewire\Recepcion@grabaRecepcion Line: ' . $e->getLine() . ' - Message: ' . $e->getMessage());
             session()->flash('msg', 'No se pudo recepcionar la reserva');

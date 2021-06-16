@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\BitacoraController;
+use App\Mail\RealizacionOt;
+use App\Models\Bitacora;
 use App\Models\EntradaDetalle;
 use App\Models\OrdenRepuesto;
 use App\Models\OrdenServicio;
@@ -10,6 +12,7 @@ use App\Models\ProductoServicio;
 use App\Models\SalidaDetalle;
 use App\Models\Sector;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class ServiciosRealizados extends Component
@@ -44,13 +47,13 @@ class ServiciosRealizados extends Component
 
                     $this->ordentrabajo
                         ->ordenes_servicios()
-                        ->updateExistingPivot($item['id'], array('realizado' => $item['realizado'] ? OrdenServicio::REALIZADO_SI : OrdenServicio::REALIZADO_NO), false);
+                        ->updateExistingPivot($item['id'], array('realizado' => $item['realizado'] ?? null ? OrdenServicio::REALIZADO_SI : OrdenServicio::REALIZADO_NO), false);
 
                 } else {
 
                     $this->ordentrabajo
                         ->ordenes_repuestos()
-                        ->updateExistingPivot($item['id'], array('usado' => $item['quantity']), false);
+                        ->updateExistingPivot($item['id'], array('usado' => $item['quantity'] ?? null), false);
 
                     /*
                      * Actualizacion en existencia manejo
@@ -64,24 +67,31 @@ class ServiciosRealizados extends Component
                 }
             }
 
-            $ordenestrabajos = \App\Models\OrdenTrabajo::where('id', $this->ordentrabajo)->where(function ($w){
-                $w->whereDoesntHave('ordenes_repuestos', function ($q) {
-                    $q->where('usado','>', 0);
-                })->orWhereDoesntHave('ordenes_servicios', function ($q) {
-                    $q->where('realizado','=', 's');
+            $ordenestrabajos = \App\Models\OrdenTrabajo::where('id', $this->ordentrabajo->id)->where(function ($w){
+                $w->whereHas('ordenes_repuestos', function ($q) {
+                    $q->where('usado', 0)->orWhere('usado', null);
+                })->orWhereHas('ordenes_servicios', function ($q) {
+                    $q->where('realizado','!=', 's')->orWhere('realizado','=', null);;
                 });
             })->get();
+            //dd($ordenestrabajos->count());
 
             if ($ordenestrabajos->count() == 0) {
                 $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_REALIZADO;
                 $this->ordentrabajo->save();
+
+                Mail::to($this->ordentrabajo->cliente->email)->send(new RealizacionOt());
             }
 
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Verificación de trabajo')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($this->ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_TRABAJO_REALIZADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($this->ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_TRABAJO_REALIZADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_TRABAJO_REALIZADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             \DB::commit();
@@ -119,6 +129,7 @@ class ServiciosRealizados extends Component
                     $this->arrayItems[$repuesto->id]['quantity'] = $repuesto->pivot->cantidad;
                     $this->arrayItems[$repuesto->id]['clasificacion'] = $repuesto->clasificacion->descripcion;
                     $this->arrayItems[$repuesto->id]['descripcion_verificacion'] = false;
+                    $this->arrayItems[$repuesto->id]['usado'] = $repuesto->pivot->cantidad;
                 }
             }
 
@@ -129,6 +140,7 @@ class ServiciosRealizados extends Component
                     $this->arrayItems[$servicio->id]['quantity'] = 1;
                     $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
                     $this->arrayItems[$servicio->id]['descripcion_verificacion'] = false;
+                    $this->arrayItems[$servicio->id]['realizado'] = $servicio->pivot->realizado == 's' ? true: false;
                 }
             }
         }else {
@@ -139,6 +151,7 @@ class ServiciosRealizados extends Component
                     $this->arrayItems[$servicio->id]['quantity'] = 1;
                     $this->arrayItems[$servicio->id]['clasificacion'] = $servicio->clasificacion->descripcion;
                     $this->arrayItems[$servicio->id]['descripcion_verificacion'] = $servicio->pivot->descripcion_verificacion;
+                    $this->arrayItems[$servicio->id]['realizado'] = $servicio->pivot->realizado == 's' ? true: false;
                 }
             }
         }

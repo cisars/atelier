@@ -236,6 +236,8 @@
                                         <div class="card-footer  ">
                                             <button
                                                 wire:click="guardar"
+                                                wire:loading.class="disabled"
+                                                wire:target="guardar"
                                                 type="submit"
                                                 class="btn btn-info">Grabar
                                             </button>

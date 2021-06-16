@@ -71,7 +71,7 @@ class LocalidadController extends Controller
     public function destroy(Request $request)
     {
         // try {
-        $localidad = Localidad::findOrFail($request->localidad);
+        $localidad = Localidad::findOrFail($request->id);
         $localidad->delete();
 
         return redirect()

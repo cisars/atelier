@@ -7,7 +7,7 @@
 @stop
 
 @section('menu-header')
-    <li class="breadcrumb-item active">ABM Sector </li>
+    <li class="breadcrumb-item active">ABM Sector</li>
 @stop
 
 @section('content')
@@ -23,51 +23,37 @@
                                     <h3 class="card-title">Crear Sector</h3>
                                 </div>
                                 <form
-                                    role    ="form"
-                                    id      ="form"
-                                    method  ="POST"
-                                    action  ="{{ route('sector.store') }}">
+                                    role="form"
+                                    id="form"
+                                    method="POST"
+                                    action="{{ route('sector.store') }}">
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="descripcion">Descripción</label>
-                                            <input class    = "form-control"
-                                                   type     = "text"
-                                                   name     = "descripcion"
-                                                   id       = "descripcion"
-                                                   value    = "{{ old('descripcion') }}"
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="descripcion"
+                                                   id="descripcion"
+                                                   value="{{ old('descripcion') }}"
                                                    placeholder="Introduzca descripcion para la sector nueva">
-                                            @foreach ($errors->get('descripcion') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                            @error('descripcion')
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="sucursal">Sucursal</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="sucursal"
-                                                id      ="sucursal">
-                                                <option value="">Seleccione sucursal</option>
-                                                @foreach($sucursales as $key => $sucursal)
-                                                    <option
-                                                        value   ="{{ $sucursal->sucursal }}"
-                                                        {{ old('sucursal') == $sucursal->sucursal ? 'selected' : '' }}
-                                                    >{{ $sucursal->descripcion }}</option>
-                                                @endforeach
-                                            </select>
-                                            @foreach ($errors->get('sucursal') as $error)
-                                                <span class="text text-danger">{{ $error }}</span>
-                                            @endforeach
+                                            <label for="sucursal">Taller</label>
+                                            {!! Form::select('taller', $talleres , null , ['class' => 'form-control', 'placeholder' => 'Seleccionar el taller']) !!}
                                         </div>
-
 
 
                                     </div>
                                     <div class="card-footer">
                                         <button
-                                            type    ="submit"
-                                            class   ="btn btn-info">Grabar</button>
+                                            type="submit"
+                                            class="btn btn-info">Grabar
+                                        </button>
                                         <a href="{{ route('sector.index') }}" class="btn btn-secondary btn-close">Cancelar</a>
                                     </div>
                                 </form>

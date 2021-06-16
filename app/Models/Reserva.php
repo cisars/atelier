@@ -57,6 +57,36 @@ class Reserva extends Model
         ];
     }
 
+    public function getEstadoDescAttribute()
+    {
+        foreach ($this->getEstados() as $clave => $valor)
+            if (trim($this->estado) == trim($valor)) {
+                return $clave;
+            }
+
+        return null;
+    }
+
+    public function getFormaDescAttribute()
+    {
+        foreach ($this->getFormas() as $clave => $valor)
+            if (trim($this->forma_reserva) == trim($valor)) {
+                return $clave;
+            }
+
+        return null;
+    }
+
+    public function getPrioridadDescAttribute()
+    {
+        foreach ($this->getPrioridades() as $clave => $valor)
+            if (trim($this->prioridad) == trim($valor)) {
+                return $clave;
+            }
+
+        return null;
+    }
+
     public static function retornaHoraSector($parafecha, $ticket)
     {
         $iticket = 0;

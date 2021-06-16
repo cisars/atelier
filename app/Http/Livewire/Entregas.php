@@ -3,8 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\BitacoraController;
+use App\Mail\CierreOt;
+use App\Mail\EntregaVehiculo;
+use App\Models\Bitacora;
 use App\Models\Cliente;
 use App\Models\Entrega;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Entregas extends Component
@@ -38,23 +43,29 @@ class Entregas extends Component
             $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_ENTREGADO;
             $this->ordentrabajo->save();
 
+            Mail::to($this->ordentrabajo->cliente->email)->send(new EntregaVehiculo());
+
             /*
-             * Insercion en Bitacora
-             */
-            if (!(new BitacoraController())->create($this->ordentrabajo->id, $this->ordentrabajo->created_at, $this->ordentrabajo->estado, 'Entrega de vehículo')) {
-                throw new \Exception('No se pudo crear la bitacora');
+         * Insercion en Bitacora
+         */
+            if ($this->ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_ENTREGADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($this->ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_ENTREGADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_ENTREGADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             \DB::commit();
 
-            session()->flash('msg', 'Orden de trabajo finalizada');
+            session()->flash('msg', 'Vehículo entregado');
             session()->flash('type', 'success');
 
-            return redirect()->route('finalizados');
+            return redirect()->route('entregas');
 
         }catch (\Exception $e){
             \DB::rollBack();
-            session()->flash('msg', 'No se pudo finalizar la orden');
+            session()->flash('msg', 'No se pudo entregar el vehículo');
             session()->flash('type', 'error');
 
             dd($e->getMessage());

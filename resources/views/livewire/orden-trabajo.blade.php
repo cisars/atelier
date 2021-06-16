@@ -41,17 +41,20 @@
                                             </div> {{--row --}}
                                             {{--Set all function cons base model dropdown list char 1--}}
                                             <div class="row">
+
                                                 {{--CONST   | tipo | tipo --}}
-                                                <div class="form-group col-4 bg-gray-light">
-                                                    <label for="tipo">Tipo</label>
-                                                    {{ $ordentrabajo->tipo }}
-                                                </div>
+{{--                                                <div class="form-group col-4 bg-gray-light">--}}
+{{--                                                    <label for="tipo">Tipo</label>--}}
+{{--                                                    {{ $ordentrabajo->tipo_desc }}--}}
+{{--                                                </div> --}}
                                                 {{-- FIN CONST cero------------------------------------ --}}
+                                                <div class="form-group col-4">
+                                                </div>
                                                 <div class="form-group col-4">
                                                 </div>
                                                 {{--CONST Estado Pendiente | estado | estado --}}
                                                 <div class="form-group col-4 bg-gray-light">
-                                                    <label for="estado">Estado</label>
+                                                   {{-- <label for="estado">Estado</label>--}}
                                                     {{ $ordentrabajo->estado_desc }}
                                                 </div>
                                                 {{-- FIN CONST Estado Pendiente------------------------------------ --}}
@@ -69,11 +72,10 @@
                                                 <div class="form-group col-2  ">
                                                 </div>
                                                 <div class="form-group col-5 bg-gray-light">
-                                                    {{--DATE TIMESTAMP Fecha de Finalización --}}
+                                                 {{--DATE TIMESTAMP Fecha de Finalización --}}
 
-                                                    <label for="fecha_fin">Fecha Finalización </label>
-
-                                                    {{--                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}--}}
+                                                     -<label for="fecha_fin">Fecha Finalización </label>--}}
+                                                        {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion))
                                                 </div>
                                                 {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
                                             </div>{{--row --}}
@@ -105,17 +107,18 @@
                                                 {{--SELECT FK Empleado ------------------------------------ --}}
                                                 <div class="form-group col-2  ">
                                                 </div>
-                                                <div class="form-group col-5 bg-gray-light">
-                                                    {{--SELECT FK Grupo de Trabajo --}}
-                                                    {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
-                                                </div>
+                                                {{--<div class="form-group col-5 bg-gray-light">
+                                                    --}}{{--SELECT FK Grupo de Trabajo --}}{{--
+                                                    --}}{{--{!! Form::label('grupo_id', 'Grupo de Trabajo') !!}--}}{{--
+                                                </div>--}}
                                                 {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
                                             </div>{{--row --}}
                                             <div class="row">
                                                 {{--CONST Prioridad Normal | prioridad | prioridad --}}
                                                 <div class="form-group col-4">
                                                     <label for="prioridad">Prioridad </label>
-                                                    <select
+                                                    {!! Form::select('prioridad', $prioridades , null , ['class' => 'form-control', 'wire:model' => 'prioridad']) !!}
+                                                    {{--<select
                                                         class="form-control"
                                                         name="prioridad"
                                                         wire:model="prioridad"
@@ -127,7 +130,7 @@
                                                                 @endif
                                                             >{{   $key    }} </option>
                                                         @endforeach
-                                                    </select>
+                                                    </select>--}}
                                                     @foreach ($errors->get('prioridad') as $error)
                                                         <span class="text text-danger">{{   $error    }}</span>
                                                     @endforeach

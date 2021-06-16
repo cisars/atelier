@@ -26,13 +26,13 @@ class UpdateSectorRequest extends FormRequest
     public function rules()
     {
         return [
-            'sucursal'              =>'required',
+            'taller_id'              =>'required',
             'descripcion'           =>['required',
                 'max:40',
                 Rule::unique('sectores', 'descripcion')
-                    ->ignore($this->sector, 'sector')
+                    ->ignore($this->id, 'sector')
                     ->where(function ($query) {
-                        return $query->where('sucursal', $this->sucursal);
+                        return $query->where('taller_id', $this->taller_id);
                     })
             ],
         ];
@@ -47,7 +47,7 @@ class UpdateSectorRequest extends FormRequest
     public function messages()
     {
         return [
-            'sucursal.required'     => 'Debe seleccionar una sucursal',
+            'taller_id.required'     => 'Debe seleccionar un taller',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',

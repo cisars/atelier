@@ -10,7 +10,9 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EnvioPresupuesto;
+use App\Models\Bitacora;
 use App\Models\Entrega;
+use App\Models\Sector;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\OrdenTrabajo\StoreOrdenTrabajoRequest;
@@ -234,7 +236,44 @@ class OrdenTrabajoController extends Controller
             }
         }
 
-        return view('confirmacionot.edit', compact('ordentrabajo', 'arrayItems'));
+        $sectores = Sector::pluck('descripcion', 'id');
+        $grupos = Grupo::pluck('descripcion', 'id');
+
+        return view('confirmacionot.edit', compact('ordentrabajo', 'arrayItems', 'sectores', 'grupos'));
+    }
+
+    public function actualizarConfirmacionOt(Request $request, $id)
+    {
+        $ordentrabajo = OrdenTrabajo::find($id);
+
+        try {
+            DB::beginTransaction();
+
+            $ordentrabajo->sector_id = $request->sector_id;
+            $ordentrabajo->grupo_id = $request->grupo_id;
+            $ordentrabajo->save();
+
+            foreach ($ordentrabajo->ordenes_repuestos as $repuesto) {
+                $ordentrabajo->ordenes_repuestos()->updateExistingPivot($repuesto->id, array('sector_id' => $request->sector_id), false);
+            }
+
+            DB::commit();
+
+
+            session()->flash('msg', 'Confirmación actualizada');
+            session()->flash('type', 'success');
+
+            return redirect()->route('confirmacionot');
+
+        }catch (\Exception $e){
+            DB::rollBack();
+            dd($e->getLine().' - '.$e->getMessage());
+
+            session()->flash('msg', 'Confirmación actualizada');
+            session()->flash('type', 'success');
+
+            return redirect()->back();
+        }
     }
 
     public function confirmarOt($id)
@@ -249,8 +288,23 @@ class OrdenTrabajoController extends Controller
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($ordentrabajo->id, $ordentrabajo->created_at, $ordentrabajo->estado, 'Confirmación de presupuesto')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_PRESUPUESTO_APROBADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_PRESUPUESTO_APROBADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_PRESUPUESTO_APROBADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
+            }
+
+            /*
+             * Insercion en Bitacora
+             */
+            if ($ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_TRABAJO_INICIADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_TRABAJO_INICIADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_TRABAJO_INICIADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             session()->flash('msg', 'Orden confirmada');
@@ -278,8 +332,12 @@ class OrdenTrabajoController extends Controller
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($ordentrabajo->id, $ordentrabajo->created_at, $ordentrabajo->estado, 'Cancelación de presupuesto')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_PRESUPUESTO_RECHAZADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($ordentrabajo->id, date('Y-m-d H:i'), Bitacora::ESTADO_PRESUPUESTO_RECHAZADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_PRESUPUESTO_RECHAZADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             session()->flash('msg', 'Orden cancelada');
@@ -305,8 +363,23 @@ class OrdenTrabajoController extends Controller
             /*
              * Insercion en Bitacora
              */
-            if (!(new BitacoraController())->create($orden->id, $orden->created_at, $orden->estado, 'Presupuesto enviado')) {
-                throw new \Exception('No se pudo crear la bitacora');
+            if ($orden->bitacora->where('estado', Bitacora::ESTADO_PRESUPUESTO_CONFECCIONADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($orden->id, date('Y-m-d H:i'), Bitacora::ESTADO_PRESUPUESTO_CONFECCIONADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_PRESUPUESTO_CONFECCIONADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
+            }
+
+            /*
+             * Insercion en Bitacora
+             */
+            if ($orden->bitacora->where('estado', Bitacora::ESTADO_PRESUPUESTO_ENVIADO)->count() == 0) {
+                if (!(new BitacoraController())
+                    ->create($orden->id, date('Y-m-d H:i'), Bitacora::ESTADO_PRESUPUESTO_ENVIADO,
+                        (new Bitacora())->getEstadoDesc(Bitacora::ESTADO_PRESUPUESTO_ENVIADO))) {
+                    throw new \Exception('No se pudo crear la bitacora');
+                }
             }
 
             session()->flash('msg', 'Presupuesto enviado');

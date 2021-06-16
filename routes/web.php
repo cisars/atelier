@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Route::view('/', 'welcome');
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 
 //Route::post('update', 'Auth\RegisterController@sqlupdate')->name('update');
@@ -97,27 +97,32 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/vehiculo/factory', 'VehiculoController@factory')->name('vehiculo.factory');
     Route::get('/reserva/factory', 'ReservaController@factory')->name('reserva.factory');
     Route::get('/cliente/factory', 'ClienteController@factory')->name('cliente.factory');
-    Route::get('/producto_servicio/factory', 'ProductoServicio@factory')->name('producto_servicio.factory');
-    Route::get('/parametro/factory', 'Parametro@factory')->name('parametro.factory');
-    Route::get('/descanso/factory', 'Descanso@factory')->name('descanso.factory');
-    Route::get('/recepcion/factory', 'Recepcion@factory')->name('recepcion.factory');
+    Route::get('/producto_servicio/factory', 'ProductoServicioController@factory')->name('producto_servicio.factory');
+    Route::get('/parametro/factory', 'ParametroController@factory')->name('parametro.factory');
+    Route::get('/descanso/factory', 'DescansoController@factory')->name('descanso.factory');
+    Route::get('/recepcion/factory', 'RecepcionController@factory')->name('recepcion.factory');
 
-    Route::get('/feriado/factory', 'Feriado@factory')->name('feriado.factory');
-    Route::get('/orden_trabajo/factory', 'OrdenTrabajo@factory')->name('orden_trabajo.factory');
+    Route::get('/feriado/factory', 'FeriadoController@factory')->name('feriado.factory');
+    Route::get('/orden_trabajo/factory', 'OrdenTrabajoController@factory')->name('orden_trabajo.factory');
 
-    Route::get('/entrada/factory', 'Entrada@factory')->name('entrada.factory');
-    Route::get('/entrada_detalle/factory', 'EntradaDetalle@factory')->name('entrada_detalle.factory');
-    Route::get('/orden_mecanico/factory', 'OrdenMecanico@factory')->name('orden_mecanico.factory');
-    Route::get('/empleado_maquina/factory', 'EmpleadoMaquina@factory')->name('empleado_maquina.factory');
-    Route::get('/factura/factory', 'Factura@factory')->name('factura.factory');
-    Route::get('/factura_detalle/factory', 'FacturaDetalle@factory')->name('factura_detalle.factory');
-    Route::get('/entrega/factory', 'Entrega@factory')->name('entrega.factory');
+    Route::get('/entrada/factory', 'EntradaController@factory')->name('entrada.factory');
+    Route::get('/entrada_detalle/factory', 'EntradaDetalleController@factory')->name('entrada_detalle.factory');
+    Route::get('/orden_mecanico/factory', 'OrdenMecanicoController@factory')->name('orden_mecanico.factory');
+    Route::get('/empleado_maquina/factory', 'EmpleadoMaquinaController@factory')->name('empleado_maquina.factory');
+    Route::get('/factura/factory', 'FacturaController@factory')->name('factura.factory');
+    Route::get('/factura_detalle/factory', 'FacturaDetalleController@factory')->name('factura_detalle.factory');
+    Route::get('/entrega/factory', 'EntregaController@factory')->name('entrega.factory');
 
     //Validaciones request
     Route::resource('localidad', 'LocalidadController');
     Route::resource('clasificacion', 'ClasificacionController');
     Route::resource('sucursal', 'SucursalController');
     Route::resource('taller', 'TallerController');
+    Route::get('/talleres/usuarios', 'TallerController@usuarios')->name('taller.usuarios');
+    Route::get('/talleres/usuarios/crear', 'TallerController@crearAsignacion')->name('taller.usuarios.crear');
+    Route::post('/talleres/asignar', 'TallerController@asignarUsuarioTaller')->name('taller.usuarios.asignar');
+    Route::get('/talleres//{usuario}/{taller}/desasignar', 'TallerController@desasignarUsuario')->name('taller.usuarios.desasignar');
+
     Route::resource('cargo', 'CargoController');
     Route::resource('turno', 'TurnoController');
     Route::resource('grupo', 'GrupoController');
@@ -131,6 +136,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('sintoma', 'SintomaController');
     Route::resource('modelo', 'ModeloController');
     Route::resource('sector', 'SectorController');
+
     Route::resource('vehiculo', 'VehiculoController');
     Route::resource('reserva', 'ReservaController');
     Route::resource('cliente', 'ClienteController');
@@ -189,6 +195,7 @@ Route::get('/confirmacionot/{id}/ver', 'OrdenTrabajoController@verConfirmacionOt
 Route::get('/confirmacionot/{id}/presupuesto', 'OrdenTrabajoController@enviarPresupuesto')->name('confirmacionot.presupuesto');
 Route::get('/confirmacionot/{id}/confirmar', 'OrdenTrabajoController@confirmarOt')->name('confirmacionot.confirmar');
 Route::get('/confirmacionot/{id}/cancelar', 'OrdenTrabajoController@cancelarOt')->name('confirmacionot.cancelar');
+Route::post('/confirmacionot/{id}/actualizar', 'OrdenTrabajoController@actualizarConfirmacionOt')->name('confirmacionot.actualizar');
 
 /*
  * Stock: Entrada y Salida de Repuestos
@@ -228,6 +235,16 @@ Route::get('/finalizaciones/{id}/editar', 'OrdenTrabajoController@editarFinaliza
 Route::get('/entregas', 'OrdenTrabajoController@entregas')->name('entregas');
 Route::get('/entregas/crear', 'OrdenTrabajoController@crearEntrega')->name('entregas.crear');
 //Route::get('/entregas/{id}/editar', 'OrdenTrabajoController@editarFinalizados')->name('finalizados.editar');
+
+
+/*
+ * Exports
+ */
+Route::get('/exports/stock', 'ExportacionesController@stock')->name('exportaciones.stock');
+Route::get('/exports/entregas', 'ExportacionesController@entregas')->name('exportaciones.entregas');
+Route::get('/exports/ot', 'ExportacionesController@ot')->name('exportaciones.ot');
+Route::get('/exports/ots', 'ExportacionesController@ots')->name('exportaciones.ots');
+Route::get('/exports/reservas', 'ExportacionesController@reservas')->name('exportaciones.reservas');
 
 
 

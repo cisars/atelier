@@ -58,6 +58,119 @@
             @endif
         </div>
 
+        {{-- Email field --}}
+        <div class="input-group mb-3">
+            <input
+                type="text"
+                name="razon_social"
+                class="form-control {{ $errors->has('razon_social') ? 'is-invalid' : '' }}"
+                value="{{ old('razon_social') }}"
+                placeholder="Nombre y Apellido"
+            >
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('razon_social'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('razon_social') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            <input
+                type="text"
+                maxlength="12"
+                name="documento"
+                class="form-control {{ $errors->has('documento') ? 'is-invalid' : '' }}"
+                value="{{ old('documento') }}"
+                placeholder="Nro. Documento"
+            >
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-id-card {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('documento'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('documento') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            {!! Form::select('localidad_id', \App\Models\Localidad::pluck('descripcion', 'id') , null , ['class' => 'form-control '.($errors->has('localidad_id') ? 'is-invalid' : ''), 'placeholder' => 'Selecciona la localidad']) !!}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-location-arrow {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('localidad_id'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('localidad_id') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            {!! Form::text('movil', null, ['class' => 'form-control '.($errors->has('movil') ? 'is-invalid' : ''), 'maxlenght' => '20', 'placeholder' => 'Móvil']) !!}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-phone {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('movil'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('movil') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control '.($errors->has('fecha_nacimiento') ? 'is-invalid' : '')]) !!}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-calendar {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('fecha_nacimiento'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('fecha_nacimiento') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            {!! Form::select('personeria', array_flip((new \App\Models\Cliente())->getPersonerias()) , null , ['class' => 'form-control '.($errors->has('personeria') ? 'is-invalid' : '')]) !!}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-id-card {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('personeria'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('personeria') }}</strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="input-group mb-3">
+            {!! Form::select('taller_id', \App\Models\Taller::pluck('descripcion', 'id') , null , ['class' => 'form-control '.($errors->has('taller_id') ? 'is-invalid' : ''), 'placeholder' => 'Selecciona el taller']) !!}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-id-card {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('taller_id'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('taller_id') }}</strong>
+                </div>
+            @endif
+        </div>
+
+
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input

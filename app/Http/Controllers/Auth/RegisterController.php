@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EmailCheck;
+use App\Models\Cliente;
 use App\Providers\RouteServiceProvider;
 use App\Models\Usuario;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 //use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 //use App\Admin;
@@ -32,7 +38,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/inicio';
 
     /**
      * Create a new controller instance.
@@ -58,9 +64,15 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'usuario' => ['required', 'string', 'max:255', 'unique:usuarios'],
-        //    'name' => ['required', 'string', 'max:255'],
-         //   'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required'],
             'clave' => ['required', 'string', 'min:4', 'confirmed'],
+            'razon_social'  => ['required'],
+            'documento'  => ['required'],
+            'localidad_id'  => ['required'],
+            'movil'  => ['required'],
+            'fecha_nacimiento'  => ['required'],
+            'personeria'  => ['required'],
+            'taller_id'  => ['required'],
         ]);
     }
 
@@ -73,14 +85,56 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Usuario::create([
+        $cliente = Cliente::create([
+            'razon_social' => $data['razon_social'],
+            'documento' => $data['documento'],
+            'localidad_id' => $data['localidad_id'],
+            'email' => $data['email'],
+            'movil' => $data['movil'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
+            'personeria' => $data['personeria'],
+        ]);
+
+        $usuario =  Usuario::create([
             'usuario' => $data['usuario'],
-          //   'name' => $data['name'],
-          //  'email' => $data['email'],
+            'cliente_id' => $cliente->id,
+            'email' => $data['email'],
+            'perfil' => Usuario::USUARIO_CLIENTE,
+            'estado' => Usuario::USUARIO_INACTIVO,
             'clave' => Hash::make($data['clave']),
         ]);
+
+        $usuario->talleres()->attach($data['taller_id']);
+
+
+        return $usuario;
     }
 
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        session()->flash('title', 'Bienvenido');
+        session()->flash('msg', 'Se te ha enviado un correo de verificación');
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
+    }
 
     /*
     public function showUsuarioRegisterForm()
