@@ -286,27 +286,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table(
             'modelos')->insert([
-            'marca_id' =>  Marca::where('descripcion', 'TOYOTA')->first()->id,
+            'marca_id' =>  Marca::where('descripcion', 'Toyota')->first()->id,
             'descripcion'  => 'LandCruiser Prado'
         ]);
         DB::table('modelos')->insert([
-            'marca_id' =>  Marca::where('descripcion', 'TOYOTA')->first()->id,
+            'marca_id' =>  Marca::where('descripcion', 'Toyota')->first()->id,
             'descripcion'  => 'Tercel'
         ]);
         DB::table('modelos')->insert([
-            'marca_id' =>  Marca::where('descripcion', 'TOYOTA')->first()->id,
+            'marca_id' =>  Marca::where('descripcion', 'Toyota')->first()->id,
             'descripcion'  => 'Yaris'
         ]);
         DB::table('modelos')->insert([
-            'marca_id' =>  Marca::where('descripcion', 'TOYOTA')->first()->id,
+            'marca_id' =>  Marca::where('descripcion', 'Toyota')->first()->id,
             'descripcion'  => 'Prius'
         ]);
         DB::table('modelos')->insert([
-            'marca_id' =>  Marca::where('descripcion', 'TOYOTA')->first()->id,
+            'marca_id' =>  Marca::where('descripcion', 'Toyota')->first()->id,
             'descripcion'  => 'Hilux'
         ]);
         DB::table('modelos')->insert([
-            'marca_id' =>  Marca::where('descripcion', 'TOYOTA')->first()->id,
+            'marca_id' =>  Marca::where('descripcion', 'Toyota')->first()->id,
             'descripcion'  => 'Avensis'
         ]);
 
