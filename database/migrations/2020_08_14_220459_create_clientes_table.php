@@ -34,16 +34,16 @@ class CreateClientesTable extends Migration
         });
 //        CREATE FULLTEXT INDEX index_name
 //ON table_name(idx_column_name,...)
-        DB::statement(
-            'create extension dict_int'
-        );
-        DB::statement(
-            'ALTER TABLE clientes ADD FULLTEXT FULLTEXT_INDEX(razon_social, documento, email)'
-        );
-        
-//         DB::statement(
-//             'CREATE FULLTEXT INDEX fulltext_index on clientes (razon_social, documento, email)'
-//         );
+//        DB::statement(
+//            'create extension dict_int'
+//        );
+//        DB::statement(
+//            'ALTER TABLE clientes ADD FULLTEXT(razon_social, documento, email)'
+//        );
+
+         DB::statement(
+             'CREATE  INDEX fulltext_index on clientes (razon_social, documento, email)'
+         );
     }
 
     /**
