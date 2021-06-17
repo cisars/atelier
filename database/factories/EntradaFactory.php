@@ -13,10 +13,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Entrada::class, function (Faker $faker) {
 // Get all data fk tables
-    (\App\Models\Taller::all() !== false ) ?  factory('App\Models\Taller')->create() : "";
-    (\App\Models\OrdenTrabajo::all() !== false ) ?  factory('App\Models\OrdenTrabajo')->create() : "";
-    (\App\Models\Empleado::all() !== false ) ?  factory('App\Models\Empleado')->create() : "";
-    (\App\Models\Usuario::all() !== false ) ?  factory('App\Models\Usuario')->create() : "";
+    (\App\Models\Taller::all()->count() > 0 ) ? "" : factory('App\Models\Taller')->create() ;
+    (\App\Models\OrdenTrabajo::all()->count() > 0 ) ? "" : factory('App\Models\OrdenTrabajo')->create()  ;
+    (\App\Models\Empleado::all()->count() > 0 ) ? "" : factory('App\Models\Empleado')->create()   ;
+    (\App\Models\Usuario::all()->count() > 0 ) ? "" : factory('App\Models\Usuario')->create()  ;
 
 return [
 //id

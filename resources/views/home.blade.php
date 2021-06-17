@@ -746,15 +746,58 @@
                 <div class="card card-maroon  ">
                     <div class="card-header">
                         <div class="card-title">
-                            MiCargo
+{{--                            MiCargo--}}
+                           Cargo
                         </div>
                     </div>
                     <div class="card-body  ">
 
                         <div class="form-group">
+                            <h3> {{ Auth::user()->empleado->cargo->descripcion ?? 'No se registra un cargo' }}</h3>
+
                             <span class="text-sm">
-                            Listado de mis tareas principales pendientes
+                            Tabla de contenidos
                                 </span>
+                            <table class="table table-sm table-hover nowrap d-table" id="lista">
+                                <th>
+                                    {{ \App\Models\Reserva::where('empleado_id', Auth::user()->empleado->id)->get()  }}
+                                </th>
+                                <tbody>
+                                {{--                                @foreach())--}}
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-sm table-hover nowrap d-table" id="lista">
+                                <th>
+                                    {{ \App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get()  }}
+                                </th>
+                                <tbody>
+{{--                                @foreach())--}}
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                <tr>
+                                    <td>a</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -767,6 +810,7 @@
 
 @section('js')
     <script>
+
         $(document).ready(function () {
 
             var current_fs, next_fs, previous_fs; //fieldsets

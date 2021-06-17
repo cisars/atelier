@@ -29,6 +29,7 @@ class CreateUsuariosTable extends Migration
             $table->string('email','200')->unique()->nullable();
             $table->timestamp('usuario_verified_at')->nullable();
             $table->string('mailtoken')->nullable();
+            $table->datetime('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Vehiculo::class, function (Faker $faker) {
 
-    (\App\Models\Cliente::all() !== false ) ?  factory('App\Models\Cliente')->create() : "";
-    (\App\Models\Modelo::all() !== false ) ?  factory('App\Models\Modelo')->create() : "";
-    (\App\Models\Color::all() !== false ) ?  factory('App\Models\Color')->create() : "";
+    (\App\Models\Cliente::all()->count() > 0 ) ? "" : factory('App\Models\Cliente')->create() ;
+    (\App\Models\Modelo::all()->count() > 0 ) ?  "" : factory('App\Models\Modelo')->create() ;
+    (\App\Models\Color::all()->count() > 0 ) ?   "" : factory('App\Models\Color')->create() ;
 
     return [
         'cliente_id'  => \App\Models\Cliente::inRandomOrder()->first()->id,

@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Sucursal::class, function (Faker $faker) {
 
-    (Localidad::all() !== false ) ?  factory('App\Models\Localidad')->create() : "";
+    (Localidad::all()->count() > 0 ) ? "" : factory('App\Models\Localidad')->create()  ;
     return [
         'descripcion' => substr($faker->company, 0,39) ,
         'direccion' =>  substr($faker->address, 0,39) ,

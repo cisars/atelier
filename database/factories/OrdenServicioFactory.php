@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(OrdenServicio::class, function (Faker $faker) {
 // Get all data fk tables
-    (\App\Models\OrdenTrabajo::all() !== false ) ?  factory('App\Models\OrdenTrabajo')->create() : "";
-    (\App\Models\Servicio::all() !== false ) ?  factory('App\Models\Servicio')->create() : "";
-    (\App\Models\Usuario::all() !== false ) ?  factory('App\Models\Usuario')->create() : "";
+    (\App\Models\OrdenTrabajo::all()->count() > 0 ) ? "" : factory('App\Models\OrdenTrabajo')->create()  ;
+    (\App\Models\Servicio::all()->count() > 0 ) ? "" : factory('App\Models\Servicio')->create()  ;
+    (\App\Models\Usuario::all()->count() > 0 ) ? "" : factory('App\Models\Usuario')->create()  ;
 
 return [
 //id

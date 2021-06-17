@@ -6,11 +6,11 @@ use App\Models\Reserva;
 use Faker\Generator as Faker;
 
 $factory->define(Reserva::class, function (Faker $faker) {
-    (\App\Models\Taller::all() !== false )      ?  factory('App\Models\Taller')->create() : "";
-    (\App\Models\Cliente::all() !== false )     ?  factory('App\Models\Cliente')->create() : "";
-    (\App\Models\Vehiculo::all() !== false )    ?  factory('App\Models\Vehiculo')->create() : "";
-    (\App\Models\Empleado::all() !== false )    ?  factory('App\Models\Empleado')->create() : "";
-    (\App\Models\Usuario::all() !== false )     ?  factory('App\Models\Usuario')->create() : "";
+    (\App\Models\Taller::all()->count() > 0 )      ? "" : factory('App\Models\Taller')->create() ;
+    (\App\Models\Cliente::all()->count() > 0 )     ? "" : factory('App\Models\Cliente')->create() ;
+    (\App\Models\Vehiculo::all()->count() > 0 )    ? "" : factory('App\Models\Vehiculo')->create() ;
+    (\App\Models\Empleado::all()->count() > 0 )    ? "" : factory('App\Models\Empleado')->create() ;
+    (\App\Models\Usuario::all()->count() > 0 )     ? "" : factory('App\Models\Usuario')->create() ;
 
     return [
         'taller_id'  => \App\Models\Taller::where('descripcion','Atelier')->first()->id,

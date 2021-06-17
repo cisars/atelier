@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(ProductoServicio::class, function (Faker $faker) {
 // Get all data fk tables
-    (\App\Models\Clasificacion::all() !== false ) ?  factory('App\Models\Clasificacion')->create() : "";
-    (\App\Models\Unidad::all() !== false ) ?  factory('App\Models\Unidad')->create() : "";
+    (\App\Models\Clasificacion::all()->count() > 0 ) ?  factory('App\Models\Clasificacion')->create() : "";
+    (\App\Models\Unidad::all()->count() > 0 ) ?  factory('App\Models\Unidad')->create() : "";
 
 return [
 //id

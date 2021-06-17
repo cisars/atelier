@@ -6,7 +6,7 @@ use App\Models\Maquinaria;
 use Faker\Generator as Faker;
 
 $factory->define(Maquinaria::class, function (Faker $faker) {
-    (\App\Models\MaquinariaTipo::all() !== false ) ?  factory('App\Models\MaquinariaTipo')->create() : "";
+    (\App\Models\MaquinariaTipo::all()->count() > 0 ) ? "" : factory('App\Models\MaquinariaTipo')->create()  ;
 
     return [
         'maquinaria_tipo_id' => \App\Models\MaquinariaTipo::inRandomOrder()->first()->id,

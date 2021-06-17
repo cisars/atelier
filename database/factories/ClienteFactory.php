@@ -6,7 +6,7 @@ use App\Models\Cliente;
 use Faker\Generator as Faker;
 
 $factory->define(Cliente::class, function (Faker $faker) {
-    (\App\Models\Localidad::all() !== false ) ?  factory('App\Models\Localidad')->create() : "";
+    (\App\Models\Localidad::all()->count() > 0 ) ? "" : factory('App\Models\Localidad')->create() ;
     return [
         'razon_social' => $faker->lastName . ', ' .$faker->firstName,
         'documento' => $faker->numberBetween(700000 , 8000000),

@@ -7,7 +7,7 @@ use App\Models\Taller;
 use Faker\Generator as Faker;
 
 $factory->define(Taller::class, function (Faker $faker) {
-    (Sucursal::all() !== false ) ?  factory('App\Models\Sucursal')->create() : "";
+    (Sucursal::all()->count() > 0 ) ? "" : factory('App\Models\Sucursal')->create()  ;
     return [
         'descripcion' => substr($faker->company, 0,39) ,
         'direccion' =>  substr($faker->address, 0,79) ,

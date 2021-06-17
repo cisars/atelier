@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Modelo::class, function (Faker $faker) {
 
-    (\App\Models\Marca::all() !== false ) ?  factory('App\Models\Marca')->create() : "";
+    (\App\Models\Marca::all()->count() > 0 ) ? "" : factory('App\Models\Marca')->create()  ;
 
     return [
         'marca_id'         => \App\Models\Marca::inRandomOrder()->first()->id,

@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(EntradaDetalle::class, function (Faker $faker) {
 // Get all data fk tables
-    (\App\Models\Entrada::all() !== false ) ?  factory('App\Models\Entrada')->create() : "";
-    (\App\Models\Sector::all() !== false ) ?  factory('App\Models\Sector')->create() : "";
-    (\App\Models\ProductoServicio::all() !== false ) ?  factory('App\Models\ProductoServicio')->create() : "";
+    (\App\Models\Entrada::all()->count() > 0 ) ?  factory('App\Models\Entrada')->create() : "";
+    (\App\Models\Sector::all()->count() > 0 ) ?  factory('App\Models\Sector')->create() : "";
+    (\App\Models\ProductoServicio::all()->count() > 0 ) ?  factory('App\Models\ProductoServicio')->create() : "";
 
 return [
 //item

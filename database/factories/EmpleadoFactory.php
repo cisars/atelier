@@ -7,10 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Empleado::class, function (Faker $faker) {
 
-     (\App\Models\Localidad::all() !== false ) ?  factory('App\Models\Localidad')->create() : "";
-     (\App\Models\Cargo::all() !== false ) ?  factory('App\Models\Cargo')->create() : "";
-     (\App\Models\Turno::all() !== false ) ?  factory('App\Models\Turno')->create() : "";
-     (\App\Models\Grupo::all() !== false ) ?  factory('App\Models\Grupo')->create() : "";
+     (\App\Models\Localidad::all()->count() > 0 ) ? "" : factory('App\Models\Localidad')->create() ;
+     (\App\Models\Cargo::all()->count() > 0 ) ?  "" : factory('App\Models\Cargo')->create()  ;
+     (\App\Models\Turno::all()->count() > 0 ) ?  "" : factory('App\Models\Turno')->create()  ;
+     (\App\Models\Grupo::all()->count() > 0 ) ?  "" : factory('App\Models\Grupo')->create()  ;
 
     return [
         'nombres' => $faker->firstName,
