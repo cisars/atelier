@@ -6,29 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ClienteFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ClienteFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EmpleadoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EmpleadoFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EntradaDetalleFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EntradaDetalleFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EntradaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EntradaFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/MaquinariaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MaquinariaFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ModeloFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ModeloFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/OrdenServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/OrdenServicioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/OrdenTrabajoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/OrdenTrabajoFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProductoServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductoServicioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ReservaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ReservaFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/SectorFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/SectorFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/SucursalFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/SucursalFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/TallerFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TallerFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/VehiculoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/VehiculoFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_220459_create_clientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_220459_create_clientes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_14_222949_create_usuarios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_14_222949_create_usuarios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsuarioSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsuarioSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/factories/EntradaDetalleFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/EntradaDetalleFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/factories/EntradaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/EntradaFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/factories/OrdenServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/OrdenServicioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/factories/OrdenTrabajoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/OrdenTrabajoFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/factories/ProductoServicioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/factories/ProductoServicioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +350,7 @@
       <workItem from="1623526996696" duration="4769000" />
       <workItem from="1623676445529" duration="30913000" />
       <workItem from="1623778219669" duration="39589000" />
-      <workItem from="1623818554201" duration="5268000" />
+      <workItem from="1623818554201" duration="5990000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>
