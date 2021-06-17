@@ -31,7 +31,7 @@ class CreateEntradasDetallesTable extends Migration
         });
 
 //        DB::statement('ALTER TABLE entradas_detalles MODIFY `item` TINYINT NOT NULL  ');
-        DB::statement('ALTER TABLE entradas_detalles ALTER COLUMN  `item` TINYINT NOT NULL  ');
+        DB::statement('ALTER TABLE entradas_detalles ALTER COLUMN  item TYPE TINYINT NOT NULL  ');
     }
 
     public function down()
