@@ -30,7 +30,8 @@ class CreateEntradasDetallesTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement('ALTER TABLE entradas_detalles MODIFY `item` TINYINT NOT NULL  ');
+//        DB::statement('ALTER TABLE entradas_detalles MODIFY item TINYINT NOT NULL  ');
+        DB::statement('ALTER TABLE entradas_detalles ALTER COLUMN  item TINYINT NOT NULL  ');
     }
 
     public function down()
