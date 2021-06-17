@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_26_122300_create_entradas_detalles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_26_122300_create_entradas_detalles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_06_12_153831_create_salidas_detalles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_06_12_153831_create_salidas_detalles_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,7 +349,7 @@
       <workItem from="1623526996696" duration="4769000" />
       <workItem from="1623676445529" duration="30913000" />
       <workItem from="1623778219669" duration="39589000" />
-      <workItem from="1623818554201" duration="8581000" />
+      <workItem from="1623818554201" duration="8864000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>
