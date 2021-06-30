@@ -47,6 +47,8 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     const USUARIO_CLIENTE       = 'C';
     const USUARIO_BOOTSTRAP     = 'B';
     const USUARIO_RECEPCIONISTA = 'R';
+    const USUARIO_JEFEMECANICO = 'J';
+    const USUARIO_MECANICO = 'M';
     const USUARIO_DOCUMENTACION = 'D';
 
     public function getPerfiles()
@@ -57,7 +59,9 @@ class Usuario extends Authenticatable implements MustVerifyEmail
             'Cliente'       => Usuario::USUARIO_CLIENTE,
             'Bootstrap'     => Usuario::USUARIO_BOOTSTRAP,
             'Recepcionista' => Usuario::USUARIO_RECEPCIONISTA,
-            'Documentacion' => Usuario::USUARIO_DOCUMENTACION,
+            'Documentacion'  => Usuario::USUARIO_DOCUMENTACION,
+            'Jefe Mecanicos' => Usuario::USUARIO_JEFEMECANICO,
+            'Mecanico'       => Usuario::USUARIO_MECANICO,
         ];
     }
     public function getTipos()

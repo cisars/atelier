@@ -27,8 +27,6 @@ Auth::routes(['verify' => true]);
 
 //Route::post('update', 'Auth\RegisterController@sqlupdate')->name('update');
 
-
-
 /* no entiendo porque funciona igual
 Route::get('/localidad',  'LocalidadController@index')->name('localidades');
 Route::get('/localidad/index',  'LocalidadController@index')->name('localidad.index');

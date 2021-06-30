@@ -205,8 +205,8 @@ class UsuarioSeeder extends Seeder
         DB::table('usuarios')->insert([
             'usuario'  => 'recepcionista',
             'empleado_id' => factory('App\Models\Empleado')->create([
-                'nombres' => 'Recep',
-                'apellidos' => 'Cionista',
+                'nombres' => 'Marta',
+                'apellidos' => 'Sales',
                 'ci' => 1000000,
                 'estado_civil' => 's',
                 'sexo' => 'm',
@@ -224,7 +224,7 @@ class UsuarioSeeder extends Seeder
             'fecha_ingreso' => now(),
             'estado'        => Usuario::USUARIO_ACTIVO,
             'observacion'   => '',
-            'perfil'        => Usuario::USUARIO_FUNCIONARIO,
+            'perfil'        => Usuario::USUARIO_RECEPCIONISTA,
             'tipo'          => Usuario::USUARIO_T_EMPLEADO,
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
@@ -233,8 +233,8 @@ class UsuarioSeeder extends Seeder
         DB::table('usuarios')->insert([
             'usuario'  => 'mecanico',
             'empleado_id' => factory('App\Models\Empleado')->create([
-                'nombres' => 'Meca',
-                'apellidos' => 'Nico',
+                'nombres' => 'Nicolas',
+                'apellidos' => 'Meca',
                 'ci' => 1100000,
                 'estado_civil' => 's',
                 'sexo' => 'm',
@@ -252,17 +252,17 @@ class UsuarioSeeder extends Seeder
             'fecha_ingreso' => now(),
             'estado'        => Usuario::USUARIO_ACTIVO,
             'observacion'   => '',
-            'perfil'        => Usuario::USUARIO_FUNCIONARIO,
+            'perfil'        => Usuario::USUARIO_MECANICO,
             'tipo'          => Usuario::USUARIO_T_EMPLEADO,
             'usuario_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
-        // MECANICO //
+        // JEFE MECANICO //
         DB::table('usuarios')->insert([
             'usuario'  => 'jefe',
             'empleado_id' => factory('App\Models\Empleado')->create([
-                'nombres' => 'Jefe',
-                'apellidos' => 'Mecanicos',
+                'nombres' => 'Roberto J.',
+                'apellidos' => 'Fernandez',
                 'ci' => 1200000,
                 'estado_civil' => 's',
                 'sexo' => 'm',
@@ -277,6 +277,35 @@ class UsuarioSeeder extends Seeder
                 'salario' => '4500000'
             ])->id,
             'clave'  => bcrypt('jefe'),
+            'fecha_ingreso' => now(),
+            'estado'        => Usuario::USUARIO_ACTIVO,
+            'observacion'   => '',
+            'perfil'        => Usuario::USUARIO_JEFEMECANICO,
+            'tipo'          => Usuario::USUARIO_T_EMPLEADO,
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
+        ]);
+
+        // Funcionario //
+        DB::table('usuarios')->insert([
+            'usuario'  => 'funcionario',
+            'empleado_id' => factory('App\Models\Empleado')->create([
+                'nombres' => 'Fulgencio',
+                'apellidos' => 'Nayar',
+                'ci' => 1200000,
+                'estado_civil' => 's',
+                'sexo' => 'm',
+                'direccion' => 'None.',
+                'localidad_id' => App\Models\Localidad::inRandomOrder()->first()->id,
+                'cargo_id' => App\Models\Cargo::where('descripcion','Jefe de Mecanicos')->first()->id,
+                'movil' => '(+000)100100',
+                'telefono' => '(+00000)200200' ,
+                'fecha_nacimiento' => '1980-10-10',
+                'fecha_ingreso' =>  date("Y-m-d H:m:s"),
+                'estado'  => '1',
+                'salario' => '4500000'
+            ])->id,
+            'clave'  => bcrypt('funcionario'),
             'fecha_ingreso' => now(),
             'estado'        => Usuario::USUARIO_ACTIVO,
             'observacion'   => '',
@@ -323,6 +352,14 @@ class UsuarioSeeder extends Seeder
         ]);
         DB::table('talleres_usuarios')->insert([
             'usuario'  => 'recepcionista',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'funcionario',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'yami',
             'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
         ]);
 

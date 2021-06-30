@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $this->register();
 
         Gate::define('manage-blog', function ($user) {
-            if (trim($user->perfil) == 'm') {
+            if (trim($user->perfil) == 'n') {
                 return true;
             }
             return false;
@@ -51,6 +51,32 @@ class AppServiceProvider extends ServiceProvider
             }
             return false;
         });
+
+        Gate::define('rec', function ($user) {
+            if (trim($user->perfil) == 'R') {
+                return true;
+            }
+            return false;
+        });
+        Gate::define('mec', function ($user) {
+            if (trim($user->perfil) == 'M') {
+                return true;
+            }
+            return false;
+        });
+        Gate::define('jmec', function ($user) {
+            if (trim($user->perfil) == 'J') {
+                return true;
+            }
+            return false;
+        });
+        Gate::define('fun', function ($user) {
+            if (trim($user->perfil) == 'F') {
+                return true;
+            }
+            return false;
+        });
+
         Gate::define('example-bootstrap', function ($user) {
             if (trim($user->perfil) == 'B') {
                 return true;

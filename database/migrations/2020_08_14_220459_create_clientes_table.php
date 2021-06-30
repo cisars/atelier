@@ -32,9 +32,9 @@ class CreateClientesTable extends Migration
 
             $table->timestamps();
         });
-        DB::statement(
-            'ALTER TABLE clientes ADD FULLTEXT fulltext_index(razon_social, documento, email)'
-        );
+//        DB::statement(
+//            'ALTER TABLE clientes ADD FULLTEXT fulltext_index(razon_social, documento, email)'
+//        );
     }
 
     /**

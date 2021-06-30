@@ -37,8 +37,13 @@ class HomeController extends Controller
     public function index()
     {
         Log::info('USUARIO_ACTIVO 			'.' - '. Usuario::USUARIO_ACTIVO 						);
-
-         if( trim(Auth::user()->perfil) == 'A' || trim(Auth::user()->perfil) == 'F'   )
+//dd(1);
+         if( trim(Auth::user()->perfil) == 'A' ||
+             trim(Auth::user()->perfil) == 'F' ||
+             trim(Auth::user()->perfil) == 'M' ||
+             trim(Auth::user()->perfil) == 'J' ||
+             trim(Auth::user()->perfil) == 'R'
+         )
          {
              $usuarios = Usuario::all();
              $empleados = Empleado::all();
@@ -68,6 +73,8 @@ class HomeController extends Controller
 
             return View::make('web.panelcliente')
                 ->with('vehiculos', $vehiculos) ;
+        }else{
+            return View::make('web.index') ;
         }
 
 

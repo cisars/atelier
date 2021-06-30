@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Full Width Pics - Start Bootstrap Template</title>
+    <title>Atelier</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('web/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
