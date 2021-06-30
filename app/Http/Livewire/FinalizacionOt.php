@@ -219,7 +219,7 @@ class FinalizacionOt extends Component
         $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_FINALIZADO;
         $this->ordentrabajo->save();
 
-        Mail::to($this->ordentrabajo->cliente->email)->send(new CierreOt());
+        Mail::to($this->ordentrabajo->cliente->email)->send(new CierreOt($this->ordentrabajo));
 
         /*
          * Insercion en Bitacora

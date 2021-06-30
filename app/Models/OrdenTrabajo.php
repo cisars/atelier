@@ -96,6 +96,10 @@ class OrdenTrabajo extends Model
         return null;
     }
 
+    public function getOrdenSectorAttribute()
+    {
+        return '#'.$this->id.' - Sector: '.$this->sector->descripcion;
+    }
     public function taller()
     {
         return $this->belongsTo(Taller::class, 'taller_id');

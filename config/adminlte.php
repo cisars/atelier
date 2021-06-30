@@ -566,7 +566,7 @@ return [
                 ],
 //
 
-                ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Visualizar Prefacturacion',],
+              //  ['icon_color' => 'gray', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Visualizar Prefacturacion',],
             ],
         ],
         [

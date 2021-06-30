@@ -11,14 +11,16 @@ class RealizacionOt extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $orden;
+
     /**
-     * Create a news message instance.
+     * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($orden)
     {
-        //
+        $this->orden = $orden;
     }
 
     /**

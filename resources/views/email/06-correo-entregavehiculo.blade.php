@@ -46,9 +46,9 @@
                                     <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #ab0a4e; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">
                                         Entrega de Vehículo  </h1>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                        Señor Isaias Silva, <br>
+                                        Señor {{ $orden->cliente->razon_social }}, <br>
 
-                                        Le informamos que su vehículo Toyota Platz ha sido retirado del taller.
+                                        Le informamos que su vehículo {{ $orden->vehiculo->full_desc }} ha sido retirado del taller.
                                         Esperamos que haya sido de su agrado nuestro servicio y lo esperamos cuando ud. necesite.
                                     </p>
 

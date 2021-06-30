@@ -13,6 +13,8 @@ class Reserva extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['updateVehiculoList' => 'listaVehiculo'];
+
     public $term = "";
     public $termId = "";
     public $talleres;
@@ -31,6 +33,12 @@ class Reserva extends Component
     public $sector;
     public $para_fecha;
     public $para_hora;
+
+    public function listaVehiculo()
+    {
+        $cliente = Cliente::find($this->termId);
+        $this->vehiculos = $cliente->vehiculos->pluck('full_desc', 'id');
+    }
 
     public function mount()
     {

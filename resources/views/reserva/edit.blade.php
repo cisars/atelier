@@ -53,4 +53,5 @@
 
             <script>
             </script>
+    @stack('pushed_scripts')
 @endsection

@@ -43,7 +43,7 @@ class Entregas extends Component
             $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_ENTREGADO;
             $this->ordentrabajo->save();
 
-            Mail::to($this->ordentrabajo->cliente->email)->send(new EntregaVehiculo());
+            Mail::to($this->ordentrabajo->cliente->email)->send(new EntregaVehiculo($this->ordentrabajo));
 
             /*
          * Insercion en Bitacora

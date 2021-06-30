@@ -46,14 +46,19 @@
                                     <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #ab0a4e; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">
                                          Confirmación de Orden de Trabajo  </h1>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                        Señor Isaias Silva, <br>
-
+                                        Señor {{ $orden->cliente->razon_social }}, <br>
+                                        @if ( $orden->estado  == \App\Models\OrdenTrabajo::ESTADO_ACEPTADO)
                                         El Taller Atelier le confirma que Ud. acepto el presupuesto de los servicios. Será informado en breve sobre los avances.
+                                        @else
+                                        Lamentamos que haya rechazado el servicio. Lo esperamos ante cualquier duda.
+                                        @endif
                                     </p>
 
-                                    <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Gracias,<br>
-                                        Atelier</p>
-
+                                    @if ( $orden->estado  == \App\Models\OrdenTrabajo::ESTADO_ACEPTADO)
+                                        <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Gracias,<br> Atelier</p>
+                                    @else
+                                        <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Atte.,<br> Atelier</p>
+                                    @endif
 
 
                                 </td>

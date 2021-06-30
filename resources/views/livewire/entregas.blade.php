@@ -32,9 +32,10 @@
                                                    wire:model="taller"
                                                    readonly>
                                         </div>
+
                                         <div class="form-group col">
                                             <label> Orden de Trabajo </label>
-                                            {!! Form::select('name', $ordenes , null ,
+                                            {!! Form::select('name', $ordenes ?? [], null ,
                                                     [
                                                         'class' => 'form-control',
                                                         'placeholder' => 'Seleccionar orden finalizada',
@@ -45,6 +46,7 @@
                                                    type="text"
                                                    placeholder="Introduzca codigo" value="2353">--}}
                                         </div>
+
                                     </div>
 
                                     <div class="form-group col">
@@ -169,7 +171,6 @@
                 @this.set('cliente_id', data);
                 });
             });
-
         </script>
     @endpush
 </div>

@@ -41,7 +41,7 @@
                             <thead class="">
                             <tr>
                                 <th class="">OT </th>
-                                <th class="">Fecha </th>
+
                                 <th class="">Cliente </th>
                                 <th class="">Vehículo </th>
                                 <th class="">Estado </th>
@@ -52,7 +52,7 @@
                             @foreach ($ordenestrabajos as $orden)
                                 <tr class=" ">
                                     <td> {{ $orden->id }} </td>
-                                    <td> {{ $orden->fecha_ }} </td>
+
                                     <td class="">{{ $orden->cliente->razon_social }}</td>
                                     <td class="">{{ $orden->vehiculo->full_desc }}</td>
                                     <td class=""> {{ $orden->estado_desc }}  </td>

@@ -75,7 +75,7 @@
                                                  {{--DATE TIMESTAMP Fecha de Finalización --}}
 
                                                      -<label for="fecha_fin">Fecha Finalización </label>--}}
-                                                        {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion))
+                                                        {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}
                                                 </div>
                                                 {{--DATE TIMESTAMP Fecha de Finalización------------------------------------ --}}
                                             </div>{{--row --}}
@@ -117,6 +117,7 @@
                                                 {{--CONST Prioridad Normal | prioridad | prioridad --}}
                                                 <div class="form-group col-4">
                                                     <label for="prioridad">Prioridad </label>
+{{--                                                    @dd($ordentrabajo->prioridad);--}}
                                                     {!! Form::select('prioridad', $prioridades , null , ['class' => 'form-control', 'wire:model' => 'prioridad']) !!}
                                                     {{--<select
                                                         class="form-control"

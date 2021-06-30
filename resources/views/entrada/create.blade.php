@@ -78,7 +78,7 @@
                                         <div class="form-group col">
                                             {{--SELECT FK OT --}}
                                             {!! Form::label('ot_id', 'OT') !!}
-                                            {!! Form::select('ot_id', $ordenes_trabajos->pluck('descripcion', 'id')  ,
+                                            {!! Form::select('ot_id', $ordenes_trabajos->pluck('orden_sector', 'id')  ,
                                                 old('ot_id') ,
                                                 [
                                                     'class' => 'form-control',
@@ -88,19 +88,7 @@
                                                 <span class="text text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="form-group col">
-                                            {{--SELECT FK OT --}}
-                                            {!! Form::label('sector_id', 'Sector') !!}
-                                            {!! Form::select('sector_id', $sectores  ,
-                                                old('sector_id') ,
-                                                [
-                                                    'class' => 'form-control',
-                                                    'placeholder' => 'Seleccione el sector']
-                                            ) !!}
-                                            @error("sector_id")
-                                            <span class="text text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
+
                                             {{--SELECT FK OT ------------------------------------ --}}
 
                                         {{--<div class="form-group col">

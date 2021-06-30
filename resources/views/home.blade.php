@@ -514,7 +514,11 @@
                             <div class="card-body text-center m-0 p-0 " style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon p-xl-4 col-12 "
+                                    <button class="btn btn-lg bg-maroon
+                                    @if(Auth::user()->perfil == "A" ||
+                                        Auth::user()->empleado->cargo->descripcion == "Recepcionista"
+                                        ) @else disabled @endif
+                                        p-xl-4 col-12 "
                                             onclick="window.location='{{ url("reserva/create") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none  ">
@@ -541,7 +545,11 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon p-xl-4  col-12"
+                                    <button class="btn btn-lg bg-maroon
+                                    @if(Auth::user()->perfil == "A" ||
+                                        Auth::user()->empleado->cargo->descripcion == "Recepcionista"
+                                        ) @else disabled @endif
+                                        p-xl-4 col-12 "
                                             onclick="window.location='{{ url("recepcion") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none">
@@ -566,7 +574,9 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon p-xl-4  col-12"
+                                    <button class="btn btn-lg bg-maroon
+
+                                        p-xl-4 col-12 "
                                             onclick="window.location='{{ url("orden_trabajo") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none">
@@ -591,8 +601,10 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg   bg-maroon p-xl-4 col-12 "
-                                            onclick="window.location='{{ url("confirmarot") }}'"
+                                    <button class="btn btn-lg bg-maroon
+
+                                        p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("confirmacionot") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon pl-3  col-12">
@@ -617,8 +629,13 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon p-xl-4  col-12"
-                                            onclick="window.location='{{ url("servicio") }}'"
+                                    <button class="btn btn-lg bg-maroon
+                                    @if(Auth::user()->perfil == "A" ||
+                                        Auth::user()->empleado->cargo->descripcion == "Mecanico" ||
+                                        Auth::user()->empleado->cargo->descripcion == "Jefe de Mecanicos"
+                                        ) @else disabled @endif
+                                        p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("servicios-realizados") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon  col-12 ">
@@ -643,8 +660,12 @@
                             <div class="card-body text-center m-0 p-0"  style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon disabled  p-xl-4 col-12 "
-                                            onclick="window.location='{{ url("verificaot") }}'"
+                                    <button class="btn btn-lg bg-maroon
+                                    @if(Auth::user()->perfil == "A" ||
+                                        Auth::user()->empleado->cargo->descripcion == "Jefe de Mecanicos"
+                                        ) @else disabled @endif
+                                    p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("verificaciones") }}'"
                                     >
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon  col-12 ">
@@ -669,7 +690,13 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon   disabled  p-xl-4 col-12 ">
+                                    <button class="btn btn-lg bg-maroon
+                                    @if(Auth::user()->perfil == "A" ||
+                                         Auth::user()->empleado->cargo->descripcion == "Jefe de Mecanicos"
+                                        ) @else disabled @endif
+                                        p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("finalizaciones") }}'"
+                                    >
 
                                         <div class="info-box  bg-maroon shadow-none">
                                             <div class="info-box-icon  col-12 ">
@@ -694,7 +721,13 @@
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg bg-maroon col-12  disabled  p-xl-4 col-12 ">
+                                    <button class="btn btn-lg bg-maroon
+                                    @if(Auth::user()->perfil == "A" ||
+                                         Auth::user()->empleado->cargo->descripcion == "Recepcionista"
+                                        ) @else disabled @endif
+                                        p-xl-4 col-12 "
+                                            onclick="window.location='{{ url("entregas") }}'"
+                                    >
 
                                         <div class="info-box bg-maroon shadow-none">
                                             <div class="info-box-icon col-12  ">
@@ -714,13 +747,14 @@
                         </div>
                     </div>
                     {{-- Bitacora--}}
-                    <div class="col-lg-4   ">
+                    <div class="col-lg-4  d-none ">
                         <div class="card p-3">
                             <div class="card-body text-center m-0 p-0" style="overflow: hidden">
 
                                 <div class="form-group">
-                                    <button class="btn btn-lg btn-outline-dark col-12  disabled  p-xl-4 col-12 ">
-
+                                    <button class="btn btn-lg
+                                        p-xl-4 col-12 "
+                                    >
                                         <div class="info-box shadow-none">
                                             <div class="info-box-icon col-12  ">
                                                 <i class="fa fa-history  "></i>
@@ -746,58 +780,92 @@
                 <div class="card card-maroon  ">
                     <div class="card-header">
                         <div class="card-title">
-{{--                            MiCargo--}}
-                           Cargo
+{{-- MiCargo--}}
+                           Actividades
                         </div>
                     </div>
+
                     <div class="card-body  ">
 
                         <div class="form-group">
                             <h3> {{ Auth::user()->empleado->cargo->descripcion ?? 'No se registra un cargo' }}</h3>
-
+                            <div class="form-group text-gray"><i class="fas fa-user "></i> {{Auth::user()->empleado->apellidos}}, {{Auth::user()->empleado->nombres}} </div>
                             <span class="text-sm">
-                            Tabla de contenidos
+{{-- Tabla de contenidos--}}
                                 </span>
-                            <table class="table table-sm table-hover nowrap d-table" id="lista">
-                                <th>
-                                    {{ \App\Models\Reserva::where('empleado_id', Auth::user()->empleado->id)->get()  }}
-                                </th>
+                            @if (\App\Models\Reserva::where('empleado_id', Auth::user()->empleado->id)->get()->count() > 0 )
+                            <div style="background-color: #EEEEEE"> <i class="fa fa-calendar"></i> Reservas </div>
+                            <table class="table table-sm table-hover nowrap d-table" id="lista1">
+                                <th>Taller</th>
+                                <th>Cliente</th>
+                                <th>Vehículo</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
                                 <tbody>
-                                {{--                                @foreach())--}}
+                                @foreach( \App\Models\Reserva::where('empleado_id', Auth::user()->empleado->id)->get() as $qreserva )
                                 <tr>
-                                    <td>a</td>
+                                    <td>{{$qreserva->taller->descripcion}}</td>
+
+                                    <td>{{$qreserva->cliente->razon_social}}</td>
+
+                                    <td>{{$qreserva->vehiculo->full_desc}}</td>
+
+                                    <td>{{$qreserva->fecha}}</td>
+                                    <td>{{$qreserva->estado_desc}}</td>
                                 </tr>
+                                @endforeach
+                                </tbody>
+
+                            </table>
+                            @endif
+                            <hr>
+                            @if (App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get()->count() > 0 )
+{{--                            {{ \App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get()  }}--}}
+                            <div style="background-color: #EEEEEE"> <i class="fa fa-clipboard-list "></i> Ordenes de trabajo </div>
+                            <table class="table table-sm table-hover nowrap d-table" id="lista2">
+                                <th> ID </th>
+                                <th> Taller </th>
+                                <th> Vehículo </th>
+                                <th> Estado </th>
+                                <tbody>
+
+                               @foreach( \App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get() as $qot )
                                 <tr>
-                                    <td>a</td>
+                                    <td>#{{$qot->id}}</td>
+                                    <td>{{$qot->taller->descripcion}}</td>
+                                    <td>{{$qot->vehiculo->full_desc}}</td>
+                                    <td>{{$qot->estado_desc}}</td>
                                 </tr>
-                                <tr>
-                                    <td>a</td>
-                                </tr>
-                                <tr>
-                                    <td>a</td>
-                                </tr>
+                               @endforeach
                                 </tbody>
                             </table>
-                            <table class="table table-sm table-hover nowrap d-table" id="lista">
-                                <th>
-                                    {{ \App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get()  }}
-                                </th>
-                                <tbody>
-{{--                                @foreach())--}}
-                                <tr>
-                                    <td>a</td>
-                                </tr>
-                                <tr>
-                                    <td>a</td>
-                                </tr>
-                                <tr>
-                                    <td>a</td>
-                                </tr>
-                                <tr>
-                                    <td>a</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                @endif
+                            <hr>
+                            @if (App\Models\Entrega::where('empleado_id', Auth::user()->empleado->id)->get()->count() > 0 )
+{{--                   {{ \App\Models\Entrega::where('empleado_id', Auth::user()->empleado->id)->get()  }}--}}
+                                <div style="background-color: #EEEEEE"> <i class="fa fa-clipboard-list "></i>  Entregas </div>
+                                <table class="table table-sm table-hover nowrap d-table" id="lista2">
+                                    <th> ID </th>
+                                    <th> Taller </th>
+                                    <th> OT Finalizada </th>
+                                    <th> Quien retira </th>
+                                    <th> Vehiculo </th>
+                                    <th> Fecha </th>
+                                    <tbody>
+
+                                    @foreach( \App\Models\Entrega::where('empleado_id', Auth::user()->empleado->id)->get() as $qot )
+                                        <tr>
+                                            <td>{{$qot->id}}</td>
+                                            <td>{{$qot->taller->descripcion}}</td>
+                                            <td>#{{$qot->ot_id}}</td>
+                                            <td>{{$qot->cliente->razon_social}}</td>
+                                            <td>{{$qot->vehiculo->full_desc}}</td>
+                                            <td>{{$qot->fecha}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -810,7 +878,25 @@
 
 @section('js')
     <script>
+        $('#lista1').dataTable({
+            "autoWidth":false,
+            "info":false,
+            "JQueryUI":true,
+            "ordering":true,
+            "paging":false,
+            "scrollY":"500px",
+            "scrollCollapse":true
+        });
 
+        $('#lista2').dataTable({
+            "autoWidth":false,
+            "info":false,
+            "JQueryUI":true,
+            "ordering":true,
+            "paging":false,
+            "scrollY":"500px",
+            "scrollCollapse":true
+        });
         $(document).ready(function () {
 
             var current_fs, next_fs, previous_fs; //fieldsets

@@ -55,7 +55,6 @@ class Vehiculo extends Model
 
     public function getFuelAttribute()
     {
-
         foreach ($this->getCombustiones() as $k => $combustion):
             if (trim($this->combustion) == trim($combustion)){
                 return $k;

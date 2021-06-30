@@ -9,6 +9,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EntradaDetalle;
+use App\Models\Sector;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\Entrada\StoreEntradaRequest;
 use App\Http\Requests\Entrada\UpdateEntradaRequest;
@@ -29,7 +31,7 @@ class EntradaController extends Controller
 
         $entradas->each(function ($entrada) {
 
-        //OPCION 2
+            //OPCION 2
 
         });
         return view('entrada.index', compact('entradas', $entradas));
@@ -43,7 +45,7 @@ class EntradaController extends Controller
         $empleados = Empleado::orderBy('apellidos', 'ASC')->get();
         $usuarios = Usuario::orderBy('usuario', 'ASC')->get();
 
-        $entrada   = new Entrada(); //
+        $entrada = new Entrada(); //
 // Construct all cons data base model dropdown list char 1
 
         return view('entrada.create')
@@ -51,29 +53,28 @@ class EntradaController extends Controller
             ->with('talleres', $talleres)
             ->with('ordenes_trabajos', $ordenes_trabajos)
             ->with('empleados', $empleados)
-            ->with('usuarios', $usuarios)
-// Send all cons variables
-;
+            ->with('usuarios', $usuarios)// Send all cons variables
+            ;
     }
 
-    public function store(StoreEntradaRequest $request )
+    public function store(StoreEntradaRequest $request)
     {
         try {
-        DB::beginTransaction();
+            DB::beginTransaction();
             $entrada = new Entrada($request->all());
             $entrada->save();
 
-                        DB::commit();
+            DB::commit();
 
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
-            Log::error( 'Error en EntradaController@store: '. $e ) ;
+            Log::error('Error en EntradaController@store: ' . $e);
             return redirect()
                 ->route('entrada.index')
                 ->with('msg', 'Ocurrio un error')
                 ->with('type', 'danger');
         }
-        Log::info( 'Entrada registro creado' ) ;
+        Log::info('Entrada registro creado');
         return redirect()
             ->route('entrada.index')
             ->with('msg', 'Registro Creado Correctamente')
@@ -83,17 +84,39 @@ class EntradaController extends Controller
 
     public function destroy(Request $request)
     {
+
         try {
             $entrada = Entrada::findOrFail($request->id);
+
+            //$entradadetalle = EntradaDetalle::findOrFail($request->id);
+            //dd($entrada->entradas_detalles);
+            foreach ($entrada->entradas_detalles as $item) {
+                $item->sector->productos_servicios()
+                    ->updateExistingPivot(
+                        $item->producto_id,
+                        array(
+                            'cantidad' => $item->sector
+                                ->productos_servicios
+                                ->where('id', $item->producto_id)
+                                ->first()->pivot->cantidad - $item->cantidad), false);
+                    //->updateExistingPivot($item->producto_id, $entradadetalle->entrada->sector())
+            }
+
+            /*foreach ($entradadetalle as $et)
+            {
+                $sector = Sector::find($entrada->sector_id)->where('producto_id', $et->producto_id);
+                $entradadetalle->update(['cantidad' => ($sector->cantidad - $entradadetalle->cantidad)]);
+            }*/
+
             $entrada->delete();
 
-            Log::info( 'Entrada registro eliminado' ) ;
+            Log::info('Entrada registro eliminado');
             return redirect()
                 ->route('entrada.index')
                 ->with('msg', 'Registro Eliminado Correctamente')
                 ->with('type', 'danger');
         } catch (\Illuminate\Database\QueryException $e) {
-            Log::error( 'Error en EntradaController@destroy: '. $e ) ;
+            Log::error('Error en EntradaController@destroy: ' . $e);
             return redirect()
                 ->route('entrada.index')
                 ->with('msg', 'Ocurrio un error')
@@ -117,10 +140,8 @@ class EntradaController extends Controller
             ->with('talleres', $talleres)
             ->with('ordenes_trabajos', $ordenes_trabajos)
             ->with('empleados', $empleados)
-            ->with('usuarios', $usuarios)
-
-// Send all cons variables
-;
+            ->with('usuarios', $usuarios)// Send all cons variables
+            ;
     }
 
     public function update(UpdateEntradaRequest $request, Entrada $entrada)
@@ -130,14 +151,14 @@ class EntradaController extends Controller
             $entrada->fill($request->all());
             $entrada->save();
             DB::commit();
-            Log::info( 'Entrada registro actualizado ') ;
+            Log::info('Entrada registro actualizado ');
             return redirect()
                 ->route('entrada.index')
                 ->with('msg', 'Registro Actualizado Correctamente')
                 ->with('type', 'info');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
-            Log::error( 'Error en EntradaController@update: '. $e ) ;
+            Log::error('Error en EntradaController@update: ' . $e);
             return redirect()
                 ->route('entrada.index')
                 ->with('type', 'danger')
@@ -145,10 +166,11 @@ class EntradaController extends Controller
         }
 
     }
+
     public function factory()
     {
         factory('App\Models\Entrada')->create();
-        Log::warning( 'Factory creado en Entrada ') ;
+        Log::warning('Factory creado en Entrada ');
         return redirect()
             ->route('entrada.index')
             ->with('msg', 'Registro Creado Correctamente')

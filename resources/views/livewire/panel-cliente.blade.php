@@ -104,7 +104,7 @@
                                                                     Diagnóstico</strong></li>
 
                                                             <li class="
-                                                            {{ isset($mivehiculo) && $mivehiculo->ordenes_trabajos->last() ? ($mivehiculo->ordenes_trabajos->last()->bitacora->where('estado', 'f')->count() > 0 ? 'active' : '') : '' }}
+                                                            {{ isset($mivehiculo) && $mivehiculo->ordenes_trabajos->last() ? ($mivehiculo->ordenes_trabajos->last()->bitacora->where('estado', 'g')->count() > 0 ? 'active' : '') : '' }}
                                                                 fa fa-business-time">
                                                                 <strong class="person">
                                                                     Reparación</strong></li>
@@ -729,8 +729,10 @@
                                                                             envio un <a
                                                                                 href="#">Presupuesto</a></h3>
                                                                         <div class="timeline-body">
-                                                                            - Clic aqui para acceder al <a href="#">
-                                                                                Presupuesto</a>
+                                                                            - Clic aqui para acceder al
+                                                                            <a wire:click="changeOption(3)"
+                                                                               href="#" class="button">
+                                                                               Presupuesto</a>
                                                                             {{--<br>
                                                                             - Estado de la OT: <B>PENDIENTE</B>--}}
                                                                         </div>

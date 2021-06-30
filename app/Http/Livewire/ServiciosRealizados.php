@@ -58,12 +58,12 @@ class ServiciosRealizados extends Component
                     /*
                      * Actualizacion en existencia manejo
                      */
-                    /*dd($this->ordentrabajo->sector);
+                    //dd($this->ordentrabajo->sector);
                     if ($this->ordentrabajo->sector->productos_servicios()->where('producto_id', $item['id'])->exists()) {
                         $sum = $this->ordentrabajo->sector->productos_servicios()->where('producto_id', $item['id'])->sum('cantidad');
 
                         $this->ordentrabajo->sector->productos_servicios()->updateExistingPivot($item['id'], array('cantidad' => $sum - $item['usado']), false);
-                    }*/
+                    }
                 }
             }
 
@@ -74,13 +74,14 @@ class ServiciosRealizados extends Component
                     $q->where('realizado','!=', 's')->orWhere('realizado','=', null);;
                 });
             })->get();
+
             //dd($ordenestrabajos->count());
 
             if ($ordenestrabajos->count() == 0) {
                 $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_REALIZADO;
                 $this->ordentrabajo->save();
 
-                Mail::to($this->ordentrabajo->cliente->email)->send(new RealizacionOt());
+                Mail::to($this->ordentrabajo->cliente->email)->send(new RealizacionOt($this->ordentrabajo));
             }
 
             /*

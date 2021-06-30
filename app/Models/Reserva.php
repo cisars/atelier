@@ -22,8 +22,8 @@ class Reserva extends Model
     const FORMA_TELEFONO = 'T';
 
     //Prioridad
-    const PRIORIDAD_NORMAL = 'N';
-    const PRIORIDAD_URGENTE = 'U';
+    const PRIORIDAD_NORMAL = 'n';
+    const PRIORIDAD_URGENTE = 'u';
 
 
 //    protected $fillable = [

@@ -129,49 +129,35 @@
                 @else
                     <div class="form-group col">
                         <div class="row">
-                            <div class="  col-md-10">
-                                {!! Form::label('cliente_desc', 'Cliente') !!}
+                            <div class="  col-md-10" wire:ignore>
+                                {!! Form::label('cliente_desc', 'Cliente') !!} {{ $termId }}
 
-                                <input
-                                    list="browsers"
-                                    class="form-control  "
-                                    name="cliente_desc"
-                                    wire:model="term"
-                                    wire:keyup="onChangeClient()"
-                                    value="{{ old("cliente_desc", $reserva->cliente_id )  }}"
-                                >
-                                <div wire:loading>Buscando clientes...</div>
-                                <div wire:loading.remove>
-                                    @if ($term == "")
-                                        <div class="text-gray-500 text-sm">
-                                            Ingrese términos para buscar clientes.
-                                        </div>
-                                    @else
-                                        {{-- @if(isset($data['users']) && (isset($data['users'][0]->razon_social ) || isset($data['users']->razon_social )) )--}}
-                                        <datalist id="browsers">
-                                            @if(isset($data['users'][0]->razon_social)   )
-                                                @foreach($data['users'] as $client)
-                                                    <option
-                                                        value="{{$client->razon_social }}|{{$client->id }}"></option>
-                                                @endforeach
-                                                {{-- Si refrezca la pagina convierte en array $data['users']  --}}
-                                            @elseif ( isset($data['users']['data'][0]) )
-                                                @for ($i = 0; $i < count($data['users']['data']); $i++)
-                                                    <option
-                                                        value="{{$data['users']['data'][$i]['razon_social'] }}|{{$data['users']['data'][$i]['id'] }}"></option>
-                                                @endfor
-                                            @endif
-                                        </datalist>
+                                {!! Form::select('termId', $clientes->pluck('razon_social', 'id') , null , [
+                                                        'class' => 'form-control',
+                                                        'wire:model' => 'termId',
+                                                        'id' => 'select2-dropdown',
+                                                        'style' => 'width: 100%',
+                                                        'class' => 'js-example-basic-single',
+                                                        'placeholder' => 'Selecciona el cliente'
+                                                    ]) !!}
 
-                                        @if( count($data['users']) == 0 )
-                                            <div class="text-gray text-sm">
-                                                Sin resultados para <b>{{$term}} </b>.
-                                            </div>
-
-                                        @endif
-                                    @endif
-
-                                </div>
+                                @push('pushed_styles')
+                                    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+                                @endpush
+                                @push('pushed_scripts')
+                                    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('[name="termId"]').select2();
+                                            $('[name="termId"]').on('change', function (e) {
+                                                var data = $('[name="termId"]').select2("val");
+                                            @this.set('termId', data);
+                                            /*@this.emit('updateVehiculoList');*/
+                                                Livewire.emit('updateVehiculoList')
+                                            });
+                                        });
+                                    </script>
+                                @endpush
                             </div>
 
                             <div class=" col-md-2">

@@ -65,7 +65,7 @@ class VerificacionOt extends Component
                 $this->ordentrabajo->estado = \App\Models\OrdenTrabajo::ESTADO_VERIFICADO;
                 $this->ordentrabajo->save();
 
-                Mail::to($this->ordentrabajo->cliente->email)->send(new \App\Mail\VerificacionOt());
+                Mail::to($this->ordentrabajo->cliente->email)->send(new \App\Mail\VerificacionOt($this->ordentrabajo));
             }
 
             /*

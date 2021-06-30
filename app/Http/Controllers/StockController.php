@@ -44,6 +44,7 @@ class StockController extends Controller
 
     public function guardarEntrada(Request $request)
     {
+        $ot = OrdenTrabajo::find($request->ot_id);
         try {
             \DB::beginTransaction();
 
@@ -53,8 +54,8 @@ class StockController extends Controller
             $entrada->empleado_id   = \Auth::user()->empleado->id;
             $entrada->save();
 
-            $entrada->ordentrabajo->ordenes_repuestos()->update(['sector_id' => $request->sector_id]);
-            $entrada->ordentrabajo()->update(['sector_id' => $request->sector_id]);
+            $entrada->ordentrabajo->ordenes_repuestos()->update(['sector_id' => $ot->sector_id]);
+            $entrada->ordentrabajo()->update(['sector_id' => $ot->sector_id]);
 
             \DB::commit();
 

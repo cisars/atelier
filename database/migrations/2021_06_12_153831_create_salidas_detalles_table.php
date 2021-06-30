@@ -33,7 +33,7 @@ class CreateSalidasDetallesTable extends Migration
             $table->timestamps();
         });
 
-     //   DB::statement('ALTER TABLE salidas_detalles MODIFY `item` TINYINT NOT NULL  ');
+        DB::statement('ALTER TABLE salidas_detalles MODIFY `item` TINYINT NOT NULL  ');
     }
 
     /**

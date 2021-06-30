@@ -86,7 +86,9 @@ class OrdenTrabajo extends Component
     public function enviarPresupuesto()
     {
         try {
+
             Mail::to($this->ordentrabajo->cliente->email)->send(new EnvioPresupuesto($this->ordentrabajo));
+
 
             $this->enviarMail = false;
 
@@ -94,6 +96,7 @@ class OrdenTrabajo extends Component
             session()->flash('type', 'success');
 
         } catch (\Exception $e) {
+            dd($e->getMessage());
             session()->flash('msg', 'No se pudo enviar el presupuesto');
             session()->flash('type', 'error');
         }

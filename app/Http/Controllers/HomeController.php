@@ -38,7 +38,7 @@ class HomeController extends Controller
     {
         Log::info('USUARIO_ACTIVO 			'.' - '. Usuario::USUARIO_ACTIVO 						);
 
-         if( trim(Auth::user()->perfil) == 'A' )
+         if( trim(Auth::user()->perfil) == 'A' || trim(Auth::user()->perfil) == 'F'   )
          {
              $usuarios = Usuario::all();
              $empleados = Empleado::all();

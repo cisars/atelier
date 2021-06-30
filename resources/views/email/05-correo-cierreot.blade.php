@@ -46,11 +46,11 @@
                                     <h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #ab0a4e; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">
                                         Cierre de Orden de Trabajo  </h1>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                        Señor Isaias Silva, <br>
+                                        Señor {{ $orden->cliente->razon_social }}, <br>
 
-                                        Taller Atelier le informa que se ha generado la factura nro 112, de <b>Gs. 1.310.000</b> sobre la OT Nro 087
+                                        Taller Atelier le informa que se ha generado la factura nro {{ $orden->id }}, de <b>Gs. {{ $orden->importe_total }}</b> sobre la OT Nro {{ $orden->id }}
 
-                                         
+
                                     </p>
                                     <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0"
                                            role="presentation" style="
@@ -64,163 +64,111 @@
                                             border-box;  font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 5px;">
-Servicios
+                                                Servicios
                                             </td>
                                             <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding:   5px;">
-Cant.
+                                                Cant.
                                             </td>
                                             <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding:  5px;">
-Precio
+                                                Precio
                                             </td>
                                             <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 5px;">
-Subtotal
+                                                Subtotal
                                             </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                            {{--<td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding:  5px;">
-Verificado
-                                            </td>
+                                                Verificado
+                                            </td>--}}
                                         </tr>
-                                        <tr>
-                                            <td class="content-cell" align="left" style="box-sizing:
+                                        @foreach ($orden->ordenes_servicios as $servicio)
+                                            <tr>
+                                                <td class="content-cell" align="left" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                Cambio de Amortiguador Trasero UN.
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ $servicio->descripcion }}
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                2.00
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ $servicio->pivot->cantidad }}
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                140.000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ number_format(($servicio->precio_venta), 0, ',', '.') }}
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                280.000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ number_format(($servicio->precio_venta * $servicio->pivot->cantidad), 0, ',', '.') }}
+                                                </td>
+                                                {{--<td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                SI
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="content-cell" align="left" style="box-sizing:
+                                                    SI
+                                                </td>--}}
+                                            </tr>
+                                        @endforeach
+                                        @foreach ($orden->ordenes_repuestos as $repuesto)
+                                            <tr>
+                                                <td class="content-cell" align="left" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                Cambio de Aceite HR.
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ $repuesto->descripcion }}
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                1.00
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ $repuesto->pivot->cantidad }}
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                70.0000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    {{ number_format($repuesto->precio_venta, 0, ',', '.') }}
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                70.000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding:  1px;">
-                                                SI
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="content-cell" align="left" style="box-sizing:
+                                                    {{ number_format(($repuesto->precio_venta * $repuesto->pivot->cantidad), 0, ',', '.') }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        <tfooter>
+                                            <tr>
+                                                <td colspan="3" class="content-cell" align="left" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                Cambio bujia de Arranque UN.
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
+                                                    <b>Total</b>
+                                                </td>
+                                                <td class="content-cell" align="center" style="box-sizing:
                                             border-box; font-family: -apple-system, BlinkMacSystemFont,
                                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
                                             'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                4.00
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                240.0000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                960.000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding:  1px;">
-                                                SI
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; background-color:#eeeeee; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; ">
-                                                1.310.000
-                                            </td>
-                                            <td class="content-cell" align="center" style="box-sizing:
-                                            border-box; font-family: -apple-system, BlinkMacSystemFont,
-                                            'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-                                            'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding:  1px;">
-
-                                            </td>
-                                        </tr>
-
-
+                                                    <b>{{ number_format(($orden->importe_total), 0, ',', '.') }}</b>
+                                                </td>
+                                            </tr>
+                                        </tfooter>
                                     </table>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Gracias,<br>
                                         Atelier</p>

@@ -32,18 +32,9 @@ class CreateClientesTable extends Migration
 
             $table->timestamps();
         });
-//        CREATE FULLTEXT INDEX index_name
-//ON table_name(idx_column_name,...)
-//        DB::statement(
-//            'create extension dict_int'
-//        );
-//        DB::statement(
-//            'ALTER TABLE clientes ADD FULLTEXT(razon_social, documento, email)'
-//        );
-
-         DB::statement(
-             'CREATE  INDEX fulltext_index on clientes (razon_social, documento, email)'
-         );
+        DB::statement(
+            'ALTER TABLE clientes ADD FULLTEXT fulltext_index(razon_social, documento, email)'
+        );
     }
 
     /**

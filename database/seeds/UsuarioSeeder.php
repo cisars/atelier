@@ -201,6 +201,91 @@ class UsuarioSeeder extends Seeder
             'remember_token' => Str::random(10)
         ]);
 
+        // RECEPCIONISTA //
+        DB::table('usuarios')->insert([
+            'usuario'  => 'recepcionista',
+            'empleado_id' => factory('App\Models\Empleado')->create([
+                'nombres' => 'Recep',
+                'apellidos' => 'Cionista',
+                'ci' => 1000000,
+                'estado_civil' => 's',
+                'sexo' => 'm',
+                'direccion' => 'None.',
+                'localidad_id' => App\Models\Localidad::inRandomOrder()->first()->id,
+                'cargo_id' => App\Models\Cargo::where('descripcion','Recepcionista')->first()->id,
+                'movil' => '(+000)100100',
+                'telefono' => '(+00000)200200' ,
+                'fecha_nacimiento' => '1980-10-10',
+                'fecha_ingreso' =>  date("Y-m-d H:m:s"),
+                'estado'  => '1',
+                'salario' => '2500000'
+            ])->id,
+            'clave'  => bcrypt('recepcionista'),
+            'fecha_ingreso' => now(),
+            'estado'        => Usuario::USUARIO_ACTIVO,
+            'observacion'   => '',
+            'perfil'        => Usuario::USUARIO_FUNCIONARIO,
+            'tipo'          => Usuario::USUARIO_T_EMPLEADO,
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
+        ]);
+        // MECANICO //
+        DB::table('usuarios')->insert([
+            'usuario'  => 'mecanico',
+            'empleado_id' => factory('App\Models\Empleado')->create([
+                'nombres' => 'Meca',
+                'apellidos' => 'Nico',
+                'ci' => 1100000,
+                'estado_civil' => 's',
+                'sexo' => 'm',
+                'direccion' => 'None.',
+                'localidad_id' => App\Models\Localidad::inRandomOrder()->first()->id,
+                'cargo_id' => App\Models\Cargo::where('descripcion','Mecanico')->first()->id,
+                'movil' => '(+000)100100',
+                'telefono' => '(+00000)200200' ,
+                'fecha_nacimiento' => '1980-10-10',
+                'fecha_ingreso' =>  date("Y-m-d H:m:s"),
+                'estado'  => '1',
+                'salario' => '4500000'
+            ])->id,
+            'clave'  => bcrypt('mecanico'),
+            'fecha_ingreso' => now(),
+            'estado'        => Usuario::USUARIO_ACTIVO,
+            'observacion'   => '',
+            'perfil'        => Usuario::USUARIO_FUNCIONARIO,
+            'tipo'          => Usuario::USUARIO_T_EMPLEADO,
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
+        ]);
+        // MECANICO //
+        DB::table('usuarios')->insert([
+            'usuario'  => 'jefe',
+            'empleado_id' => factory('App\Models\Empleado')->create([
+                'nombres' => 'Jefe',
+                'apellidos' => 'Mecanicos',
+                'ci' => 1200000,
+                'estado_civil' => 's',
+                'sexo' => 'm',
+                'direccion' => 'None.',
+                'localidad_id' => App\Models\Localidad::inRandomOrder()->first()->id,
+                'cargo_id' => App\Models\Cargo::where('descripcion','Jefe de Mecanicos')->first()->id,
+                'movil' => '(+000)100100',
+                'telefono' => '(+00000)200200' ,
+                'fecha_nacimiento' => '1980-10-10',
+                'fecha_ingreso' =>  date("Y-m-d H:m:s"),
+                'estado'  => '1',
+                'salario' => '4500000'
+            ])->id,
+            'clave'  => bcrypt('jefe'),
+            'fecha_ingreso' => now(),
+            'estado'        => Usuario::USUARIO_ACTIVO,
+            'observacion'   => '',
+            'perfil'        => Usuario::USUARIO_FUNCIONARIO,
+            'tipo'          => Usuario::USUARIO_T_EMPLEADO,
+            'usuario_verified_at' => now(),
+            'remember_token' => Str::random(10)
+        ]);
+
         // CLIENTE //
         DB::table('usuarios')->insert([
             'usuario'  => 'cliente',
@@ -226,6 +311,18 @@ class UsuarioSeeder extends Seeder
         ]);
         DB::table('talleres_usuarios')->insert([
             'usuario'  => 'cliente',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'mecanico',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'jefe',
+            'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
+        ]);
+        DB::table('talleres_usuarios')->insert([
+            'usuario'  => 'recepcionista',
             'taller_id' => App\Models\Taller::where('descripcion','Atelier')->first()->id,
         ]);
 

@@ -168,13 +168,13 @@ Route::view('/usuario.email.check', 'usuario.email.check')->name('usuario.email.
 Route::get('/parabusqueda',  'ParaBusquedaController@index')->name('parabusqueda');
 
 Route::view('/inicio', 'web.index')->name('inicio');
-Route::view('/agendamiento', 'web.agendamiento')->name('agendamiento');
-Route::view('/reservaenlinea', 'web.reservaenlinea')->name('reservaenlinea');
-Route::view('/lineatiempo', 'web.lineatiempo')->name('lineatiempo');
-Route::view('/panelcliente', 'web.panelcliente')->name('panelcliente');
-Route::view('/midiagnostico', 'web.midiagnostico')->name('midiagnostico');
-Route::get('/misvehiculos',  'HomeController@misvehiculos')->name('misvehiculos');
-Route::get('/mivehiculo',  'HomeController@mivehiculo')->name('mivehiculo');
+Route::view('/agendamiento', 'web.agendamiento')->name('agendamiento')->middleware('auth');
+Route::view('/reservaenlinea', 'web.reservaenlinea')->name('reservaenlinea')->middleware('auth');
+Route::view('/lineatiempo', 'web.lineatiempo')->name('lineatiempo')->middleware('auth');
+Route::view('/panelcliente', 'web.panelcliente')->name('panelcliente')->middleware('auth');
+Route::view('/midiagnostico', 'web.midiagnostico')->name('midiagnostico')->middleware('auth');
+Route::get('/misvehiculos',  'HomeController@misvehiculos')->name('misvehiculos')->middleware('auth');
+Route::get('/mivehiculo',  'HomeController@mivehiculo')->name('mivehiculo')->middleware('auth');
 
 
 

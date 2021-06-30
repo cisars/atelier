@@ -209,7 +209,7 @@ class OrdenTrabajoController extends Controller
      */
     public function confirmacionOt()
     {
-        $ordenestrabajos = OrdenTrabajo::where('estado', '=', 'p')->get();
+        $ordenestrabajos = OrdenTrabajo::where('estado', '=', OrdenTrabajo::ESTADO_PENDIENTE)->get();
 
         return view('confirmacionot.index', compact('ordenestrabajos'));
     }
@@ -278,6 +278,7 @@ class OrdenTrabajoController extends Controller
 
     public function confirmarOt($id)
     {
+
         $ordentrabajo = OrdenTrabajo::find($id);
 
         try {
@@ -355,6 +356,7 @@ class OrdenTrabajoController extends Controller
 
     public function enviarPresupuesto($orden)
     {
+        // Enviar presupuesto PDF
         $orden = OrdenTrabajo::find($orden);
 
         try {
@@ -388,6 +390,7 @@ class OrdenTrabajoController extends Controller
             return redirect()->back();
 
         }catch (\Exception $e){
+            dd($e->getMessage());
             session()->flash('msg', 'No se pudo enviar el presupuesto');
             session()->flash('type', 'error');
 
@@ -410,6 +413,19 @@ class OrdenTrabajoController extends Controller
     public function editarServiciosRealizados($id)
     {
         $ordentrabajo = OrdenTrabajo::find($id);
+
+        foreach ($ordentrabajo->ordenes_repuestos as $repuesto) {
+
+            if (($ordentrabajo
+                    ->sector->productos_servicios()
+                    ->where('id', $repuesto->id)->first()->pivot->cantidad + $repuesto->pivot->usado) < $repuesto->pivot->cantidad){
+
+                session()->flash('msg', 'No hay stock suficiente para el producto '.$repuesto->descripcion. ' en el sector '.$ordentrabajo->sector->descripcion);
+                session()->flash('type', 'danger');
+
+                return redirect()->back();
+            }
+        }
 
         return view('realizacionot.edit', compact('ordentrabajo'));
     }

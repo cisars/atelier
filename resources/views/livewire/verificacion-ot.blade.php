@@ -43,8 +43,8 @@
                                             <div class="row">
                                                 {{--CONST   | tipo | tipo --}}
                                                 <div class="form-group col-4 bg-gray-light">
-                                                    <label for="tipo">Tipo</label>
-                                                    {{ $ordentrabajo->tipo }}
+{{--                                                    <label for="tipo">Tipo</label>--}}
+{{--                                                    {{ $ordentrabajo->tipo }}--}}
                                                 </div>
                                                 {{-- FIN CONST cero------------------------------------ --}}
                                                 <div class="form-group col-4">
@@ -107,6 +107,7 @@
                                                 <div class="form-group col-5 bg-gray-light">
                                                     {{--SELECT FK Grupo de Trabajo --}}
                                                     {!! Form::label('grupo_id', 'Grupo de Trabajo') !!}
+                                                    {{ $ordentrabajo->grupo->descripcion }}
                                                 </div>
                                                 {{--SELECT FK Grupo de Trabajo ------------------------------------ --}}
                                             </div>{{--row --}}
