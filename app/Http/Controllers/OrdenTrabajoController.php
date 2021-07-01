@@ -416,11 +416,24 @@ class OrdenTrabajoController extends Controller
 
         foreach ($ordentrabajo->ordenes_repuestos as $repuesto) {
 
-            if (($ordentrabajo
-                    ->sector->productos_servicios()
-                    ->where('id', $repuesto->id)->first()->pivot->cantidad + $repuesto->pivot->usado) < $repuesto->pivot->cantidad){
+            if ($ordentrabajo
+                ->sector->productos_servicios()
+                ->where('id', $repuesto->id)
+                ->first()){
 
-                session()->flash('msg', 'No hay stock suficiente para el producto '.$repuesto->descripcion. ' en el sector '.$ordentrabajo->sector->descripcion);
+                if (($ordentrabajo
+                            ->sector->productos_servicios()
+                            ->where('id', $repuesto->id)
+                            ->first()->pivot->cantidad +
+                        $repuesto->pivot->usado) < $repuesto->pivot->cantidad){
+
+                    session()->flash('msg', 'No hay stock suficiente para el producto '.$repuesto->descripcion. ' en el sector '.$ordentrabajo->sector->descripcion);
+                    session()->flash('type', 'danger');
+
+                    return redirect()->back();
+                }
+            }else{
+                session()->flash('msg', 'Sin entrada en existencia manejo para '.$repuesto->descripcion. ' en el sector '.$ordentrabajo->sector->descripcion);
                 session()->flash('type', 'danger');
 
                 return redirect()->back();
