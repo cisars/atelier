@@ -35,5 +35,7 @@
 
 @section('js')
     @livewireScripts
+
+    @stack('pushed_scripts')
 @endsection
 

@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('reserva.create')}}" class="btn bg-cyan">Nuevo Reserva</a>
-                            @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a  href="{{route('reserva.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>

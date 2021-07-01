@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('entrada_detalle.create')}}" class="btn bg-cyan">Nuevo EntradaDetalle</a>
-                            @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a  href="{{route('entrada_detalle.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
@@ -76,7 +76,7 @@
                                         ]
                                         ?>
                                         @include('adminlte::partials.modals.confirmation',  $confirmation)
-                                        
+
                                         </td>
                                     </tr>
                                 @endforeach

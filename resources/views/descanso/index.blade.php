@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('descanso.create')}}" class="btn bg-cyan">Nuevo Descanso</a>
-                            @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a  href="{{route('descanso.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>

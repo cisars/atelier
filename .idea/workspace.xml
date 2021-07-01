@@ -6,7 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="d4a1f21f-58bd-4706-a378-427cb52d1af7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdenTrabajoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/Entrada/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/Entrada/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/EntradaDetalle/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/EntradaDetalle/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/Feriado/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/Feriado/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenServicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenServicio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenTrabajo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/OrdenTrabajo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/GenisaFiles/views/ProductoServicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/GenisaFiles/views/ProductoServicio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/descanso/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/descanso/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/empleado_maquina/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/empleado_maquina/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/entrada_detalle/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entrada_detalle/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feriado/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feriado/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/entregas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/entregas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/vehiculo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/vehiculo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orden_servicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orden_servicio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/parametro/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/parametro/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/producto_servicio/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/recepcion/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recepcion/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reserva/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reserva/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vehiculo/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vehiculo/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources_prueba/views/Feriado/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources_prueba/views/Feriado/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,7 +368,8 @@
       <workItem from="1623526996696" duration="4769000" />
       <workItem from="1623676445529" duration="30913000" />
       <workItem from="1623778219669" duration="39589000" />
-      <workItem from="1623818554201" duration="54353000" />
+      <workItem from="1623818554201" duration="55513000" />
+      <workItem from="1625158380005" duration="1082000" />
     </task>
     <task id="LOCAL-00021" summary="Procfile+Heroku command line VII - DB fix">
       <created>1604053533335</created>

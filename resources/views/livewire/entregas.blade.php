@@ -66,7 +66,6 @@
                                                 @error("cliente_id")
                                                 <span class="text text-danger">{{ $message }}</span>
                                                 @enderror
-
                                             </div>
 
                                             <div class="col-md-1">

@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <a  href="{{route('parametro.create')}}" class="btn bg-cyan">Nuevo Parametro</a>
-                            @if( trim(Auth::user()->perfil) == 'A' && trim(Auth::user()->perfil) != 'D' )
+                            @if( trim(Auth::user()->perfil) != 'A' && trim(Auth::user()->perfil) != 'D' )
                                 <a  href="{{route('parametro.factory')}}" class="btn bg-teal float-right ">Generar Registro dummy</a>
                             @endif
                         </div>
