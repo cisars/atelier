@@ -281,6 +281,8 @@
                         </div>
                     @endif
 
+                        <img src="{{public_path('/img/cabecerareporte.jpg')}}" />
+                        <img src="file:///{{ base_path() }}\public\img\atelier1.png" />
                     {{ __('Sesion iniciada!') }} <br>
                     <h1 class="text-maroon" style="text-shadow: 1px 1px #FFF;"> {{ __('Bienvenido,')  }} usuario
                         <b>{{ Auth::user()->usuario  }}</b></h1>
@@ -794,7 +796,7 @@
 {{-- Tabla de contenidos--}}
                                 </span>
                             @if (\App\Models\Reserva::where('empleado_id', Auth::user()->empleado->id)->get()->count() > 0 )
-                            <div style="background-color: #EEEEEE"> <i class="fa fa-calendar"></i> Reservas </div>
+                            <div style="background-color: #EEEEEE" class="text-maroon"> <i class="fa fa-calendar text-maroon"></i> Reservas </div>
                             <table class="table table-sm table-hover nowrap d-table" id="lista1">
                                 <th>Taller</th>
                                 <th>Cliente</th>
@@ -821,7 +823,7 @@
                             <hr>
                             @if (App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get()->count() > 0 )
 {{--                            {{ \App\Models\OrdenTrabajo::where('empleado_id', Auth::user()->empleado->id)->get()  }}--}}
-                            <div style="background-color: #EEEEEE"> <i class="fa fa-clipboard-list "></i> Ordenes de trabajo </div>
+                            <div style="background-color: #EEEEEE" class="text-maroon"> <i class="fa fa-clipboard-list text-maroon "></i> Ordenes de trabajo </div>
                             <table class="table table-sm table-hover nowrap d-table" id="lista2">
                                 <th> ID </th>
                                 <th> Taller </th>
@@ -843,7 +845,7 @@
                             <hr>
                             @if (App\Models\Entrega::where('empleado_id', Auth::user()->empleado->id)->get()->count() > 0 )
 {{--                   {{ \App\Models\Entrega::where('empleado_id', Auth::user()->empleado->id)->get()  }}--}}
-                                <div style="background-color: #EEEEEE"> <i class="fa fa-clipboard-list "></i>  Entregas </div>
+                                <div style="background-color: #EEEEEE" class="text-maroon"> <i class="fa fa-clipboard-list text-maroon"></i>  Entregas </div>
                                 <table class="table table-sm table-hover nowrap d-table" id="lista2">
                                     <th> ID </th>
                                     <th> Taller </th>

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Salida extends Model
+class Salida extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'salidas';
     protected $guarded = [];
 

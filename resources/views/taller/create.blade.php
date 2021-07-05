@@ -78,9 +78,9 @@
                                             @endforeach
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('localidad_id', 'Localidad') !!}
-                                            {!! Form::select('localidad_id', $localidades->pluck('descripcion', 'id') , null , ['class' => 'form-control', 'placeholder' => 'Seleccione Localidad']) !!}
-                                            @error("localidad_id")
+                                            {!! Form::label('sucursal_id', 'Sucursal') !!}
+                                            {!! Form::select('sucursal_id', $sucursales->pluck('descripcion', 'id') , null , ['class' => 'form-control', 'placeholder' => 'Seleccione Localidad']) !!}
+                                            @error("sucursal_id")
                                             <span class="text text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

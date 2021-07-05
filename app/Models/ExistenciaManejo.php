@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use OwenIt\Auditing\Auditable;
 
-class ExistenciaManejo extends Pivot
+class ExistenciaManejo extends Pivot Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'existencias_manejos';
     protected $primaryKey = ['sector_id', 'producto_id'];
     public $incrementing = false;

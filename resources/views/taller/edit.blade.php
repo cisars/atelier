@@ -12,6 +12,7 @@
 @stop
 
 @section('content')
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -27,8 +28,9 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('taller.update', $taller->taller) }}"
+                                    action  ="{{ route('taller.update', $taller->id) }}"
                                 >
+
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
                                     @method('PATCH')
@@ -51,9 +53,9 @@
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="taller"
-                                                id      ="taller" readonly
-                                                value   ="{{ old('taller', $taller->taller) }}"
+                                                name    ="id"
+                                                id      ="id" readonly
+                                                value   ="{{ old('taller', $taller->id) }}"
                                                  >
                                         </div>
 
@@ -83,20 +85,12 @@
                                                 <span class="text text-danger">{{ $error }}</span>
                                             @endforeach
                                         </div>
-                                        <div class="form-group">
-                                            <label for="localidad">Localidad</label>
-                                            <select
-                                                class   ="form-control"
-                                                name    ="localidad"
-                                                id      ="localidad">
-                                                @foreach($localidades as $key => $localidad)
-                                                    <option value="{{ $localidad->localidad }}"
-                                                            @if ($taller->localidad == old('localidad', $localidad->localidad))
-                                                            selected="selected"
-                                                        @endif
-                                                    >{{ $localidad->descripcion }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="form-group col">
+                                            <label for="sucursal_id" >Sucursal</label>
+                                            {!! Form::select('sucursal_id', $sucursales->pluck('descripcion', 'id') , 'sucursal_id' , ['class' => 'form-control']) !!}
+                                            @error("sucursal_id")
+                                            <span class="text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                     </div>

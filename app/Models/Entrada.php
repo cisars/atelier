@@ -11,9 +11,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Entrada extends Model
+class Entrada extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'entradas';
 
     protected $guarded = [];

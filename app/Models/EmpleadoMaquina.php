@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use OwenIt\Auditing\Auditable;
 
-class EmpleadoMaquina extends Pivot
+class EmpleadoMaquina extends Pivot Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     public $table = 'empleados_maquinas';
 
     protected $guarded = [];

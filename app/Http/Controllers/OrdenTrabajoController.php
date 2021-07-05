@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConfirmacionOt;
 use App\Mail\EnvioPresupuesto;
 use App\Models\Bitacora;
 use App\Models\Entrega;
@@ -282,7 +283,7 @@ class OrdenTrabajoController extends Controller
         $ordentrabajo = OrdenTrabajo::find($id);
 
         try {
-
+           DB::beginTransaction();
             $ordentrabajo->estado = OrdenTrabajo::ESTADO_ACEPTADO;
             $ordentrabajo->save();
 
@@ -298,6 +299,11 @@ class OrdenTrabajoController extends Controller
             }
 
             /*
+            * Envia confirmacion o rechazo de presupuesto
+            */
+            Mail::to($ordentrabajo->cliente->email)->send(new ConfirmacionOt($ordentrabajo));
+
+            /*
              * Insercion en Bitacora
              */
             if ($ordentrabajo->bitacora->where('estado', Bitacora::ESTADO_TRABAJO_INICIADO)->count() == 0) {
@@ -307,13 +313,15 @@ class OrdenTrabajoController extends Controller
                     throw new \Exception('No se pudo crear la bitacora');
                 }
             }
-
+            DB::commit();
             session()->flash('msg', 'Orden confirmada');
             session()->flash('type', 'success');
 
             return redirect()->back();
 
         } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
             session()->flash('msg', 'No se pudo confirmar la orden');
             session()->flash('type', 'error');
 

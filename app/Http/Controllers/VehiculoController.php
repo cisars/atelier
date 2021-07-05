@@ -85,7 +85,19 @@ class VehiculoController extends Controller
 
     public function store(StoreVehiculoRequest $request)
     {
-        $vehiculo = new Vehiculo($request->all());
+       // $vehiculo = new Vehiculo($request->all());
+        $vehiculo = new Vehiculo([
+            'cliente_id' => $request->get('cliente_id'),
+            'modelo_id' => $request->get('modelo_id'),
+            'chapa' => $request->get('chapa'),
+            'chasis' => $request->get('chasis'),
+            'color_id' => $request->get('color_id'),
+            'combustion' => $request->get('combustion'),
+            'tipo' => $request->get('tipo'),
+            'año' => $request->get('año')
+
+        ]);
+      //  dd($request);
         $vehiculo->save();
         return redirect()
             ->route('vehiculo.index')
@@ -103,7 +115,19 @@ class VehiculoController extends Controller
     public function update(UpdateVehiculoRequest $request, Vehiculo $vehiculo)
     {
 
-        $vehiculo->fill($request->all());
+         $vehiculo->fill($request->all());
+//
+//        $vehiculo = [
+//            'cliente_id' => $request->get('cliente_id'),
+//            'modelo_id' => $request->get('modelo_id'),
+//            'chapa' => $request->get('chapa'),
+//            'chasis' => $request->get('chasis'),
+//            'color_id' => $request->get('color_id'),
+//            'combustion' => $request->get('combustion'),
+//            'tipo' => $request->get('tipo'),
+//            'año' => $request->get('año')
+//        ];
+
         $vehiculo->save();
 
         return redirect()

@@ -6,6 +6,7 @@ use App\Http\Requests\Taller\StoreTallerRequest;
 use App\Http\Requests\Taller\UpdateTallerRequest;
 use App\Models\Empleado;
 use App\Models\Localidad;
+use App\Models\Sucursal;
 use App\Models\Taller;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -19,16 +20,20 @@ class TallerController extends Controller
     {
         $talleres = Taller::all();
         $localidades = Localidad::all();
-        return view('taller.index', compact('talleres', 'localidades'));
+        $sucursales = Sucursal::all();
+        return view('taller.index', compact('talleres', 'localidades','sucursales'));
     }
     public function create()
     {
         $talleres = Taller::orderBy('descripcion', 'ASC')->get();
         $localidades = Localidad::all();
+        $sucursales = Sucursal::all();
 
         return view('taller.create')
             ->with('talleres', $talleres)
-            ->with('localidades', $localidades);
+            ->with('localidades', $localidades)
+            ->with('sucursales', $sucursales)
+            ;
     }
 
     public function factory()
@@ -44,6 +49,8 @@ class TallerController extends Controller
     {
 
         $taller = new Taller($request->all());
+
+
         $taller->save();
         return redirect()
             ->route('taller.index')
@@ -59,9 +66,12 @@ class TallerController extends Controller
     public function edit(Taller $taller)
     {
         $localidades = Localidad::orderBy('descripcion', 'ASC')->get();
+        $sucursales = Sucursal::orderBy('descripcion', 'ASC')->get();
         return view('taller.edit')
             ->with('taller',$taller)
-            ->with('localidades',$localidades);
+            ->with('localidades',$localidades)
+            ->with('sucursales',$sucursales)
+            ;
 
     }
 

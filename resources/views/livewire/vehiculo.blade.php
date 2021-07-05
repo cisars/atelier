@@ -28,12 +28,14 @@
 
 
                 @isset($vehiculo->id)
+
                         {{--select Cliente  ------------------------------------ --}}
+                    <input type="hidden" name="cliente_id" id="cliente_id" value="{{$vehiculo->cliente_id}}">
                         <div class="form-group col">
                             {{--SELECT FK Localidad --}}
-                            {!! Form::label('cliente_id', 'Cliente') !!}
+                            {!! Form::label('xxx', 'Cliente') !!}
                             {!! Form::select('cliente_id', $clientes->pluck('razon_social', 'id')  ,
-                                old('cliente_id') ,
+                                old('xxx') ,
                                 [
                                     'disabled',
                                     'class' => 'form-control',
@@ -43,6 +45,7 @@
                             <span class="text text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
                 @else
                         <div class="form-group col">
                             <div class="row">
@@ -165,7 +168,7 @@
                         old('color_id') ,
                         [
                             'class' => 'form-control',
-                            'placeholder' => 'Seleccione Cliente']
+                            'placeholder' => 'Seleccione Color']
                     ) !!}
                     @error("color_id")
                     <span class="text text-danger">{{ $message }}</span>

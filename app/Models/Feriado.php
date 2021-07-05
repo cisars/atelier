@@ -10,20 +10,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Feriado extends Model
+class Feriado extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'feriados';
     //protected $primaryKey = 'empleado';
     //protected $fillable = [];
     protected $guarded = [];
 
-// Create all cons var with data 
+// Create all cons var with data
     // Estado
     const ESTADO_ACTIVO = 'a'; // estados
     const ESTADO_INACTIVO = 'i'; // estados
 
-// Create all cons FUNCTIONS 
+// Create all cons FUNCTIONS
     // Funcion Estado // estados
     public function getEstados()
     {

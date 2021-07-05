@@ -47,7 +47,13 @@
                                                 #{{ $salida->ordentrabajo->id }}
                                             </div>
                                         </div>{{--row --}}
-
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                {!! Form::label('sector', 'Sector') !!}
+                                                <br>
+                                                #{{ $salida->ordentrabajo->sector->descripcion }}
+                                            </div>
+                                        </div>{{--row --}}
                                         <hr>
 
                                         <div class="form-group col">
@@ -115,8 +121,8 @@
                                                                     class="form-control-sm col-12"
                                                                     min="1"
                                                                     wire:model="arrayItems.{{ $item['id'] }}.quantity"
-                                                                    wire:keyup="adicionar({{ $item['id'] }})"
-                                                                    wire:change="subtotal({{ $item['id'] }})"
+                                                                    {{--wire:keyup="adicionar({{ $item['id'] }})"--}}
+                                                                    {{--wire:change="subtotal({{ $item['id'] }})"--}}
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="arrayItems.{{ $item['id'] }}.quantity"
                                                                 >

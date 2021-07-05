@@ -5,6 +5,7 @@ namespace App\Http\Requests\Taller;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class UpdateTallerRequest extends FormRequest
 {
     /**
@@ -25,18 +26,11 @@ class UpdateTallerRequest extends FormRequest
     public function rules()
     {
         return [
-         //   'descripcion'       =>'required|max:40|unique:talleres,descripcion,' . $this->taller . ',taller',
-            'localidad_id'         =>'required',
+            'descripcion'       =>'required|max:40|unique:talleres,descripcion,' . $this->id . ',id',
+            'sucursal_id'         =>'required',
             'direccion'         =>'required|max:80',
             'telefono'          =>'required|max:12',
-            'descripcion'=>['required',
-                'max:40',
-                Rule::unique('talleres', 'descripcion')
-                    ->ignore($this->id, 'id')
-                    ->where(function ($query) {
-                        return $query->where('localidad_id', $this->localidad_id);
-                    })
-            ],
+
         ];
     }
 
@@ -48,7 +42,7 @@ class UpdateTallerRequest extends FormRequest
     public function messages()
     {
         return [
-            'localidad.required'  => 'Debe seleccionar una localidad',
+            'sucursal_id.required'  => 'Debe seleccionar una sucursal',
             'descripcion.required'  => 'Debe introducir una descripcion',
             'descripcion.max'       => 'La descripcion no puede exceder 40 caracteres',
             'descripcion.unique'    => 'El registro ya existe',

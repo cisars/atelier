@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Http\Controllers\ProductoServicioGen;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Sector extends Model
+class Sector extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'sectores';
     //protected $primaryKey = 'sector';
     //protected $fillable = [];

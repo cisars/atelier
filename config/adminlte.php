@@ -441,18 +441,18 @@ return [
             //'label'         => '9/12',
             'label_color' => 'info',
             'submenu' => [
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'sucursal', 'text' => 'Sucursales',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'taller', 'text' => 'Talleres',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'],         'url' => 'sucursal', 'text' => 'Sucursales',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'],         'url' => 'taller', 'text' => 'Talleres',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc', 'jmec'], 'url' => 'sector', 'text' => 'Sectores de trabajo',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc', 'fun'], 'url' => 'cargo', 'text' => 'Cargos',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'empleado', 'text' => 'Empleados',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'turno', 'text' => 'Turnos de trabajo',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc', 'fun'],  'url' => 'cargo', 'text' => 'Cargos',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'],         'url' => 'empleado', 'text' => 'Empleados',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'],         'url' => 'turno', 'text' => 'Turnos de trabajo',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc', 'jmec'], 'url' => 'grupo', 'text' => 'Grupos de trabajos',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria_tipo', 'text' => 'Tipo de Maquinaria',],
-                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => 'maquinaria', 'text' => 'Maquinarias',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'],         'url' => 'maquinaria_tipo', 'text' => 'Tipo de Maquinaria',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc'],         'url' => 'maquinaria', 'text' => 'Maquinarias',],
                 ['icon_color' => 'info', 'can' => ['admin', 'doc', 'jmec'], 'url' => 'empleado_maquina', 'text' => 'Asignación a Maquinarias',],
 //                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '#', 'text' => 'Feriados Laborales',],
-//                ['icon_color' => 'info', 'can' => ['admin', 'doc'], 'url' => '_calendarioatencionc', 'text' => 'Calendarios Reservas',],
+                ['icon_color' => 'info', 'can' => ['admin', 'doc','jmec', 'fun'], 'url' => 'agendamiento',  'text' => 'Calendarios Reservas', 'target' => '_blank'],
 
 
                 [

@@ -10,9 +10,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Descanso extends Model
+class Descanso extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'descansos';
     //protected $primaryKey = 'empleado';
     //protected $fillable = [];

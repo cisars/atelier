@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use OwenIt\Auditing\Auditable;
 
-class OrdenServicio extends Pivot
+class OrdenServicio extends Pivot Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'ordenes_servicios';
     protected $primaryKey = ['servicio_id', 'ot_id'];
     public $incrementing = false;

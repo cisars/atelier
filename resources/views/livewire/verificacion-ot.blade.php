@@ -70,7 +70,7 @@
                                                 <div class="form-group col-5 bg-gray-light">
                                                     {{--DATE TIMESTAMP Fecha de Finalización --}}
 
-                                                    <label for="fecha_fin">Fecha Finalización </label>
+{{--                                                    <label for="fecha_fin">Fecha Finalización </label>--}}
 
                                                     {{--                                                {{ date('d-m-Y', strtotime($ordentrabajo->recepcion->fecha_finalizacion)) }}--}}
                                                 </div>

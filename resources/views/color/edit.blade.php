@@ -27,7 +27,7 @@
                                     role    ="form"
                                     id      ="form"
                                     method  ="POST"
-                                    action  ="{{ route('color.update', $color->color) }}"
+                                    action  ="{{ route('color.update', $color->id) }}"
                                 >
                                     {{--  return back()->route('welcome');--}}
                                     @csrf
@@ -51,9 +51,9 @@
                                             <input
                                                 class   ="form-control"
                                                 type    ="text"
-                                                name    ="color"
-                                                id      ="color" readonly
-                                                value   ="{{ old('color', $color->color) }}"
+                                                name    ="id"
+                                                id      ="id" readonly
+                                                value   ="{{ old('id', $color->id) }}"
                                                  >
                                         </div>
                                     </div>

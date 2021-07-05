@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Vehiculo extends Model
+class Vehiculo extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'vehiculos';
     //protected $primaryKey = 'vehiculo';
     protected $guarded = [];

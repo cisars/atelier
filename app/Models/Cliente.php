@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class Cliente extends Model
+class Cliente extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     use Search; // Use the search trait we created earlier
     protected $searchable = [
         'razon_social',

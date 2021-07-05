@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\ProductoServicio;
+use App\Models\Salida;
 use App\Models\SalidaDetalle;
 use App\Models\Sector;
 use Livewire\Component;
@@ -36,7 +37,60 @@ class StockSalida extends Component
         }
     }
 
+    public function adicionar($id)
+    {
+        dd('A');
+        /*$this->arrayItems[$id]['quantity'] = ($this->arrayItems[$id]['quantity'] ?: 0) * $this->arrayItems[$id]['precio_venta'];*/
+    }
+
     public function guardar()
+    {
+        try {
+            \DB::beginTransaction();
+
+            $i = 0;
+            foreach ($this->arrayItems as $item) {
+                $i++;
+
+                if (!$repuesto = SalidaDetalle::where(['producto_id' => $item['id'], 'salida_id' => $this->salida->id])->first()) {
+
+                    $repuesto = new SalidaDetalle();
+                    $repuesto->item = $i;
+                    $repuesto->salida_id = $this->salida->id;
+                    $repuesto->sector_id = $this->salida->ordentrabajo->sector_id;
+                    $repuesto->producto_id = $item['id'];
+                    //$repuesto->cantidad = $item['quantity'];
+                }
+
+                $repuesto->cantidad = 1;
+                $repuesto->save();
+
+                if ($repuesto->sector->productos_servicios()->where('producto_id', $repuesto->producto_id)->exists()) {
+                    $sum = $repuesto->sector->productos_servicios()->where('producto_id', $repuesto->producto_id)->sum('cantidad');
+                    $repuesto->sector->productos_servicios()->updateExistingPivot($repuesto->producto_id, array('cantidad' => $sum - $repuesto->cantidad), false);
+                }else{
+                    $repuesto->sector->productos_servicios()->attach($repuesto->producto_id, ['cantidad' => $repuesto->cantidad]);
+                }
+            }
+
+            \DB::commit();
+
+            session()->flash('msg', 'Se ha cargado la salida');
+            session()->flash('type', 'success');
+
+            return redirect()->route('stock.salidas');
+
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            dd($e->getLine() . ' - ' . $e->getMessage());
+
+            session()->flash('msg', 'No se pudo cargar la salida');
+            session()->flash('type', 'error');
+        }
+
+    }
+
+    public function guardar_bk()
     {
         try {
             \DB::beginTransaction();

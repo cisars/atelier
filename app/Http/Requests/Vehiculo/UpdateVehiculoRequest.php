@@ -25,11 +25,11 @@ class UpdateVehiculoRequest extends FormRequest
     {
 
         return [
-            'cliente_id'           =>'required',
-            'modelo_id'            =>'required',
-            'chapa'             =>'required|max:12|unique:vehiculos,chapa,' . $this->vehiculo . ',vehiculo',
-            'chasis'            =>'required|max:12|unique:vehiculos,chasis,' . $this->vehiculo . ',vehiculo',
-            'color_id'             =>'required',
+            'cliente_id'        =>'required',
+            'modelo_id'         =>'required',
+            'chapa'             =>'required|max:12|unique:vehiculos,chapa,' . $this->chapa . ',chapa',
+            'chasis'            =>'required|max:12|unique:vehiculos,chasis,' . $this->chasis . ',chasis',
+            'color_id'          =>'required',
             'combustion'        =>'required',
             'tipo'              =>'required',
             'año'               =>'required',

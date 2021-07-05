@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
 
-class SalidaDetalle extends Model
+class SalidaDetalle extends Model Implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use Auditable;
     protected $table = 'salidas_detalles';
     protected $primaryKey = ['item', 'salida_id'];
     public $incrementing = false;

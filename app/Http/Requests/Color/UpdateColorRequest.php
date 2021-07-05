@@ -26,7 +26,7 @@ class UpdateColorRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   =>'required|max:40|unique:colores,descripcion,' . $this->color . ',color',
+            'descripcion'   =>'required|max:40|unique:colores,descripcion,' . $this->id . ',id',
         ];
     }
 
